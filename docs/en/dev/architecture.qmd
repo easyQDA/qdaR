@@ -1,0 +1,99 @@
+---
+title: "Architecture"
+---
+
+
+This section is for anyone who wants to change the package, port it, or check
+whether its numbers can be trusted. It assumes you have read the user guide.
+
+## The shape of it
+
+```
+R/
+  contract.R    the exchange contract and the bundled reference files
+  read.R        reading and validating exports
+  plots.R       the figures and the tables behind them
+  agreement.R   the six reliability coefficients
+  reliability.R intervals, per-code agreement, the kappa diagnostics
+  unitizing.R   did the coders mark the same stretches at all
+  gamma.R       agreement measured against the best alignment
+  progress.R    saturation as a number, and coder drift
+  discovery.R   how far from saturation, and how much further to go
+  planning.R    how much material a study will need
+  reporting.R   the COREQ and SRQR checklists
+  stats.R       the inferential statistics
+  spec.R        the plugin's own Vega-Lite charts, via vegawidget
+inst/extdata/   contract + nine samples + expected.json
+```
+
+Dependencies run one way: the plotting functions call the table functions and
+the statistics, never the reverse. Nothing in `read.R` knows about ggplot2.
+
+## Every figure has a table
+
+`qda_plot_frequencies()` is a thin layer over `qda_code_counts()`, and the
+same holds for every other plot. Two reasons. First, users need the numbers
+for supplements and reviewers. Second, the Python twin draws the same figures
+from the same tables, and keeping the data preparation separate is what stops
+the two from drifting apart in what they show.
+
+## Reading is a checkpoint, not a convenience
+
+`qda_read()` could have been a call to `utils::read.csv()`. Instead it checks
+the format stamp, the version and the promised columns, and stops rather than
+returning something plausible. The reasoning: a wrong number that stops the
+script costs an hour, and a wrong number that does not costs a publication
+correction.
+
+The version check is deliberately asymmetric. Older versions are read; newer
+ones refuse. A newer export may have renamed a column or changed a meaning,
+and this package has no way to know which.
+
+## Attributes rather than a class
+
+A read export is a plain `data.frame` with `qda_format`, `qda_version` and
+`qda_grain` attached as attributes. An S3 class was considered and rejected:
+users want to hand these tables straight to dplyr, ggplot2 or `table()`, and a
+class would only invite methods nobody needs. Attributes survive most
+operations and cost nothing when they do not.
+
+## Lists rather than S4 for results
+
+`qda_chisq()`, `qda_mds()`, `qda_cluster()` and `qda_ca()` return named lists.
+The point is that a caveat travels with the result: `expected_ok` sits next to
+the test, `goodness` next to the coordinates, `cophenetic` next to the tree,
+`inertia_share` next to the map. Returning only the interesting number would
+make the caveat optional, which in practice means unread.
+
+## Where MASS enters
+
+`qda_ca()` is the only function that uses *MASS*, for `MASS::corresp()`. MASS
+is GPL-licensed, which is compatible with the AGPL and therefore costs
+nothing. The Python twin computes the same analysis from a singular value
+decomposition, so if the dependency ever needs to go, the replacement is a
+known quantity rather than a research project. See
+[design decisions](design.qmd).
+
+## Why gamma is its own file
+
+`gamma.R` is the only place in the package with an exact combinatorial
+search. Finding the best alignment is a set-partitioning problem, NP-hard for
+three or more coders, and the implementation is a branch and bound with a
+pruning rule and an admissible bound rather than a call to a solver -- which
+would have meant a new dependency and, worse, a different answer from the
+Python twin.
+
+The search budget is deliberate. When it runs out the result is `NaN` with a
+reason, never the best incumbent found so far. A gamma produced by a
+heuristic is not gamma, and a number that is sometimes exact and sometimes
+approximate is worse than no number.
+
+## What is deliberately absent
+
+* **No writing.** Nothing here modifies a Zotero library or an export. Coding
+  happens in the plugin.
+* **No caching.** Exports are small; a cache would only create a way for the
+  data to go stale mid-session.
+* **No tidyverse dependency.** ggplot2 is needed for the figures; beyond that
+  the package uses base R, so it installs on a bare machine.
+* **No non-ASCII in `R/`.** CRAN requires it, and it is checked.

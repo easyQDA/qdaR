@@ -1,0 +1,184 @@
+---
+title: "Literatur"
+---
+
+
+Jeder Eintrag hier wurde vor der Aufnahme gegen Crossref geprüft: Autorschaft,
+Titel, Fundstelle, DOI. Nichts ist aus einer anderen Bibliografie übernommen.
+Drei mögliche DOIs sind bei dieser Prüfung herausgeflogen, weil sie auf eine
+gänzlich andere Arbeit zeigten als die gemeinte — und genau darum macht man
+das.
+
+Wo eine Arbeit keinen DOI hat, und ältere Lehrbücher haben oft keinen, sagt
+diese Seite das, statt den Titel mit einer Kennung zu paaren, die woandershin
+führt.
+
+Die Liste ist nach der Frage gruppiert, die jede Quelle beantwortet, denn so
+ist sie gewachsen: Die meisten Entwurfsentscheidungen in qdaR sind
+Methodenfragen, und dies sind die Quellen dahinter.
+
+Die bibliografischen Angaben stehen in der Sprache der jeweiligen Arbeit;
+Quellenangaben werden nicht übersetzt.
+
+
+## Übereinstimmung zwischen Kodierenden
+
+Die Arbeiten hinter den sechs Koeffizienten. Cohen und Fleiss sagen Ihnen, was
+die Zahlen sind; Feinstein und Cicchetti, warum es keine gute Idee ist, nur
+eine davon zu berichten.
+
+| Arbeit | DOI |
+|---|---|
+| Cohen, J. (1960). *A Coefficient of Agreement for Nominal Scales*. Educational and Psychological Measurement 20(1), 37-46. | [10.1177/001316446002000104](https://doi.org/10.1177/001316446002000104) |
+| Fleiss, J. L. (1971). *Measuring nominal scale agreement among many raters.*. Psychological Bulletin 76(5), 378-382. | [10.1037/h0031619](https://doi.org/10.1037/h0031619) |
+| Brennan, R. L.; Prediger, D. J. (1981). *Coefficient Kappa: Some Uses, Misuses, and Alternatives*. Educational and Psychological Measurement 41(3), 687-699. | [10.1177/001316448104100307](https://doi.org/10.1177/001316448104100307) |
+| Hayes, A. F.; Krippendorff, K. (2007). *Answering the Call for a Standard Reliability Measure for Coding Data*. Communication Methods and Measures 1(1), 77-89. | [10.1080/19312450709336664](https://doi.org/10.1080/19312450709336664) |
+| Gwet, K. L. (2008). *Computing inter‐rater reliability and its variance in the presence of high agreement*. British Journal of Mathematical and Statistical Psychology 61(1), 29-48. | [10.1348/000711006x126600](https://doi.org/10.1348/000711006x126600) |
+| Krippendorff, K. (2004). *Reliability in Content Analysis.*. Human Communication Research 30(3), 411-433. | [10.1111/j.1468-2958.2004.tb00738.x](https://doi.org/10.1111/j.1468-2958.2004.tb00738.x) |
+| Feinstein, A. R.; Cicchetti, D. V. (1990). *High agreement but low Kappa: I. the problems of two paradoxes*. Journal of Clinical Epidemiology 43(6), 543-549. | [10.1016/0895-4356(90)90158-l](https://doi.org/10.1016/0895-4356(90)90158-l) |
+| Cicchetti, D. V.; Feinstein, A. R. (1990). *High agreement but low kappa: II. Resolving the paradoxes*. Journal of Clinical Epidemiology 43(6), 551-558. | [10.1016/0895-4356(90)90159-m](https://doi.org/10.1016/0895-4356(90)90159-m) |
+| O’Connor, C.; Joffe, H. (2020). *Intercoder Reliability in Qualitative Research: Debates and Practical Guidelines*. International Journal of Qualitative Methods 19. | [10.1177/1609406919899220](https://doi.org/10.1177/1609406919899220) |
+| Hruschka, D. J.; Schwartz, D.; St.John, D. C.; Picone-Decaro, E.; Jenkins, R. A.; Carey, J. W. (2004). *Reliability in Coding Open-Ended Data: Lessons Learned from HIV Behavioral Research*. Field Methods 16(3), 307-331. | [10.1177/1525822x04266540](https://doi.org/10.1177/1525822x04266540) |
+
+
+## Qualitative Methode
+
+Woher der Arbeitsablauf hinter diesen Dateien stammt. Ein Blick lohnt sich,
+bevor Sie festlegen, was Ihre Reliabilitätszahl beweisen soll.
+
+| Arbeit | DOI |
+|---|---|
+| Kuckartz, U. (2019). *Qualitative Text Analysis: A Systematic Approach*. ICME-13 Monographs, 181-197. | [10.1007/978-3-030-15636-7_8](https://doi.org/10.1007/978-3-030-15636-7_8) |
+| Mayring, P. (2014). *Qualitative Content Analysis: Theoretical Background and Procedures*. Advances in Mathematics Education, 365-380. | [10.1007/978-94-017-9181-6_13](https://doi.org/10.1007/978-94-017-9181-6_13) |
+| MacQueen, K. M.; McLellan, E.; Kay, K.; Milstein, B. (1998). *Codebook Development for Team-Based Qualitative Analysis*. CAM Journal 10(2), 31-36. | [10.1177/1525822x980100020301](https://doi.org/10.1177/1525822x980100020301) |
+| Cascio, M. A.; Lee, E.; Vaudrin, N.; Freedman, D. A. (2019). *A Team-based Approach to Open Coding: Considerations for Creating Intercoder Consensus*. Field Methods 31(2), 116-130. | [10.1177/1525822x19838237](https://doi.org/10.1177/1525822x19838237) |
+| Braun, V.; Clarke, V. (2006). *Using thematic analysis in psychology*. Qualitative Research in Psychology 3(2), 77-101. | [10.1191/1478088706qp063oa](https://doi.org/10.1191/1478088706qp063oa) |
+| Gale, N. K.; Heath, G.; Cameron, E.; Rashid, S.; Redwood, S. (2013). *Using the framework method for the analysis of qualitative data in multi-disciplinary health research*. BMC Medical Research Methodology 13(1). | [10.1186/1471-2288-13-117](https://doi.org/10.1186/1471-2288-13-117) |
+| Ivankova, N. V.; Creswell, J. W.; Stick, S. L. (2006). *Using Mixed-Methods Sequential Explanatory Design: From Theory to Practice*. Field Methods 18(1), 3-20. | [10.1177/1525822x05282260](https://doi.org/10.1177/1525822x05282260) |
+
+
+## Die Statistik, die dieses Paket ergänzt
+
+Eine Quelle je Verfahren, ausgewählt nach der Arbeit, die die Sache definiert,
+und nicht nach der jüngsten, die sie zitiert.
+
+| Arbeit | DOI |
+|---|---|
+| Jaccard, P. (1912). *THE DISTRIBUTION OF THE FLORA IN THE ALPINE ZONE.^1^*. New Phytologist 11(2), 37-50. | [10.1111/j.1469-8137.1912.tb05611.x](https://doi.org/10.1111/j.1469-8137.1912.tb05611.x) |
+| Real, R.; Vargas, J. M. (1996). *The Probabilistic Basis of Jaccard's Index of Similarity*. Systematic Biology 45(3), 380-385. | [10.1093/sysbio/45.3.380](https://doi.org/10.1093/sysbio/45.3.380) |
+| Torgerson, W. S. (1952). *Multidimensional Scaling: I. Theory and Method*. Psychometrika 17(4), 401-419. | [10.1007/bf02288916](https://doi.org/10.1007/bf02288916) |
+| GOWER, J. C. (1966). *Some distance properties of latent root and vector methods used in multivariate analysis*. Biometrika 53(3-4), 325-338. | [10.1093/biomet/53.3-4.325](https://doi.org/10.1093/biomet/53.3-4.325) |
+| Sokal, R. R.; Rohlf, F. J. (1962). *THE COMPARISON OF DENDROGRAMS BY OBJECTIVE METHODS*. TAXON 11(2), 33-40. | [10.2307/1217208](https://doi.org/10.2307/1217208) |
+| Farris, J. S. (1969). *On the Cophenetic Correlation Coefficient*. Systematic Zoology 18(3), 279. | [10.2307/2412324](https://doi.org/10.2307/2412324) |
+| Greenacre, M. (2017). *Correspondence Analysis in Practice*. Chapman and Hall/CRC. | [10.1201/9781315369983](https://doi.org/10.1201/9781315369983) |
+| Mehta, C. R.; Patel, N. R. (1983). *A Network Algorithm for Performing Fisher's Exact Test in r × c Contingency Tables*. Journal of the American Statistical Association 78(382), 427. | [10.2307/2288652](https://doi.org/10.2307/2288652) |
+| Hope, A. C. A. (1968). *A Simplified Monte Carlo Significance Test Procedure*. Journal of the Royal Statistical Society Series B: Statistical Methodology 30(3), 582-598. | [10.1111/j.2517-6161.1968.tb00759.x](https://doi.org/10.1111/j.2517-6161.1968.tb00759.x) |
+| Patefield, W. M. (1981). *Algorithm AS 159: An Efficient Method of Generating Random R × C Tables with Given Row and Column Totals*. Applied Statistics 30(1), 91. | [10.2307/2346669](https://doi.org/10.2307/2346669) |
+
+
+## Abbildungen
+
+Die Grammatik der Grafik und die Spezifikationssprache, in der die Grafiken des
+Plugins geschrieben sind.
+
+| Arbeit | DOI |
+|---|---|
+| Wickham, H. (2010). *A Layered Grammar of Graphics*. Journal of Computational and Graphical Statistics 19(1), 3-28. | [10.1198/jcgs.2009.07098](https://doi.org/10.1198/jcgs.2009.07098) |
+| Satyanarayan, A.; Moritz, D.; Wongsuphasawat, K.; Heer, J. (2017). *Vega-Lite: A Grammar of Interactive Graphics*. IEEE Transactions on Visualization and Computer Graphics 23(1), 341-350. | [10.1109/tvcg.2016.2599030](https://doi.org/10.1109/tvcg.2016.2599030) |
+| Waskom, M. (2021). *seaborn: statistical data visualization*. Journal of Open Source Software 6(60), 3021. | [10.21105/joss.03021](https://doi.org/10.21105/joss.03021) |
+| Coombes, K. R.; Brock, G.; Abrams, Z. B.; Abruzzo, L. V. (2019). ***Polychrome** : Creating and Assessing Qualitative Palettes with Many Colors*. Journal of Statistical Software 90(Code Snippet 1). | [10.18637/jss.v090.c01](https://doi.org/10.18637/jss.v090.c01) |
+
+
+## Die Werkzeuge darunter
+
+| Arbeit | DOI |
+|---|---|
+| Harris, C. R.; Millman, K. J.; van der Walt, S. J.; Gommers, R.; Virtanen, P.; Cournapeau, D.; et al. (2020). *Array programming with NumPy*. Nature 585(7825), 357-362. | [10.1038/s41586-020-2649-2](https://doi.org/10.1038/s41586-020-2649-2) |
+| Virtanen, P.; Gommers, R.; Oliphant, T. E.; Haberland, M.; Reddy, T.; Cournapeau, D.; et al. (2020). *SciPy 1.0: fundamental algorithms for scientific computing in Python*. Nature Methods 17(3), 261-272. | [10.1038/s41592-019-0686-2](https://doi.org/10.1038/s41592-019-0686-2) |
+| McKinney, W. (2010). *Data Structures for Statistical Computing in Python*. Proceedings of the Python in Science Conference, 56-61. | [10.25080/majora-92bf1922-00a](https://doi.org/10.25080/majora-92bf1922-00a) |
+
+
+## Reproduzierbar arbeiten
+
+Der Grund, warum dieses Paket prüft, was es liest, statt ihm zu trauen — und
+warum es eigene Prüfdaten mitliefert.
+
+| Arbeit | DOI |
+|---|---|
+| Wilson, G.; Bryan, J.; Cranston, K.; Kitzes, J.; Nederbragt, L.; Teal, T. K. (2017). *Good enough practices in scientific computing*. PLOS Computational Biology 13(6), e1005510. | [10.1371/journal.pcbi.1005510](https://doi.org/10.1371/journal.pcbi.1005510) |
+| Sandve, G. K.; Nekrutenko, A.; Taylor, J.; Hovig, E. (2013). *Ten Simple Rules for Reproducible Computational Research*. PLoS Computational Biology 9(10), e1003285. | [10.1371/journal.pcbi.1003285](https://doi.org/10.1371/journal.pcbi.1003285) |
+
+
+## Sättigung, und der Streit darüber
+
+Die Sättigungszahl, die dieses Paket berichtet, ist *Code*-Sättigung und sonst
+nichts. Die letzten beiden Einträge sind die Einwände, und sie gehören in jeden
+Bericht, der die Zahl nennt.
+
+| Arbeit | DOI |
+|---|---|
+| Guest, G.; Namey, E.; Chen, M. (2020). *A simple method to assess and report thematic saturation in qualitative research*. PLOS ONE. | [10.1371/journal.pone.0232076](https://doi.org/10.1371/journal.pone.0232076) |
+| Lowe, A.; Norris, A. C.; Farris, A. J.; Babbage, D. R. (2018). *Quantifying Thematic Saturation in Qualitative Data Analysis*. Field Methods. | [10.1177/1525822x17749386](https://doi.org/10.1177/1525822x17749386) |
+| Hennink, M. M.; Kaiser, B. N.; Marconi, V. C. (2016). *Code Saturation Versus Meaning Saturation*. Qualitative Health Research. | [10.1177/1049732316665344](https://doi.org/10.1177/1049732316665344) |
+| Braun, V.; Clarke, V. (2019). *To saturate or not to saturate? Questioning data saturation as a useful concept for thematic analysis and sample-size rationales*. Qualitative Research in Sport, Exercise and Health. | [10.1080/2159676x.2019.1704846](https://doi.org/10.1080/2159676x.2019.1704846) |
+
+
+## Eine Studie planen
+
+Stichprobenumfang vor der Erhebung — dorthin geht kein etabliertes
+QDA-Werkzeug. Braun und Clarkes Kritik an der zweiten Arbeit steht aus
+demselben Grund dabei wie oben.
+
+| Arbeit | DOI |
+|---|---|
+| Donner, A.; Rotondi, M. A. (2010). *Sample Size Requirements for Interval Estimation of the Kappa Statistic for Interobserver Agreement Studies with a Binary Outcome and Multiple Raters*. The International Journal of Biostatistics. | [10.2202/1557-4679.1275](https://doi.org/10.2202/1557-4679.1275) |
+| Fugard, A. J. B.; Potts, H. W. W. (2015). *Supporting thinking on sample sizes for thematic analyses: a quantitative tool*. International Journal of Social Research Methodology. | [10.1080/13645579.2015.1005453](https://doi.org/10.1080/13645579.2015.1005453) |
+| Braun, V.; Clarke, V. (2016). *(Mis)conceptualising themes, thematic analysis, and other problems with Fugard and Potts’ (2015) sample-size tool for thematic analysis*. International Journal of Social Research Methodology. | [10.1080/13645579.2016.1195588](https://doi.org/10.1080/13645579.2016.1195588) |
+
+
+## Reliabilität der Segmentierung
+
+Ob die Kodierenden überhaupt dieselben Stellen markiert haben — was jeder
+Koeffizient auf Kategorienebene als gegeben voraussetzt.
+
+| Arbeit | DOI |
+|---|---|
+| Krippendorff, K. (1995). *On the Reliability of Unitizing Continuous Data*. Sociological Methodology. | [10.2307/271061](https://doi.org/10.2307/271061) |
+| Mathet, Y.; Widlöcher, A.; Métivier, J. (2015). *The Unified and Holistic Method Gamma (γ) for Inter-Annotator Agreement Measure and Alignment*. Computational Linguistics. | [10.1162/coli_a_00227](https://doi.org/10.1162/coli_a_00227) |
+| Pevzner, L.; Hearst, M. A. (2002). *A Critique and Improvement of an Evaluation Metric for Text Segmentation*. Computational Linguistics. | [10.1162/089120102317341756](https://doi.org/10.1162/089120102317341756) |
+| Beeferman, D.; Berger, A.; Lafferty, J. (1999). *Statistical Models for Text Segmentation*. Machine Learning. | [10.1023/a:1007506220214](https://doi.org/10.1023/a:1007506220214) |
+| Artstein, R.; Poesio, M. (2008). *Inter-Coder Agreement for Computational Linguistics*. Computational Linguistics. | [10.1162/coli.07-034-r2](https://doi.org/10.1162/coli.07-034-r2) |
+
+
+## Berichts-Checklisten
+
+Im Paket wortgetreu wiedergegeben, denn eine umformulierte Checkliste kann eine
+Gutachterin nicht mit dem Original abgleichen.
+
+| Arbeit | DOI |
+|---|---|
+| Tong, A.; Sainsbury, P.; Craig, J. (2007). *Consolidated criteria for reporting qualitative research (COREQ): a 32-item checklist for interviews and focus groups*. International Journal for Quality in Health Care. | [10.1093/intqhc/mzm042](https://doi.org/10.1093/intqhc/mzm042) |
+| O’Brien, B. C.; Harris, I. B.; Beckman, T. J.; Reed, D. A.; et al. (2014). *Standards for Reporting Qualitative Research*. Academic Medicine. | [10.1097/acm.0000000000000388](https://doi.org/10.1097/acm.0000000000000388) |
+
+## Arbeiten ohne DOI
+
+* Cramér, H. (1946). *Mathematical Methods of Statistics*. Princeton
+  University Press. Daher stammt das *V*, das `qda_chisq()` berichtet.
+* Sokal, R. R., & Sneath, P. H. A. (1963). *Principles of Numerical
+  Taxonomy*. Freeman. Average Linkage, die hier voreingestellte Verknüpfung.
+* Wilkinson, L. (2005). *The Grammar of Graphics* (2. Aufl.). Springer. Das
+  Buch, von dem die Zeichen-Backends abstammen.
+* REFI-QDA-Standard, <https://www.qdasoftware.org/>. Das Austauschformat, das
+  zotQDA liest und schreibt. Nicht Sache dieses Pakets, erklärt aber, woher ein
+  paar Spaltennamen kommen.
+
+::: {.callout-note title="Eine Quelle, die absichtlich fehlt"}
+
+Es gibt kein etabliertes Maß für die Übereinstimmung ganzer
+*Kategoriensysteme*. Kappa und Alpha setzen beide voraus, dass die
+Kodierenden bereits eine flache Kategorienmenge teilen — und genau die
+steht zur Debatte, solange ein Codebuch noch entsteht.
+`qda_level_agreement()` flacht die Hierarchie Ebene für Ebene ab und
+rechnet neu: ein Behelf, keine Quellenangabe.
+:::
+

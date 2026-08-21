@@ -1,0 +1,94 @@
+---
+title: "Die Beispielstudie"
+---
+
+Das Paket liefert eine kleine synthetische Studie als gewöhnliches
+zotQDA-Austauschpaar mit, damit jede Funktion, die echte Exporte liest, in
+Beispielen, Tests und dieser Dokumentation etwas Realistisches zu lesen
+hat:
+
+```r
+frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
+hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+```
+
+Dieselben zwei Dateien liegen byte-identisch im Python-Zwilling
+[qdaPy](https://qdapy.zotqda.org)
+(`qdapy.example("zotqda-fragments-demo.csv")`), und ein Test in jedem Paket
+schlägt fehl, sobald die Kopien auseinanderlaufen. Ergebnisse darauf sind
+deshalb zwischen den Paketen bis auf die letzte Stelle vergleichbar. Die
+mitgelieferten Fragmente ergeben in beiden α = 0,7266 und AC1 = 0,7299, und
+beide Testsammlungen frieren diese Werte ein.
+
+::: {.callout-note title="Synthetisch, und es sagt es auch"}
+
+Nichts hiervon hat je jemand gesagt. Interviews, Kodierende und
+Kodierungen sind aus einem festen Zufallssamen erzeugt, allein damit die
+Dokumentation echte Abbildungen zeigen kann und die Tests stabile Zahlen
+haben. Dass es echten Studien ähnelt, ist der Zweck, kein Zufall. Nur:
+Zitieren Sie diese Zahlen nicht als Befunde.
+:::
+
+## Was die Studie ist
+
+Eine fiktive Interviewstudie zur Arbeitsbelastung in der Pflege: acht
+Interviews, vier von einer Station (`Station-1` … `Station-4`) und vier
+aus der Verwaltung (`Verwaltung-1` … `Verwaltung-4`). Zwei Kodierende,
+`ann` und `bob`, kodierten Konsens-Segmente (dieselben Annotationen,
+jede Person mit eigenem Code), dem Drei-Phasen-Verfahren aus der
+[zotQDA-Dokumentation](https://zotqda.org) folgend.
+
+Das Codesystem hat neun Codes in drei Themen:
+
+| Thema | Codes |
+|---|---|
+| Belastung | `Zeitdruck`, `emotional`, `körperlich` |
+| Ressourcen | `Team`, `Autonomie`, `Anerkennung` |
+| Bewältigung | `Humor`, `Distanz`, `Sport` |
+
+## Die eingebaute Struktur
+
+Jede Eigenschaft unten existiert, damit eine der Analysen des Pakets
+etwas Wahres zu finden hat:
+
+* **Die beiden Bereiche haben verschiedene Themenprofile.**
+  Belastungscodes und `Ressourcen/Team` dominieren die Station,
+  `Autonomie`, `Anerkennung` und `Distanz` die Verwaltung. Diesen
+  Gruppenunterschied zeigen `qda_ca()` und `qda_code_matrix()`.
+* **Belastung und Bewältigung reisen in Paaren.** `emotional`↔`Humor`,
+  `Zeitdruck`↔`Distanz`, `körperlich`↔`Sport` und `Team`↔`emotional`
+  liegen bevorzugt auf derselben Passage. Diese Ko-Okkurrenzen finden
+  `qda_cluster()` und die Skalierungskarte wieder.
+* **Die Kodierenden sind sich oft einig — und systematisch uneinig.**
+  `bob` übernimmt `ann`s Code in etwa 78 % der Fälle; weicht er ab, dann
+  zum Themen-Nachbarn oder zum Partnercode, nie als gleichverteiltes
+  Rauschen. Die Konfusionstabelle liefert deshalb eine kurze,
+  interpretierbare Liste.
+* **Manche Zellen sind ehrliche Lücken.** `bob` hat rund 7 % der
+  Segmente nicht bewertet (`qda_alpha()` verkraftet die Lücken), und
+  `ann` hat gelegentlich doppelt kodiert, sodass der Beiseite-Zähler
+  etwas zu zählen hat.
+* **Die Historie enthält Sinneswandel.** Sechs Kodierungen wurden später
+  entfernt; dass die Zeitleiste sie übergeht, ist das dokumentierte
+  Verhalten.
+
+Positionen sind vorhanden (`positionKind == "text"`), aber weil es
+Konsens-Segmente sind, tragen beide Kodierenden dieselben Grenzen, und
+Unitizing-Maße fallen auf dieser Datei trivial hoch aus. Unitizing
+wirklich zu messen braucht die *eigenen* Markierungen jeder Person, also
+einen anderen Export.
+
+## Wie sie erzeugt wurde
+
+`scripts/make_demo_export.py` im qdaPy-Repositorium schreibt beide Dateien
+in einem Lauf in beide Pakete. Alles leitet sich aus einem festen Samen
+und festen Zeitstempeln ab, ohne Uhr und ohne Umgebung. Das Skript ist
+darum bis aufs Byte reproduzierbar, worauf sich der paketübergreifende
+Identitätstest verlässt. Die Spaltenliste kommt zur Laufzeit
+aus dem Austauschvertrag; eine Vertragsänderung zeigt sich hier als neu
+erzeugte Datei statt als veraltete.
+
+Wer die Studie ändern will, ändert die Konstanten am Kopf des Skripts,
+lässt es einmal laufen und trägt die eingefrorenen Koeffizienten in
+`tests/testthat/test-demo-export.R` (und qdaPys
+`tests/test_demo_export.py`) auf das ein, was ehrlich herauskommt.

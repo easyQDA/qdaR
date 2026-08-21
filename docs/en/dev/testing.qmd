@@ -1,0 +1,140 @@
+---
+title: "Testing"
+---
+
+
+Around 200 assertions, all of which run without a Zotero installation and
+without network access.
+
+```r
+# in the package directory
+devtools::test()
+# or the full thing
+R CMD build . && R CMD check --as-cran qdaR_0.1.0.tar.gz
+```
+
+The CRAN check currently reports 0 errors, 0 warnings and 2 notes: the
+new-submission note, and one about the local HTML Tidy being too old. Neither
+is a property of the package.
+
+## What the suite is actually for
+
+Most of it is ordinary: readers reject malformed files, coefficients match hand
+computations, figures build. Two parts are unusual and are the reason the
+numbers here can be trusted.
+
+### Congruence with the plugin
+
+`tests/testthat/qdaz-reference.json` holds 109 randomly generated coder
+matrices, two to four coders, deliberately skewed marginals, missing ratings —
+together with the values the plugin's JavaScript computes for them.
+`test-congruence.R` recomputes all six coefficients and compares to twelve
+decimal places.
+
+That file is byte-identical to the one in the Python package, and a test there
+asserts exactly that. So three implementations in three languages are held to a
+single reference rather than to each other.
+
+Agreeing on a hand-picked example proves very little. The fixtures were
+generated at random precisely so that no one chose them to make the
+implementations agree.
+
+### Congruence with the Python twin on the statistics
+
+`tests/testthat/stats-reference.json` and `stats-fixture.csv` hold 256 codings
+over six codes, five documents and two coders, with expected counts small
+enough to force the exact-test branch. `test-crosslang.R` pins the chi-squared
+statistic, Cramér's V, the Jaccard matrix, the cophenetic correlation, the
+scaling distances and the correspondence-analysis inertias.
+
+The two packages compute all of this through entirely different libraries —
+`chisq.test`, `cmdscale`, `hclust` and `MASS::corresp` here against scipy and
+hand-written linear algebra there, so agreement to twelve decimals is evidence
+about the statistics, not about shared code.
+
+Two of these are compared invariantly rather than literally. Scaling
+coordinates are only defined up to reflection, so the pairwise distances
+between points are compared instead of the coordinates. And the Monte Carlo
+p-value is random by construction in both packages, so it is only required to
+be close.
+
+**Two real bugs in this package were found this way** and are now pinned by
+tests: `qda_chisq()` aborting on a table that was merely awkward, and
+`qda_ca()` reporting inertia shares that always summed to 100 %.
+
+### Congruence on the newer measures
+
+Two further frozen references work the same way. `qdaz-e35-reference.json`
+covers the unitizing alpha, WindowDiff, Pk, the saturation ratio and the
+Wilson interval; `qdaz-gamma-reference.json` covers gamma. Both were computed
+by the plugin's JavaScript on randomly generated data and are byte-identical
+to the copies in the sibling package, which a test asserts.
+
+Some of these numbers were also checked against the papers themselves rather
+than only against each other. The unitizing alpha reproduces the observed
+disagreement of 7.8 from Krippendorff's own worked example; the sample-size
+functions reproduce Donner and Rotondi's Table 2 in all forty-eight cells and
+Fugard and Potts' Table 1 cell for cell; gamma reproduces the three
+configurations of Mathet and colleagues' Figure 11, including the negative
+value for coders who do worse than chance.
+
+That combination matters. Agreement between three implementations proves they
+are consistent; agreement with a published table proves they are right.
+
+## Regenerating a reference
+
+Do this only when a coefficient has legitimately changed on one side, never to
+make a failing test pass.
+
+Generate the fixtures once, in whichever language is convenient. Feed them to
+the plugin's `src/stats.js` under Node, which takes a `global.QdaZ = {}` and an
+`eval` of the file, and to this package. Then compare, and resolve every single
+difference before going any further; a reference frozen while two
+implementations disagree is worse than no reference. Only then write the new
+JSON, into **both** packages, in the same commit.
+
+When picking which fixtures to freeze, make sure the selection covers every
+coder count **and** matrices with missing ratings. A regular stride —
+`seq(1, n, by = 4)`, once happened to miss every single gap, and the coverage
+test in `test-congruence.R` exists to catch exactly that.
+
+## Verifying that a test can fail
+
+A test that has never failed is a claim, not a check. Both congruence tests
+were verified by mutation: perturbing the pooled chance term in `qda_fleiss()`
+by one part in a million makes the congruence test fail on ten counts. If you
+touch these computations, do the same before trusting a green run.
+
+## Non-ASCII
+
+`R/` must contain no non-ASCII characters — CRAN requires it, and it is easy to
+introduce accidentally through a copied em-dash or a stray byte-order mark.
+`R CMD check` catches it under *checking code files for non-ASCII characters*.
+Use `--` and spell out names like Cramer without the accent in code; the
+documentation and the vignette may use proper typography.
+
+## Continuous integration
+
+`.github/workflows/ci.yml` runs `R CMD check --as-cran` on Linux, macOS and
+Windows, against the current R release and the one before it — the DESCRIPTION
+floor is R 4.1. The job fails on a WARNING rather than on a NOTE, because the
+two NOTEs in `cran-comments.md` are expected and not defects.
+
+A second job builds the documentation site, so a broken page fails while the
+change is still a pull request rather than after the merge.
+
+::: {.callout-warning title="Two tests skip in an ordinary checkout"}
+
+The comparisons that assert a frozen reference is byte-identical to the
+copy in qdaPy need the Python package **beside** this one on disk. They
+skip in a bare clone, and they skip under `R CMD check` as well, which
+copies the tests into a temporary directory where the relative path no
+longer resolves.
+
+The `congruence` job therefore checks out both repositories side by side
+and runs testthat **in place**, then fails if `sum(df$skipped)` is
+anything but zero — a skipped test proves nothing while looking like it
+passed. It is switched on by the repository variable `QDAPY_PUBLISHED`
+once the Python package has a public repository to check out.
+:::
+

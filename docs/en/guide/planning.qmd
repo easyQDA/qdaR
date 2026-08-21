@@ -1,0 +1,111 @@
+---
+title: "Planning"
+---
+
+
+Everything else in this package looks at material you already have. This
+chapter is about the question you face before collecting it, which no
+established QDA tool asks at all: how much will it take?
+
+## How many segments must be double-coded?
+
+Interobserver studies are routinely run at whatever size was convenient and
+then reported with an interval far too wide to support the claim made from
+it. Donner and Rotondi give the sample size at which the *lower* bound of a
+one-sided interval for kappa reaches a value you name in advance. That is the
+quantity a reader cares about, since nobody ever objected that agreement was
+too good.
+
+```r
+qda_plan_kappa(0.8, 0.6, 0.1, raters = 2)     # 116 segments
+qda_plan_kappa(0.8, 0.6, 0.1, raters = 4)     # 62
+```
+
+Three numbers go in: the kappa you expect from a pilot or the literature, the
+smallest kappa you would still defend, and the prevalence of the code.
+Prevalence matters more than people expect. A code applied to a tenth of the
+segments needs several times the material of one applied to a third, and the
+requirement is symmetric about one half, so a conservative planner takes the
+value further from it.
+
+The other direction, for when the budget already fixed the number:
+
+```r
+qda_kappa_lower(100, kappa0 = 0.7, prevalence = 0.3, raters = 4)
+```
+
+::: {.callout-note title="Reproducing the published tables"}
+
+The default uses the exact chi-squared quantile. The tables in the paper
+were computed with it rounded to 2.71, which makes eight of their
+forty-eight cells one larger. Pass `critical=2.71` and you get their
+table cell for cell; the test suite checks both.
+:::
+
+## How many documents to meet a theme?
+
+```r
+qda_plan_themes(0.05, instances = 1)      # 32 documents
+qda_theme_power(32, 0.05)                 # about 0.8, the other way round
+```
+
+Fugard and Potts treat the waiting time as negative binomial: how long until
+a theme of known prevalence has been seen the desired number of times.
+
+::: {.callout-warning title="Whose question this is"}
+
+The model assumes themes are present or absent, independent of one
+another, and certain to surface once present. Braun and Clarke reject the
+premise for reflexive thematic analysis, where themes are constructed
+rather than discovered and a population prevalence is not a meaningful
+quantity. Use this where those assumptions hold, and say which conception
+of a theme you are working with.
+:::
+
+## Have I collected enough?
+
+The saturation curve in [Figures](figures.qmd) shows a trend. These give you
+the number that goes in the methods section.
+
+```r
+counts <- qda_new_codes(history)
+qda_saturation_ratio(counts)$notation      # "6+2"
+```
+
+Guest, Namey and Chen operationalise saturation with three parameters: a base
+of documents whose codes count as what is already known, a run of consecutive
+later documents inspected for new codes, and the share of new information
+that still counts as saturated. The result reads `"6+2"`, meaning saturation
+declared at document six and confirmed over a run of two.
+
+When it was never reached you get `NULL` and a `reason`, which is a finding
+rather than a failure.
+
+## How far from the top am I?
+
+A curve still climbing says nothing about how much is left. Lowe and
+colleagues fit the accumulation of themes to a growth model, which estimates
+how many themes there are to be found:
+
+```r
+fit <- qda_saturation_index(counts, "IW")
+fit$index                       # per cent of the estimated total
+qda_documents_for(fit, 95)       # documents needed to reach 95 %
+```
+
+Three models are available. `IS` assumes observations are independent, `IW`
+that overlap grows with what is already known, `SW` that it grows with the
+number of observations. Lowe and colleagues found no single winner, so fit
+all three and look at which describes your data. That they disagree is
+information: a spread between their estimates of `A` tells you how much the
+answer depends on the assumption.
+
+::: {.callout-note title="Code saturation only"}
+
+Everything here counts codes. Hennink, Kaiser and Marconi distinguish
+code saturation from meaning saturation, which no algorithm can see, and
+Braun and Clarke reject saturation as a criterion for reflexive thematic
+analysis. Whichever number you report, say which conception it belongs
+to.
+:::
+

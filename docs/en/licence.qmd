@@ -1,0 +1,45 @@
+---
+title: "Licence"
+---
+
+
+**AGPL-3.0-or-later**, the same terms as zotQDA, qdaZ and the Python twin
+qdaPy. The full text ships with R, in `share/licenses/AGPL-3`.
+
+## What you produce with qdaR is yours
+
+Figures, data frames, coefficients, reports, the analysis scripts you wrote:
+the licence places no condition on any of it. That is granted explicitly as an
+additional permission under section 7 of the AGPL.
+
+In this package the permission is part of `LICENSE`, because
+`License: AGPL-3 + file LICENSE` in `DESCRIPTION` means *the AGPL plus what is
+in that file*: that is where an R package states additional terms. The other
+projects keep the same wording in a file called `LICENSE-EXCEPTION.md`.
+
+Strictly speaking the clause changes nothing, a copyleft licence has never
+reached into a program's output, and the Free Software Foundation says so in
+its own FAQ. But the belief that it does is persistent enough to make an ethics
+board or a university legal office hesitate, and a figure in a submitted
+manuscript is not the place for a licensing question. So it is written down.
+
+The permission also covers the fragments of the package that necessarily end up
+inside your output: axis labels, caption wording, the default palette, column
+names of returned data frames, message and warning texts.
+
+## Commercial use does not need a commercial licence
+
+This is the most common misunderstanding about the AGPL. You may use qdaR in a
+company, in paid consulting, in contract research and in work you are paid for,
+without asking anyone and without paying anything.
+
+What the AGPL asks is that if you distribute a *modified version*, or let
+others use one over a network, you pass the source on under the same terms.
+That is the only condition, and it holds for everyone: qdaR is **not**
+dual-licensed, and there is no proprietary exception to be bought.
+
+## Contributions
+
+Nothing to sign. There is no contributor licence agreement, because there is no
+second licence that would need one. You contribute under the AGPL and keep your
+copyright.

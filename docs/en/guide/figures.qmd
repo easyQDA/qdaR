@@ -1,0 +1,130 @@
+---
+title: "Figures"
+---
+
+
+## The plugin's figures in ggplot2
+
+```r
+qda_plot_frequencies(frag)       # how often each code was used
+qda_plot_code_matrix(frag)       # codes against documents
+qda_plot_timeline(history)       # codings over time, per coder
+qda_plot_saturation(history)     # how the code system stopped growing
+qda_plot_mds(frag)               # a map of codes by shared segments
+qda_plot_level_agreement(units)  # agreement per level of the code system
+```
+
+What comes back is an ordinary `ggplot` object. Nothing is locked down, so
+your usual habits apply: swap the theme, rescale an axis, compose several
+panels with patchwork, write it out with `ggsave()`.
+
+Everything that follows on this page is *live*: the code runs while the
+documentation is built, and the figures are its actual output. The material
+is [the example study](example-data.qmd) that ships with the package: a
+synthetic study of workload in nursing, nine codes in three themes, eight
+interviews from two wards, coded by two people:
+
+```{r}
+#| message: false
+library(qdaR)
+library(ggplot2)
+
+frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
+```
+
+Correspondence analysis puts codes **and** interviews onto one shared map,
+and it brings its own caveat with it: the share of inertia the two
+dimensions show is printed on the figure itself — because a map without
+that number looks just as trustworthy at 30% as at 90%. And since
+`qda_ca()` returns ordinary data frames, the map is nothing more than
+ggplot2:
+
+```{r}
+#| label: fig-ca
+#| fig-cap: "Codes and documents on one correspondence-analysis map. The two wards separate along dimension 1, each surrounded by its typical codes. The figure states itself how much of the structure it shows."
+res <- qda_ca(frag)
+map <- rbind(
+  data.frame(res$row_scores, name = rownames(res$row_scores), what = "code"),
+  data.frame(res$col_scores, name = rownames(res$col_scores), what = "interview"))
+
+ggplot(map, aes(V1, V2, colour = what, shape = what)) +
+  geom_hline(yintercept = 0, colour = "grey85") +
+  geom_vline(xintercept = 0, colour = "grey85") +
+  geom_point(size = 2) +
+  geom_text(aes(label = name), vjust = -0.8, size = 3, show.legend = FALSE) +
+  scale_x_continuous(expand = expansion(mult = 0.15)) +
+  labs(subtitle = sprintf("%.0f%% of the inertia in two dimensions",
+                          100 * sum(res$inertia_share)),
+       x = "dimension 1", y = "dimension 2",
+       colour = NULL, shape = NULL) +
+  theme_minimal()
+```
+
+Which codes sit on the same passages? The dendrogram groups codes by
+co-occurrence. The cophenetic correlation in its title says how faithfully
+the tree preserves the distances:
+
+```{r}
+#| label: fig-dendro
+#| fig-cap: "Codes grouped by co-occurrence (Jaccard distance). The strain/coping pairs built into the material come back out as clusters."
+cl <- qda_cluster(frag)
+plot(cl$hclust, sub = "", xlab = "", ylab = "Jaccard distance",
+     main = sprintf("Cophenetic correlation %.2f", cl$cophenetic))
+```
+
+The code-by-document matrix shows the same structure as a heatmap. One
+glance is enough to see which interviews carry which themes:
+
+```{r}
+#| label: fig-matrix
+#| fig-cap: "Codings per code and interview. The block structure between the two wards is the group difference the map above projects."
+qda_plot_code_matrix(frag)
+```
+
+## Reading the numbers off a figure
+
+Behind each plot sits a function that hands you the same numbers as a data
+frame. Supplements and reviewers tend to want those rather than the picture:
+
+```{r}
+head(qda_code_counts(frag))
+```
+
+```r
+qda_code_matrix(frag, long = FALSE) # codes x documents
+qda_timeline(history)               # cumulative codings per coder
+qda_saturation(history)             # distinct codes over time
+```
+
+One thing to know about `qda_timeline()`: it counts `add` events and ignores
+`remove`. A coding somebody applied and then withdrew did happen, but it is not
+part of what you ended up with, and a growth curve that keeps counting it
+flatters the result.
+
+## Figures that carry their own caveat
+
+Two of these figures come with a number attached: `qda_mds()` returns
+`goodness`, the share of eigenvalue mass its two dimensions carry, and
+`qda_cluster()` returns `cophenetic`. Neither number is decoration. A code map
+showing a third of the structure and one showing nearly all of it look exactly
+alike, and so do a trustworthy dendrogram and a misleading one.
+
+## The plugin's own charts, unchanged
+
+Every chart in qdaZ can be saved as a data-plus-specification pair. Rendering
+the specification reproduces the figure exactly as it looked in Zotero:
+
+```r
+spec <- qda_spec_read("frequencies.json")
+qda_spec_render(spec, qda_code_counts(frag))
+```
+
+This needs the *vegawidget* package, which is suggested rather than required —
+`install.packages("vegawidget")`. Use it when a figure must match the plugin;
+use the `qda_plot_*` functions when it must match the rest of your manuscript.
+
+## The same figures in Python
+
+[qdaPy](https://qdapy.zotqda.org/) draws all of these with plotnine and
+seaborn from the same tables. If your project mixes languages, the figures
+will still agree.

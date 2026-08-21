@@ -1,0 +1,104 @@
+---
+title: "Reliability"
+---
+
+
+The [agreement chapter](agreement.qmd) gives you the coefficients. This one is
+about what to do when a coefficient is disappointing, and about the numbers
+that have to travel with it before anyone can act on it.
+
+## An interval, always
+
+A coefficient on its own invites over-reading. Qualitative studies work with
+few units, so the interval is usually wide, and that is the useful part:
+
+```r
+u = qda_units(frag)
+ci = qda_bootstrap_ci(u, qda_fleiss)
+ci$estimate; ci$lo; ci$hi
+```
+
+Units are resampled, not ratings. The unit of analysis is the segment, and
+resampling ratings would treat two judgements of one segment as independent
+observations.
+
+If fewer than twenty resamples produce a finite value, you get `NULL` instead
+of an interval. A wide interval is informative; one computed from almost
+nothing is not.
+
+The generator is seeded and is the same one the plugin and the R twin use, so
+the interval you publish is reproducible and all three tools agree on it.
+
+## Why the kappa looks like that
+
+Cohen's kappa can collapse while observed agreement is high. Feinstein and
+Cicchetti named the two reasons in 1990, and `paradox()` measures both:
+
+```r
+d = qda_paradox(qda_units_binary(frag, "Belastung"))
+d$prevalence_index; d$bias_index; d$pabak
+```
+
+A high **prevalence index** means the agreed-upon cases are lopsided: almost
+everything falls in one category, so chance alone explains most of the
+agreement. That is the kappa paradox, and it is a property of the measure,
+not a fault in your coding.
+
+A high **bias index** is different and more worrying: the two coders differ
+systematically, one applying the code more freely than the other. That is
+worth a conversation before the next round.
+
+**PABAK** is kappa recomputed with chance fixed at one half, which removes
+the prevalence effect. Report it beside kappa, not instead of it. Where the
+two diverge, the marginals are the story.
+
+The function returns `NULL` for anything other than two coders and two
+categories, because a two-by-two table is what these indices are defined on.
+
+## Which codes were argued about
+
+A pooled coefficient hides where the disagreement sits:
+
+```r
+qda_agreement_by_code(frag, min_n = 3)
+```
+
+One row per code, most frequent first, each with its own agreement and its
+prevalence with a Wilson interval. `min_n` drops codes used fewer times than
+that; with two or three uses every coefficient is noise.
+
+This is also the honest treatment of material where a segment legitimately
+carries several codes. Each code becomes a separate yes/no question, so a
+segment with three codes contributes to three of them instead of being set
+aside.
+
+## Prevalence at the edges
+
+```r
+qda_wilson(2, 40)
+```
+
+Wilson rather than the textbook normal approximation, which Brown, Cai and
+DasGupta show to be erratic for small samples and degenerate at nought or
+one. Code prevalences live exactly there: a code used in two of forty
+segments must not get an interval reaching below zero.
+
+## Did a coder change during the project?
+
+The coding log records who coded what and when, so this question can be asked
+at all. Most tools keep no such trail.
+
+```r
+qda_code_drift(history, windows = 4)
+```
+
+Each row is one coder in one window, with the total variation distance
+between their code distribution there and in their first window. Nought means
+they are coding as they started; one that the two windows share no code.
+
+Windows hold equal numbers of events rather than equal spans of time, because
+a coder who worked in bursts would otherwise get empty ones.
+
+Read it as a description, not a test. A large distance can mean the coder
+drifted, or simply that the later material was about something else. Look at
+what was coded before concluding anything.

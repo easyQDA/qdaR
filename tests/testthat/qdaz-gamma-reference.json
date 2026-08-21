@@ -1,0 +1,1800 @@
+{
+ "note": "gamma values computed by the qdaZ plugin (JavaScript), samples=12 seed=42",
+ "cases": [
+  {
+   "fixture": {
+    "length": 75,
+    "coders": [
+     [
+      {
+       "start": 3,
+       "end": 12,
+       "value": "A"
+      },
+      {
+       "start": 22,
+       "end": 37,
+       "value": "C"
+      },
+      {
+       "start": 47,
+       "end": 51,
+       "value": "C"
+      },
+      {
+       "start": 59,
+       "end": 67,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 19,
+       "value": "B"
+      },
+      {
+       "start": 20,
+       "end": 26,
+       "value": "B"
+      },
+      {
+       "start": 38,
+       "end": 44,
+       "value": "B"
+      },
+      {
+       "start": 48,
+       "end": 60,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.1930050808656132,
+    "observed": 1.2212390164399092,
+    "expected": 1.0236662324638302,
+    "candidates": 12,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 76,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 9,
+       "value": "A"
+      },
+      {
+       "start": 14,
+       "end": 24,
+       "value": "C"
+      },
+      {
+       "start": 28,
+       "end": 35,
+       "value": "A"
+      },
+      {
+       "start": 38,
+       "end": 50,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 11,
+       "value": "C"
+      },
+      {
+       "start": 14,
+       "end": 21,
+       "value": "B"
+      },
+      {
+       "start": 24,
+       "end": 35,
+       "value": "A"
+      },
+      {
+       "start": 40,
+       "end": 46,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.03192817756028077,
+    "observed": 0.8330651739181513,
+    "expected": 0.8605406692022847,
+    "candidates": 14,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 103,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 5,
+       "value": "B"
+      },
+      {
+       "start": 11,
+       "end": 25,
+       "value": "B"
+      },
+      {
+       "start": 33,
+       "end": 45,
+       "value": "C"
+      },
+      {
+       "start": 54,
+       "end": 60,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 9,
+       "value": "A"
+      },
+      {
+       "start": 11,
+       "end": 19,
+       "value": "C"
+      },
+      {
+       "start": 23,
+       "end": 30,
+       "value": "C"
+      },
+      {
+       "start": 38,
+       "end": 42,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.2988320423307007,
+    "observed": 1.3680772898430242,
+    "expected": 1.0533134733787948,
+    "candidates": 13,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 78,
+    "coders": [
+     [
+      {
+       "start": 5,
+       "end": 11,
+       "value": "B"
+      },
+      {
+       "start": 15,
+       "end": 29,
+       "value": "C"
+      },
+      {
+       "start": 35,
+       "end": 50,
+       "value": "A"
+      },
+      {
+       "start": 55,
+       "end": 70,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 13,
+       "value": "B"
+      },
+      {
+       "start": 17,
+       "end": 29,
+       "value": "A"
+      },
+      {
+       "start": 40,
+       "end": 54,
+       "value": "C"
+      },
+      {
+       "start": 58,
+       "end": 67,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 11,
+       "value": "C"
+      },
+      {
+       "start": 22,
+       "end": 27,
+       "value": "B"
+      },
+      {
+       "start": 38,
+       "end": 52,
+       "value": "B"
+      },
+      {
+       "start": 54,
+       "end": 67,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.21022829307922253,
+    "observed": 0.9007643352903725,
+    "expected": 1.1405376102954379,
+    "candidates": 58,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 92,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 15,
+       "value": "C"
+      },
+      {
+       "start": 22,
+       "end": 34,
+       "value": "A"
+      },
+      {
+       "start": 37,
+       "end": 46,
+       "value": "B"
+      },
+      {
+       "start": 57,
+       "end": 64,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 9,
+       "value": "C"
+      },
+      {
+       "start": 15,
+       "end": 24,
+       "value": "C"
+      },
+      {
+       "start": 28,
+       "end": 41,
+       "value": "A"
+      },
+      {
+       "start": 50,
+       "end": 55,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.047339360385000084,
+    "observed": 1.1513950138504154,
+    "expected": 1.0993523755539605,
+    "candidates": 13,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 42,
+    "coders": [
+     [
+      {
+       "start": 5,
+       "end": 10,
+       "value": "A"
+      },
+      {
+       "start": 14,
+       "end": 25,
+       "value": "A"
+      },
+      {
+       "start": 28,
+       "end": 40,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 16,
+       "value": "B"
+      },
+      {
+       "start": 28,
+       "end": 36,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 16,
+       "value": "C"
+      },
+      {
+       "start": 19,
+       "end": 27,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.18299916822948803,
+    "observed": 1.0652834388603087,
+    "expected": 1.303895170524792,
+    "candidates": 27,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 40,
+    "coders": [
+     [
+      {
+       "start": 1,
+       "end": 8,
+       "value": "C"
+      },
+      {
+       "start": 9,
+       "end": 14,
+       "value": "C"
+      },
+      {
+       "start": 19,
+       "end": 27,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 14,
+       "value": "A"
+      },
+      {
+       "start": 26,
+       "end": 34,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.4604674071783721,
+    "observed": 1.5506944444444444,
+    "expected": 1.061779562366538,
+    "candidates": 8,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 58,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 12,
+       "value": "B"
+      },
+      {
+       "start": 24,
+       "end": 34,
+       "value": "C"
+      },
+      {
+       "start": 40,
+       "end": 49,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 12,
+       "value": "B"
+      },
+      {
+       "start": 20,
+       "end": 24,
+       "value": "A"
+      },
+      {
+       "start": 28,
+       "end": 37,
+       "value": "A"
+      },
+      {
+       "start": 42,
+       "end": 54,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 12,
+       "value": "A"
+      },
+      {
+       "start": 14,
+       "end": 29,
+       "value": "B"
+      },
+      {
+       "start": 41,
+       "end": 52,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.00615996282957243,
+    "observed": 1.1655567396668947,
+    "expected": 1.1727810272016848,
+    "candidates": 44,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 75,
+    "coders": [
+     [
+      {
+       "start": 1,
+       "end": 11,
+       "value": "C"
+      },
+      {
+       "start": 18,
+       "end": 27,
+       "value": "A"
+      },
+      {
+       "start": 30,
+       "end": 43,
+       "value": "A"
+      },
+      {
+       "start": 52,
+       "end": 62,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 13,
+       "value": "C"
+      },
+      {
+       "start": 21,
+       "end": 30,
+       "value": "C"
+      },
+      {
+       "start": 42,
+       "end": 56,
+       "value": "A"
+      },
+      {
+       "start": 62,
+       "end": 70,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.13454072987865384,
+    "observed": 0.7472145236695502,
+    "expected": 0.8633734127832303,
+    "candidates": 14,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 91,
+    "coders": [
+     [
+      {
+       "start": 2,
+       "end": 16,
+       "value": "B"
+      },
+      {
+       "start": 19,
+       "end": 32,
+       "value": "A"
+      },
+      {
+       "start": 34,
+       "end": 40,
+       "value": "C"
+      },
+      {
+       "start": 44,
+       "end": 50,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 16,
+       "value": "B"
+      },
+      {
+       "start": 26,
+       "end": 33,
+       "value": "A"
+      },
+      {
+       "start": 35,
+       "end": 49,
+       "value": "C"
+      },
+      {
+       "start": 58,
+       "end": 69,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.45458663999979454,
+    "observed": 0.6039792899408284,
+    "expected": 1.1073789793865718,
+    "candidates": 12,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 54,
+    "coders": [
+     [
+      {
+       "start": 5,
+       "end": 19,
+       "value": "C"
+      },
+      {
+       "start": 28,
+       "end": 38,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 16,
+       "value": "A"
+      },
+      {
+       "start": 19,
+       "end": 27,
+       "value": "A"
+      },
+      {
+       "start": 28,
+       "end": 42,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.5854196734844157,
+    "observed": 1.220578566732413,
+    "expected": 0.7698772679222786,
+    "candidates": 9,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 44,
+    "coders": [
+     [
+      {
+       "start": 2,
+       "end": 15,
+       "value": "A"
+      },
+      {
+       "start": 17,
+       "end": 32,
+       "value": "A"
+      },
+      {
+       "start": 35,
+       "end": 40,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 10,
+       "value": "B"
+      },
+      {
+       "start": 21,
+       "end": 26,
+       "value": "A"
+      },
+      {
+       "start": 30,
+       "end": 37,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.1947843502015112,
+    "observed": 0.929024014562767,
+    "expected": 0.7775662732827716,
+    "candidates": 10,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 46,
+    "coders": [
+     [
+      {
+       "start": 2,
+       "end": 7,
+       "value": "C"
+      },
+      {
+       "start": 13,
+       "end": 28,
+       "value": "B"
+      },
+      {
+       "start": 29,
+       "end": 34,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 10,
+       "value": "C"
+      },
+      {
+       "start": 21,
+       "end": 29,
+       "value": "C"
+      },
+      {
+       "start": 31,
+       "end": 42,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 12,
+       "value": "C"
+      },
+      {
+       "start": 21,
+       "end": 28,
+       "value": "A"
+      },
+      {
+       "start": 31,
+       "end": 41,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.2937458091227316,
+    "observed": 0.7426597239696519,
+    "expected": 1.0515473515947036,
+    "candidates": 38,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 50,
+    "coders": [
+     [
+      {
+       "start": 5,
+       "end": 11,
+       "value": "A"
+      },
+      {
+       "start": 22,
+       "end": 31,
+       "value": "B"
+      },
+      {
+       "start": 35,
+       "end": 42,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 3,
+       "end": 14,
+       "value": "B"
+      },
+      {
+       "start": 23,
+       "end": 36,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.20151513082526906,
+    "observed": 0.8643541422402699,
+    "expected": 1.0824928256106063,
+    "candidates": 8,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 107,
+    "coders": [
+     [
+      {
+       "start": 1,
+       "end": 11,
+       "value": "C"
+      },
+      {
+       "start": 22,
+       "end": 31,
+       "value": "A"
+      },
+      {
+       "start": 42,
+       "end": 52,
+       "value": "A"
+      },
+      {
+       "start": 60,
+       "end": 71,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 12,
+       "value": "C"
+      },
+      {
+       "start": 13,
+       "end": 21,
+       "value": "A"
+      },
+      {
+       "start": 32,
+       "end": 39,
+       "value": "B"
+      },
+      {
+       "start": 41,
+       "end": 55,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.21244289869756416,
+    "observed": 0.8408544790465206,
+    "expected": 1.0676743027977822,
+    "candidates": 11,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 80,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 14,
+       "value": "C"
+      },
+      {
+       "start": 26,
+       "end": 38,
+       "value": "B"
+      },
+      {
+       "start": 48,
+       "end": 52,
+       "value": "B"
+      },
+      {
+       "start": 53,
+       "end": 66,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 13,
+       "value": "A"
+      },
+      {
+       "start": 23,
+       "end": 37,
+       "value": "B"
+      },
+      {
+       "start": 47,
+       "end": 54,
+       "value": "B"
+      },
+      {
+       "start": 55,
+       "end": 61,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 11,
+       "value": "B"
+      },
+      {
+       "start": 23,
+       "end": 34,
+       "value": "A"
+      },
+      {
+       "start": 38,
+       "end": 50,
+       "value": "B"
+      },
+      {
+       "start": 53,
+       "end": 63,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.33149143453291774,
+    "observed": 0.8021551316337108,
+    "expected": 1.199917507524007,
+    "candidates": 59,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 60,
+    "coders": [
+     [
+      {
+       "start": 4,
+       "end": 15,
+       "value": "A"
+      },
+      {
+       "start": 23,
+       "end": 36,
+       "value": "B"
+      },
+      {
+       "start": 38,
+       "end": 51,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 3,
+       "end": 13,
+       "value": "B"
+      },
+      {
+       "start": 24,
+       "end": 29,
+       "value": "B"
+      },
+      {
+       "start": 37,
+       "end": 51,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.06273926197275326,
+    "observed": 0.7397702565251066,
+    "expected": 0.7892897104408539,
+    "candidates": 9,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 93,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 11,
+       "value": "B"
+      },
+      {
+       "start": 19,
+       "end": 25,
+       "value": "B"
+      },
+      {
+       "start": 32,
+       "end": 40,
+       "value": "B"
+      },
+      {
+       "start": 42,
+       "end": 52,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 9,
+       "value": "A"
+      },
+      {
+       "start": 12,
+       "end": 26,
+       "value": "B"
+      },
+      {
+       "start": 34,
+       "end": 42,
+       "value": "A"
+      },
+      {
+       "start": 53,
+       "end": 58,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 14,
+       "value": "A"
+      },
+      {
+       "start": 16,
+       "end": 31,
+       "value": "A"
+      },
+      {
+       "start": 40,
+       "end": 44,
+       "value": "C"
+      },
+      {
+       "start": 54,
+       "end": 65,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.00230641552941957,
+    "observed": 1.136841099527655,
+    "expected": 1.1394691889603683,
+    "candidates": 51,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 77,
+    "coders": [
+     [
+      {
+       "start": 1,
+       "end": 14,
+       "value": "A"
+      },
+      {
+       "start": 24,
+       "end": 29,
+       "value": "C"
+      },
+      {
+       "start": 37,
+       "end": 41,
+       "value": "A"
+      },
+      {
+       "start": 43,
+       "end": 47,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 13,
+       "value": "B"
+      },
+      {
+       "start": 22,
+       "end": 26,
+       "value": "A"
+      },
+      {
+       "start": 30,
+       "end": 44,
+       "value": "A"
+      },
+      {
+       "start": 48,
+       "end": 54,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.05617595878829118,
+    "observed": 1.1625854504642383,
+    "expected": 1.2317819844593885,
+    "candidates": 12,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 65,
+    "coders": [
+     [
+      {
+       "start": 2,
+       "end": 17,
+       "value": "A"
+      },
+      {
+       "start": 28,
+       "end": 37,
+       "value": "A"
+      },
+      {
+       "start": 49,
+       "end": 62,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 8,
+       "value": "A"
+      },
+      {
+       "start": 20,
+       "end": 31,
+       "value": "C"
+      },
+      {
+       "start": 35,
+       "end": 47,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.03442163297072409,
+    "observed": 1.014070523415978,
+    "expected": 0.9803260982697158,
+    "candidates": 10,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 107,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 10,
+       "value": "B"
+      },
+      {
+       "start": 17,
+       "end": 28,
+       "value": "A"
+      },
+      {
+       "start": 32,
+       "end": 45,
+       "value": "A"
+      },
+      {
+       "start": 56,
+       "end": 68,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 12,
+       "value": "A"
+      },
+      {
+       "start": 20,
+       "end": 31,
+       "value": "A"
+      },
+      {
+       "start": 38,
+       "end": 46,
+       "value": "A"
+      },
+      {
+       "start": 55,
+       "end": 70,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.651261851153522,
+    "observed": 0.3418467821057734,
+    "expected": 0.9802391371190698,
+    "candidates": 13,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 69,
+    "coders": [
+     [
+      {
+       "start": 4,
+       "end": 17,
+       "value": "A"
+      },
+      {
+       "start": 29,
+       "end": 36,
+       "value": "B"
+      },
+      {
+       "start": 42,
+       "end": 51,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 12,
+       "value": "C"
+      },
+      {
+       "start": 20,
+       "end": 33,
+       "value": "B"
+      },
+      {
+       "start": 43,
+       "end": 58,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 10,
+       "value": "A"
+      },
+      {
+       "start": 17,
+       "end": 25,
+       "value": "C"
+      },
+      {
+       "start": 26,
+       "end": 34,
+       "value": "A"
+      },
+      {
+       "start": 39,
+       "end": 50,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.2703395464872578,
+    "observed": 0.8383587655060557,
+    "expected": 1.148971088497419,
+    "candidates": 45,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 60,
+    "coders": [
+     [
+      {
+       "start": 3,
+       "end": 18,
+       "value": "A"
+      },
+      {
+       "start": 28,
+       "end": 39,
+       "value": "C"
+      },
+      {
+       "start": 48,
+       "end": 57,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 14,
+       "value": "A"
+      },
+      {
+       "start": 19,
+       "end": 33,
+       "value": "A"
+      },
+      {
+       "start": 37,
+       "end": 44,
+       "value": "A"
+      },
+      {
+       "start": 49,
+       "end": 57,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.12313307066535106,
+    "observed": 0.9776354797357146,
+    "expected": 1.1149188628627231,
+    "candidates": 12,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 60,
+    "coders": [
+     [
+      {
+       "start": 2,
+       "end": 13,
+       "value": "C"
+      },
+      {
+       "start": 18,
+       "end": 22,
+       "value": "A"
+      },
+      {
+       "start": 30,
+       "end": 37,
+       "value": "C"
+      },
+      {
+       "start": 40,
+       "end": 46,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 11,
+       "value": "C"
+      },
+      {
+       "start": 14,
+       "end": 21,
+       "value": "B"
+      },
+      {
+       "start": 28,
+       "end": 38,
+       "value": "C"
+      },
+      {
+       "start": 44,
+       "end": 49,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 11,
+       "value": "A"
+      },
+      {
+       "start": 21,
+       "end": 31,
+       "value": "B"
+      },
+      {
+       "start": 42,
+       "end": 51,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.11651058134420278,
+    "observed": 0.979598350630435,
+    "expected": 1.1087833424432685,
+    "candidates": 47,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 95,
+    "coders": [
+     [
+      {
+       "start": 5,
+       "end": 10,
+       "value": "A"
+      },
+      {
+       "start": 18,
+       "end": 23,
+       "value": "A"
+      },
+      {
+       "start": 29,
+       "end": 44,
+       "value": "C"
+      },
+      {
+       "start": 48,
+       "end": 63,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 10,
+       "value": "C"
+      },
+      {
+       "start": 22,
+       "end": 32,
+       "value": "A"
+      },
+      {
+       "start": 34,
+       "end": 41,
+       "value": "B"
+      },
+      {
+       "start": 45,
+       "end": 54,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.20631327174942693,
+    "observed": 0.811113406795225,
+    "expected": 1.0219566208232604,
+    "candidates": 14,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 83,
+    "coders": [
+     [
+      {
+       "start": 3,
+       "end": 11,
+       "value": "A"
+      },
+      {
+       "start": 21,
+       "end": 26,
+       "value": "C"
+      },
+      {
+       "start": 28,
+       "end": 39,
+       "value": "B"
+      },
+      {
+       "start": 49,
+       "end": 57,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 10,
+       "value": "C"
+      },
+      {
+       "start": 14,
+       "end": 25,
+       "value": "C"
+      },
+      {
+       "start": 26,
+       "end": 33,
+       "value": "B"
+      },
+      {
+       "start": 35,
+       "end": 47,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 15,
+       "value": "B"
+      },
+      {
+       "start": 27,
+       "end": 32,
+       "value": "A"
+      },
+      {
+       "start": 37,
+       "end": 42,
+       "value": "A"
+      },
+      {
+       "start": 43,
+       "end": 48,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.02269363892452847,
+    "observed": 1.2843741024572681,
+    "expected": 1.3141980382117697,
+    "candidates": 55,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 78,
+    "coders": [
+     [
+      {
+       "start": 1,
+       "end": 8,
+       "value": "A"
+      },
+      {
+       "start": 9,
+       "end": 16,
+       "value": "A"
+      },
+      {
+       "start": 18,
+       "end": 29,
+       "value": "B"
+      },
+      {
+       "start": 34,
+       "end": 46,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 14,
+       "value": "C"
+      },
+      {
+       "start": 18,
+       "end": 28,
+       "value": "B"
+      },
+      {
+       "start": 32,
+       "end": 47,
+       "value": "A"
+      },
+      {
+       "start": 57,
+       "end": 62,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.3117969991206795,
+    "observed": 0.7814310909549005,
+    "expected": 1.135465974365793,
+    "candidates": 12,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 52,
+    "coders": [
+     [
+      {
+       "start": 4,
+       "end": 16,
+       "value": "B"
+      },
+      {
+       "start": 27,
+       "end": 33,
+       "value": "C"
+      },
+      {
+       "start": 40,
+       "end": 44,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 13,
+       "value": "B"
+      },
+      {
+       "start": 25,
+       "end": 40,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 8,
+       "value": "B"
+      },
+      {
+       "start": 16,
+       "end": 25,
+       "value": "A"
+      },
+      {
+       "start": 34,
+       "end": 40,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": 0.11917119465549697,
+    "observed": 1.162577239229025,
+    "expected": 1.3198674159779853,
+    "candidates": 27,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 65,
+    "coders": [
+     [
+      {
+       "start": 3,
+       "end": 13,
+       "value": "C"
+      },
+      {
+       "start": 16,
+       "end": 20,
+       "value": "A"
+      },
+      {
+       "start": 21,
+       "end": 27,
+       "value": "C"
+      },
+      {
+       "start": 31,
+       "end": 43,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 9,
+       "value": "A"
+      },
+      {
+       "start": 12,
+       "end": 16,
+       "value": "C"
+      },
+      {
+       "start": 19,
+       "end": 29,
+       "value": "C"
+      },
+      {
+       "start": 37,
+       "end": 46,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.15289816905673304,
+    "observed": 0.9952168367346939,
+    "expected": 0.8632304772840005,
+    "candidates": 14,
+    "samples": 12
+   }
+  },
+  {
+   "fixture": {
+    "length": 86,
+    "coders": [
+     [
+      {
+       "start": 1,
+       "end": 10,
+       "value": "B"
+      },
+      {
+       "start": 11,
+       "end": 26,
+       "value": "B"
+      },
+      {
+       "start": 28,
+       "end": 42,
+       "value": "B"
+      },
+      {
+       "start": 44,
+       "end": 54,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 19,
+       "value": "C"
+      },
+      {
+       "start": 26,
+       "end": 30,
+       "value": "A"
+      },
+      {
+       "start": 33,
+       "end": 47,
+       "value": "B"
+      },
+      {
+       "start": 59,
+       "end": 66,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "gamma": -0.16112930638304923,
+    "observed": 1.3321255672304595,
+    "expected": 1.1472671991890968,
+    "candidates": 14,
+    "samples": 12
+   }
+  }
+ ]
+}

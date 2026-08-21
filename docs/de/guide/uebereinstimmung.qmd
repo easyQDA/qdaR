@@ -1,0 +1,171 @@
+---
+title: "Übereinstimmung"
+---
+
+## Die Matrix aufbauen
+
+Reliabilitätskoeffizienten brauchen eine Zeile je Analyseeinheit und eine
+Spalte je kodierender Person. Der Fragment-Export ist länger als das (eine
+Zeile je Annotation *und* Code) und muss zuerst umgeformt werden:
+
+```r
+u <- qda_units(frag)
+qda_agreement(u)
+```
+
+Das Umformen erzwingt zwei Entscheidungen. Beide lassen sich in einem selbst
+geschriebenen Skript leicht unbemerkt falsch treffen, und beide verändern das
+Ergebnis in die schmeichelhafte Richtung. Deshalb verlangt `units()`, dass
+Sie sie bewusst treffen.
+
+### Segmente, die niemand kodiert hat
+
+Wenn zwei Kodierende ein Segment beide unangetastet lassen, sind sie sich einig,
+dass es nicht einschlägig ist. Das *ist* Übereinstimmung, und sie wegzulassen
+beantwortet eine andere, freundlichere Frage: wie gut sich die Kodierenden über
+*das Material einig waren, das eine von ihnen markiert hat*.
+
+Diese Segmente kommen nur in die Matrix, wenn Sie den `uncoded`-Export
+übergeben:
+
+```r
+u <- qda_units(frag, uncoded = qda_read(qda_example("zotqda-uncoded.csv")))
+```
+
+Ohne ihn fehlen sie schlicht. Das Paket warnt Sie nicht, weil es nicht wissen
+kann, ob Sie sie absichtlich weggelassen haben — aber nun wissen Sie es.
+
+### Segmente, die eine Person doppelt kodiert hat
+
+Hat eine Person drei Codes auf ein Segment gelegt, gibt es keinen einzelnen
+Wert, den man dem einen Wert der anderen Person gegenüberstellen könnte. Solche
+Zellen werden fehlend und werden gezählt:
+
+```r
+qda_agreement(u)$multi_set_aside
+```
+
+Nennen Sie diese Zahl neben dem Koeffizienten. Ein Kappa, das nach dem stillen
+Weglassen eines Zehntels des Materials entstanden ist, ist nicht das Kappa
+Ihrer Studie. Ist Mehrfachkodierung in Ihrem Projekt normal, fragen Sie
+stattdessen nach jedem Code einzeln:
+
+```r
+b <- qda_units_binary(frag, "Belastung")   # yes/no per segment
+qda_kappa(b)
+```
+
+Ein Segment mit drei Codes trägt dann zu allen drei Fragen bei statt zu keiner.
+
+## Welcher Koeffizient
+
+| Funktion | Kodierende | Zufall geschätzt aus |
+|---|---|---|
+| `qda_percent_agreement()` | beliebig | nichts — roher Anteil übereinstimmender Paare |
+| `qda_kappa()` | genau 2 | den Randverteilungen der Kodierenden [@CoefficientAgreement] |
+| `qda_brennan()` | genau 2 | einem gleichverteilten `1/q` [@Brennan1981CoefficientKappa] — das berichtet MAXQDA |
+| `qda_fleiss()` | beliebig | der gepoolten Kategorienverteilung |
+| `qda_alpha()` | beliebig, Lücken erlaubt | der Koinzidenzmatrix [@Krippendorff2004ReliabilityContent] |
+| `qda_ac1()` | beliebig | Gwets Korrektur, stabil bei schiefen Randverteilungen |
+
+### Die Formeln dahinter
+
+Jeder zufallskorrigierte Koeffizient der Tabelle ist derselbe Bruch. Er
+misst, wie viel von der Übereinstimmung, die der Zufall offenlässt,
+tatsächlich erreicht wurde:
+
+$$
+\kappa \;=\; \frac{P_o - P_e}{1 - P_e}
+$$
+
+mit
+
+- $P_o$ — dem beobachteten Anteil übereinstimmender Paare,
+- $P_e$ — der zufällig erwarteten Übereinstimmung.
+
+Die Koeffizienten unterscheiden sich *nur* darin, was sie in $P_e$
+stecken. Cohen schätzt sie aus den Randverteilungen
+der beiden Kodierenden selbst [@CoefficientAgreement]:
+
+$$
+P_e^{\text{Cohen}} \;=\; \sum_{q} p_{1q}\, p_{2q},
+$$
+
+mit
+
+- $q$ — einer Kategorie des Codesystems; die Summe läuft über alle,
+- $p_{1q}$, $p_{2q}$ — dem Anteil der Kategorie $q$ an den Kodierungen
+  der ersten bzw. der zweiten Person.
+
+Brennan und Prediger ersetzen das durch ein gleichverteiltes $1/q$ über die
+$q$ Kategorien [@Brennan1981CoefficientKappa]. Krippendorffs Alpha formuliert
+denselben Gedanken als Verhältnis von Uneinigkeiten, beobachtet zu erwartet,
+berechnet aus der Koinzidenzmatrix; erst das erlaubt fehlende Zellen
+und beliebig viele Kodierende
+[@Krippendorff2004ReliabilityContent; @Hayes2007AnsweringCall]:
+
+$$
+\alpha \;=\; 1 - \frac{D_o}{D_e}.
+$$
+
+mit
+
+- $D_o$ — der beobachteten Uneinigkeit zwischen den Kodierenden,
+- $D_e$ — der zufällig erwarteten Uneinigkeit, beide aus der
+  Koinzidenzmatrix berechnet.
+
+`agreement()` berichtet alle auf einmal, und so sollte man sie auch ansehen.
+Sie weichen genau dort voneinander ab, wo die Randverteilungen schief
+sind, und diese Abweichung ist selbst der Befund:
+
+```r
+u <- cbind(ann = c("A", "A", "A", "B"), bob = c("A", "A", "A", "A"))
+qda_percent_agreement(u)   # 0.75
+qda_kappa(u)               # 0
+qda_ac1(u)                 # 0.68
+```
+
+Die Kodierenden waren sich in einem von vier Segmenten uneinig, und Cohens
+Kappa berichtet null. Nichts ist kaputt: Fast alles ist Kategorie `A`, der
+Zufall allein brächte also schon so viel Übereinstimmung zustande: $P_e$
+schluckt $P_o$. Das ist das Kappa-Paradox, beschrieben und aufgelöst in einem
+klassischen Aufsatzpaar
+[@Feinstein1990HighAgreement; @Cicchetti1990HighAgreement], und es ist eine
+Eigenschaft des Maßes, nicht Ihrer Kodierung. Berichten Sie AC1 daneben, und
+wenn die beiden auseinandergehen, sagen Sie das, statt das freundlichere zu
+wählen.
+
+Mathematisch nicht definierte Koeffizienten kommen als `nan` zurück, nie als
+bequeme Zahl. Cohens Kappa auf drei Kodierenden wirft eine Ausnahme, statt
+stillschweigend die ersten beiden Spalten zu nehmen.
+
+## Wo im Codesystem die Übereinstimmung zerbricht
+
+Ein hierarchisches Codesystem lässt sich auf mehreren Tiefen lesen. Kodierende,
+die sich über `Belastung/beruflich` gegen `Belastung/privat` uneinig sind, sind
+sich immer noch einig, dass es um `Belastung` geht. Die Pfade Ebene für Ebene
+abzuflachen zeigt, wo die Übereinstimmung tatsächlich verloren geht:
+
+```r
+qda_level_agreement(u)
+qda_plot_level_agreement(u)
+```
+
+Eine Kurve, die auf Ebene 1 hoch liegt und auf Ebene 3 einbricht, sagt: Der
+obere Teil Ihres Codesystems trägt, seine Blätter sind noch nicht scharf genug
+definiert. Das ist eine Aussage über das Codebuch, nicht über die Kodierenden.
+
+## Welche Paare die Übereinstimmung kosten
+
+```r
+qda_confusion(u, only_disagreements = TRUE)
+```
+
+Meist gehen die meisten Abweichungen auf eine Handvoll Kategorienpaare zurück,
+und genau deren Definitionen gehören überarbeitet. Das macht aus einem
+enttäuschenden Koeffizienten eine Liste von Dingen, die man reparieren kann.
+
+## Literatur {.unnumbered}
+
+::: {#refs}
+:::

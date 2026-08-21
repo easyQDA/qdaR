@@ -1,0 +1,169 @@
+---
+title: "Unitizing"
+---
+
+Jeder Koeffizient im [Kapitel zur Übereinstimmung](uebereinstimmung.qmd) setzt
+voraus, dass die Segmente bereits zueinander passen, und fragt nur, ob die
+Kategorien übereinstimmen. Diese Voraussetzung leistet eine Menge Arbeit.
+Dieses Kapitel handelt von der vorgelagerten Frage: Haben die Kodierenden
+überhaupt dieselben Textstellen markiert?
+
+Etablierte QDA-Software erledigt das mit einer einzigen Überlappungsschwelle,
+ja oder nein. Weggeworfen wird damit genau die Information darüber, *wie* sich
+die Grenzen unterscheiden.
+
+## An die Segmente kommen
+
+```r
+segments <- qda_segments(frag)
+```
+
+Eine Liste je Person, jeweils aus `{"start", "end", "value"}`. Die Positionen
+stammen aus den Positionsspalten des Exports, die mit einer späteren
+Plugin-Version dazugekommen sind: Ein älterer Export wirft eine Ausnahme, statt
+ein leeres Ergebnis zurückzugeben, das sich als vollständige Uneinigkeit läse.
+
+Nur Textquellen liefern ein Kontinuum, auf dem sich Grenzen messen lassen.
+PDF-Rechtecke tun das nicht; sie werden mit einer Warnung verworfen, statt
+stillschweigend in Zeichenpositionen genähert zu werden.
+
+## Krippendorffs Unitizing-Alpha
+
+```r
+r <- qda_unitizing_alpha(segments)
+r$alpha; r$Do; r$De
+```
+
+Wie jedes Alpha der Familie ist es eins minus ein Verhältnis von
+Unordnungen, beobachtet gegen das, was der Zufall hervorbrächte
+[@Krippendorff2004ReliabilityContent]:
+
+$$
+{}_{u}\alpha \;=\; 1 - \frac{{}_{u}D_o}{{}_{u}D_e},
+$$
+
+mit
+
+- ${}_{u}D_o$ — der auf dem Kontinuum beobachteten Unordnung,
+- ${}_{u}D_e$ — der für zufällig platzierte Einheiten erwarteten
+  Unordnung.
+
+Die Unordnung wird hier auf dem *Kontinuum* gemessen: Für jedes Paar
+Kodierender werden überlappende Einheiten über die quadrierten Abstände ihrer
+Grenzen verglichen, und was die eine Person markiert hat, während bei der
+anderen eine Lücke liegt, geht mit seiner vollen quadrierten Länge ein.
+${}_{u}D_e$ ist dieselbe Größe für zufällig auf einem gleich langen Kontinuum
+platzierte Einheiten. (Die definierende Arbeit, Krippendorff 1995, *On the
+Reliability of Unitizing Continuous Data*, steht auf der
+[Literaturseite](../dev/literatur.qmd) und wird hier zitierbar, sobald sie in
+der Bibliothek ist.)
+
+Zufallskorrigiert, und es behandelt ein Kontinuum aus kodierten Einheiten und
+Lücken. Dass zwei Kodierende sich einig sind, eine Stelle sei nicht
+einschlägig, zählt hier **nicht** als Beleg für zuverlässiges Unitizing — genau
+das unterscheidet es vom Alpha auf Kategorienebene.
+
+`metric=lambda a, b: 0` misst allein die Identifikation und ignoriert die
+Codes. Erwarten Sie nicht, dass das Alpha in der Regel anhebt: Es senkt die
+beobachtete Uneinigkeit, aber es senkt auch die erwartete, weil zufällig
+gepaarte Einheiten sich dann ebenfalls nicht mehr in der Kategorie
+unterscheiden. Wo die Kodierenden über Kategorien uneins waren, steigt Alpha;
+wo sie durchweg einig waren, fällt es. Vergleichen Sie die beiden `Do`-Werte
+statt der beiden Alphas.
+
+## WindowDiff und Pk
+
+```r
+qda_window_diff(ref, hyp, length_)
+qda_pk(ref, hyp, length_)
+```
+
+Zwei Fehlerraten aus der Textsegmentierung, gemeinsam berichtet, weil ihre
+Abweichung voneinander aufschlussreich ist. Beide schieben ein Fenster der
+Breite $k$ über das Kontinuum und zählen die Positionen, an denen Referenz und
+Hypothese über das Fensterinnere uneins sind; WindowDiff vergleicht die
+*Anzahl* der Grenzen darin:
+
+$$
+\text{WD} \;=\; \frac{1}{N-k}\sum_{i=1}^{N-k}
+\mathbf{1}\!\left[\, b_{\text{ref}}(i, i{+}k) \neq b_{\text{hyp}}(i, i{+}k) \,\right],
+$$
+
+mit
+
+- $N$ — der Länge des Kontinuums,
+- $k$ — der Breite des gleitenden Fensters,
+- $b_{\text{ref}}$, $b_{\text{hyp}}$ — der Zahl der Grenzen, die
+  Referenz bzw. Hypothese in das Fenster legen,
+- $\mathbf{1}[\cdot]$ — eins, wo die beiden uneins sind, sonst null.
+
+Pk fragt nur, ob die beiden Fensterenden im selben Segment liegen oder
+nicht. Eine überzählige Grenze kostet deshalb im ersten etwas und im zweiten
+nichts.
+
+Keine der beiden ist zufallskorrigiert. Was sie stattdessen bieten, ist
+Vergleichbarkeit mit der Segmentierungsliteratur und vernünftiges Verhalten bei
+knappen Fehlern: Eine Grenze, die zwei Zeichen danebenliegt, ist beinahe
+richtig, und beide sagen das auch. (Die definierenden Arbeiten, Pevzner &
+Hearst 2002 und Beeferman u. a. 1999, stehen auf der
+[Literaturseite](../dev/literatur.qmd).)
+
+## Gamma
+
+```r
+g <- qda_gamma(segments)
+g$gamma; g$alignment
+```
+
+Gamma weigert sich, die beiden Fragen zu trennen [@Mathet2015UnifiedHolistic].
+Statt Übereinstimmung auf einer festen Zuordnung zu messen, sucht es die
+Paarung von Einheiten über die Kodierenden hinweg, die eine kombinierte
+Positions- und Kategorienunordnung $\delta$ minimiert, und berichtet die
+Übereinstimmung bezogen auf diese beste Zuordnung:
+
+$$
+\gamma \;=\; 1 - \frac{\delta_{\text{beobachtet}}}{\delta_{\text{erwartet}}},
+$$
+
+mit
+
+- $\delta_{\text{beobachtet}}$ — der kombinierten Positions- und
+  Kategorienunordnung der besten Zuordnung,
+- $\delta_{\text{erwartet}}$ — derselben Größe aus derselben Suche auf
+  Zufallskontinua.
+
+Unitizing und Kategorisierung werden zusammen beurteilt.
+
+Der praktische Unterschied zum Unitizing-Alpha: Gamma kann zwei Einheiten
+paaren, die einander gar nicht überlappen, wenn die umgebende Anordnung dafür
+spricht, dass sie dasselbe Phänomen meinen. Alpha kann das nicht ausdrücken.
+
+::: {.callout-warning title="Gamma ist exakt oder es ist gar nichts"}
+
+Die beste Zuordnung zu finden ist ein Mengenpartitionierungsproblem, ab
+drei Kodierenden NP-schwer. Diese Umsetzung sucht erschöpfend, mit der
+Beschneidungsregel der Arbeit und einer zulässigen Schranke. Würde die
+Suche `max_nodes` überschreiten, gibt sie `nan` mit einer Begründung
+zurück statt des besten Fundstücks, denn ein heuristisch erzeugtes Gamma
+ist kein Gamma. Wenn das passiert, erhöhen Sie das Budget oder werten Sie
+eine kürzere Strecke aus.
+:::
+
+Die Zufallskorrektur läuft über Ziehungen, `samples` und `seed` sind also
+erheblich, und das Ergebnis trägt `recommended_samples`: wie viele
+Zufallskontinua die beobachtete Streuung für zwei Prozent Genauigkeit nahelegt.
+Liegt das über dem, was Sie gerechnet haben, rechnen Sie es mit mehr erneut.
+
+## Was berichten?
+
+Berichten Sie das Unitizing-Alpha, wenn Ihre Frage ist, ob die Kodierenden sich
+darüber einig waren, *wo* das einschlägige Material liegt — und Gamma, wenn Sie
+eine Zahl für die ganze Aufgabe aus Unitizing und Kodieren wollen
+[@Mathet2015UnifiedHolistic]. WindowDiff und Pk lohnen sich zusätzlich, wenn
+Ihr Publikum die Segmentierungsliteratur kennt. Die Quellen stehen auf der
+[Literaturseite](../dev/literatur.qmd).
+
+## Literatur {.unnumbered}
+
+::: {#refs}
+:::

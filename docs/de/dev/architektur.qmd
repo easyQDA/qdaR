@@ -1,0 +1,106 @@
+---
+title: "Architektur"
+---
+
+Dieser Teil ist für alle, die das Paket verändern, portieren oder prüfen
+wollen, ob seinen Zahlen zu trauen ist. Er setzt voraus, dass Sie das
+Benutzerhandbuch gelesen haben.
+
+## Die Gestalt
+
+```
+R/
+  contract.R    der Austauschvertrag und die mitgelieferten Referenzdateien
+  read.R        Exporte lesen und validieren
+  plots.R       die Abbildungen und die Tabellen dahinter
+  agreement.R   die sechs Reliabilitätskoeffizienten
+  reliability.R Intervalle, Übereinstimmung je Code, die Kappa-Diagnostik
+  unitizing.R   haben die Kodierenden überhaupt dieselben Stellen markiert
+  gamma.R       Übereinstimmung, gemessen an der besten Zuordnung
+  progress.R    Sättigung als Zahl, und Kodierer-Drift
+  discovery.R   wie weit bis zur Sättigung, und wie viel noch fehlt
+  planning.R    wie viel Material eine Studie brauchen wird
+  reporting.R   die COREQ- und SRQR-Checklisten
+  stats.R       die Inferenzstatistik
+  spec.R        die Vega-Lite-Grafiken des Plugins, über vegawidget
+inst/extdata/   Vertrag + neun Beispiele + expected.json
+```
+
+Abhängigkeiten laufen in eine Richtung: Die Plot-Funktionen rufen die
+Tabellenfunktionen und die Statistik auf, nie umgekehrt. Nichts in `read.R`
+weiß von ggplot2.
+
+## Jede Abbildung hat eine Tabelle
+
+`qda_plot_frequencies()` ist eine dünne Schicht über `qda_code_counts()`,
+und dasselbe gilt für jeden anderen Plot. Zwei Gründe. Erstens brauchen
+Nutzer die Zahlen für Anhänge und Gutachter. Zweitens zeichnet der
+Python-Zwilling dieselben Abbildungen aus denselben Tabellen — und die
+getrennte Datenaufbereitung ist es, die die beiden davon abhält, in dem
+auseinanderzudriften, was sie zeigen.
+
+## Lesen ist ein Kontrollpunkt, keine Bequemlichkeit
+
+`qda_read()` hätte ein Aufruf von `utils::read.csv()` sein können.
+Stattdessen prüft es den Formatstempel, die Version und die zugesagten
+Spalten — und bricht ab, statt etwas Plausibles zurückzugeben. Die
+Begründung: Eine falsche Zahl, die das Skript stoppt, kostet eine Stunde;
+eine falsche Zahl, die es nicht tut, kostet eine Korrektur der
+Veröffentlichung.
+
+Die Versionsprüfung ist absichtlich asymmetrisch. Ältere Versionen werden
+gelesen, neuere verweigert. Ein neuerer Export könnte eine Spalte umbenannt
+oder ihre Bedeutung geändert haben, und dieses Paket kann nicht wissen,
+welches von beiden.
+
+## Attribute statt einer Klasse
+
+Ein gelesener Export ist ein schlichter `data.frame` mit `qda_format`,
+`qda_version` und `qda_grain` als Attributen. Eine S3-Klasse wurde erwogen
+und verworfen: Nutzer wollen diese Tabellen direkt an dplyr, ggplot2 oder
+`table()` geben, und eine Klasse würde nur Methoden einladen, die niemand
+braucht. Attribute überleben die meisten Operationen und kosten nichts,
+wenn sie es nicht tun.
+
+## Listen statt S4 für Ergebnisse
+
+`qda_chisq()`, `qda_mds()`, `qda_cluster()` und `qda_ca()` geben benannte
+Listen zurück. Der Punkt ist, dass der Vorbehalt mit dem Ergebnis reist:
+`expected_ok` sitzt neben dem Test, `goodness` neben den Koordinaten,
+`cophenetic` neben dem Baum, `inertia_share` neben der Karte. Nur die
+interessante Zahl zurückzugeben machte den Vorbehalt optional — was in der
+Praxis heißt: ungelesen.
+
+## Wo MASS ins Spiel kommt
+
+`qda_ca()` ist die einzige Funktion, die *MASS* verwendet, für
+`MASS::corresp()`. MASS ist GPL-lizenziert, was mit der AGPL verträglich
+ist und deshalb nichts kostet. Der Python-Zwilling rechnet dieselbe Analyse
+über eine Singulärwertzerlegung — sollte die Abhängigkeit je weichen
+müssen, ist der Ersatz eine bekannte Größe und kein Forschungsprojekt.
+Siehe [Entwurfsentscheidungen](entwurf.qmd).
+
+## Warum Gamma eine eigene Datei ist
+
+`gamma.R` ist die einzige Stelle im Paket mit einer exakten
+kombinatorischen Suche. Die beste Zuordnung zu finden ist ein
+Mengenpartitionierungsproblem, ab drei Kodierenden NP-schwer, und die
+Umsetzung ist ein Branch-and-Bound mit Beschneidungsregel und zulässiger
+Schranke statt eines Solver-Aufrufs — der eine neue Abhängigkeit bedeutet
+hätte und, schlimmer, eine andere Antwort als der Python-Zwilling.
+
+Das Suchbudget ist Absicht. Läuft es aus, ist das Ergebnis `NaN` mit
+Begründung, nie das beste bisher Gefundene. Ein heuristisch erzeugtes
+Gamma ist kein Gamma, und eine Zahl, die mal exakt und mal genähert ist,
+ist schlimmer als keine Zahl.
+
+## Was bewusst fehlt
+
+* **Kein Schreiben.** Nichts hier verändert eine Zotero-Bibliothek oder
+  einen Export. Kodiert wird im Plugin.
+* **Kein Caching.** Exporte sind klein; ein Cache schüfe nur einen Weg,
+  auf dem die Daten mitten in der Sitzung veralten.
+* **Keine tidyverse-Abhängigkeit.** ggplot2 braucht es für die
+  Abbildungen; darüber hinaus nutzt das Paket Base R und installiert sich
+  so auf einer nackten Maschine.
+* **Kein Nicht-ASCII in `R/`.** CRAN verlangt es, und es wird geprüft.

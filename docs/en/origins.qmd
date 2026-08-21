@@ -1,0 +1,117 @@
+---
+title: "Origins"
+---
+
+The zotQDA ecosystem came into being at the end of July 2026, during the
+JCrete unconference (27 to 31 July 2026) on Crete and the JCrete
+"afterglow" that followed it.
+
+Attending JCrete is formally "holiday" — an (un)conference I attend of my
+own accord and at my own expense —, yet to me it is one of the densest,
+most productive and most inspiring weeks of the whole year.
+
+## A session on the future of teaching
+
+[JCrete](https://jcrete.org) is an unconference: there is no programme in
+advance; the participants put the programme together themselves every
+morning. On 28 July 2026 I ran a session there on the future of teaching:
+**"What to teach and how"**. The session, and what became of it, are
+documented in the conference repository:
+[JCrete 2026](https://github.com/JCrete/jcrete2026).
+
+The zotQDA ecosystem (zotQDA, qdaZ, qdaPy and qdaR) grew out of that
+session — out of the realisation that I lacked the tool to widen and
+deepen the session's brainstorming after the conference: through
+interviews with experienced people from software development, followed by
+qualitative content analysis.
+
+## The missing piece
+
+The need is older than the conference. In my main job I lead the teaching
+of a research focus at a medical faculty. I want curriculum development to
+rest on evidence rather than opinions, and that evidence is qualitative to
+a large extent: free-text answers from evaluations, conversations with
+students and teachers, examination reports, literature. Anyone who wants
+to analyse such material systematically ends up at qualitative content
+analysis — and needs a tool for it.
+
+There is no shortage of tools. There I have MAXQDA at my disposal as
+licensed software, probably one of the leading programs in the
+German-speaking world, and the [comparison page](comparison.qmd) makes it
+plain: MAXQDA and ATLAS.ti can do considerably more than this ecosystem.
+That they were still out of the question for me has three reasons.
+
+First, they are **proprietary programs**, and those are out of the
+question for me in the context of scientific work: I am an advocate of
+*reproducible and open research* — data and analysis tool must be freely
+accessible, with the lowest possible hurdles. Years ago I therefore moved
+all my analyses from SPSS and niche software such as VectorNTI to **R**
+and **Python**, and with the freedom, the flexibility and quality of the
+analyses grew as well.
+
+Second, they are **monolithic**, with project files of their own. That can
+be an advantage, especially for less IT-minded and inexperienced users;
+for computing-minded users and professionals, in my experience the
+**modular UNIX principle** proves itself: an ecosystem of specialised
+tools that can be combined at will and are therefore equal to even the
+most complex tasks.
+
+Third, they stand *beside* the reference manager, not *inside* it. My
+material has long been living in Zotero: PDFs, notes, highlights, all
+sorted and tagged. And Zotero, as a powerful open-source reference
+manager, already brings almost everything qualitative content analysis
+needs: a reader with annotations, comments, notes and tags,
+synchronisation across operating systems, a web interface, and group
+libraries for working as a team. So why reinvent the wheel? The thought
+was no bigger than the question why I should really go somewhere else to
+code — a Zotero plugin is the logical consequence.
+
+## JCrete's hacking space
+
+JCrete's hacking space is nothing more than the rooms of the Orthodox
+Academy of Crete after the last session of the day. A terrace overlooking
+the sea, several plain rooms with tables, a few chairs and — far too
+scarce — power sockets. The magic ingredient is the participants, who
+work on things of their own but also look over your shoulder when you are
+stuck. For a first version that is the right environment: you can build
+something, show it to somebody, and work their answer in the same day.
+
+The oldest parts of **zotQDA** came into being on the very day of the
+session **"What to teach and how"**. As JCrete 2026 went on, the core
+took shape — a code is a mark on a Zotero annotation, the code system is
+a note, and both stay readable even when the plugin is removed again.
+That was exactly the idea: no project file that can get lost or become
+unreadable.
+
+## The echo
+
+At home, from 5 August on, in the evenings and at weekends, the two
+analysis libraries **qdaR** and **qdaPy** joined. Two, because R and
+Python are the undisputed pair of modern data analysis — and because the
+same calculation in two independent languages, plus the JavaScript plugin
+qdaZ, is an ideal touchstone: where the versions diverge, a bug is
+rarely far away. Cross-validation did in fact surface several errors
+that a single implementation would never have revealed.
+
+## What that means for zotQDA
+
+There is no funder, no commission and no fixed schedule.
+
+The tools do exactly the things I have painfully missed myself, and
+delegate everything else to established open-source software: Whisper
+does the recording, ELAN the annotation of audio and video, Zotero the
+library, R and Python the statistics.
+
+For years I have profited from other people's open-source software. The
+zotQDA ecosystem lets me give something back to the community, and it is
+therefore released under the AGPL with an additional permission making
+clear that the results belong to the researchers.
+
+## What comes next
+
+Slowly, and in this order: coding first, then text analysis, then the two
+libraries for R and Python, audio and video last. What is done is in
+[Features](features.qmd); what is missing is listed right beside it.
+
+If you use the tool in your own work, I would be glad to hear from you —
+especially about the places where it does not yet work the way it should.

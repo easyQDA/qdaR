@@ -1,0 +1,143 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    # `R CMD check --as-cran` is the gate a CRAN submission has to pass, so it
+    # is the one CI runs. Two NOTEs are expected and documented in
+    # cran-comments.md (new submission; the runner's HTML Tidy), which is why
+    # the job fails on a WARNING rather than on a NOTE.
+    name: R CMD check (${{ matrix.config.os }}, R ${{ matrix.config.r }})
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: ubuntu-latest,  r: 'release'}
+          - {os: ubuntu-latest,  r: 'oldrel-1'}   # the DESCRIPTION floor is R 4.1
+          - {os: macos-latest,   r: 'release'}
+          - {os: windows-latest, r: 'release'}
+    env:
+      R_KEEP_PKG_SOURCE: yes
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.config.r }}
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-pandoc@v2
+        # vignettes/qdaR.Rmd is knitr + rmarkdown, which needs pandoc; without
+        # it `R CMD check` fails while rebuilding the vignette
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          args: 'c("--no-manual", "--as-cran")'
+          error-on: '"warning"'
+          upload-snapshots: true
+
+  docs:
+    name: documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.9.38"   # keep equal to docs/build.sh's pin
+
+      # The figures pages execute their R chunks against the installed
+      # package, so the docs build needs R and qdaR itself, not just Quarto.
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::knitr, any::rmarkdown, local::.
+
+      - name: Build the site
+        # The Documentation workflow builds and publishes this after the
+        # merge; here it fails while the change is still a pull request.
+        run: |
+          pip install pyyaml
+          GEN_PY=python ./docs/build.sh
+          python3 docs/offline/smoketest.py site/en site/de
+        env:
+          QDA_SMOKE_BROWSER: google-chrome
+
+  congruence:
+    # Two tests assert that a frozen reference file is byte-identical to the
+    # copy in the Python twin. They SKIP when qdaPy is not checked out beside
+    # this repository, which is every ordinary CI run, and a skipped test
+    # proves nothing while looking like it passed.
+    #
+    # They also skip under `R CMD check`, which copies the tests into a
+    # temporary directory where the relative path no longer resolves - so
+    # this job runs testthat in place instead.
+    #
+    # Set the repository variable QDAPY_PUBLISHED to "true" once
+    # github.com/fre-ms/qdaPy exists.
+    name: cross-language congruence
+    if: vars.QDAPY_PUBLISHED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: qdaR
+
+      - uses: actions/checkout@v4
+        with:
+          repository: fre-ms/qdaPy
+          path: qdaPy
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          working-directory: qdaR
+          extra-packages: any::testthat, any::pkgload
+          needs: check
+
+      - name: Run the tests in place, and refuse to let them skip
+        working-directory: qdaR
+        run: |
+          Rscript -e '
+            suppressMessages(pkgload::load_all(".", quiet = TRUE))
+            files <- c("tests/testthat/test-gamma.R",
+                       "tests/testthat/test-congruence-e35.R")
+            df <- do.call(rbind, lapply(files, function(f)
+              as.data.frame(testthat::test_file(f, reporter = "summary"))))
+            cat("skipped:", sum(df$skipped),
+                " failed:", sum(df$failed), "\n")
+            if (sum(df$failed) > 0 || any(df$error)) quit(status = 1)
+            if (sum(df$skipped) > 0) {
+              cat("::error::the Python twin was checked out but a congruence",
+                  "test still skipped\n")
+              quit(status = 1)
+            }
+          '

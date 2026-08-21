@@ -1,0 +1,116 @@
+---
+title: "Studien planen"
+---
+
+
+Alles andere in diesem Paket sieht auf Material, das Sie schon haben. Dieses
+Kapitel handelt von der Frage, die sich davor stellt und die kein etabliertes
+QDA-Werkzeug überhaupt aufwirft: Wie viel wird es brauchen?
+
+## Wie viele Segmente müssen doppelt kodiert werden?
+
+Beobachterstudien werden routinemäßig in dem Umfang durchgeführt, der gerade
+bequem war, und dann mit einem Intervall berichtet, das viel zu breit ist, um
+die daraus abgeleitete Aussage zu tragen. Donner und Rotondi geben den
+Stichprobenumfang an, bei dem die *untere* Grenze eines einseitigen Intervalls
+für Kappa einen Wert erreicht, den Sie vorher benennen. Das ist die Größe, die
+eine Leserin interessiert — denn niemand hat je eingewandt, die Übereinstimmung
+sei zu gut.
+
+```r
+qda_plan_kappa(0.8, 0.6, 0.1, raters = 2)     # 116 segments
+qda_plan_kappa(0.8, 0.6, 0.1, raters = 4)     # 62
+```
+
+Drei Zahlen gehen hinein: das Kappa, das Sie aus einer Vorstudie oder der
+Literatur erwarten, das kleinste Kappa, das Sie noch verteidigen würden, und
+die Prävalenz des Codes. Die Prävalenz zählt mehr, als man erwartet. Ein Code,
+der auf einem Zehntel der Segmente liegt, braucht ein Mehrfaches des Materials
+eines Codes, der auf einem Drittel liegt, und die Anforderung ist symmetrisch
+um ein Halb — wer konservativ plant, nimmt den Wert, der weiter davon entfernt
+liegt.
+
+Die andere Richtung, wenn das Budget die Zahl schon festgelegt hat:
+
+```r
+qda_kappa_lower(100, kappa0 = 0.7, prevalence = 0.3, raters = 4)
+```
+
+::: {.callout-note title="Die veröffentlichten Tabellen nachrechnen"}
+
+Voreingestellt ist das exakte Chi-Quadrat-Quantil. Die Tabellen der Arbeit
+wurden mit dem auf 2,71 gerundeten Wert gerechnet, wodurch acht ihrer
+achtundvierzig Zellen um eins größer ausfallen. Mit `critical=2.71`
+bekommen Sie ihre Tabelle Zelle für Zelle; die Testsuite prüft beides.
+:::
+
+## Wie viele Dokumente, bis ein Thema auftaucht?
+
+```r
+qda_plan_themes(0.05, instances = 1)      # 32 documents
+qda_theme_power(32, 0.05)                 # about 0.8, the other way round
+```
+
+Fugard und Potts behandeln die Wartezeit als negativ binomial verteilt: wie
+lange, bis ein Thema bekannter Prävalenz so oft gesehen wurde wie gewünscht.
+
+::: {.callout-warning title="Wessen Frage das ist"}
+
+Das Modell setzt voraus, dass Themen vorhanden oder nicht vorhanden sind,
+voneinander unabhängig, und dass sie sicher zutage treten, wenn sie
+vorhanden sind. Braun und Clarke verwerfen diese Prämisse für die
+reflexive thematische Analyse, in der Themen konstruiert und nicht
+entdeckt werden und eine Prävalenz in der Population keine sinnvolle Größe
+ist. Nutzen Sie das, wo diese Annahmen tragen, und sagen Sie, mit welchem
+Themenbegriff Sie arbeiten.
+:::
+
+## Habe ich genug gesammelt?
+
+Die Sättigungskurve unter [Abbildungen](abbildungen.qmd) zeigt einen Verlauf.
+Diese Funktionen liefern die Zahl, die in den Methodenteil gehört.
+
+```r
+counts <- qda_new_codes(history)
+qda_saturation_ratio(counts)$notation      # "6+2"
+```
+
+Guest, Namey und Chen operationalisieren Sättigung über drei Parameter: eine
+Basis von Dokumenten, deren Codes als bereits bekannt gelten, einen Lauf
+aufeinanderfolgender späterer Dokumente, die auf neue Codes geprüft werden, und
+den Anteil neuer Information, der noch als gesättigt zählt. Das Ergebnis liest
+sich `"6+2"` — Sättigung bei Dokument sechs erklärt, über einen Lauf von zwei
+bestätigt.
+
+Wurde sie nie erreicht, bekommen Sie `None` und einen `reason`, und das ist ein
+Befund und kein Fehlschlag.
+
+## Wie weit bin ich vom Ende entfernt?
+
+Eine noch steigende Kurve sagt nichts darüber, wie viel noch aussteht. Lowe und
+Kollegen passen die Akkumulation der Themen an ein Wachstumsmodell an, das
+schätzt, wie viele Themen es zu finden gibt:
+
+```r
+fit <- qda_saturation_index(counts, "IW")
+fit$index                       # per cent of the estimated total
+qda_documents_for(fit, 95)       # documents needed to reach 95 %
+```
+
+Drei Modelle stehen bereit. `IS` nimmt an, dass Beobachtungen unabhängig sind,
+`IW`, dass die Überschneidung mit dem bereits Bekannten wächst, `SW`, dass sie
+mit der Zahl der Beobachtungen wächst. Lowe und Kollegen fanden keinen
+eindeutigen Sieger — passen Sie also alle drei an und sehen Sie, welches Ihre
+Daten beschreibt. Dass sie voneinander abweichen, ist Information: Die
+Spannweite ihrer Schätzungen für `A` sagt Ihnen, wie stark die Antwort an der
+Annahme hängt.
+
+::: {.callout-note title="Nur Code-Sättigung"}
+
+Alles hier zählt Codes. Hennink, Kaiser und Marconi unterscheiden
+Code-Sättigung von Bedeutungssättigung, die kein Algorithmus sehen kann,
+und Braun und Clarke verwerfen Sättigung als Kriterium für die reflexive
+thematische Analyse. Welche Zahl Sie auch berichten: Sagen Sie, zu welchem
+Begriff sie gehört.
+:::
+

@@ -1,0 +1,206 @@
+---
+title: "Eine .qdpx lesen"
+---
+
+
+Sie brauchen zotQDA nicht, um dieses Paket zu benutzen. Liegt Ihr Projekt in
+MAXQDA, ATLAS.ti, NVivo, QDA Miner oder Dedoose, exportieren Sie es als
+**REFI-QDA** — eine `.qdpx`-Datei — und lesen diese:
+
+```r
+project <- qda_read_qdpx("my-project.qdpx")
+project$fragments      # the same table the CSV exports produce
+project$codebook
+project$limitations    # what this file cannot support
+```
+
+Alles Nachgelagerte funktioniert dann unverändert, denn die Tabellen haben
+dieselben Spalten und dieselben Typen wie die aus CSV gelesenen.
+
+Ein Beispielprojekt liegt im Paket, Sie können den Weg also ausprobieren, bevor
+Sie irgendetwas Eigenes exportieren:
+
+```r
+p <- qda_read_qdpx(qda_example("sample.qdpx"), warn = FALSE)
+qda_code_counts(p$fragments)
+qda_agreement(qda_units(p$fragments))
+```
+
+## Was übrig bleibt und was nicht
+
+Es bleibt mehr übrig, als man erwarten würde. Eine `.qdpx` trägt den Codebaum
+mit einer **GUID je Code** — einer stabilen Identität, die sich genau wie
+`codeId` verhält —, die Kodierenden, die Zeitstempel und die
+**Zeichenpositionen** von Textselektionen; damit funktionieren sogar die
+Unitizing-Maße.
+
+Was fehlt, ist allerdings auch kein Rundungsfehler.
+
+| | CSV-Exporte aus zotQDA | eine `.qdpx` |
+|---|---|---|
+| Codesystem: Hierarchie, Farbe, Definition | ✓ | ✓ |
+| stabile Code-Identität über Umbenennungen | ✓ | ✓ die REFI-GUID |
+| Häufigkeiten, Code-Matrix, Code mal Dokument | ✓ | ✓ |
+| sechs Übereinstimmungsmaße mit Bootstrap-Intervall | ✓ | ✓ wenn der Export die Kodierenden nennt |
+| Übereinstimmung je Code, je Hierarchieebene, Verwechslungspaare | ✓ | ✓ |
+| Kappa-Paradox-Diagnostik, Wilson-Intervalle | ✓ | ✓ |
+| Unitizing: α<sub>U</sub>, WindowDiff, Pk, Gamma | ✓ | ✓ für Textquellen |
+| Chi-Quadrat, Jaccard, Skalierung, Cluster, Korrespondenzanalyse | ✓ | ✓ |
+| Abbildungen in allen drei Backends | ✓ | ✓ |
+| Bericht über Mehrfachkodierung | ✓ | ✓ |
+| Studienplanung vor der Erhebung | ✓ | ✓ braucht gar keinen Export |
+| Zeitverlauf und Sättigung | ✓ | ~ nur Hinzufügungen |
+| Kodierer-Drift | ✓ | ~ schwächer, siehe unten |
+| COREQ- und SRQR-Checklisten | ✓ | ~ weniger vorausgefüllt |
+| **Übereinstimmung inklusive Segmenten, die niemand kodiert hat** | ✓ | ✗ meist nicht vorhanden |
+| **Kreuztabellen nach Autor:in, Jahr, Sammlung oder Citekey** | ✓ | ✗ |
+| **Segmentgewichte** | ✓ | ✗ |
+| **Code-Kürzel** | ✓ | ✗ |
+| **die Drei-Phasen-Konsensverfahren** | ✓ | ✗ |
+
+`read_qdpx` sagt Ihnen, welche dieser Punkte für **Ihre** Datei gelten, statt
+allgemein zu bleiben: Ein Projekt, dessen Kodierungen keinen `creatingUser`
+tragen, lässt überhaupt kein Übereinstimmungsmaß zu — und das sagt es, statt
+eines zurückzugeben.
+
+## Warum der Unterschied besteht
+
+Es liegt nicht daran, dass REFI-QDA ein schlechter Standard wäre. Die beiden
+Formate sind für verschiedene Aufgaben entworfen.
+
+`.qdpx` gibt es, um ein Projekt von einem Programm in ein anderes zu bringen;
+es beschreibt deshalb, was alle Programme gemeinsam haben: Quellen, Codes,
+Selektionen, Kodierungen. Die zotQDA-Exporte gibt es, um ausgewertet zu werden;
+sie tragen deshalb, was eine Auswertung braucht und ein Austauschformat keinen
+Anlass hat mitzuführen — den bibliografischen Nachweis hinter jedem Dokument,
+ein Kodier-Protokoll mit Rücknahmen, Gewichte, Kürzel und die Ergebnisse eines
+Team-Konsensverfahrens.
+
+Drei der Lücken lohnt es zu verstehen und nicht bloß zur Kenntnis zu nehmen.
+
+**Segmente, die niemand kodiert hat.** Wenn zwei Kodierende eine Stelle beide
+unangetastet lassen, sind sie sich einig, dass sie nicht einschlägig ist — und
+das ist Übereinstimmung. Diese Segmente wegzulassen beantwortet eine
+freundlichere Frage: wie gut sich die Kodierenden *über das Material einig
+waren, das eine von ihnen markiert hat*. REFI kann nicht ausdrücken „hier ist
+eine Stelle, die alle geprüft und übergangen haben" — ein aus einer `.qdpx`
+gerechneter Koeffizient ist deshalb fast immer der freundlichere. Siehe
+[Übereinstimmung](uebereinstimmung.qmd).
+
+**Das Kodier-Protokoll.** REFI hält fest, wann eine Kodierung entstand, und nie,
+dass eine zurückgenommen wurde. Sättigung und Zeitverlauf lesen das
+rekonstruierte Protokoll wie ein echtes, aber wer einen Code vergeben und
+später entfernt hat, sieht aus wie jemand, der ihn nie vergeben hat.
+
+**Der bibliografische Nachweis.** In zotQDA *ist* das Material eine
+Zotero-Bibliothek, jedes Fragment trägt deshalb Citekey, Autor:in und Jahr,
+ohne dass jemand sie eingibt. Eine `.qdpx` hat Dokumentnamen und sonst nichts.
+
+## Was das Ihrem bisherigen Programm hinzufügt
+
+Diese Pakete ersetzen MAXQDA oder ATLAS.ti nicht, und die
+[Vergleichsseite](../vergleich.qmd) sagt, wo die voraus sind. Aber ein
+`.qdpx`-Export dauert eine Minute und bringt Ihnen Kennzahlen und Abbildungen,
+die Ihr Programm nicht dokumentiert.
+
+Die Aussagen unten betreffen das, was die Dokumentation des jeweiligen
+Herstellers **nennt**, gesichtet für die Vergleichsseite. Dass etwas dort
+fehlt, beweist nicht, dass das Produkt es nicht kann, und eine Lücke kann
+inzwischen geschlossen sein.
+
+### Sechs Dinge, die allen fünf fehlen
+
+Keines der gesichteten Programme dokumentiert eines davon:
+
+* **Ein Konfidenzintervall zu jedem Übereinstimmungsmaß.** Vier der fünf nennen
+  die Koeffizienten, die sie rechnen, und kein einziges dieser vier
+  dokumentiert ein Intervall — die Zahl in den meisten veröffentlichten
+  Tabellen ist also eine Punktschätzung ohne alles darum herum. Hier trägt
+  jeder Koeffizient ein gesätes Perzentil-Bootstrap-Intervall, reproduzierbar
+  über alle drei Umsetzungen hinweg.
+* **Die Kappa-Paradox-Diagnostik.** Prävalenzindex, Bias-Index und PABAK nach
+  Feinstein und Cicchetti, dazu die Prävalenz mit Wilson-Intervall. Das macht
+  aus *unser Kappa lag bei 0,31* einen Satz, den Sie verteidigen können — weil
+  es eine schiefe Verteilung von Kodierenden trennt, die sich wirklich
+  unterscheiden.
+* **Übereinstimmung, auf jeder Ebene der Code-Hierarchie neu gerechnet**, dazu
+  die Verwechslungspaare, die die Übereinstimmung kosten. Aus einem
+  enttäuschenden Koeffizienten wird eine Liste zu schärfender Definitionen.
+* **Sättigung als berichtbare Zahl.** Die Notation *6+2* nach Guest, Namey und
+  Chen mit Basis, Lauflänge und Schwelle, und die Akkumulationsmodelle von Lowe
+  und Kollegen dafür, wie weit Sie vom Ende entfernt sind.
+* **Fallzahlplanung, bevor Sie irgendetwas erheben.** Wie viele Segmente
+  doppelt zu kodieren sind für ein Kappa-Intervall, das trägt (Donner und
+  Rotondi), und wie viele Dokumente es braucht, bis ein Thema gegebener
+  Prävalenz auftaucht (Fugard und Potts).
+* **COREQ- und SRQR-Checklisten**, wortgetreu wiedergegeben und dort
+  vorausgefüllt, wo der Export die Antwort kennt.
+
+### Und speziell für Ihr Programm
+
+| Wenn Sie arbeiten mit | nennt Ihre Dokumentation | ergänzen diese Pakete |
+|---|---|---|
+| **MAXQDA** | prozentuale Übereinstimmung und ein Kappa; mit Analytics Pro zusätzlich Kreuztabellen mit Chi-Quadrat, Phi und Cramérs V | Cohens Kappa, Fleiss’ Kappa, Krippendorffs Alpha und Gwets AC1 · alle vier Unitizing-Maße · Korrespondenzanalyse, multidimensionale Skalierung, Clusteranalyse mit kophenetischer Korrelation |
+| **ATLAS.ti** | prozentuale Übereinstimmung, Holsti-Index und die Krippendorff-Familie samt Alpha binary | Cohen, Fleiss, Brennan–Prediger und AC1 · WindowDiff, Pk und Mathets Gamma neben Alpha binary · die gesamte Inferenzstatistik |
+| **NVivo** | prozentuale Übereinstimmung und Cohens Kappa | vier weitere Koeffizienten · sämtliche Unitizing-Maße · die gesamte Inferenzstatistik |
+| **Dedoose** | Cohens Kappa, gepoolt und je Code | vier weitere Koeffizienten · sämtliche Unitizing-Maße · die gesamte Inferenzstatistik |
+| **QDA Miner / WordStat** | ein Intercoder-Modul, dessen Koeffizienten die öffentliche Dokumentation nicht benennt; MDS, Korrespondenzanalyse, Sequenzanalyse | sechs Koeffizienten, die Sie mit Quelle zitieren können, jeder mit Intervall · die Unitizing-Maße |
+
+**ATLAS.ti kommt beim schwierigsten Punkt am nächsten heran.** Sein Alpha
+binary stellt dieselbe vorgelagerte Frage wie die Unitizing-Maße hier — ob die
+Kodierenden überhaupt dieselben Stellen markiert haben —, und diese
+Unterscheidung überspringt der größte Teil des Feldes noch.
+
+### Die Abbildungen
+
+Die meisten gesichteten Programme zeichnen Code-Matrizen und
+Kookkurrenz-Tabellen völlig ordentlich; diese Liste ist deshalb kürzer als die
+der Kennzahlen. Vier lohnt es zu nennen:
+
+* **die Kurve der Übereinstimmung je Hierarchieebene** — wo im Codesystem die
+  Einigkeit zerbricht; kein gesichtetes Programm bietet das;
+* **die Sättigungskurve** über die Dokumente in der Reihenfolge der
+  Erstkodierung;
+* **Korrespondenz- und Skalierungskarten, die angeben, wie viel der Struktur
+  sie zeigen** — eine Karte mit einem Fünftel sieht genauso aus wie eine mit
+  fast allem, der Anteil reist deshalb im Titel mit;
+* **das Dendrogramm mit seiner kophenetischen Korrelation**, die sagt, ob der
+  Baum eine Struktur zeichnet, die die Distanzen hergeben.
+
+Der allgemeine Gewinn ist kleiner, aber nützlicher als jede einzelne Grafik:
+Jede Abbildung entsteht aus einer Tabelle, die Sie auch für sich haben können,
+und jede wird von einem Skript erzeugt, das nächstes Jahr noch läuft. Wer
+fragt, wie eine Zahl zustande kam, bekommt die Datei und den Code.
+
+::: {.callout-warning title="Lesen Sie diese Gewinne gegen die Grenzen oben"}
+
+Aus einer `.qdpx` zählen die Übereinstimmungsmaße nur Segmente, die jemand
+markiert hat, und die Sättigungskurve sieht Hinzufügungen, aber keine
+Rücknahmen. Die Zahlen sind echt; die Vorbehalte aus der Tabelle oben
+reisen mit ihnen.
+:::
+
+## Eine .qdpx aus Ihrem Programm holen
+
+Alle fünf auf der [Vergleichsseite](../vergleich.qmd) gesichteten Programme
+exportieren REFI-QDA; suchen Sie nach *Export → REFI-QDA-Projekt* oder
+Ähnlichem. Der Standard selbst ist unter
+[qdasoftware.org](https://www.qdasoftware.org/) dokumentiert.
+
+Zwei praktische Hinweise. Exportieren Sie das **Projekt**, nicht nur das
+Codebuch: Eine `.qdc` enthält allein das Codesystem und keine einzige
+Kodierung. Und wenn es Ihnen um Intercoder-Übereinstimmung geht, prüfen Sie
+vorher, ob Ihr Programm je Kodierung eine Person mitschreibt — dieses eine
+Attribut entscheidet, ob sich davon überhaupt etwas rechnen lässt.
+
+## Wenn Ihnen die Lücken zu schaffen machen
+
+Dann ist die Tabelle oben das Argument für [zotQDA](https://zotqda.org), und
+der Weg dorthin ist kurz: Es importiert `.qdpx` ebenfalls, ein Projekt kann
+sich also in beide Richtungen bewegen. Gewinnen würden Sie, dass aus der
+rechten Spalte die linke wird — das Kodier-Protokoll, die unkodierten Segmente,
+die bibliografischen Angaben und die Konsensverfahren.
+
+Was Sie aufgeben würden, steht ebenso deutlich auf der
+[Vergleichsseite](../vergleich.qmd), und die zu lesen lohnt sich, bevor Sie
+etwas verschieben.

@@ -1,0 +1,63 @@
+---
+title: "Der Austausch-Vertrag"
+---
+
+
+zotQDA, qdaZ, qdaPy und qdaR sind vier Codebasen, die sich über dieselben
+Dateien einig sein müssen. Diese Einigkeit ist in einer Form aufgeschrieben,
+die eine Maschine prüfen kann: `contract/exchange-v1.json`, erzeugt aus einer
+einzigen Deklaration im Plugin und von jedem Abnehmer mitgeliefert.
+
+Dieses Paket installiert seine Kopie als `inst/extdata/exchange-v1.json`:
+
+```r
+ct <- qda_contract()
+ct$version
+names(ct$formats)
+qda_formats()
+```
+
+## Die neun Formate
+
+| Format | Datei | Eine Zeile je |
+|---|---|---|
+| `fragments/1` | `zotqda-fragments.csv` | Annotation × Code |
+| `uncoded/1` | `zotqda-uncoded.csv` | Annotation ohne Code |
+| `codebook/1` | `zotqda-codebook.csv` | Code |
+| `history/1` | `zotqda-history.csv` | Protokollereignis (add und remove) |
+| `abbrevs/1` | `zotqda-abbrevs.csv` | Code-Kürzel |
+| `consensus-mapping/1` | `zotqda-konsens-abbildung.csv` | Kodierer-Code zu Konsens-Code |
+| `consensus-protocol/1` | `zotqda-konsens-codesystem.csv` | Konsens-Entscheidung |
+| `consensus-metrics/1` | `zotqda-konsens-kennzahlen.csv` | Kodierendenpaar, Mittelwert, Runde |
+| `multi-coded/1` | `zotqda-mehrfachkodierungen.csv` | mehrfach kodiertes Segment |
+
+Die Spaltenlisten stehen in der Vertragsdatei selbst — diese Seite kann darüber
+also nicht veralten.
+
+## Referenzdateien und ihr erwartetes Leseergebnis
+
+In `data/` liegt ein Beispiel je Format, dazu `expected.json`, das festhält,
+was ein korrekter Leser erzeugen muss. Die Beispiele enthalten mit Absicht das,
+woran ein naives `split(",")` scheitert: eingebettete Anführungszeichen, das
+Trennzeichen innerhalb eines Feldes und einen Zeilenumbruch innerhalb eines
+Feldes.
+
+`tests/test_contract.py` geht alle neun durch und vergleicht Feld für Feld. Wer
+das besteht, ist sich mit dem Plugin einig über Zeichenkodierung,
+Anführungszeichen, Zeilenumbrüche und die Bytereihenfolge-Markierung — die vier
+Dinge, in denen sich zwei CSV-Umsetzungen üblicherweise unterscheiden.
+
+## Den Vertrag ändern
+
+Die Deklaration liegt im Plugin, nicht hier. Eine neue Version heißt:
+
+1. `src/exchange.js` in zotQDA ändern, die eine Deklaration;
+2. dort Vertrag, Beispiele und Erwartungen neu erzeugen;
+3. den neuen Vertrag und die Beispiele nach `inst/extdata/` kopieren;
+4. die Version anheben, die dieses Paket annimmt, und die Änderung behandeln.
+
+Eine Spalte hinzuzufügen ist eine kleine Änderung: Leser sprechen Spalten über
+den Namen an und übergehen, was sie nicht kennen, `strict=True` geht also
+weiterhin durch. Eine Spalte zu entfernen oder umzubenennen, oder ihre
+Bedeutung zu ändern, verlangt eine neue Versionsnummer — und ab da sollte
+dieses Paket die Datei ablehnen, bis ihm der Unterschied beigebracht wurde.

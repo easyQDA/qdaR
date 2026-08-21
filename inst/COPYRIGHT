@@ -1,0 +1,18 @@
+YEAR: 2026
+COPYRIGHT HOLDER: fre.ms
+
+qdaR is licensed under the GNU Affero General Public License, version 3 or
+later, with an additional permission under section 7 which places no condition
+on what users produce with the package.  Both are stated in the LICENSE file
+installed with it.
+
+The reference files in inst/extdata -- the exchange contract exchange-v1.json,
+the nine sample exports and expected.json -- are generated from zotQDA and held
+by the same copyright holder, under the same terms.
+
+qdaR bundles no third-party code.  Its dependencies keep their own licences:
+ggplot2 and jsonlite are MIT, MASS is GPL-2 | GPL-3, and stats and utils are
+part of R.
+
+qdaR is not dual-licensed: there is no proprietary licence for sale and no
+exception to the terms above.

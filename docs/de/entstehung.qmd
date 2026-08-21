@@ -1,0 +1,123 @@
+---
+title: "Entstehung"
+---
+
+Das zotQDA-Ökosystem ist Ende Juli 2026 während der JCrete-Unkonferenz
+(27. bis 31. Juli 2026) auf Kreta und während des anschließenden
+JCrete-„Nachglühens" entstanden.
+
+Auch wenn die Teilnahme an der JCrete formal „Urlaub" ist — eine
+(Un)Konferenz, die ich aus eigenem Antrieb und auf eigene Kosten besuche —,
+gehört die JCrete für mich zu den dichtesten, produktivsten und inspirierendsten
+Wochen des ganzen Jahres.
+
+## Eine Session über die Zukunft der Lehre
+
+Die [JCrete](https://jcrete.org) ist eine Unkonferenz: Es gibt kein Programm
+im Voraus, die Teilnehmenden stellen das Programm jeden Morgen selbst auf.
+Am 28. Juli 2026 habe ich dort eine Session zur Zukunft der Lehre gehalten:
+**„What to teach and how"**. Die Session und was aus ihr wurde, sind im
+Repositorium der Konferenz dokumentiert:
+[JCrete 2026](https://github.com/JCrete/jcrete2026).
+
+Aus dieser Session ist das zotQDA-Ökosystem (zotQDA, qdaZ, qdaPy und qdaR)
+hervorgegangen — als Konsequenz der Feststellung, dass mir das Werkzeug
+fehlte, um das Brainstorming der Session im Nachgang der Konferenz
+auszuweiten und zu vertiefen: über Interviews mit erfahrenen Leuten
+aus der Softwareentwicklung und anschließende qualitative Inhaltsanalyse.
+
+## Das fehlende Stück
+
+Der Bedarf war dabei älter als die Konferenz. Hauptberuflich leite ich die
+Lehre eines Forschungsschwerpunkts an einer medizinischen Fakultät.
+Ich möchte Curriculumsentwicklung auf Belege stützen statt auf Meinungen,
+und die Belege dafür sind zu großen Teilen qualitativ:
+Freitextantworten aus Evaluationen, Gespräche mit Studierenden und Lehrenden,
+Prüfungsberichte, Literatur. Wer so etwas systematisch auswerten will, landet
+bei der qualitativen Inhaltsanalyse — und braucht dafür ein Werkzeug.
+
+An Werkzeugen fehlt es nicht. Dort steht mir MAXQDA als lizenzierte
+Software zur Verfügung, im deutschsprachigen Raum wohl eines der führenden
+Programme, und die [Vergleichsseite](vergleich.qmd) zeigt deutlich:
+MAXQDA und ATLAS.ti können erheblich mehr als dieses Ökosystem.
+Dass sie für mich trotzdem nicht in Frage kamen, hat drei Gründe.
+
+Erstens sind es **proprietäre Programme**, und solche kommen für mich im
+Kontext wissenschaftlicher Arbeit nicht in Frage: Ich bin Verfechter von
+*reproducible and open research* — Daten und Analysewerkzeug müssen
+frei zugänglich sein, mit möglichst geringen Hürden. Vor vielen Jahren habe
+ich deshalb sämtliche Analysen von SPSS und Spartensoftware wie VectorNTI
+auf **R** und **Python** umgestellt, und mit der Freiheit sind auch
+Flexibilität und Qualität der Analysen gewachsen.
+
+Zweitens sind sie **monolithisch** gestaltet, mit eigenen Projektdateien.
+Das kann — gerade für weniger IT-affine und unerfahrene Nutzer — durchaus
+Vorteile haben; für informatik-affine Nutzer und Profis bewährt sich nach
+meiner Erfahrung das **modulare UNIX-Prinzip**: ein Ökosystem
+spezialisierter Werkzeuge, die sich nach Belieben miteinander verbinden
+lassen und so auch den komplexesten Aufgaben gewachsen sind.
+
+Drittens stehen sie *neben* der Literaturverwaltung, nicht *in* ihr. Mein
+Material liegt längst in Zotero: PDFs, Notizen, Markierungen, alles sortiert
+und verschlagwortet. Und Zotero bringt als mächtige quelloffene
+Literaturverwaltung schon fast alles mit, was qualitative Inhaltsanalyse
+braucht: einen Reader mit Annotationen, Kommentaren, Notizen und Tags,
+Synchronisation über Betriebssysteme hinweg, eine Web-Oberfläche und
+Gruppenbibliotheken für das Arbeiten im Team. Warum also das Rad neu
+erfinden? Der Gedanke war nicht größer als die Frage, warum ich zum Kodieren
+eigentlich woanders hingehen sollte — ein Zotero-Plugin ist die logische
+Konsequenz.
+
+## Der Hacking Space der JCrete
+
+Der Hacking Space der JCrete ist nichts weiter als die Räume der
+Orthodoxen Akademie von Kreta nach der letzten Session des Tages. Eine
+Terrasse mit Meerblick, verschiedene schlichte Räume mit Tischen, ein paar
+Stühlen und — viel zu raren — Steckdosen. Die magische Zutat sind die
+Teilnehmenden, die an eigenen Dingen arbeiten, einem aber auch über die
+Schulter schauen, wenn man feststeckt.
+Für eine erste Fassung ist das die richtige Umgebung: Man kann etwas bauen,
+es jemandem zeigen und die Antwort noch am selben Tag einarbeiten.
+
+Die ältesten Teile von **zotQDA** entstanden noch am Tag der Session
+**„What to teach and how"**. Im weiteren Verlauf der JCrete 2026 entstand
+dann der Kern — ein Code ist eine Marke an einer Zotero-Annotation, das
+Codesystem eine Notiz, und beides bleibt lesbar, auch wenn man das Plugin
+wieder entfernt. Genau das war die Idee: keine Projektdatei, die verloren
+gehen oder unlesbar werden kann.
+
+## Der Nachhall
+
+Zu Hause kamen ab dem 5. August abends und an Wochenenden die beiden
+Auswertungsbibliotheken **qdaR** und **qdaPy** dazu. Zwei, weil R und
+Python das unangefochtene Gespann moderner Datenanalyse sind — und weil
+dieselbe Rechnung in zwei unabhängigen Sprachen, dazu im JavaScript-Plugin
+qdaZ, ein idealer Prüfstein ist: Wo die Fassungen voneinander abweichen,
+ist ein Bug meist nicht weit.
+Bei der Kreuzvalidierung sind so tatsächlich mehrere Fehler aufgefallen,
+die eine einzelne Implementierung nie verraten hätten.
+
+## Was das für zotQDA bedeutet
+
+Es gibt keinen Geldgeber, keinen Auftrag und keinen fixen Zeitplan.
+
+Die Werkzeuge erledigen genau die Dinge, die ich selbst schmerzlich
+vermisst habe, und delegieren alles Übrige an bereits etablierte quelloffene
+Software: Die Aufnahme macht Whisper, die Annotation von Audio und Video ELAN,
+die Bibliothek Zotero, die Statistik R und Python.
+
+Jahrelang habe ich von der quelloffenen Software anderer profitiert. Das
+zotQDA-Ökosystem ermöglicht es mir, der Community etwas zurückzugeben, und
+steht daher unter der AGPL mit einer Zusatzerlaubnis, die klarstellt, dass
+die Ergebnisse den Forschenden gehören.
+
+## Wie es weitergeht
+
+Langsam und in dieser Reihenfolge: erst das Kodieren, dann die Textanalyse,
+dann die beiden Bibliotheken für R und Python, zuletzt Audio und Video.
+Was fertig ist, steht in den [Funktionen](funktionen.qmd); was fehlt, steht
+daneben.
+
+Falls Sie das Werkzeug in Ihrer eigenen Arbeit einsetzen, freue ich mich
+über Rückmeldung — besonders über die Stellen, an denen es noch nicht so
+funktioniert, wie es sollte.

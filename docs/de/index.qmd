@@ -1,0 +1,91 @@
+---
+title: "qdaR"
+---
+
+
+Sie haben Material in Zotero mit [zotQDA](https://zotqda.org) kodiert und
+möchten nun etwas damit tun, was das qdaZ-Plugin nicht anbietet: mehrere Exporte
+zusammenführen, eine Abbildung in ein Manuskript setzen, einen statistischen Test rechnen,
+den qdaZ bewusst auslässt, oder die ganze Auswertung schlicht in einem reproduzierbaren
+Skript behalten, das nächstes Jahr noch läuft. Dafür ist qdaR da.
+
+qdaR ist in erster Linie die R-basierte Auswertungshälfte des **zotQDA-Ökosystems**:
+Es liest die CSV-Tabellen, die zotQDA exportiert, und damit steht sein
+voller Umfang bereit.
+
+qdaR liest aber auch **REFI-QDA**-Projekte ein. Eine Studie in
+MAXQDA, ATLAS.ti, NVivo, QDA Miner oder Dedoose kann so um die Kennzahlen
+und Abbildungen erweitert werden, die jene Programme (noch) nicht anbieten:
+Konfidenzintervalle zur Übereinstimmung, die Maße für die Segmentierung,
+Sättigung als berichtbare Zahl, Fallzahlplanung.
+Eine `.qdpx` trägt im Vergleich zu den CSV-Tabellen, die zotQDA exportiert, nur eine
+Teilmenge. [Eine .qdpx lesen](guide/qdpx.qmd) legt beides dar — die Teilmenge
+und den Gewinn an Funktionalität durch qdaR je Programm.
+
+::: {.callout-warning title="Frühe öffentliche Beta"}
+
+qdaR steht in einer **frühen öffentlichen Beta**. Es ist veröffentlicht,
+installierbar und dokumentiert — und es ist nicht fertig:
+
+- **Es wird Fehler geben.**
+- **Schnittstellen werden sich zwischen zwei Fassungen sehr wahrscheinlich
+  ändern**, weil noch umgebaut wird.
+- **Für die Richtigkeit der Ergebnisse kann nicht garantiert werden.**
+
+Prüfen Sie nach, worauf Sie sich stützen, und nageln Sie in Arbeiten, die
+reproduzierbar sein müssen, eine Version fest. Hinweise auf Fehler oder auf
+Dinge, die Ihnen im Weg stehen, sind willkommen.
+
+Der Python-Zwilling [qdaPy](https://qdapy.zotqda.org) steht auf derselben
+Stufe; die beiden Zotero-Plugins sind einen Schritt dahinter, in einer
+privaten Alpha.
+:::
+
+```r
+# install.packages("remotes")
+remotes::install_github("fre-ms/qdaR")
+```
+
+```r
+library(qdaR)
+
+frag <- qda_read_fragments("zotqda-fragments.csv")
+qda_code_counts(frag)
+qda_plot_frequencies(frag)
+```
+
+## Wie es weitergeht
+
+| Wenn Sie … möchten | Lesen Sie |
+|---|---|
+| einen Export laden und wissen, dass er unversehrt ankam | [Exporte lesen](guide/lesen.qmd) |
+| es **ohne zotQDA** nutzen, aus einem MAXQDA- oder ATLAS.ti-Export | [Eine .qdpx lesen](guide/qdpx.qmd) |
+| die Abbildungen des Plugins zeichnen — oder eigene | [Abbildungen](guide/abbildungen.qmd) |
+| berichten, wie gut Ihre Kodierenden übereinstimmten | [Übereinstimmung](guide/uebereinstimmung.qmd) |
+| herausfinden, warum ein Kappa niedrig ausfiel | [Reliabilität](guide/reliabilitaet.qmd) |
+| prüfen, ob die Kodierenden dieselben Stellen markiert haben | [Unitizing](guide/unitizing.qmd) |
+| einen Test rechnen, den das Plugin nicht anbietet | [Statistik](guide/statistik.qmd) |
+| vor der Erhebung abschätzen, wie viel Material Sie brauchen | [Studien planen](guide/planung.qmd) |
+| COREQ oder SRQR für eine Einreichung ausfüllen | [Berichts-Checklisten](guide/berichte.qmd) |
+| eine Umbenennung im Codesystem überstehen | [Code-Identität](guide/code-identitaet.qmd) |
+| das Paket verändern oder portieren | [Für Entwickler](dev/architektur.qmd) |
+| die vollständige Liste dessen sehen, was drin ist | [Funktionen](funktionen.qmd) |
+| das Ganze gegen MAXQDA oder ATLAS.ti abwägen | [Vergleich mit anderer Software](vergleich.qmd) |
+
+Die Paketdokumentation — jede Funktion mit Argumenten und Beispielen —
+kommt mit der Installation: `help(package = "qdaR")`, und
+`vignette("qdaR")` für einen durchgerechneten Gang durch das Ganze.
+
+## Was qdaR nicht tut
+
+qdaR kodiert nichts und schreibt niemals nach Zotero zurück. Kodiert wird in
+zotQDA; qdaR liest ausschließlich, was zotQDA exportiert hat, analysiert es statistisch
+und illustriert die Daten.
+
+Weicht ein Ergebnis in qdaR von dem im qdaZ-Plugin ab, ist das ein Fehler, den zu melden sich lohnt,
+und keine Ansichtssache. Die beiden Bibliotheken werden gegeneinander an gemeinsamen Prüfdaten getestet.
+
+Es nimmt Ihnen auch die Methode nicht ab. Mehrere Funktionen verlangen eine
+Entscheidung, die der Code nicht für Sie treffen kann, und sagen das in
+ihrer Dokumentation, statt eine Voreinstellung zu wählen, die dem Ergebnis
+schmeichelt.

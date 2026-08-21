@@ -1,0 +1,156 @@
+---
+title: "What qdaR does"
+---
+
+
+qdaR reads the files the zotQDA and qdaZ Zotero plugins export and computes
+the analyses a qualitative study reports. It is a library: there is no
+interface, and it does no coding of its own.
+
+This page lists what is in it. For how it stands against MAXQDA, ATLAS.ti and
+the rest, see [Comparison](comparison.qmd) — including where those are ahead.
+
+## Reading and validating
+
+| | |
+|---|---|
+| All nine exchange formats | fragments, uncoded, codebook, history, abbreviations, the three consensus files, multi-coded segments |
+| Contract validation | every file declares its kind and version in its first column; a file from a newer format version is refused rather than guessed at |
+| Column check | every column the contract promises must be present (`strict=True`); extra columns are always accepted |
+| Delimiter and encoding | UTF-8 with BOM, `,` or `;`, detected per file |
+| Code identity | `codeId` survives renaming, moving and merging, so an analysis can follow a code across codebook revisions |
+
+## Reading a REFI-QDA project
+
+A `.qdpx` from MAXQDA, ATLAS.ti, NVivo, QDA Miner or Dedoose can be read
+directly, which makes this package usable without zotQDA. It supports a
+**subset** of the analyses below; `qda_read_qdpx()` names what your particular
+file rules out, and [Reading a .qdpx](guide/qdpx.qmd) has the full comparison.
+
+## Agreement between coders
+
+Six coefficients, each with a **95 % percentile bootstrap interval** from a
+seeded generator, so the same data gives the same interval here, in qdaR and in
+the plugin:
+
+- percentage agreement
+- Cohen's kappa — [10.1177/001316446002000104](https://doi.org/10.1177/001316446002000104)
+- Brennan and Prediger's kappa — [10.1177/001316448104100307](https://doi.org/10.1177/001316448104100307)
+- Fleiss' kappa — [10.1037/h0031619](https://doi.org/10.1037/h0031619)
+- Krippendorff's alpha — [10.1080/19312450709336664](https://doi.org/10.1080/19312450709336664)
+- Gwet's AC1 — [10.1348/000711006X126600](https://doi.org/10.1348/000711006x126600)
+
+Plus the diagnostics that explain a disappointing coefficient rather than
+leaving you with it: prevalence and bias index and PABAK after Feinstein and
+Cicchetti ([10.1016/0895-4356(90)90158-L](https://doi.org/10.1016/0895-4356(90)90158-l)),
+prevalence with a Wilson interval
+([10.1080/01621459.1927.10502953](https://doi.org/10.1080/01621459.1927.10502953)),
+agreement per code, and agreement recomputed at each level of the code
+hierarchy.
+
+## Did the coders mark the same stretches?
+
+Every coefficient above assumes the segments already correspond. These ask the
+prior question:
+
+- **Krippendorff's unitizing alpha** — [10.2307/271061](https://doi.org/10.2307/271061)
+- **WindowDiff** and **Pk** — [10.1162/089120102317341756](https://doi.org/10.1162/089120102317341756), [10.1023/A:1007506220214](https://doi.org/10.1023/a:1007506220214)
+- **Gamma** after Mathet, Widlöcher and Métivier — [10.1162/COLI_a_00227](https://doi.org/10.1162/coli_a_00227), solved exactly by branch and bound, refusing rather than approximating when the search budget runs out
+
+Text sources only: a PDF rectangle offers no continuum on which boundaries can
+be measured.
+
+## Statistics the plugins leave out
+
+- chi-squared with Cramér's V, exact where the expected counts allow it and a
+  seeded Monte Carlo test otherwise
+- Jaccard code distances
+- classical (Torgerson) scaling via `cmdscale`
+- hierarchical clustering via `hclust`, with the cophenetic correlation
+- correspondence analysis via `MASS::corresp`, reporting the share of
+  inertia the map shows
+
+## Planning a study, before there is data
+
+- **Sample size for a kappa confidence interval** — Donner and Rotondi,
+  [10.2202/1557-4679.1275](https://doi.org/10.2202/1557-4679.1275); Table 2 of
+  that paper is reproduced in all forty-eight cells
+- **How many interviews for a theme of a given prevalence** — Fugard and Potts,
+  [10.1080/13645579.2015.1005453](https://doi.org/10.1080/13645579.2015.1005453),
+  Table 1 reproduced cell for cell
+
+::: {.callout-warning title="Both are contested, and the package says so"}
+
+Braun and Clarke reject sample-size calculation for reflexive thematic
+analysis on the ground that themes are constructed rather than counted
+([10.1080/13645579.2016.1195588](https://doi.org/10.1080/13645579.2016.1195588)).
+That objection belongs next to any number these functions produce.
+:::
+
+## Progress and saturation
+
+- new codes per document, in first-coding order
+- **saturation as a reportable figure** after Guest, Namey and Chen —
+  [10.1371/journal.pone.0232076](https://doi.org/10.1371/journal.pone.0232076),
+  reported as "6+2" with the base, run length and threshold
+- the accumulation models of Lowe and colleagues —
+  [10.1177/1525822X17749386](https://doi.org/10.1177/1525822x17749386)
+- coder drift: the total variation distance between a coder's code
+  distribution in successive windows
+
+The saturation figure is **code saturation only**. Hennink, Kaiser and Marconi
+([10.1177/1049732316665344](https://doi.org/10.1177/1049732316665344)) show
+that meaning saturation arrives considerably later, and Braun and Clarke
+([10.1080/2159676X.2019.1704846](https://doi.org/10.1080/2159676x.2019.1704846))
+reject the concept for reflexive thematic analysis. The package prints that
+caveat with the number.
+
+## Reporting checklists
+
+**COREQ** (32 items, [10.1093/intqhc/mzm042](https://doi.org/10.1093/intqhc/mzm042))
+and **SRQR** (21 standards, [10.1097/ACM.0000000000000388](https://doi.org/10.1097/acm.0000000000000388)),
+reproduced verbatim and pre-filled where the export knows the answer —
+document count, coders, saturation, code system depth. A paraphrased checklist
+is one a reviewer cannot match against the original.
+
+COREQ has **no item for intercoder agreement**; SRQR has a home for it in
+standard S15. The generated checklists say so.
+
+## Figures
+
+Figures are drawn with **ggplot2**, and every `qda_plot_*` function returns
+an ordinary ggplot object: add a theme, change a scale, put it in a patchwork.
+
+The plugin's own Vega-Lite specifications render unchanged through
+`qda_spec_render()` (vegawidget), for the case where a figure has to match
+what Zotero showed.
+
+Every plot has a table behind it, exposed separately — `qda_code_counts()`,
+`qda_code_matrix()`, `qda_timeline()`, `qda_saturation()`: the numbers behind
+a figure are what goes into a paper.
+
+## What it deliberately does not do
+
+- **No coding.** That is zotQDA's job, in Zotero's reader.
+- **No interface.** Non-programmers want qdaZ.
+- **No writing.** qdaR never modifies your Zotero library; it reads files.
+- **No text mining beyond counting.** Word frequencies and keyword in context
+  live in qdaZ; stemming, lemmatisation and topic models are not here, and a
+  half-implemented version would be worse than none.
+- **No AI.**
+
+## How the numbers are checked
+
+Every coefficient is computed twice: once by the plugin in JavaScript, once
+here. Frozen reference files hold randomly generated coder matrices together
+with the plugin's results, and the test suite compares to twelve decimal
+places. The same files are byte-identical in qdaPy, and a test asserts that, so
+three implementations in three languages are held against one reference rather
+than against each other.
+
+Where a published worked example exists, it is reproduced rather than
+paraphrased: Krippendorff's unitizing example, Donner and Rotondi's Table 2 in
+all forty-eight cells, Fugard and Potts' Table 1, Mathet's Figure 11.
+
+Agreement between three implementations shows they are consistent. Agreement
+with a published table shows they are right.

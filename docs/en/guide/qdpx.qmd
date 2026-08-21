@@ -1,0 +1,196 @@
+---
+title: "Reading a .qdpx"
+---
+
+
+You do not need zotQDA to use this package. If your project lives in MAXQDA,
+ATLAS.ti, NVivo, QDA Miner or Dedoose, export it as **REFI-QDA** — a `.qdpx`
+file — and read that instead:
+
+```r
+project <- qda_read_qdpx("my-project.qdpx")
+project$fragments      # the same table the CSV exports produce
+project$codebook
+project$limitations    # what this file cannot support
+```
+
+Reading a `.qdpx` needs the suggested package **xml2**
+(`install.packages("xml2")`); the rest of qdaR works without it.
+
+Everything downstream then works unchanged, because the frames have the same
+columns and the same types as the ones read from CSV.
+
+There is a sample project in the package, so you can try the route before
+exporting anything of your own:
+
+```r
+p <- qda_read_qdpx(qda_example("sample.qdpx"), warn = FALSE)
+qda_code_counts(p$fragments)
+qda_agreement(qda_units(p$fragments))
+```
+
+## What survives, and what does not
+
+More survives than one might expect. A `.qdpx` carries the code tree with a
+**GUID per code** — a stable identity that behaves exactly like `codeId` — the
+coders, the timestamps, and the **character positions** of text selections, so
+even the unitizing measures work.
+
+What is missing is not a rounding error either.
+
+| | zotQDA CSV exports | a `.qdpx` |
+|---|---|---|
+| code system: hierarchy, colour, definition | ✓ | ✓ |
+| stable code identity across renames | ✓ | ✓ the REFI GUID |
+| frequencies, code matrix, code by document | ✓ | ✓ |
+| six agreement coefficients with bootstrap intervals | ✓ | ✓ if the export names its coders |
+| agreement per code, per hierarchy level, confusion pairs | ✓ | ✓ |
+| kappa paradox diagnostics, Wilson intervals | ✓ | ✓ |
+| unitizing: α<sub>U</sub>, WindowDiff, Pk, gamma | ✓ | ✓ for text sources |
+| chi-squared, Jaccard, scaling, clustering, correspondence analysis | ✓ | ✓ |
+| figures in all three backends | ✓ | ✓ |
+| multiple-coding report | ✓ | ✓ |
+| study planning before data | ✓ | ✓ needs no export at all |
+| timeline and saturation | ✓ | ~ additions only |
+| coder drift | ✓ | ~ weaker, see below |
+| COREQ and SRQR checklists | ✓ | ~ fewer items pre-filled |
+| **agreement counting segments nobody coded** | ✓ | ✗ usually absent |
+| **crosstabs by author, year, collection or citekey** | ✓ | ✗ |
+| **segment weights** | ✓ | ✗ |
+| **code abbreviations** | ✓ | ✗ |
+| **the three-phase consensus analyses** | ✓ | ✗ |
+
+`qda_read_qdpx()` states which of these apply to **your** file rather than in
+general: a project whose codings carry no `creatingUser` cannot support any
+agreement coefficient at all, and it says so instead of returning one.
+
+## Why the difference exists
+
+It is not that REFI-QDA is a poor standard. The two formats were designed for
+different jobs.
+
+`.qdpx` exists to move a project from one program to another, so it describes
+what every program has in common: sources, codes, selections, codings. The
+zotQDA exports exist to be analysed, so they carry what an analysis needs and
+an interchange format has no reason to include — the bibliographic record
+behind each document, a coding log with removals, weights, abbreviations, and
+the artefacts of a team consensus procedure.
+
+Three of the gaps are worth understanding rather than merely noting.
+
+**Segments nobody coded.** When two coders both leave a passage alone, they
+agree it is irrelevant, and that is agreement. Leaving those segments out
+answers a friendlier question: how well the coders agreed *about the material
+one of them marked*. REFI has no way to say "here is a passage everyone
+considered and passed over", so a coefficient computed from a `.qdpx` is
+almost always the friendlier one. See [Agreement](agreement.qmd).
+
+**The coding log.** REFI records when a coding was created and never that one
+was withdrawn. Saturation and the timeline read the reconstructed log the same
+way as a real one, but a coder who applied and later removed a code looks like
+one who never applied it.
+
+**The bibliographic record.** In zotQDA the material *is* a Zotero library, so
+every fragment carries its citekey, author and year without anyone entering
+them. A `.qdpx` has document names and nothing else.
+
+## What this adds to the program you already use
+
+These packages are not a replacement for MAXQDA or ATLAS.ti, and the
+[comparison page](../comparison.qmd) says where those are ahead. But a `.qdpx`
+export takes a minute, and it buys numbers and figures your program does not
+document.
+
+The claims below are about what each manufacturer's documentation **names**,
+surveyed for the comparison page. Absence there is not proof of absence in the
+product, and a gap may have been closed since.
+
+### Six things every one of the five is missing
+
+None of the surveyed programs documents any of these:
+
+* **A confidence interval on every agreement coefficient.** Four of the five
+  name the coefficients they compute, and not one of those four documents an
+  interval — so the figure in most published tables is a point estimate with
+  nothing around it. Here every coefficient comes with a seeded percentile
+  bootstrap interval, reproducible across all three implementations.
+* **The kappa paradox diagnostics.** Prevalence index, bias index and PABAK
+  after Feinstein and Cicchetti, plus prevalence with a Wilson interval. This
+  is what turns *our kappa was 0.31* into a sentence you can defend, by
+  separating a skewed distribution from coders who genuinely differ.
+* **Agreement recomputed at every level of the code hierarchy**, plus the
+  confusion pairs that cost you the agreement. A disappointing coefficient
+  becomes a list of definitions to sharpen.
+* **Saturation as a reportable number.** Guest, Namey and Chen's *6+2*
+  notation with its base, run and threshold, and the accumulation models of
+  Lowe and colleagues for how far from the top you are.
+* **Sample-size planning before you collect anything.** How many segments to
+  double-code for a kappa interval you can defend (Donner and Rotondi), and how
+  many documents to expect a theme of a given prevalence (Fugard and Potts).
+* **COREQ and SRQR checklists**, reproduced verbatim and pre-filled where the
+  export knows the answer.
+
+### And, specifically for your program
+
+| If you work in | your documentation names | what these packages add on top |
+|---|---|---|
+| **MAXQDA** | percentage agreement and one kappa; with Analytics Pro also crosstabs with chi-squared, Phi and Cramér's V | Cohen's kappa, Fleiss' kappa, Krippendorff's alpha and Gwet's AC1 · all four unitizing measures · correspondence analysis, multidimensional scaling, clustering with the cophenetic correlation |
+| **ATLAS.ti** | percentage agreement, the Holsti index, and the Krippendorff family including alpha binary | Cohen, Fleiss, Brennan–Prediger and AC1 · WindowDiff, Pk and Mathet's gamma beside alpha binary · the whole inferential set |
+| **NVivo** | percentage agreement and Cohen's kappa | four further coefficients · every unitizing measure · the whole inferential set |
+| **Dedoose** | Cohen's kappa, pooled and per code | four further coefficients · every unitizing measure · the whole inferential set |
+| **QDA Miner / WordStat** | an inter-rater module whose coefficients the public documentation does not name; MDS, correspondence analysis, sequence analysis | six coefficients you can cite by their source, each with an interval · the unitizing measures |
+
+**ATLAS.ti is the closest of the five on the hardest point.** Its alpha binary
+asks the same prior question the unitizing measures here do — whether the
+coders marked the same stretches at all — and that is a distinction most of the
+field still skips.
+
+### The figures
+
+Most of the surveyed programs draw code matrices and co-occurrence tables
+perfectly well, so this is a shorter list than the metrics. Four are worth
+naming:
+
+* **the level-agreement curve** — where in the code hierarchy the agreement
+  breaks down, which no surveyed program offers;
+* **the saturation curve** over documents in first-coding order;
+* **correspondence and scaling maps that state how much of the structure they
+  show** — a map displaying a fifth looks exactly like one displaying nearly
+  all of it, so the share travels in the title;
+* **the dendrogram with its cophenetic correlation**, which says whether the
+  tree is drawing structure the distances actually support.
+
+The general gain is smaller but more useful than any single chart: every figure
+is built from a table you can also have on its own, and every one is produced
+by a script that still runs next year. A reviewer asking how a number was made
+can be handed the file and the code.
+
+::: {.callout-warning title="Read these gains against the limits above"}
+
+From a `.qdpx` the agreement coefficients count only segments somebody
+marked, and the saturation curve sees additions but not withdrawals. The
+numbers are real; the caveats in the table above travel with them.
+:::
+
+## Getting a .qdpx out of your program
+
+All five of the programs surveyed on the [comparison page](../comparison.qmd)
+export REFI-QDA; look for *Export → REFI-QDA project* or similar. The standard
+itself is documented at [qdasoftware.org](https://www.qdasoftware.org/).
+
+Two practical notes. Export the **project**, not just the codebook: a `.qdc`
+holds the code system alone and none of the codings. And if intercoder
+agreement is what you are after, check first that your program writes a user
+per coding — that single attribute decides whether any of it can be computed.
+
+## If you find the gaps limiting
+
+Then the argument for [zotQDA](https://zotqda.org) is the table above, and the
+route back is short: it imports `.qdpx` too, so a project can move in either
+direction. What you would gain is the right-hand column becoming the left-hand
+one — the coding log, the uncoded segments, the bibliographic metadata and the
+consensus procedures.
+
+What you would give up is set out just as plainly on the
+[comparison page](../comparison.qmd), which is worth reading before moving
+anything.

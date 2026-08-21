@@ -1,0 +1,3853 @@
+{
+ "note": "Values computed by the qdaZ plugin (JavaScript). qdaR and qdaPy must reproduce them exactly; see dev/testing.",
+ "unitizing": [
+  {
+   "fixture": {
+    "length": 127,
+    "coders": [
+     [
+      {
+       "start": 2,
+       "end": 41,
+       "value": "B"
+      },
+      {
+       "start": 66,
+       "end": 89,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 11,
+       "value": "C"
+      },
+      {
+       "start": 36,
+       "end": 69,
+       "value": "B"
+      },
+      {
+       "start": 89,
+       "end": 119,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 9,
+       "end": 35,
+       "value": "C"
+      },
+      {
+       "start": 46,
+       "end": 60,
+       "value": "C"
+      },
+      {
+       "start": 90,
+       "end": 126,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.07220508436779904,
+    "Do": 42.81818181818182,
+    "De": 39.93469387755102,
+    "inter": 11,
+    "identAlpha": -0.27212005551700225,
+    "wd": 0.30701754385964913,
+    "pk": 0.2894736842105263
+   }
+  },
+  {
+   "fixture": {
+    "length": 102,
+    "coders": [
+     [
+      {
+       "start": 9,
+       "end": 44,
+       "value": "C"
+      },
+      {
+       "start": 68,
+       "end": 101,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 6,
+       "value": "B"
+      },
+      {
+       "start": 28,
+       "end": 64,
+       "value": "B"
+      },
+      {
+       "start": 82,
+       "end": 94,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.14856494809386722,
+    "Do": 33.333333333333336,
+    "De": 39.14959016393443,
+    "inter": 3,
+    "identAlpha": 0.22744063324538255,
+    "wd": 0.5217391304347826,
+    "pk": 0.5217391304347826
+   }
+  },
+  {
+   "fixture": {
+    "length": 260,
+    "coders": [
+     [
+      {
+       "start": 6,
+       "end": 19,
+       "value": "C"
+      },
+      {
+       "start": 45,
+       "end": 68,
+       "value": "A"
+      },
+      {
+       "start": 86,
+       "end": 109,
+       "value": "A"
+      },
+      {
+       "start": 130,
+       "end": 165,
+       "value": "A"
+      },
+      {
+       "start": 179,
+       "end": 201,
+       "value": "B"
+      },
+      {
+       "start": 218,
+       "end": 257,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 26,
+       "value": "C"
+      },
+      {
+       "start": 45,
+       "end": 60,
+       "value": "A"
+      },
+      {
+       "start": 82,
+       "end": 98,
+       "value": "A"
+      },
+      {
+       "start": 128,
+       "end": 164,
+       "value": "C"
+      },
+      {
+       "start": 186,
+       "end": 217,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.12438975789578555,
+    "Do": 31.5,
+    "De": 35.97491039426523,
+    "inter": 6,
+    "identAlpha": 0.1729132257654682,
+    "wd": 0.396,
+    "pk": 0.396
+   }
+  },
+  {
+   "fixture": {
+    "length": 154,
+    "coders": [
+     [
+      {
+       "start": 9,
+       "end": 29,
+       "value": "A"
+      },
+      {
+       "start": 43,
+       "end": 63,
+       "value": "C"
+      },
+      {
+       "start": 88,
+       "end": 124,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 9,
+       "end": 31,
+       "value": "C"
+      },
+      {
+       "start": 43,
+       "end": 72,
+       "value": "A"
+      },
+      {
+       "start": 81,
+       "end": 96,
+       "value": "C"
+      },
+      {
+       "start": 116,
+       "end": 153,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.0944687398769033,
+    "Do": 37.75,
+    "De": 34.49162011173184,
+    "inter": 4,
+    "identAlpha": 0.08090727816550347,
+    "wd": 0.3916083916083916,
+    "pk": 0.3916083916083916
+   }
+  },
+  {
+   "fixture": {
+    "length": 399,
+    "coders": [
+     [
+      {
+       "start": 5,
+       "end": 22,
+       "value": "C"
+      },
+      {
+       "start": 39,
+       "end": 65,
+       "value": "B"
+      },
+      {
+       "start": 68,
+       "end": 103,
+       "value": "A"
+      },
+      {
+       "start": 107,
+       "end": 138,
+       "value": "C"
+      },
+      {
+       "start": 139,
+       "end": 175,
+       "value": "C"
+      },
+      {
+       "start": 181,
+       "end": 211,
+       "value": "B"
+      },
+      {
+       "start": 217,
+       "end": 231,
+       "value": "C"
+      },
+      {
+       "start": 255,
+       "end": 295,
+       "value": "A"
+      },
+      {
+       "start": 322,
+       "end": 332,
+       "value": "C"
+      },
+      {
+       "start": 353,
+       "end": 390,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 10,
+       "end": 45,
+       "value": "A"
+      },
+      {
+       "start": 47,
+       "end": 56,
+       "value": "B"
+      },
+      {
+       "start": 68,
+       "end": 92,
+       "value": "B"
+      },
+      {
+       "start": 116,
+       "end": 132,
+       "value": "A"
+      },
+      {
+       "start": 142,
+       "end": 149,
+       "value": "C"
+      },
+      {
+       "start": 158,
+       "end": 187,
+       "value": "A"
+      },
+      {
+       "start": 198,
+       "end": 213,
+       "value": "C"
+      },
+      {
+       "start": 216,
+       "end": 256,
+       "value": "A"
+      },
+      {
+       "start": 280,
+       "end": 302,
+       "value": "A"
+      },
+      {
+       "start": 310,
+       "end": 327,
+       "value": "B"
+      },
+      {
+       "start": 355,
+       "end": 369,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 38,
+       "value": "A"
+      },
+      {
+       "start": 54,
+       "end": 75,
+       "value": "C"
+      },
+      {
+       "start": 80,
+       "end": 92,
+       "value": "B"
+      },
+      {
+       "start": 112,
+       "end": 143,
+       "value": "B"
+      },
+      {
+       "start": 151,
+       "end": 187,
+       "value": "A"
+      },
+      {
+       "start": 200,
+       "end": 232,
+       "value": "B"
+      },
+      {
+       "start": 261,
+       "end": 292,
+       "value": "B"
+      },
+      {
+       "start": 322,
+       "end": 360,
+       "value": "B"
+      },
+      {
+       "start": 382,
+       "end": 391,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.012232384044772227,
+    "Do": 38.19512195121951,
+    "De": 37.73355066807475,
+    "inter": 41,
+    "identAlpha": 0.005396568522218703,
+    "wd": 0.5784061696658098,
+    "pk": 0.5244215938303342
+   }
+  },
+  {
+   "fixture": {
+    "length": 338,
+    "coders": [
+     [
+      {
+       "start": 9,
+       "end": 43,
+       "value": "A"
+      },
+      {
+       "start": 72,
+       "end": 111,
+       "value": "A"
+      },
+      {
+       "start": 136,
+       "end": 163,
+       "value": "C"
+      },
+      {
+       "start": 170,
+       "end": 206,
+       "value": "C"
+      },
+      {
+       "start": 211,
+       "end": 231,
+       "value": "C"
+      },
+      {
+       "start": 256,
+       "end": 273,
+       "value": "B"
+      },
+      {
+       "start": 275,
+       "end": 282,
+       "value": "B"
+      },
+      {
+       "start": 300,
+       "end": 326,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 9,
+       "end": 17,
+       "value": "B"
+      },
+      {
+       "start": 18,
+       "end": 31,
+       "value": "B"
+      },
+      {
+       "start": 37,
+       "end": 58,
+       "value": "C"
+      },
+      {
+       "start": 82,
+       "end": 90,
+       "value": "A"
+      },
+      {
+       "start": 106,
+       "end": 128,
+       "value": "B"
+      },
+      {
+       "start": 151,
+       "end": 185,
+       "value": "B"
+      },
+      {
+       "start": 200,
+       "end": 234,
+       "value": "A"
+      },
+      {
+       "start": 236,
+       "end": 253,
+       "value": "A"
+      },
+      {
+       "start": 272,
+       "end": 309,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.21057201366622302,
+    "Do": 44.30769230769231,
+    "De": 36.600625,
+    "inter": 13,
+    "identAlpha": -0.3115289379880821,
+    "wd": 0.6463414634146342,
+    "pk": 0.6036585365853658
+   }
+  },
+  {
+   "fixture": {
+    "length": 394,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 11,
+       "value": "B"
+      },
+      {
+       "start": 41,
+       "end": 63,
+       "value": "B"
+      },
+      {
+       "start": 92,
+       "end": 130,
+       "value": "C"
+      },
+      {
+       "start": 147,
+       "end": 178,
+       "value": "A"
+      },
+      {
+       "start": 198,
+       "end": 208,
+       "value": "B"
+      },
+      {
+       "start": 212,
+       "end": 231,
+       "value": "B"
+      },
+      {
+       "start": 256,
+       "end": 261,
+       "value": "C"
+      },
+      {
+       "start": 279,
+       "end": 298,
+       "value": "B"
+      },
+      {
+       "start": 312,
+       "end": 338,
+       "value": "A"
+      },
+      {
+       "start": 356,
+       "end": 389,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 8,
+       "value": "A"
+      },
+      {
+       "start": 16,
+       "end": 31,
+       "value": "B"
+      },
+      {
+       "start": 52,
+       "end": 67,
+       "value": "C"
+      },
+      {
+       "start": 73,
+       "end": 107,
+       "value": "A"
+      },
+      {
+       "start": 111,
+       "end": 140,
+       "value": "A"
+      },
+      {
+       "start": 162,
+       "end": 173,
+       "value": "A"
+      },
+      {
+       "start": 192,
+       "end": 209,
+       "value": "B"
+      },
+      {
+       "start": 234,
+       "end": 270,
+       "value": "B"
+      },
+      {
+       "start": 296,
+       "end": 307,
+       "value": "C"
+      },
+      {
+       "start": 311,
+       "end": 345,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.0010402557965503156,
+    "Do": 33.416666666666664,
+    "De": 33.451464746772594,
+    "inter": 12,
+    "identAlpha": -0.0012594458438286438,
+    "wd": 0.5755208333333334,
+    "pk": 0.5416666666666666
+   }
+  },
+  {
+   "fixture": {
+    "length": 107,
+    "coders": [
+     [
+      {
+       "start": 6,
+       "end": 11,
+       "value": "A"
+      },
+      {
+       "start": 25,
+       "end": 55,
+       "value": "A"
+      },
+      {
+       "start": 72,
+       "end": 78,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 10,
+       "end": 49,
+       "value": "C"
+      },
+      {
+       "start": 65,
+       "end": 104,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.013015336991698323,
+    "Do": 40.333333333333336,
+    "De": 39.81512605042017,
+    "inter": 3,
+    "identAlpha": 0.04871346490132389,
+    "wd": 0.494949494949495,
+    "pk": 0.46464646464646464
+   }
+  },
+  {
+   "fixture": {
+    "length": 127,
+    "coders": [
+     [
+      {
+       "start": 3,
+       "end": 15,
+       "value": "C"
+      },
+      {
+       "start": 30,
+       "end": 39,
+       "value": "B"
+      },
+      {
+       "start": 43,
+       "end": 60,
+       "value": "A"
+      },
+      {
+       "start": 70,
+       "end": 77,
+       "value": "C"
+      },
+      {
+       "start": 78,
+       "end": 97,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 38,
+       "value": "A"
+      },
+      {
+       "start": 62,
+       "end": 78,
+       "value": "A"
+      },
+      {
+       "start": 85,
+       "end": 102,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.1800498753117208,
+    "Do": 28.6,
+    "De": 24.236263736263737,
+    "inter": 5,
+    "identAlpha": -0.07740422204847519,
+    "wd": 0.4380165289256198,
+    "pk": 0.3884297520661157
+   }
+  },
+  {
+   "fixture": {
+    "length": 145,
+    "coders": [
+     [
+      {
+       "start": 8,
+       "end": 40,
+       "value": "C"
+      },
+      {
+       "start": 57,
+       "end": 87,
+       "value": "B"
+      },
+      {
+       "start": 93,
+       "end": 132,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 24,
+       "value": "B"
+      },
+      {
+       "start": 44,
+       "end": 59,
+       "value": "B"
+      },
+      {
+       "start": 75,
+       "end": 81,
+       "value": "C"
+      },
+      {
+       "start": 102,
+       "end": 126,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.012837140361557364,
+    "Do": 37,
+    "De": 37.48115079365079,
+    "inter": 4,
+    "identAlpha": 0.10113302559798576,
+    "wd": 0.5333333333333333,
+    "pk": 0.5333333333333333
+   }
+  },
+  {
+   "fixture": {
+    "length": 372,
+    "coders": [
+     [
+      {
+       "start": 4,
+       "end": 24,
+       "value": "A"
+      },
+      {
+       "start": 51,
+       "end": 63,
+       "value": "B"
+      },
+      {
+       "start": 88,
+       "end": 121,
+       "value": "A"
+      },
+      {
+       "start": 122,
+       "end": 154,
+       "value": "B"
+      },
+      {
+       "start": 166,
+       "end": 171,
+       "value": "C"
+      },
+      {
+       "start": 190,
+       "end": 206,
+       "value": "B"
+      },
+      {
+       "start": 222,
+       "end": 227,
+       "value": "C"
+      },
+      {
+       "start": 234,
+       "end": 241,
+       "value": "A"
+      },
+      {
+       "start": 244,
+       "end": 269,
+       "value": "A"
+      },
+      {
+       "start": 271,
+       "end": 281,
+       "value": "C"
+      },
+      {
+       "start": 293,
+       "end": 318,
+       "value": "A"
+      },
+      {
+       "start": 342,
+       "end": 357,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 7,
+       "end": 26,
+       "value": "B"
+      },
+      {
+       "start": 37,
+       "end": 66,
+       "value": "A"
+      },
+      {
+       "start": 81,
+       "end": 107,
+       "value": "A"
+      },
+      {
+       "start": 137,
+       "end": 145,
+       "value": "C"
+      },
+      {
+       "start": 160,
+       "end": 189,
+       "value": "B"
+      },
+      {
+       "start": 217,
+       "end": 241,
+       "value": "C"
+      },
+      {
+       "start": 267,
+       "end": 291,
+       "value": "B"
+      },
+      {
+       "start": 301,
+       "end": 333,
+       "value": "B"
+      },
+      {
+       "start": 336,
+       "end": 370,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.07386052323616155,
+    "Do": 29.416666666666668,
+    "De": 31.76267441860465,
+    "inter": 12,
+    "identAlpha": 0.12944620943125895,
+    "wd": 0.5150684931506849,
+    "pk": 0.4958904109589041
+   }
+  },
+  {
+   "fixture": {
+    "length": 210,
+    "coders": [
+     [
+      {
+       "start": 7,
+       "end": 19,
+       "value": "B"
+      },
+      {
+       "start": 28,
+       "end": 47,
+       "value": "A"
+      },
+      {
+       "start": 74,
+       "end": 111,
+       "value": "A"
+      },
+      {
+       "start": 113,
+       "end": 137,
+       "value": "A"
+      },
+      {
+       "start": 141,
+       "end": 148,
+       "value": "B"
+      },
+      {
+       "start": 173,
+       "end": 203,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 14,
+       "value": "C"
+      },
+      {
+       "start": 41,
+       "end": 71,
+       "value": "C"
+      },
+      {
+       "start": 89,
+       "end": 129,
+       "value": "A"
+      },
+      {
+       "start": 149,
+       "end": 189,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.23785775992640057,
+    "Do": 29.833333333333332,
+    "De": 39.14404918752745,
+    "inter": 6,
+    "identAlpha": 0.09036170673597577,
+    "wd": 0.5099009900990099,
+    "pk": 0.5099009900990099
+   }
+  },
+  {
+   "fixture": {
+    "length": 69,
+    "coders": [
+     [
+      {
+       "start": 4,
+       "end": 29,
+       "value": "C"
+      },
+      {
+       "start": 34,
+       "end": 39,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 6,
+       "end": 28,
+       "value": "A"
+      },
+      {
+       "start": 43,
+       "end": 63,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.07881269191402251,
+    "Do": 25,
+    "De": 27.13888888888889,
+    "inter": 3,
+    "identAlpha": 0.1707953063885267,
+    "wd": 0.3548387096774194,
+    "pk": 0.3387096774193548
+   }
+  },
+  {
+   "fixture": {
+    "length": 166,
+    "coders": [
+     [
+      {
+       "start": 10,
+       "end": 35,
+       "value": "C"
+      },
+      {
+       "start": 62,
+       "end": 71,
+       "value": "C"
+      },
+      {
+       "start": 87,
+       "end": 100,
+       "value": "B"
+      },
+      {
+       "start": 109,
+       "end": 142,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 7,
+       "end": 33,
+       "value": "B"
+      },
+      {
+       "start": 49,
+       "end": 62,
+       "value": "B"
+      },
+      {
+       "start": 86,
+       "end": 111,
+       "value": "B"
+      },
+      {
+       "start": 129,
+       "end": 148,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.0023203102865461123,
+    "Do": 29.833333333333332,
+    "De": 29.902716914986854,
+    "inter": 6,
+    "identAlpha": -0.009354413702239883,
+    "wd": 0.39490445859872614,
+    "pk": 0.39490445859872614
+   }
+  },
+  {
+   "fixture": {
+    "length": 359,
+    "coders": [
+     [
+      {
+       "start": 6,
+       "end": 17,
+       "value": "B"
+      },
+      {
+       "start": 38,
+       "end": 65,
+       "value": "C"
+      },
+      {
+       "start": 77,
+       "end": 106,
+       "value": "C"
+      },
+      {
+       "start": 135,
+       "end": 144,
+       "value": "C"
+      },
+      {
+       "start": 166,
+       "end": 191,
+       "value": "A"
+      },
+      {
+       "start": 196,
+       "end": 219,
+       "value": "A"
+      },
+      {
+       "start": 222,
+       "end": 259,
+       "value": "C"
+      },
+      {
+       "start": 276,
+       "end": 309,
+       "value": "B"
+      },
+      {
+       "start": 311,
+       "end": 321,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 12,
+       "value": "A"
+      },
+      {
+       "start": 23,
+       "end": 46,
+       "value": "B"
+      },
+      {
+       "start": 59,
+       "end": 97,
+       "value": "C"
+      },
+      {
+       "start": 117,
+       "end": 132,
+       "value": "A"
+      },
+      {
+       "start": 138,
+       "end": 155,
+       "value": "A"
+      },
+      {
+       "start": 161,
+       "end": 177,
+       "value": "C"
+      },
+      {
+       "start": 202,
+       "end": 207,
+       "value": "B"
+      },
+      {
+       "start": 223,
+       "end": 256,
+       "value": "B"
+      },
+      {
+       "start": 265,
+       "end": 285,
+       "value": "C"
+      },
+      {
+       "start": 286,
+       "end": 313,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 5,
+       "value": "B"
+      },
+      {
+       "start": 24,
+       "end": 54,
+       "value": "B"
+      },
+      {
+       "start": 77,
+       "end": 105,
+       "value": "B"
+      },
+      {
+       "start": 106,
+       "end": 119,
+       "value": "A"
+      },
+      {
+       "start": 123,
+       "end": 153,
+       "value": "B"
+      },
+      {
+       "start": 161,
+       "end": 181,
+       "value": "B"
+      },
+      {
+       "start": 205,
+       "end": 215,
+       "value": "B"
+      },
+      {
+       "start": 216,
+       "end": 233,
+       "value": "A"
+      },
+      {
+       "start": 254,
+       "end": 259,
+       "value": "C"
+      },
+      {
+       "start": 265,
+       "end": 286,
+       "value": "C"
+      },
+      {
+       "start": 293,
+       "end": 326,
+       "value": "B"
+      },
+      {
+       "start": 328,
+       "end": 348,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.08670051858254102,
+    "Do": 29.15,
+    "De": 31.917241379310344,
+    "inter": 40,
+    "identAlpha": 0.10196811160936714,
+    "wd": 0.5428571428571428,
+    "pk": 0.5028571428571429
+   }
+  },
+  {
+   "fixture": {
+    "length": 262,
+    "coders": [
+     [
+      {
+       "start": 6,
+       "end": 24,
+       "value": "B"
+      },
+      {
+       "start": 53,
+       "end": 92,
+       "value": "B"
+      },
+      {
+       "start": 100,
+       "end": 106,
+       "value": "B"
+      },
+      {
+       "start": 117,
+       "end": 136,
+       "value": "A"
+      },
+      {
+       "start": 146,
+       "end": 185,
+       "value": "C"
+      },
+      {
+       "start": 215,
+       "end": 244,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 34,
+       "value": "A"
+      },
+      {
+       "start": 54,
+       "end": 62,
+       "value": "C"
+      },
+      {
+       "start": 90,
+       "end": 100,
+       "value": "B"
+      },
+      {
+       "start": 123,
+       "end": 142,
+       "value": "B"
+      },
+      {
+       "start": 159,
+       "end": 189,
+       "value": "B"
+      },
+      {
+       "start": 194,
+       "end": 213,
+       "value": "C"
+      },
+      {
+       "start": 229,
+       "end": 240,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 41,
+       "value": "B"
+      },
+      {
+       "start": 44,
+       "end": 56,
+       "value": "A"
+      },
+      {
+       "start": 61,
+       "end": 101,
+       "value": "C"
+      },
+      {
+       "start": 109,
+       "end": 144,
+       "value": "A"
+      },
+      {
+       "start": 148,
+       "end": 170,
+       "value": "B"
+      },
+      {
+       "start": 188,
+       "end": 196,
+       "value": "A"
+      },
+      {
+       "start": 213,
+       "end": 223,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.1121880350907839,
+    "Do": 31.884615384615383,
+    "De": 35.91370317686107,
+    "inter": 26,
+    "identAlpha": 0.1366515837104073,
+    "wd": 0.4722222222222222,
+    "pk": 0.44047619047619047
+   }
+  },
+  {
+   "fixture": {
+    "length": 378,
+    "coders": [
+     [
+      {
+       "start": 2,
+       "end": 38,
+       "value": "C"
+      },
+      {
+       "start": 39,
+       "end": 45,
+       "value": "A"
+      },
+      {
+       "start": 59,
+       "end": 78,
+       "value": "C"
+      },
+      {
+       "start": 85,
+       "end": 101,
+       "value": "A"
+      },
+      {
+       "start": 126,
+       "end": 163,
+       "value": "B"
+      },
+      {
+       "start": 186,
+       "end": 224,
+       "value": "C"
+      },
+      {
+       "start": 241,
+       "end": 258,
+       "value": "B"
+      },
+      {
+       "start": 278,
+       "end": 304,
+       "value": "A"
+      },
+      {
+       "start": 319,
+       "end": 355,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 7,
+       "end": 41,
+       "value": "C"
+      },
+      {
+       "start": 69,
+       "end": 102,
+       "value": "B"
+      },
+      {
+       "start": 117,
+       "end": 142,
+       "value": "B"
+      },
+      {
+       "start": 160,
+       "end": 188,
+       "value": "B"
+      },
+      {
+       "start": 190,
+       "end": 197,
+       "value": "C"
+      },
+      {
+       "start": 203,
+       "end": 212,
+       "value": "A"
+      },
+      {
+       "start": 213,
+       "end": 221,
+       "value": "B"
+      },
+      {
+       "start": 247,
+       "end": 260,
+       "value": "A"
+      },
+      {
+       "start": 264,
+       "end": 303,
+       "value": "B"
+      },
+      {
+       "start": 309,
+       "end": 346,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 27,
+       "value": "C"
+      },
+      {
+       "start": 28,
+       "end": 51,
+       "value": "B"
+      },
+      {
+       "start": 77,
+       "end": 99,
+       "value": "C"
+      },
+      {
+       "start": 120,
+       "end": 159,
+       "value": "A"
+      },
+      {
+       "start": 161,
+       "end": 183,
+       "value": "B"
+      },
+      {
+       "start": 187,
+       "end": 197,
+       "value": "C"
+      },
+      {
+       "start": 201,
+       "end": 226,
+       "value": "B"
+      },
+      {
+       "start": 232,
+       "end": 258,
+       "value": "C"
+      },
+      {
+       "start": 284,
+       "end": 289,
+       "value": "C"
+      },
+      {
+       "start": 312,
+       "end": 351,
+       "value": "C"
+      },
+      {
+       "start": 353,
+       "end": 375,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.0950308930701268,
+    "Do": 33.205128205128204,
+    "De": 36.692001915708815,
+    "inter": 39,
+    "identAlpha": 0.15144736648467272,
+    "wd": 0.5489130434782609,
+    "pk": 0.4891304347826087
+   }
+  },
+  {
+   "fixture": {
+    "length": 261,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 18,
+       "value": "A"
+      },
+      {
+       "start": 31,
+       "end": 43,
+       "value": "C"
+      },
+      {
+       "start": 67,
+       "end": 72,
+       "value": "A"
+      },
+      {
+       "start": 90,
+       "end": 117,
+       "value": "B"
+      },
+      {
+       "start": 127,
+       "end": 166,
+       "value": "B"
+      },
+      {
+       "start": 178,
+       "end": 212,
+       "value": "B"
+      },
+      {
+       "start": 230,
+       "end": 239,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 29,
+       "value": "B"
+      },
+      {
+       "start": 34,
+       "end": 52,
+       "value": "C"
+      },
+      {
+       "start": 62,
+       "end": 79,
+       "value": "B"
+      },
+      {
+       "start": 90,
+       "end": 101,
+       "value": "A"
+      },
+      {
+       "start": 102,
+       "end": 112,
+       "value": "C"
+      },
+      {
+       "start": 118,
+       "end": 147,
+       "value": "C"
+      },
+      {
+       "start": 172,
+       "end": 190,
+       "value": "C"
+      },
+      {
+       "start": 192,
+       "end": 225,
+       "value": "B"
+      },
+      {
+       "start": 236,
+       "end": 249,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.11310002636364258,
+    "Do": 27.333333333333332,
+    "De": 30.818958333333335,
+    "inter": 9,
+    "identAlpha": 0.2456830418166095,
+    "wd": 0.5912698412698413,
+    "pk": 0.5634920634920635
+   }
+  },
+  {
+   "fixture": {
+    "length": 253,
+    "coders": [
+     [
+      {
+       "start": 4,
+       "end": 34,
+       "value": "C"
+      },
+      {
+       "start": 60,
+       "end": 99,
+       "value": "A"
+      },
+      {
+       "start": 101,
+       "end": 134,
+       "value": "A"
+      },
+      {
+       "start": 161,
+       "end": 195,
+       "value": "B"
+      },
+      {
+       "start": 218,
+       "end": 247,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 9,
+       "end": 44,
+       "value": "C"
+      },
+      {
+       "start": 70,
+       "end": 85,
+       "value": "A"
+      },
+      {
+       "start": 93,
+       "end": 116,
+       "value": "A"
+      },
+      {
+       "start": 128,
+       "end": 148,
+       "value": "C"
+      },
+      {
+       "start": 158,
+       "end": 165,
+       "value": "B"
+      },
+      {
+       "start": 191,
+       "end": 208,
+       "value": "A"
+      },
+      {
+       "start": 220,
+       "end": 232,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 38,
+       "value": "B"
+      },
+      {
+       "start": 51,
+       "end": 62,
+       "value": "C"
+      },
+      {
+       "start": 76,
+       "end": 93,
+       "value": "C"
+      },
+      {
+       "start": 97,
+       "end": 136,
+       "value": "C"
+      },
+      {
+       "start": 162,
+       "end": 201,
+       "value": "A"
+      },
+      {
+       "start": 213,
+       "end": 239,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.03593515632078226,
+    "Do": 36.73913043478261,
+    "De": 38.10856777493606,
+    "inter": 23,
+    "identAlpha": 0.08438324055083501,
+    "wd": 0.6431535269709544,
+    "pk": 0.6058091286307054
+   }
+  },
+  {
+   "fixture": {
+    "length": 72,
+    "coders": [
+     [
+      {
+       "start": 0,
+       "end": 16,
+       "value": "B"
+      },
+      {
+       "start": 24,
+       "end": 56,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 7,
+       "end": 12,
+       "value": "C"
+      },
+      {
+       "start": 41,
+       "end": 47,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.1609717558759629,
+    "Do": 24,
+    "De": 28.6045197740113,
+    "inter": 2,
+    "identAlpha": 0.18605518269947807,
+    "wd": 0.6825396825396826,
+    "pk": 0.6825396825396826
+   }
+  },
+  {
+   "fixture": {
+    "length": 208,
+    "coders": [
+     [
+      {
+       "start": 10,
+       "end": 40,
+       "value": "C"
+      },
+      {
+       "start": 70,
+       "end": 108,
+       "value": "B"
+      },
+      {
+       "start": 122,
+       "end": 155,
+       "value": "C"
+      },
+      {
+       "start": 157,
+       "end": 181,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 24,
+       "value": "B"
+      },
+      {
+       "start": 32,
+       "end": 72,
+       "value": "C"
+      },
+      {
+       "start": 81,
+       "end": 110,
+       "value": "A"
+      },
+      {
+       "start": 140,
+       "end": 158,
+       "value": "C"
+      },
+      {
+       "start": 187,
+       "end": 203,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 41,
+       "value": "B"
+      },
+      {
+       "start": 71,
+       "end": 81,
+       "value": "A"
+      },
+      {
+       "start": 87,
+       "end": 104,
+       "value": "A"
+      },
+      {
+       "start": 105,
+       "end": 140,
+       "value": "A"
+      },
+      {
+       "start": 170,
+       "end": 204,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.043535390235769134,
+    "Do": 42,
+    "De": 40.24779647435897,
+    "inter": 20,
+    "identAlpha": -0.14399042571379717,
+    "wd": 0.5357142857142857,
+    "pk": 0.4846938775510204
+   }
+  },
+  {
+   "fixture": {
+    "length": 159,
+    "coders": [
+     [
+      {
+       "start": 8,
+       "end": 36,
+       "value": "C"
+      },
+      {
+       "start": 38,
+       "end": 72,
+       "value": "A"
+      },
+      {
+       "start": 90,
+       "end": 117,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 24,
+       "value": "C"
+      },
+      {
+       "start": 45,
+       "end": 70,
+       "value": "C"
+      },
+      {
+       "start": 89,
+       "end": 106,
+       "value": "B"
+      },
+      {
+       "start": 129,
+       "end": 136,
+       "value": "C"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.4413429908906883,
+    "Do": 18.75,
+    "De": 33.56263269639066,
+    "inter": 4,
+    "identAlpha": 0.5085149010768846,
+    "wd": 0.527027027027027,
+    "pk": 0.5135135135135135
+   }
+  },
+  {
+   "fixture": {
+    "length": 314,
+    "coders": [
+     [
+      {
+       "start": 3,
+       "end": 39,
+       "value": "A"
+      },
+      {
+       "start": 41,
+       "end": 53,
+       "value": "B"
+      },
+      {
+       "start": 74,
+       "end": 96,
+       "value": "A"
+      },
+      {
+       "start": 107,
+       "end": 124,
+       "value": "B"
+      },
+      {
+       "start": 128,
+       "end": 136,
+       "value": "A"
+      },
+      {
+       "start": 141,
+       "end": 174,
+       "value": "B"
+      },
+      {
+       "start": 181,
+       "end": 186,
+       "value": "B"
+      },
+      {
+       "start": 196,
+       "end": 206,
+       "value": "C"
+      },
+      {
+       "start": 225,
+       "end": 263,
+       "value": "C"
+      },
+      {
+       "start": 277,
+       "end": 284,
+       "value": "C"
+      },
+      {
+       "start": 297,
+       "end": 306,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 23,
+       "value": "C"
+      },
+      {
+       "start": 42,
+       "end": 71,
+       "value": "B"
+      },
+      {
+       "start": 85,
+       "end": 117,
+       "value": "B"
+      },
+      {
+       "start": 137,
+       "end": 172,
+       "value": "B"
+      },
+      {
+       "start": 180,
+       "end": 200,
+       "value": "A"
+      },
+      {
+       "start": 218,
+       "end": 253,
+       "value": "B"
+      },
+      {
+       "start": 267,
+       "end": 282,
+       "value": "B"
+      },
+      {
+       "start": 283,
+       "end": 312,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 7,
+       "end": 26,
+       "value": "C"
+      },
+      {
+       "start": 42,
+       "end": 68,
+       "value": "B"
+      },
+      {
+       "start": 70,
+       "end": 77,
+       "value": "A"
+      },
+      {
+       "start": 91,
+       "end": 114,
+       "value": "B"
+      },
+      {
+       "start": 118,
+       "end": 146,
+       "value": "A"
+      },
+      {
+       "start": 159,
+       "end": 197,
+       "value": "C"
+      },
+      {
+       "start": 217,
+       "end": 227,
+       "value": "A"
+      },
+      {
+       "start": 235,
+       "end": 248,
+       "value": "C"
+      },
+      {
+       "start": 250,
+       "end": 265,
+       "value": "B"
+      },
+      {
+       "start": 275,
+       "end": 282,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.052350121613151446,
+    "Do": 31.075,
+    "De": 32.79164669223394,
+    "inter": 40,
+    "identAlpha": 0.018224479300591345,
+    "wd": 0.501628664495114,
+    "pk": 0.4592833876221498
+   }
+  },
+  {
+   "fixture": {
+    "length": 310,
+    "coders": [
+     [
+      {
+       "start": 4,
+       "end": 10,
+       "value": "C"
+      },
+      {
+       "start": 15,
+       "end": 32,
+       "value": "C"
+      },
+      {
+       "start": 41,
+       "end": 61,
+       "value": "B"
+      },
+      {
+       "start": 66,
+       "end": 84,
+       "value": "B"
+      },
+      {
+       "start": 108,
+       "end": 124,
+       "value": "A"
+      },
+      {
+       "start": 142,
+       "end": 152,
+       "value": "B"
+      },
+      {
+       "start": 176,
+       "end": 197,
+       "value": "C"
+      },
+      {
+       "start": 217,
+       "end": 257,
+       "value": "C"
+      },
+      {
+       "start": 282,
+       "end": 302,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 4,
+       "end": 12,
+       "value": "A"
+      },
+      {
+       "start": 34,
+       "end": 63,
+       "value": "C"
+      },
+      {
+       "start": 64,
+       "end": 86,
+       "value": "A"
+      },
+      {
+       "start": 94,
+       "end": 133,
+       "value": "C"
+      },
+      {
+       "start": 163,
+       "end": 191,
+       "value": "A"
+      },
+      {
+       "start": 211,
+       "end": 224,
+       "value": "B"
+      },
+      {
+       "start": 227,
+       "end": 248,
+       "value": "B"
+      },
+      {
+       "start": 270,
+       "end": 306,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 6,
+       "end": 15,
+       "value": "A"
+      },
+      {
+       "start": 22,
+       "end": 52,
+       "value": "C"
+      },
+      {
+       "start": 72,
+       "end": 107,
+       "value": "C"
+      },
+      {
+       "start": 111,
+       "end": 151,
+       "value": "C"
+      },
+      {
+       "start": 171,
+       "end": 187,
+       "value": "B"
+      },
+      {
+       "start": 193,
+       "end": 208,
+       "value": "B"
+      },
+      {
+       "start": 227,
+       "end": 250,
+       "value": "B"
+      },
+      {
+       "start": 257,
+       "end": 295,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.15398709271210453,
+    "Do": 29.466666666666665,
+    "De": 34.83004385964912,
+    "inter": 30,
+    "identAlpha": 0.19674009932509873,
+    "wd": 0.5397350993377483,
+    "pk": 0.5099337748344371
+   }
+  },
+  {
+   "fixture": {
+    "length": 276,
+    "coders": [
+     [
+      {
+       "start": 1,
+       "end": 28,
+       "value": "A"
+      },
+      {
+       "start": 34,
+       "end": 62,
+       "value": "C"
+      },
+      {
+       "start": 84,
+       "end": 118,
+       "value": "B"
+      },
+      {
+       "start": 124,
+       "end": 138,
+       "value": "C"
+      },
+      {
+       "start": 148,
+       "end": 163,
+       "value": "A"
+      },
+      {
+       "start": 168,
+       "end": 177,
+       "value": "C"
+      },
+      {
+       "start": 204,
+       "end": 233,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 10,
+       "end": 41,
+       "value": "A"
+      },
+      {
+       "start": 69,
+       "end": 99,
+       "value": "C"
+      },
+      {
+       "start": 108,
+       "end": 138,
+       "value": "C"
+      },
+      {
+       "start": 157,
+       "end": 162,
+       "value": "C"
+      },
+      {
+       "start": 175,
+       "end": 200,
+       "value": "B"
+      },
+      {
+       "start": 209,
+       "end": 220,
+       "value": "B"
+      },
+      {
+       "start": 221,
+       "end": 237,
+       "value": "C"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 10,
+       "value": "B"
+      },
+      {
+       "start": 18,
+       "end": 46,
+       "value": "B"
+      },
+      {
+       "start": 48,
+       "end": 87,
+       "value": "C"
+      },
+      {
+       "start": 99,
+       "end": 121,
+       "value": "A"
+      },
+      {
+       "start": 144,
+       "end": 160,
+       "value": "A"
+      },
+      {
+       "start": 179,
+       "end": 187,
+       "value": "C"
+      },
+      {
+       "start": 188,
+       "end": 205,
+       "value": "B"
+      },
+      {
+       "start": 208,
+       "end": 235,
+       "value": "A"
+      },
+      {
+       "start": 242,
+       "end": 260,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.031262571936441996,
+    "Do": 31.625,
+    "De": 32.64558494783905,
+    "inter": 32,
+    "identAlpha": -0.0028989620499513258,
+    "wd": 0.5243445692883895,
+    "pk": 0.50187265917603
+   }
+  },
+  {
+   "fixture": {
+    "length": 281,
+    "coders": [
+     [
+      {
+       "start": 4,
+       "end": 35,
+       "value": "C"
+      },
+      {
+       "start": 38,
+       "end": 68,
+       "value": "B"
+      },
+      {
+       "start": 84,
+       "end": 116,
+       "value": "B"
+      },
+      {
+       "start": 134,
+       "end": 168,
+       "value": "A"
+      },
+      {
+       "start": 194,
+       "end": 219,
+       "value": "B"
+      },
+      {
+       "start": 224,
+       "end": 262,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 13,
+       "value": "B"
+      },
+      {
+       "start": 28,
+       "end": 41,
+       "value": "C"
+      },
+      {
+       "start": 57,
+       "end": 67,
+       "value": "A"
+      },
+      {
+       "start": 87,
+       "end": 116,
+       "value": "B"
+      },
+      {
+       "start": 117,
+       "end": 125,
+       "value": "A"
+      },
+      {
+       "start": 154,
+       "end": 188,
+       "value": "B"
+      },
+      {
+       "start": 193,
+       "end": 225,
+       "value": "C"
+      },
+      {
+       "start": 251,
+       "end": 258,
+       "value": "A"
+      },
+      {
+       "start": 269,
+       "end": 277,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.11471740346950199,
+    "Do": 32,
+    "De": 36.146649810366625,
+    "inter": 11,
+    "identAlpha": 0.06979660729271775,
+    "wd": 0.5111111111111111,
+    "pk": 0.4074074074074074
+   }
+  },
+  {
+   "fixture": {
+    "length": 159,
+    "coders": [
+     [
+      {
+       "start": 1,
+       "end": 12,
+       "value": "B"
+      },
+      {
+       "start": 34,
+       "end": 57,
+       "value": "A"
+      },
+      {
+       "start": 64,
+       "end": 97,
+       "value": "B"
+      },
+      {
+       "start": 114,
+       "end": 121,
+       "value": "A"
+      },
+      {
+       "start": 130,
+       "end": 137,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 1,
+       "end": 9,
+       "value": "B"
+      },
+      {
+       "start": 30,
+       "end": 70,
+       "value": "A"
+      },
+      {
+       "start": 80,
+       "end": 113,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 9,
+       "end": 49,
+       "value": "A"
+      },
+      {
+       "start": 57,
+       "end": 91,
+       "value": "B"
+      },
+      {
+       "start": 95,
+       "end": 109,
+       "value": "C"
+      },
+      {
+       "start": 136,
+       "end": 154,
+       "value": "B"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.14029438774281444,
+    "Do": 30.944444444444443,
+    "De": 35.99423337856174,
+    "inter": 18,
+    "identAlpha": 0.019521428369635885,
+    "wd": 0.4605263157894737,
+    "pk": 0.4605263157894737
+   }
+  },
+  {
+   "fixture": {
+    "length": 130,
+    "coders": [
+     [
+      {
+       "start": 10,
+       "end": 41,
+       "value": "A"
+      },
+      {
+       "start": 60,
+       "end": 93,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 5,
+       "end": 26,
+       "value": "C"
+      },
+      {
+       "start": 34,
+       "end": 68,
+       "value": "A"
+      },
+      {
+       "start": 92,
+       "end": 120,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.2919493152438244,
+    "Do": 51.5,
+    "De": 39.86224489795919,
+    "inter": 4,
+    "identAlpha": -0.5011848341232228,
+    "wd": 0.4700854700854701,
+    "pk": 0.4700854700854701
+   }
+  },
+  {
+   "fixture": {
+    "length": 281,
+    "coders": [
+     [
+      {
+       "start": 5,
+       "end": 16,
+       "value": "C"
+      },
+      {
+       "start": 44,
+       "end": 71,
+       "value": "C"
+      },
+      {
+       "start": 87,
+       "end": 98,
+       "value": "B"
+      },
+      {
+       "start": 108,
+       "end": 132,
+       "value": "A"
+      },
+      {
+       "start": 133,
+       "end": 160,
+       "value": "A"
+      },
+      {
+       "start": 188,
+       "end": 224,
+       "value": "C"
+      },
+      {
+       "start": 225,
+       "end": 259,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 8,
+       "end": 30,
+       "value": "B"
+      },
+      {
+       "start": 31,
+       "end": 41,
+       "value": "A"
+      },
+      {
+       "start": 58,
+       "end": 78,
+       "value": "A"
+      },
+      {
+       "start": 98,
+       "end": 132,
+       "value": "C"
+      },
+      {
+       "start": 152,
+       "end": 170,
+       "value": "B"
+      },
+      {
+       "start": 176,
+       "end": 211,
+       "value": "C"
+      },
+      {
+       "start": 217,
+       "end": 241,
+       "value": "A"
+      }
+     ],
+     [
+      {
+       "start": 0,
+       "end": 40,
+       "value": "A"
+      },
+      {
+       "start": 60,
+       "end": 67,
+       "value": "A"
+      },
+      {
+       "start": 84,
+       "end": 94,
+       "value": "C"
+      },
+      {
+       "start": 99,
+       "end": 117,
+       "value": "C"
+      },
+      {
+       "start": 142,
+       "end": 180,
+       "value": "A"
+      },
+      {
+       "start": 181,
+       "end": 218,
+       "value": "A"
+      },
+      {
+       "start": 223,
+       "end": 235,
+       "value": "B"
+      },
+      {
+       "start": 237,
+       "end": 264,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": 0.06658727642496465,
+    "Do": 33.03448275862069,
+    "De": 35.39107827038862,
+    "inter": 29,
+    "identAlpha": 0.10073210412147504,
+    "wd": 0.5735294117647058,
+    "pk": 0.5404411764705882
+   }
+  },
+  {
+   "fixture": {
+    "length": 109,
+    "coders": [
+     [
+      {
+       "start": 3,
+       "end": 23,
+       "value": "A"
+      },
+      {
+       "start": 26,
+       "end": 55,
+       "value": "B"
+      },
+      {
+       "start": 67,
+       "end": 88,
+       "value": "B"
+      }
+     ],
+     [
+      {
+       "start": 2,
+       "end": 25,
+       "value": "B"
+      },
+      {
+       "start": 49,
+       "end": 85,
+       "value": "A"
+      }
+     ]
+    ]
+   },
+   "expected": {
+    "alpha": -0.14881872378008398,
+    "Do": 40.333333333333336,
+    "De": 35.10852713178294,
+    "inter": 3,
+    "identAlpha": 0.055888223552894134,
+    "wd": 0.3465346534653465,
+    "pk": 0.297029702970297
+   }
+  }
+ ],
+ "saturation": [
+  {
+   "fixture": {
+    "counts": [
+     4,
+     0,
+     8,
+     2,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "base": 5,
+    "run": 3,
+    "threshold": 0.05
+   },
+   "expected": {
+    "notation": "5+3",
+    "at": 5,
+    "base": 14,
+    "ratios": [
+     0,
+     0.07142857142857142,
+     0.07142857142857142,
+     0.07142857142857142,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     7,
+     3,
+     2,
+     0,
+     0,
+     0
+    ],
+    "base": 5,
+    "run": 3,
+    "threshold": 0.0
+   },
+   "expected": {
+    "notation": null,
+    "at": null,
+    "base": 12,
+    "ratios": []
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     0,
+     1,
+     7,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "base": 5,
+    "run": 3,
+    "threshold": 0.05
+   },
+   "expected": {
+    "notation": "5+3",
+    "at": 5,
+    "base": 9,
+    "ratios": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     2,
+     3,
+     11,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    "base": 4,
+    "run": 3,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "4+3",
+    "at": 4,
+    "base": 17,
+    "ratios": [
+     0.058823529411764705,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.058823529411764705
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1
+    ],
+    "base": 4,
+    "run": 2,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "4+2",
+    "at": 4,
+    "base": 3,
+    "ratios": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.3333333333333333,
+     0.3333333333333333,
+     0,
+     0,
+     0.3333333333333333
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     1,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    "base": 5,
+    "run": 3,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "5+3",
+    "at": 5,
+    "base": 3,
+    "ratios": [
+     0,
+     0,
+     0,
+     0,
+     0.3333333333333333
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     1,
+     0,
+     0,
+     4,
+     0,
+     1,
+     0
+    ],
+    "base": 3,
+    "run": 3,
+    "threshold": 0.0
+   },
+   "expected": {
+    "notation": null,
+    "at": null,
+    "base": 1,
+    "ratios": [
+     5,
+     1
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     1,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    "base": 4,
+    "run": 3,
+    "threshold": 0.0
+   },
+   "expected": {
+    "notation": "4+3",
+    "at": 4,
+    "base": 3,
+    "ratios": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.3333333333333333
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     1,
+     2,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "base": 4,
+    "run": 3,
+    "threshold": 0.0
+   },
+   "expected": {
+    "notation": "4+3",
+    "at": 4,
+    "base": 5,
+    "ratios": [
+     0,
+     0,
+     0,
+     0,
+     0.2,
+     0.2,
+     0.2,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     2,
+     2,
+     2,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "base": 3,
+    "run": 2,
+    "threshold": 0.0
+   },
+   "expected": {
+    "notation": "4+2",
+    "at": 4,
+    "base": 6,
+    "ratios": [
+     0.16666666666666666,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     0,
+     1,
+     1,
+     4,
+     0,
+     2,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    "base": 3,
+    "run": 3,
+    "threshold": 0.05
+   },
+   "expected": {
+    "notation": null,
+    "at": null,
+    "base": 2,
+    "ratios": [
+     3,
+     1,
+     1,
+     0.5,
+     0.5,
+     0.5
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     0,
+     1,
+     5,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0
+    ],
+    "base": 4,
+    "run": 2,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "4+2",
+    "at": 4,
+    "base": 6,
+    "ratios": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.16666666666666666,
+     0.16666666666666666,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     0,
+     1,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0
+    ],
+    "base": 4,
+    "run": 3,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "4+3",
+    "at": 4,
+    "base": 3,
+    "ratios": [
+     0,
+     0,
+     0.3333333333333333,
+     0.3333333333333333
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     1,
+     1,
+     6,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    "base": 3,
+    "run": 3,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "3+3",
+    "at": 3,
+    "base": 8,
+    "ratios": [
+     0,
+     0.125,
+     0.125,
+     0.125
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     3,
+     4,
+     0,
+     2,
+     0,
+     1,
+     0
+    ],
+    "base": 5,
+    "run": 3,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": null,
+    "at": null,
+    "base": 9,
+    "ratios": []
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     7,
+     3,
+     3,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    "base": 4,
+    "run": 2,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "4+2",
+    "at": 4,
+    "base": 14,
+    "ratios": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.07142857142857142
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     2,
+     0,
+     0,
+     3,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "base": 4,
+    "run": 3,
+    "threshold": 0.05
+   },
+   "expected": {
+    "notation": "4+3",
+    "at": 4,
+    "base": 5,
+    "ratios": [
+     0,
+     0.2,
+     0.2,
+     0.2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     20,
+     2,
+     7,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    "base": 5,
+    "run": 3,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "5+3",
+    "at": 5,
+    "base": 31,
+    "ratios": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.03225806451612903,
+     0.03225806451612903,
+     0.03225806451612903
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     12,
+     1,
+     3,
+     3,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    "base": 4,
+    "run": 3,
+    "threshold": 0.1
+   },
+   "expected": {
+    "notation": "4+3",
+    "at": 4,
+    "base": 19,
+    "ratios": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.05263157894736842,
+     0.05263157894736842,
+     0.05263157894736842
+    ]
+   }
+  },
+  {
+   "fixture": {
+    "counts": [
+     7,
+     2,
+     1,
+     3,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    "base": 3,
+    "run": 2,
+    "threshold": 0.0
+   },
+   "expected": {
+    "notation": "6+2",
+    "at": 6,
+    "base": 10,
+    "ratios": [
+     0.3,
+     0.1,
+     0.1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0.1,
+     0.1,
+     0,
+     0
+    ]
+   }
+  }
+ ],
+ "wilson": [
+  {
+   "fixture": {
+    "k": 0,
+    "n": 3
+   },
+   "expected": {
+    "estimate": 0,
+    "lo": 0,
+    "hi": 0.5614970317550455
+   }
+  },
+  {
+   "fixture": {
+    "k": 0,
+    "n": 3
+   },
+   "expected": {
+    "estimate": 0,
+    "lo": 0,
+    "hi": 0.5614970317550455
+   }
+  },
+  {
+   "fixture": {
+    "k": 3,
+    "n": 3
+   },
+   "expected": {
+    "estimate": 1,
+    "lo": 0.43850296824495455,
+    "hi": 1
+   }
+  },
+  {
+   "fixture": {
+    "k": 3,
+    "n": 3
+   },
+   "expected": {
+    "estimate": 1,
+    "lo": 0.43850296824495455,
+    "hi": 1
+   }
+  },
+  {
+   "fixture": {
+    "k": 6,
+    "n": 7
+   },
+   "expected": {
+    "estimate": 0.8571428571428571,
+    "lo": 0.4868721707256811,
+    "hi": 0.9743203756552565
+   }
+  },
+  {
+   "fixture": {
+    "k": 2,
+    "n": 7
+   },
+   "expected": {
+    "estimate": 0.2857142857142857,
+    "lo": 0.08221892400405678,
+    "hi": 0.6410655481673808
+   }
+  },
+  {
+   "fixture": {
+    "k": 0,
+    "n": 7
+   },
+   "expected": {
+    "estimate": 0,
+    "lo": 0,
+    "hi": 0.3543304350666875
+   }
+  },
+  {
+   "fixture": {
+    "k": 1,
+    "n": 7
+   },
+   "expected": {
+    "estimate": 0.14285714285714285,
+    "lo": 0.02567962434474355,
+    "hi": 0.5131278292743189
+   }
+  },
+  {
+   "fixture": {
+    "k": 10,
+    "n": 10
+   },
+   "expected": {
+    "estimate": 1,
+    "lo": 0.7224672001371107,
+    "hi": 1
+   }
+  },
+  {
+   "fixture": {
+    "k": 4,
+    "n": 10
+   },
+   "expected": {
+    "estimate": 0.4,
+    "lo": 0.16818032970623614,
+    "hi": 0.6873262302663417
+   }
+  },
+  {
+   "fixture": {
+    "k": 2,
+    "n": 10
+   },
+   "expected": {
+    "estimate": 0.2,
+    "lo": 0.05668215145437519,
+    "hi": 0.5098375284633583
+   }
+  },
+  {
+   "fixture": {
+    "k": 1,
+    "n": 10
+   },
+   "expected": {
+    "estimate": 0.1,
+    "lo": 0.017876213095072868,
+    "hi": 0.4041500267952385
+   }
+  },
+  {
+   "fixture": {
+    "k": 14,
+    "n": 25
+   },
+   "expected": {
+    "estimate": 0.56,
+    "lo": 0.3706733186979878,
+    "hi": 0.7333436111893266
+   }
+  },
+  {
+   "fixture": {
+    "k": 24,
+    "n": 25
+   },
+   "expected": {
+    "estimate": 0.96,
+    "lo": 0.8045593626380625,
+    "hi": 0.9929037664980127
+   }
+  },
+  {
+   "fixture": {
+    "k": 23,
+    "n": 25
+   },
+   "expected": {
+    "estimate": 0.92,
+    "lo": 0.7503389104960468,
+    "hi": 0.9777795987151524
+   }
+  },
+  {
+   "fixture": {
+    "k": 2,
+    "n": 25
+   },
+   "expected": {
+    "estimate": 0.08,
+    "lo": 0.022220401284847563,
+    "hi": 0.24966108950395313
+   }
+  },
+  {
+   "fixture": {
+    "k": 3,
+    "n": 40
+   },
+   "expected": {
+    "estimate": 0.075,
+    "lo": 0.025836025774588198,
+    "hi": 0.19864233524310543
+   }
+  },
+  {
+   "fixture": {
+    "k": 15,
+    "n": 40
+   },
+   "expected": {
+    "estimate": 0.375,
+    "lo": 0.24222979167233266,
+    "hi": 0.5296756086269889
+   }
+  },
+  {
+   "fixture": {
+    "k": 22,
+    "n": 40
+   },
+   "expected": {
+    "estimate": 0.55,
+    "lo": 0.39829091798932054,
+    "hi": 0.6929469218909508
+   }
+  },
+  {
+   "fixture": {
+    "k": 40,
+    "n": 40
+   },
+   "expected": {
+    "estimate": 1,
+    "lo": 0.9123783988027135,
+    "hi": 1
+   }
+  },
+  {
+   "fixture": {
+    "k": 7,
+    "n": 100
+   },
+   "expected": {
+    "estimate": 0.07,
+    "lo": 0.03431926106727268,
+    "hi": 0.137495147390735
+   }
+  },
+  {
+   "fixture": {
+    "k": 23,
+    "n": 100
+   },
+   "expected": {
+    "estimate": 0.23,
+    "lo": 0.15843265880303448,
+    "hi": 0.3215438302287378
+   }
+  },
+  {
+   "fixture": {
+    "k": 66,
+    "n": 100
+   },
+   "expected": {
+    "estimate": 0.66,
+    "lo": 0.5627772885472462,
+    "hi": 0.7453847920265184
+   }
+  },
+  {
+   "fixture": {
+    "k": 86,
+    "n": 100
+   },
+   "expected": {
+    "estimate": 0.86,
+    "lo": 0.7786281178903616,
+    "hi": 0.9147365634006086
+   }
+  },
+  {
+   "fixture": {
+    "k": 233,
+    "n": 250
+   },
+   "expected": {
+    "estimate": 0.932,
+    "lo": 0.8938107478142963,
+    "hi": 0.9571140814216397
+   }
+  },
+  {
+   "fixture": {
+    "k": 69,
+    "n": 250
+   },
+   "expected": {
+    "estimate": 0.276,
+    "lo": 0.2242945999169993,
+    "hi": 0.3344851182569598
+   }
+  },
+  {
+   "fixture": {
+    "k": 54,
+    "n": 250
+   },
+   "expected": {
+    "estimate": 0.216,
+    "lo": 0.16949229589420706,
+    "hi": 0.2711034182192054
+   }
+  },
+  {
+   "fixture": {
+    "k": 168,
+    "n": 250
+   },
+   "expected": {
+    "estimate": 0.672,
+    "lo": 0.6115836088885267,
+    "hi": 0.7272105360850405
+   }
+  }
+ ]
+}

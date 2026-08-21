@@ -1,0 +1,70 @@
+---
+title: "Reporting"
+---
+
+
+Many journals now require a reporting checklist with a qualitative
+submission. Filling one in from memory at the end is how the numbers in a
+methods section drift away from what the analysis actually did. These two
+functions produce the checklist with the derivable parts already answered
+from your data.
+
+## COREQ
+
+Thirty-two items across research team, study design, and analysis and
+findings, aimed at interviews and focus groups.
+
+```r
+cq <- qda_coreq(fragments = frag, history = history, codebook = codebook)
+cq[cq$filled, c("item", "name", "answer")]
+writeLines(qda_coreq_markdown(cq))
+```
+
+Six items come out of the data: how many documents, how many coders, how
+large the code system, whether saturation was reached, what software was
+used, and how many quotable fragments there are. The remaining twenty-six are
+marked *To be completed*, which is the other half of the point: the gaps are
+visible instead of forgotten.
+
+::: {.callout-warning title="COREQ never asks about agreement"}
+
+There is no item for intercoder reliability. If you computed it, it
+belongs in your answer to item 24 or 25, and the checklist will not
+prompt you.
+:::
+
+## SRQR
+
+Twenty-one standards covering the whole report rather than interviews
+specifically. Reach for it when your material is not interview transcripts,
+or when the journal names it.
+
+```r
+sq <- qda_srqr(fragments = frag, history = history)
+writeLines(qda_srqr_markdown(sq))
+```
+
+Unlike COREQ, SRQR **does** have a home for the agreement figure: standard
+S15, techniques to enhance trustworthiness, names the audit trail explicitly,
+and a coding log is one. If both checklists are acceptable to your journal
+and you have reliability figures to report, that is a reason to prefer SRQR.
+
+## What is filled, and what is not
+
+Only what the exports genuinely determine. Nothing here writes your
+methodological rationale, and nothing guesses. Where an item needs a file you
+did not pass, it stays empty rather than being answered from a default:
+saturation needs the history export, the coding tree needs the codebook.
+
+The checklist items are reproduced verbatim from the published tables. A
+checklist paraphrased is one a reviewer cannot match against the original,
+which defeats the purpose of having a standard.
+
+## Both, in one go
+
+Nothing stops you generating both and keeping whichever the journal asks for:
+
+```r
+qda_coreq_markdown(qda_coreq(frag, history), file = "coreq.md")
+qda_srqr_markdown(qda_srqr(frag, history), file = "srqr.md")
+```

@@ -1,0 +1,181 @@
+---
+title: "Analysing zotQDA exports"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analysing zotQDA exports}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 6,
+                      fig.height = 3.5)
+```
+
+```{r setup}
+library(qdaR)
+```
+
+## Where the data comes from
+
+The plugin exports its data as a small family of CSV files. The first column
+of every file says what kind of export it is and which version of the exchange
+format it follows. `qdaR` checks both against the contract file and stops with
+an error when it meets a version it has never seen -- guessing would be worse
+than failing here, since a misread column ends up in somebody's findings
+without anyone noticing.
+
+```{r}
+qda_formats()[, c("format", "file", "grain")]
+```
+
+This vignette runs entirely on reference files installed with the package, so
+you can follow along without a Zotero installation:
+
+```{r}
+frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+attr(frag, "qda_format")
+attr(frag, "qda_grain")
+```
+
+## Codes carry an identity, not just a name
+
+Codes get renamed, moved and merged while a project matures. Every export
+therefore names each code twice: `code` holds the path a person reads, and
+`codeId` holds a stable identifier that stays put through all of that
+housekeeping. The distinction matters for any analysis that runs more than
+once. If it groups by the path, a code vanishes from the results as soon as
+somebody renames it in Zotero; grouped by `codeId`, it simply follows along.
+
+```{r}
+frag[, c("code", "codeId")]
+```
+
+## The plugin's figures, drawn here
+
+```{r}
+qda_plot_frequencies(frag)
+```
+
+```{r}
+hist <- qda_read_history(qda_example("zotqda-history.csv"))
+qda_plot_saturation(hist)
+```
+
+The original Vega-Lite charts can also be rendered unchanged with
+`qda_spec_render()` when the *vegawidget* package is available -- useful when
+a figure must look exactly as it did in the plugin.
+
+## What the plugins deliberately leave out
+
+qdaZ sticks to description and never runs a significance test. That is a
+considered position, not a gap: an inferential statistic invites claims that
+many qualitative designs cannot carry. If your design does support one, this
+is where you run it -- and you pick the test yourself.
+
+```{r}
+res <- suppressWarnings(qda_chisq(frag, group = "citekey"))
+res$table
+res$cramers_v
+res$expected_ok
+```
+
+Note `expected_ok`. With the tiny reference table the chi-squared
+approximation does not hold, so the function reports Fisher's exact test and
+says so rather than printing a p-value that looks respectable and is not.
+
+Codes can also be arranged by the segments they share:
+
+```{r}
+qda_code_distance(frag, min_n = 1)
+```
+
+```{r}
+cl <- qda_cluster(frag, min_n = 1)
+cl$cophenetic
+```
+
+The cophenetic correlation is `NA` here because two codes give a single
+distance, which has no variance to correlate. A dendrogram always looks
+convincing; this number tells you whether it deserves to.
+
+## Consensus data
+
+A code-system consensus run in zotQDA ends with a mapping: this coder's code
+corresponds to that consensus code. The mapping travels as ordinary data, and
+`qda_apply_mapping()` does nothing more than add a `consensusCode` column next
+to the original coding. Nothing gets rewritten. Had the codings themselves
+been rewritten to the consensus system, any agreement you later computed on it
+would come out inflated -- the disagreements would have been edited away
+first.
+
+```{r}
+map <- qda_read_mapping(qda_example("zotqda-konsens-abbildung.csv"))
+head(qda_apply_mapping(frag, map)[, c("code", "consensusCode")])
+```
+
+## How well did the coders agree?
+
+Reliability is the one place where an independent reimplementation earns its
+keep. qdaR recomputes the coefficients the plugin reports, in a different
+language, from the exported file alone -- so a figure that appears in a
+methods section has been produced twice, by two code bases that share nothing
+but the contract. The package's test suite checks this against frozen
+plugin results on randomly generated coder matrices.
+
+The fragments export is long; the measures need a unit-by-coder matrix.
+
+```{r}
+frag2 <- data.frame(
+  annotationKey = rep(paste0("s", 1:6), each = 2),
+  codedBy = rep(c("ann", "bob"), 6),
+  code = c("A", "A", "A", "A", "A", "A",
+           "A", "A", "A", "A", "B", "A")
+)
+u <- qda_units(frag2)
+qda_agreement(u)
+```
+
+Note what happened there: the coders disagreed once in six segments, and
+Cohen's kappa still came out at zero. That is not a defect of the coding but
+the marginals -- almost everything is `A`, so chance alone would produce this
+much agreement. Gwet's AC1 is the coefficient that stays interpretable in
+that situation, which is why both are reported side by side. A single
+coefficient never settles the question.
+
+Building the matrix forces two decisions. Both are easy to get silently wrong
+in a hand-rolled script, so `qda_units()` makes you take them consciously:
+
+* A segment that no coder coded still says something: both coders judged it
+  irrelevant, and that is agreement too. Such segments only enter the matrix
+  when you pass the `uncoded` export. Without it, your figures describe just
+  the material somebody marked -- a different and usually friendlier question.
+* When one coder gave a segment several codes, there is no single value to
+  compare. The segment is set aside and counted in `multi_set_aside`. Quote
+  that count next to the coefficient; a kappa that quietly dropped a tenth of
+  the material is not the
+  kappa of the study. The honest way to include such material is the
+  per-code binary view, `qda_units_binary()`.
+
+### Where in the code system the agreement is lost
+
+A hierarchical code system can be read at several resolutions. Coders who
+split over `Belastung/beruflich` against `Belastung/privat` still agree that
+the segment is about `Belastung`. Flattening the paths level by level shows
+where the agreement breaks down -- a statement about the code system rather
+than about the coders.
+
+```{r, fig.alt = "Agreement measures against the number of code-system levels kept"}
+u2 <- cbind(ann = c("A/x", "A/y", "B/x", "B/y"),
+            bob = c("A/y", "A/y", "B/x", "B/x"))
+qda_level_agreement(u2)
+qda_plot_level_agreement(u2)
+```
+
+And when the number is disappointing, the confusion table says which pairs of
+categories cost it -- usually a handful, and usually the ones whose
+definitions need work.
+
+```{r}
+qda_confusion(u2, only_disagreements = TRUE)
+```

@@ -1,0 +1,641 @@
+{
+  "contract": "zotqda-exchange",
+  "version": 1,
+  "note": "Column order is part of the contract; readers should nevertheless address columns by name. Every file carries its kind and version in the zotqdaFormat column.",
+  "csv": {
+    "encoding": "UTF-8",
+    "bom": true,
+    "lineBreak": "CRLF",
+    "quoting": "RFC 4180",
+    "delimiterSetting": "extensions.zotqda.csvDelimiter"
+  },
+  "formats": {
+    "fragments": {
+      "id": "fragments/1",
+      "file": "zotqda-fragments.csv",
+      "grain": "one row per annotation x code",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant fragments/1 — identifies file kind and version"
+        },
+        {
+          "key": "code",
+          "type": "path",
+          "note": "full code path without the prefix; empty in uncoded"
+        },
+        {
+          "key": "codeId",
+          "type": "id",
+          "note": "stable code identity; survives rename, move and merge"
+        },
+        {
+          "key": "citekey",
+          "type": "text",
+          "note": "Better BibTeX citekey, empty without BBT"
+        },
+        {
+          "key": "creator",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "year",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "itemKey",
+          "type": "id",
+          "note": "Zotero key of the document"
+        },
+        {
+          "key": "attachmentKey",
+          "type": "id",
+          "note": ""
+        },
+        {
+          "key": "attachmentTitle",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "pageLabel",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "annotationKey",
+          "type": "id",
+          "note": "stable segment identity"
+        },
+        {
+          "key": "annotationType",
+          "type": "enum",
+          "note": "highlight|underline|note|image|ink"
+        },
+        {
+          "key": "color",
+          "type": "text",
+          "note": "#rrggbb"
+        },
+        {
+          "key": "text",
+          "type": "text",
+          "note": "the coded fragment"
+        },
+        {
+          "key": "comment",
+          "type": "text",
+          "note": "segment memo"
+        },
+        {
+          "key": "weight",
+          "type": "number",
+          "note": "0-100 from the comment convention, empty if unset"
+        },
+        {
+          "key": "allTags",
+          "type": "list",
+          "note": "all tags, | separated, including non-code tags"
+        },
+        {
+          "key": "codedBy",
+          "type": "text",
+          "note": "from the coding log; empty for codings made without zotQDA"
+        },
+        {
+          "key": "codedAt",
+          "type": "datetime",
+          "note": ""
+        },
+        {
+          "key": "dateAdded",
+          "type": "datetime",
+          "note": ""
+        },
+        {
+          "key": "dateModified",
+          "type": "datetime",
+          "note": ""
+        },
+        {
+          "key": "positionKind",
+          "type": "enum",
+          "note": "text|pdf, empty when the position is unreadable"
+        },
+        {
+          "key": "positionStart",
+          "type": "number",
+          "note": "character offset, kind=text only"
+        },
+        {
+          "key": "positionEnd",
+          "type": "number",
+          "note": "character offset, exclusive, kind=text only"
+        },
+        {
+          "key": "positionPage",
+          "type": "number",
+          "note": "0-based page index, kind=pdf only"
+        },
+        {
+          "key": "positionRects",
+          "type": "list",
+          "note": "x1 y1 x2 y2 groups joined with |, kind=pdf only"
+        }
+      ]
+    },
+    "uncoded": {
+      "id": "uncoded/1",
+      "file": "zotqda-uncoded.csv",
+      "grain": "one row per annotation without any code (column code is empty)",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant uncoded/1 — identifies file kind and version"
+        },
+        {
+          "key": "code",
+          "type": "path",
+          "note": "full code path without the prefix; empty in uncoded"
+        },
+        {
+          "key": "codeId",
+          "type": "id",
+          "note": "stable code identity; survives rename, move and merge"
+        },
+        {
+          "key": "citekey",
+          "type": "text",
+          "note": "Better BibTeX citekey, empty without BBT"
+        },
+        {
+          "key": "creator",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "year",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "itemKey",
+          "type": "id",
+          "note": "Zotero key of the document"
+        },
+        {
+          "key": "attachmentKey",
+          "type": "id",
+          "note": ""
+        },
+        {
+          "key": "attachmentTitle",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "pageLabel",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "annotationKey",
+          "type": "id",
+          "note": "stable segment identity"
+        },
+        {
+          "key": "annotationType",
+          "type": "enum",
+          "note": "highlight|underline|note|image|ink"
+        },
+        {
+          "key": "color",
+          "type": "text",
+          "note": "#rrggbb"
+        },
+        {
+          "key": "text",
+          "type": "text",
+          "note": "the coded fragment"
+        },
+        {
+          "key": "comment",
+          "type": "text",
+          "note": "segment memo"
+        },
+        {
+          "key": "weight",
+          "type": "number",
+          "note": "0-100 from the comment convention, empty if unset"
+        },
+        {
+          "key": "allTags",
+          "type": "list",
+          "note": "all tags, | separated, including non-code tags"
+        },
+        {
+          "key": "codedBy",
+          "type": "text",
+          "note": "from the coding log; empty for codings made without zotQDA"
+        },
+        {
+          "key": "codedAt",
+          "type": "datetime",
+          "note": ""
+        },
+        {
+          "key": "dateAdded",
+          "type": "datetime",
+          "note": ""
+        },
+        {
+          "key": "dateModified",
+          "type": "datetime",
+          "note": ""
+        },
+        {
+          "key": "positionKind",
+          "type": "enum",
+          "note": "text|pdf, empty when the position is unreadable"
+        },
+        {
+          "key": "positionStart",
+          "type": "number",
+          "note": "character offset, kind=text only"
+        },
+        {
+          "key": "positionEnd",
+          "type": "number",
+          "note": "character offset, exclusive, kind=text only"
+        },
+        {
+          "key": "positionPage",
+          "type": "number",
+          "note": "0-based page index, kind=pdf only"
+        },
+        {
+          "key": "positionRects",
+          "type": "list",
+          "note": "x1 y1 x2 y2 groups joined with |, kind=pdf only"
+        }
+      ]
+    },
+    "codebook": {
+      "id": "codebook/1",
+      "file": "zotqda-codebook.csv",
+      "grain": "one row per code",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant codebook/1 — identifies file kind and version"
+        },
+        {
+          "key": "code",
+          "type": "path",
+          "note": ""
+        },
+        {
+          "key": "codeId",
+          "type": "id",
+          "note": ""
+        },
+        {
+          "key": "parent",
+          "type": "path",
+          "note": ""
+        },
+        {
+          "key": "name",
+          "type": "text",
+          "note": "leaf name"
+        },
+        {
+          "key": "level",
+          "type": "number",
+          "note": "1 = top level"
+        },
+        {
+          "key": "kind",
+          "type": "enum",
+          "note": "project|code"
+        },
+        {
+          "key": "abbrev",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "color",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "memo",
+          "type": "text",
+          "note": "the code definition"
+        },
+        {
+          "key": "nAnnotations",
+          "type": "number",
+          "note": ""
+        },
+        {
+          "key": "nAnnotationsRecursive",
+          "type": "number",
+          "note": ""
+        },
+        {
+          "key": "nDocumentsRecursive",
+          "type": "number",
+          "note": ""
+        },
+        {
+          "key": "defined",
+          "type": "number",
+          "note": "1 = declared in the codebook, not only used as a tag"
+        }
+      ]
+    },
+    "history": {
+      "id": "history/1",
+      "file": "zotqda-history.csv",
+      "grain": "one row per coding-log event (add and remove), oldest first",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant history/1 — identifies file kind and version"
+        },
+        {
+          "key": "ts",
+          "type": "datetime",
+          "note": ""
+        },
+        {
+          "key": "user",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "action",
+          "type": "enum",
+          "note": "add|remove"
+        },
+        {
+          "key": "code",
+          "type": "path",
+          "note": ""
+        },
+        {
+          "key": "annotationKey",
+          "type": "id",
+          "note": ""
+        },
+        {
+          "key": "citekey",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "creator",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "year",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "pageLabel",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "text",
+          "type": "text",
+          "note": ""
+        }
+      ]
+    },
+    "abbrevs": {
+      "id": "abbrevs/1",
+      "file": "zotqda-abbrevs.csv",
+      "grain": "one row per code abbreviation",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant abbrevs/1 — identifies file kind and version"
+        },
+        {
+          "key": "abbrev",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "code",
+          "type": "path",
+          "note": ""
+        }
+      ]
+    },
+    "consensus-mapping": {
+      "id": "consensus-mapping/1",
+      "file": "zotqda-konsens-abbildung.csv",
+      "grain": "one row per coder code; the bridge from phase-2 codings to the consensus system",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant consensus-mapping/1 — identifies file kind and version"
+        },
+        {
+          "key": "coder",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "coderCode",
+          "type": "path",
+          "note": ""
+        },
+        {
+          "key": "consensusCode",
+          "type": "path",
+          "note": "empty when the class was parked"
+        },
+        {
+          "key": "segments",
+          "type": "number",
+          "note": ""
+        },
+        {
+          "key": "coders",
+          "type": "list",
+          "note": "coders of the class, comma separated"
+        }
+      ]
+    },
+    "consensus-protocol": {
+      "id": "consensus-protocol/1",
+      "file": "zotqda-konsens-codesystem.csv",
+      "grain": "one row per consensus decision; the first row is a settings header",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant consensus-protocol/1 — identifies file kind and version"
+        },
+        {
+          "key": "type",
+          "type": "enum",
+          "note": "code|nesting|definition"
+        },
+        {
+          "key": "subject",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "decision",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "votes",
+          "type": "text",
+          "note": "n/k"
+        },
+        {
+          "key": "coders",
+          "type": "list",
+          "note": ""
+        },
+        {
+          "key": "reason",
+          "type": "text",
+          "note": "mandatory for the decided cases"
+        }
+      ]
+    },
+    "consensus-metrics": {
+      "id": "consensus-metrics/1",
+      "file": "zotqda-konsens-kennzahlen.csv",
+      "grain": "one row per coder pair, plus mean and round comparison",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant consensus-metrics/1 — identifies file kind and version"
+        },
+        {
+          "key": "kind",
+          "type": "enum",
+          "note": "pair|mean|round"
+        },
+        {
+          "key": "a",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "b",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "setAgreement",
+          "type": "number",
+          "note": "0-1"
+        },
+        {
+          "key": "sharedCodes",
+          "type": "number",
+          "note": ""
+        },
+        {
+          "key": "structureAgreement",
+          "type": "number",
+          "note": "0-1, empty when too few shared codes"
+        },
+        {
+          "key": "rf",
+          "type": "number",
+          "note": "Robinson-Foulds distance"
+        },
+        {
+          "key": "rfMax",
+          "type": "number",
+          "note": ""
+        }
+      ]
+    },
+    "multi-coded": {
+      "id": "multi-coded/1",
+      "file": "zotqda-mehrfachkodierungen.csv",
+      "grain": "one row per segment carrying more than one genuinely different code",
+      "stampColumn": "zotqdaFormat",
+      "columns": [
+        {
+          "key": "zotqdaFormat",
+          "type": "text",
+          "note": "constant multi-coded/1 — identifies file kind and version"
+        },
+        {
+          "key": "document",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "text",
+          "type": "text",
+          "note": ""
+        },
+        {
+          "key": "codes",
+          "type": "list",
+          "note": "codes joined with +"
+        },
+        {
+          "key": "n",
+          "type": "number",
+          "note": ""
+        },
+        {
+          "key": "coder",
+          "type": "text",
+          "note": ""
+        }
+      ]
+    }
+  }
+}

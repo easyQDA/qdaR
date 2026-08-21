@@ -1,0 +1,50 @@
+---
+title: "Lizenz"
+---
+
+**AGPL-3.0-or-later**, dieselben Bedingungen wie bei zotQDA, qdaZ und dem
+Python-Zwilling qdaPy. Der Volltext kommt mit R, in
+`share/licenses/AGPL-3`.
+
+## Was Sie mit qdaR erarbeiten, gehört Ihnen
+
+Abbildungen, Data Frames, Koeffizienten, Berichte, die Analyseskripte, die
+Sie geschrieben haben: Die Lizenz knüpft an nichts davon eine Bedingung.
+Das ist ausdrücklich als Zusatzerlaubnis nach Abschnitt 7 der AGPL
+eingeräumt.
+
+In diesem Paket ist die Erlaubnis Teil der `LICENSE`, denn
+`License: AGPL-3 + file LICENSE` in der `DESCRIPTION` bedeutet *die AGPL
+plus das, was in dieser Datei steht* — dort erklärt ein R-Paket seine
+Zusatzbedingungen. Die anderen Projekte führen denselben Wortlaut in einer
+Datei namens `LICENSE-EXCEPTION.md`.
+
+Streng genommen ändert die Klausel nichts: Eine Copyleft-Lizenz hat noch
+nie auf die Ausgaben eines Programms durchgegriffen, und die Free Software
+Foundation sagt das in ihrer eigenen FAQ. Aber der Glaube, sie täte es, ist
+hartnäckig genug, um eine Ethikkommission oder ein Justiziariat zögern zu
+lassen — und eine Abbildung in einem eingereichten Manuskript ist nicht der
+Ort für eine Lizenzfrage. Deshalb steht es geschrieben.
+
+Die Erlaubnis deckt auch die Fragmente des Pakets ab, die zwangsläufig in
+Ihren Ausgaben landen: Achsenbeschriftungen, Formulierungen in
+Bildunterschriften, die Standardpalette, Spaltennamen zurückgegebener Data
+Frames, Meldungs- und Warntexte.
+
+## Kommerzielle Nutzung braucht keine kommerzielle Lizenz
+
+Das ist das häufigste Missverständnis zur AGPL. Sie dürfen qdaR in einem
+Unternehmen, in bezahlter Beratung, in Auftragsforschung und in bezahlter
+Arbeit einsetzen — ohne jemanden zu fragen und ohne etwas zu zahlen.
+
+Was die AGPL verlangt: Wenn Sie eine *veränderte Fassung* weitergeben oder
+andere sie über ein Netzwerk nutzen lassen, geben Sie die Quellen zu
+denselben Bedingungen weiter. Das ist die einzige Bedingung, und sie gilt
+für alle: qdaR ist **nicht** doppellizenziert, und es gibt keine
+proprietäre Ausnahme zu kaufen.
+
+## Beiträge
+
+Nichts zu unterschreiben. Es gibt keine Contributor-Vereinbarung, weil es
+keine zweite Lizenz gibt, die eine bräuchte. Sie tragen unter der AGPL bei
+und behalten Ihr Urheberrecht.

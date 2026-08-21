@@ -1,0 +1,164 @@
+---
+title: "Was qdaR kann"
+---
+
+
+qdaR liest die Dateien, die die Zotero-Plugins zotQDA und qdaZ exportieren,
+und rechnet die Auswertungen, die eine qualitative Studie berichtet. Es ist
+eine Bibliothek: Es gibt keine Oberfläche, und kodiert wird hier nichts.
+
+Diese Seite zählt auf, was drin ist. Der [Vergleich](vergleich.qmd) zeigt,
+wie es sich gegen MAXQDA, ATLAS.ti und die übrigen schlägt, auch dort, wo
+die voraus sind.
+
+## Lesen und prüfen
+
+| | |
+|---|---|
+| Alle neun Austauschformate | Fragmente, Unkodiertes, Codebuch, Verlauf, Kürzel, die drei Konsensdateien, mehrfach kodierte Segmente |
+| Vertragsprüfung | Jede Datei nennt Art und Version in ihrer ersten Spalte; eine Datei aus einer neueren Formatversion wird abgelehnt statt geraten |
+| Spaltenprüfung | Jede Spalte, die der Vertrag zusagt, muss vorhanden sein (`strict=True`); zusätzliche Spalten sind immer erlaubt |
+| Trennzeichen und Kodierung | UTF-8 mit BOM, `,` oder `;`, je Datei erkannt |
+| Code-Identität | `codeId` überlebt Umbenennen, Verschieben und Zusammenführen, sodass eine Auswertung einem Code über Codebuch-Fassungen hinweg folgen kann |
+
+## Ein REFI-QDA-Projekt lesen
+
+Eine `.qdpx` aus MAXQDA, ATLAS.ti, NVivo, QDA Miner oder Dedoose lässt sich
+unmittelbar lesen; das Paket ist damit auch ohne zotQDA brauchbar. Sie
+trägt eine **Teilmenge** der Auswertungen unten: Codebaum, Kodierende,
+Zeitstempel und Textpositionen bleiben erhalten; die bibliografischen Angaben,
+die unkodierten Segmente, die Rücknahmen im Kodier-Protokoll und die
+Konsensverfahren nicht. `qda_read_qdpx()` benennt, was Ihre Datei ausschließt, und
+[Eine .qdpx lesen](guide/qdpx.qmd) enthält den vollständigen Vergleich.
+
+## Übereinstimmung zwischen Kodierenden
+
+Sechs Koeffizienten, jeder mit einem **95-%-Perzentil-Bootstrap-Intervall** aus
+einem gesäten Zufallsgenerator. Dieselben Daten ergeben hier, in qdaPy und
+im Plugin dasselbe Intervall:
+
+- prozentuale Übereinstimmung
+- Cohens Kappa — [10.1177/001316446002000104](https://doi.org/10.1177/001316446002000104)
+- Kappa nach Brennan und Prediger — [10.1177/001316448104100307](https://doi.org/10.1177/001316448104100307)
+- Fleiss’ Kappa — [10.1037/h0031619](https://doi.org/10.1037/h0031619)
+- Krippendorffs Alpha — [10.1080/19312450709336664](https://doi.org/10.1080/19312450709336664)
+- Gwets AC1 — [10.1348/000711006X126600](https://doi.org/10.1348/000711006x126600)
+
+Dazu die Diagnostik, die einen enttäuschenden Koeffizienten erklärt, statt Sie
+mit ihm allein zu lassen: Prävalenz- und Bias-Index sowie PABAK nach Feinstein
+und Cicchetti ([10.1016/0895-4356(90)90158-L](https://doi.org/10.1016/0895-4356(90)90158-l)),
+Prävalenz mit Wilson-Intervall
+([10.1080/01621459.1927.10502953](https://doi.org/10.1080/01621459.1927.10502953)),
+Übereinstimmung je Code und Übereinstimmung, neu gerechnet auf jeder Ebene der
+Code-Hierarchie.
+
+## Haben die Kodierenden dieselben Stellen markiert?
+
+Alle Koeffizienten oben setzen voraus, dass die Segmente einander bereits
+entsprechen. Diese hier stellen die vorgelagerte Frage:
+
+- **Krippendorffs Unitizing-Alpha** — [10.2307/271061](https://doi.org/10.2307/271061)
+- **WindowDiff** und **Pk** — [10.1162/089120102317341756](https://doi.org/10.1162/089120102317341756), [10.1023/A:1007506220214](https://doi.org/10.1023/a:1007506220214)
+- **Gamma** nach Mathet, Widlöcher und Métivier — [10.1162/COLI_a_00227](https://doi.org/10.1162/coli_a_00227), exakt gelöst per Branch and Bound; geht das Suchbudget aus, verweigert es die Antwort, statt zu nähern
+
+Nur für Textquellen: Ein Rechteck in einem PDF bietet kein Kontinuum, auf dem
+sich Grenzen messen ließen.
+
+## Statistik, die die Plugins auslassen
+
+- Chi-Quadrat mit Cramérs V, exakt, wo die erwarteten Häufigkeiten es
+  erlauben, und sonst als gesäter Monte-Carlo-Test
+- Jaccard-Distanzen zwischen Codes
+- klassische (Torgerson-)Skalierung über `cmdscale`
+- hierarchische Clusteranalyse über `hclust`, mit kophenetischer
+  Korrelation
+- Korrespondenzanalyse über `MASS::corresp`, mit Angabe des
+  Trägheitsanteils, den die Karte zeigt
+
+## Eine Studie planen, bevor es Daten gibt
+
+- **Stichprobenumfang für ein Kappa-Konfidenzintervall** — Donner und Rotondi,
+  [10.2202/1557-4679.1275](https://doi.org/10.2202/1557-4679.1275); Tabelle 2
+  jener Arbeit ist in allen achtundvierzig Zellen nachgerechnet
+- **Wie viele Interviews für ein Thema gegebener Prävalenz** — Fugard und
+  Potts, [10.1080/13645579.2015.1005453](https://doi.org/10.1080/13645579.2015.1005453),
+  Tabelle 1 Zelle für Zelle nachgerechnet
+
+::: {.callout-warning title="Beides ist umstritten, und das Paket sagt es"}
+
+Braun und Clarke lehnen Fallzahlberechnung für die reflexive thematische
+Analyse ab, weil Themen konstruiert und nicht gezählt werden
+([10.1080/13645579.2016.1195588](https://doi.org/10.1080/13645579.2016.1195588)).
+Dieser Einwand gehört neben jede Zahl, die diese Funktionen ausgeben.
+:::
+
+## Fortschritt und Sättigung
+
+- neue Codes je Dokument, in der Reihenfolge der Erstkodierung
+- **Sättigung als berichtbare Kennzahl** nach Guest, Namey und Chen —
+  [10.1371/journal.pone.0232076](https://doi.org/10.1371/journal.pone.0232076),
+  berichtet als „6+2" mit Basis, Lauflänge und Schwelle
+- die Akkumulationsmodelle von Lowe und Kollegen —
+  [10.1177/1525822X17749386](https://doi.org/10.1177/1525822x17749386)
+- Kodierer-Drift: die totale Variationsdistanz zwischen der Codeverteilung
+  eines Kodierers in aufeinanderfolgenden Fenstern
+
+Die Sättigungskennzahl erfasst **allein die Code-Sättigung**. Hennink, Kaiser
+und Marconi ([10.1177/1049732316665344](https://doi.org/10.1177/1049732316665344))
+zeigen, dass die Bedeutungssättigung erheblich später eintritt, und Braun und
+Clarke ([10.1080/2159676X.2019.1704846](https://doi.org/10.1080/2159676x.2019.1704846))
+verwerfen den Begriff für die reflexive thematische Analyse. Das Paket druckt
+diesen Vorbehalt zusammen mit der Zahl.
+
+## Berichts-Checklisten
+
+**COREQ** (32 Punkte, [10.1093/intqhc/mzm042](https://doi.org/10.1093/intqhc/mzm042))
+und **SRQR** (21 Standards, [10.1097/ACM.0000000000000388](https://doi.org/10.1097/acm.0000000000000388)),
+wortgetreu wiedergegeben und dort vorausgefüllt, wo der Export die Antwort
+kennt: Anzahl der Dokumente, Kodierende, Sättigung, Tiefe des Codesystems.
+Eine umformulierte Checkliste ist eine, die eine Gutachterin nicht mit dem
+Original abgleichen kann.
+
+COREQ hat **keinen Punkt zur Intercoder-Übereinstimmung**; SRQR hat dafür einen
+Platz in Standard S15. Die erzeugten Checklisten sagen das dazu.
+
+## Abbildungen
+
+Abbildungen entstehen mit **ggplot2**, und jede `qda_plot_*`-Funktion gibt
+ein gewöhnliches ggplot-Objekt zurück: Theme ergänzen, Skala ändern, in ein
+patchwork setzen. Die Vega-Lite-Spezifikationen des Plugins selbst rendert
+`qda_spec_render()` unverändert (vegawidget), falls eine Abbildung dem
+entsprechen muss, was Zotero zeigte.
+
+Hinter jedem Plot steht eine eigene Tabelle — `qda_code_counts()`,
+`qda_code_matrix()`, `qda_timeline()`, `qda_saturation()`: Die Zahlen hinter
+einer Abbildung sind das, was in einen Aufsatz gehört.
+
+## Was es bewusst nicht tut
+
+- **Kein Kodieren.** Das ist zotQDAs Aufgabe, in Zoteros Reader.
+- **Keine Oberfläche.** Wer nicht programmiert, will qdaZ.
+- **Kein Schreiben.** qdaR verändert Ihre Zotero-Bibliothek nie; es liest
+  Dateien.
+- **Keine Textanalyse jenseits des Zählens.** Worthäufigkeiten und Stichwort im
+  Kontext leben in qdaZ; Stemming, Lemmatisierung und Themenmodelle gibt es
+  hier nicht, und eine halbfertige Fassung wäre schlechter als gar keine.
+- **Keine KI.**
+
+## Wie die Zahlen geprüft werden
+
+Jeder Koeffizient wird zweimal gerechnet: einmal vom Plugin in JavaScript,
+einmal hier. Eingefrorene Referenzdateien enthalten zufällig erzeugte
+Kodierermatrizen samt der Ergebnisse des Plugins, und die Testsuite vergleicht
+auf zwölf Nachkommastellen. Dieselben Dateien liegen byteidentisch in qdaPy, und
+ein Test stellt das sicher. Drei Implementierungen in drei Sprachen werden
+so gegen *eine* Referenz gehalten und nicht gegeneinander.
+
+Wo es ein veröffentlichtes durchgerechnetes Beispiel gibt, wird es nachgerechnet
+statt umschrieben: Krippendorffs Unitizing-Beispiel, Donner und Rotondis
+Tabelle 2 in allen achtundvierzig Zellen, Fugard und Potts’ Tabelle 1, Mathets
+Abbildung 11.
+
+Übereinstimmung zwischen drei Implementierungen zeigt, dass sie konsistent
+sind. Übereinstimmung mit einer veröffentlichten Tabelle zeigt, dass sie recht
+haben.
