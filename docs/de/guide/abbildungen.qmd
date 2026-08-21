@@ -1,0 +1,134 @@
+---
+title: "Abbildungen"
+---
+
+## Die Abbildungen des Plugins in ggplot2
+
+```r
+qda_plot_frequencies(frag)       # wie oft jeder Code vergeben wurde
+qda_plot_code_matrix(frag)       # Codes gegen Dokumente
+qda_plot_timeline(history)       # Kodierungen über die Zeit, je Person
+qda_plot_saturation(history)     # wie das Codesystem zu wachsen aufhörte
+qda_plot_mds(frag)               # eine Karte der Codes nach geteilten Segmenten
+qda_plot_level_agreement(units)  # Übereinstimmung je Ebene des Codesystems
+```
+
+Zurück kommt ein gewöhnliches `ggplot`-Objekt. Nichts ist verriegelt, Ihre
+üblichen Gewohnheiten gelten: Theme tauschen, eine Achse umskalieren,
+mehrere Teilbilder mit patchwork komponieren, mit `ggsave()` herausschreiben.
+
+Alles Folgende auf dieser Seite ist *lebendig*: Der Code wird beim Bauen der
+Dokumentation ausgeführt, die Abbildungen sind seine tatsächliche Ausgabe.
+Das Material ist [die Beispielstudie](beispieldaten.qmd), die das Paket
+mitliefert: eine synthetische Studie zur Arbeitsbelastung in der Pflege,
+neun Codes in drei Themen, acht Interviews aus zwei Bereichen, von zwei
+Personen kodiert:
+
+```{r}
+#| message: false
+library(qdaR)
+library(ggplot2)
+
+frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
+```
+
+Die Korrespondenzanalyse legt Codes **und** Interviews in eine gemeinsame
+Karte, und sie bringt ihren eigenen Vorbehalt mit: Der Anteil der Trägheit,
+den die zwei Dimensionen zeigen, steht in der Abbildung selbst — denn eine
+Karte ohne diese Angabe wirkt bei 30 % genauso vertrauenswürdig wie bei 90 %.
+Und weil `qda_ca()` gewöhnliche Data Frames zurückgibt, ist die Karte nichts
+weiter als ggplot2:
+
+```{r}
+#| label: fig-ca
+#| fig-cap: "Codes und Dokumente in einer Korrespondenzanalyse-Karte. Die beiden Bereiche trennen sich entlang Dimension 1, jeweils umgeben von ihren typischen Codes. Die Abbildung sagt selbst, wie viel der Struktur sie zeigt."
+res <- qda_ca(frag)
+karte <- rbind(
+  data.frame(res$row_scores, name = rownames(res$row_scores), was = "Code"),
+  data.frame(res$col_scores, name = rownames(res$col_scores), was = "Interview"))
+
+ggplot(karte, aes(V1, V2, colour = was, shape = was)) +
+  geom_hline(yintercept = 0, colour = "grey85") +
+  geom_vline(xintercept = 0, colour = "grey85") +
+  geom_point(size = 2) +
+  geom_text(aes(label = name), vjust = -0.8, size = 3, show.legend = FALSE) +
+  scale_x_continuous(expand = expansion(mult = 0.15)) +
+  labs(subtitle = sprintf("%.0f %% der Trägheit in zwei Dimensionen",
+                          100 * sum(res$inertia_share)),
+       x = "Dimension 1", y = "Dimension 2",
+       colour = NULL, shape = NULL) +
+  theme_minimal()
+```
+
+Welche Codes liegen auf denselben Passagen? Das Dendrogramm gruppiert
+Codes nach Ko-Okkurrenz. Die kophenetische Korrelation in seinem Titel
+sagt, wie treu der Baum die Distanzen bewahrt:
+
+```{r}
+#| label: fig-dendro
+#| fig-cap: "Codes nach Ko-Okkurrenz gruppiert (Jaccard-Distanz). Die ins Material eingebauten Belastungs-/Bewältigungs-Paare kommen als Cluster wieder heraus."
+cl <- qda_cluster(frag)
+plot(cl$hclust, sub = "", xlab = "", ylab = "Jaccard-Distanz",
+     main = sprintf("Kophenetische Korrelation %.2f", cl$cophenetic))
+```
+
+Die Code-mal-Dokument-Matrix zeigt dieselbe Struktur als Heatmap. Ein
+Blick genügt, um zu sehen, welche Interviews welche Themen tragen:
+
+```{r}
+#| label: fig-matrix
+#| fig-cap: "Kodierungen je Code und Interview. Die Blockstruktur zwischen den beiden Bereichen ist der Gruppenunterschied, den die Karte oben projiziert."
+qda_plot_code_matrix(frag)
+```
+
+## Die Zahlen hinter einer Abbildung
+
+Hinter jedem Plot sitzt eine Funktion, die dieselben Zahlen als Data Frame
+liefert. Anhänge und Gutachter wollen meist eher die als das Bild:
+
+```{r}
+head(qda_code_counts(frag))
+```
+
+```r
+qda_code_matrix(frag, long = FALSE) # Codes × Dokumente
+qda_timeline(history)               # kumulierte Kodierungen je Person
+qda_saturation(history)             # verschiedene Codes über die Zeit
+```
+
+Eines sollten Sie zu `qda_timeline()` wissen: Es zählt `add`-Ereignisse und
+übergeht `remove`. Eine Kodierung, die jemand vergeben und dann
+zurückgenommen hat, ist geschehen — aber sie gehört nicht zu dem, was am
+Ende dasteht, und eine Wachstumskurve, die sie weiterzählt, schmeichelt dem
+Ergebnis.
+
+## Abbildungen, die ihren eigenen Vorbehalt mitbringen
+
+Zwei dieser Abbildungen kommen mit einer Zahl im Gepäck: `qda_mds()` gibt
+`goodness` zurück, den Anteil der Eigenwertmasse, den seine zwei Dimensionen
+tragen, und `qda_cluster()` gibt `cophenetic` zurück. Keine der beiden
+Zahlen ist Dekoration. Eine Codekarte, die ein Drittel der Struktur zeigt,
+und eine, die fast alles zeigt, sehen genau gleich aus — ebenso ein
+vertrauenswürdiges Dendrogramm und ein irreführendes.
+
+## Die Grafiken des Plugins, unverändert
+
+Jede Grafik in qdaZ lässt sich als Paar aus Daten und Spezifikation sichern.
+Das Rendern der Spezifikation stellt die Abbildung genau so wieder her, wie
+sie in Zotero aussah:
+
+```r
+spec <- qda_spec_read("frequencies.json")
+qda_spec_render(spec, qda_code_counts(frag))
+```
+
+Dafür braucht es das Paket *vegawidget*, das vorgeschlagen und nicht
+vorausgesetzt wird — `install.packages("vegawidget")`. Nehmen Sie es, wenn
+eine Abbildung zum Plugin passen muss; die `qda_plot_*`-Funktionen, wenn sie
+zum Rest Ihres Manuskripts passen muss.
+
+## Dieselben Abbildungen in Python
+
+[qdaPy](https://qdapy.zotqda.org/) zeichnet all das mit plotnine und
+seaborn aus denselben Tabellen. Wenn Ihr Projekt Sprachen mischt, stimmen
+die Abbildungen trotzdem überein.

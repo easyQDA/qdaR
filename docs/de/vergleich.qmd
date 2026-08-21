@@ -1,0 +1,435 @@
+---
+title: "Vergleich mit etablierter QDA-Software"
+---
+
+
+Ein Projekt auf ein anderes Werkzeug umzustellen kostet echte Zeit. Diese
+Seite soll bei der Entscheidung helfen, und dazu muss sie auch gegen dieses
+Ökosystem verwendbar sein, nicht nur dafür.
+
+## Was hier verglichen wird
+
+qdaR für sich genommen ist eine Bibliothek, und auf eine Bibliothek steigt
+niemand um. Der realistische Vergleich ist der zwischen einem etablierten
+Programm — MAXQDA, ATLAS.ti, NVivo, QDA Miner, Dedoose — und der
+**Kombination** aus Zotero, dem Plugin [zotQDA](https://zotqda.org) zum
+Kodieren, [qdaZ](https://qdaz.zotqda.org) zum Auswerten im Fenster und qdaPy
+bzw. qdaR zum Auswerten im Skript. Diese Kombination heißt im Folgenden
+*das Ökosystem*.
+
+## Monolith oder Ökosystem
+
+Der tiefste Unterschied ist keine Funktionsliste. MAXQDA, ATLAS.ti und NVivo
+sind **Monolithen**: Transkription, Kodierung, Auswertung, Statistik und
+Grafik in einem Programm, von einem Anbieter, mit einem Handbuch, einem
+Dateiformat und einer Telefonnummer. Das ist eine echte Entwurfsleistung, und
+für sehr viele Projekte ist es die richtige Antwort.
+
+Dies hier ist ein **komponiertes Ökosystem**. Die Arbeit ist auf Werkzeuge
+verteilt, die ihren Teil bereits gut können; neu sind nur die Nahtstellen:
+
+| Die Arbeit | Erledigt von | Stand |
+|---|---|---|
+| Bibliothek, Dokumente, Metadaten, Sync | **Zotero** | ausgereift, quelloffen, millionenfach genutzt |
+| Transkription und Zeitausrichtung | **ELAN** | De-facto-Standard der Sprachdokumentation, GPL-3, MPI Nijmegen |
+| Statistik und Grafik | **R** und **Python** | die beiden Sprachen, auf denen empirische Forschung ohnehin läuft |
+| Kodieren | zotQDA | neu |
+| Auswerten im Fenster | qdaZ | neu |
+| Auswerten im Skript | qdaPy, qdaR | neu |
+
+> **Die ausgereiften Teile sind geborgt, die jungen sind der Klebstoff.**
+
+Das ist das Argument in einem Satz, und es schneidet in beide Richtungen.
+
+Dafür: Jede Aufgabe erledigt etwas, das dafür gebaut wurde, statt der Version
+eines Anbieters von allem. Die Teile überleben den Klebstoff — Ihre Literatur,
+Ihre Transkripte und Ihre Auswertungsskripte überdauern dieses Projekt
+unabhängig davon, was aus diesen vier Plugins wird. Jede Nahtstelle ist ein
+offenes, dokumentiertes Format, Sie können also an jeder davon aussteigen. Und
+nichts davon kann entzogen, verteuert oder eingestellt werden.
+
+Dagegen, und das sind echte Kosten: **mehr Programme zu installieren und zu
+lernen**; die Nahtstellen müssen Sie selbst bedienen, und eine Übergabe, die
+ein Monolith unsichtbar erledigt, ist hier ein eigener Schritt; **für das
+Ganze ist niemand zuständig**, es gibt also keine Nummer, die man anruft, wenn
+es zwischen zwei Teilen klemmt; und die vier neuen Bestandteile sind jung und
+dünn dokumentiert neben einem kommerziellen Handbuch mit einem Jahrzehnt
+Überarbeitung.
+
+Wie dieser Tausch ausgeht, hängt weniger an Funktionen als daran, was Sie
+ohnehin haben. Wenn Zotero, R oder ELAN in Ihrem Arbeitsalltag vorkommen,
+ergänzt das Ökosystem im Wesentlichen eine dünne Schicht. Wenn keines davon
+vorkommt, übernehmen Sie vier unvertraute Werkzeuge auf einmal, um eines zu
+ersetzen.
+
+### Die ältere Idee dahinter
+
+Das Ökosystem-Argument ist nicht neu. Es ist das von Unix, 1978 im Vorwort zum
+UNIX-Heft des Bell System Technical Journal aufgeschrieben — McIlroy, Pinson
+und Tague,
+[10.1002/j.1538-7305.1978.tb02135.x](https://doi.org/10.1002/j.1538-7305.1978.tb02135.x),
+S. 1899–1904 — als die ersten beiden von drei Maximen:
+
+> (i) Make each program do one thing well. To do a new job, build afresh
+> rather than complicate old programs by adding new "features."
+>
+> (ii) Expect the output of every program to become the input to another, as
+> yet unknown, program. Don't clutter output with extraneous information.
+> Avoid stringently columnar or binary input formats.
+
+Also: Jedes Programm soll eine Sache gut machen — und für eine neue Aufgabe
+baut man neu, statt ein altes Programm mit „Features" zu überfrachten. Und:
+Die Ausgabe jedes Programms wird die Eingabe eines weiteren, noch unbekannten
+Programms sein.
+
+Die zweite Maxime ist es, die die erste praktikabel gemacht hat, und der
+Mechanismus dazu war die **Pipe**: Doug McIlroys Idee, 1973 von Ken Thompson
+umgesetzt und beschrieben in Ritchie und Thompson, *The UNIX Time-Sharing
+System*, CACM 1974,
+[10.1145/361011.361061](https://doi.org/10.1145/361011.361061); die
+Entstehungsgeschichte erzählt Ritchie, *The Evolution of the UNIX Time-sharing
+System*, 1984,
+[10.1002/j.1538-7305.1984.tb00054.x](https://doi.org/10.1002/j.1538-7305.1984.tb00054.x).
+Kleine Programme, jedes gut in einer Sache, über einen Klartextstrom
+verbunden, leisten zusammen mehr als ein großes, das alles versucht.
+
+Ein QDA-Monolith ist der andere Entwurf. Er ist nicht der falsche —
+Integration erkauft echte Vorteile, und diese Seite benennt sie. Aber sie
+bedeutet, dass Transkription, Kodierung, Statistik und Grafik alle genau so
+gut sind, wie ein Anbieter sie gemacht hat, und nicht besser.
+
+Daraus ergibt sich die kürzeste Beschreibung dessen, was dieses Projekt
+eigentlich ist:
+
+> **zotQDA ist ein Pipe-Operator für die qualitative Inhaltsanalyse: Es
+> erledigt das eine, was fehlte — das Kodieren, im Reader, am Material, wo es
+> ohnehin liegt — und verbindet die Werkzeuge, die den Rest längst konnten.**
+
+Das ist auch der Grund, warum der [Austausch-Vertrag](dev/vertrag.qmd)
+aussieht, wie er aussieht. Neun CSV-Formate, jedes mit Art und Version in der
+eigenen ersten Spalte, Klartext, nichts Binäres, nichts Trickreiches.
+Geschrieben für Maxime (ii): Die Ausgabe soll die Eingabe eines weiteren, noch
+unbekannten Programms werden. qdaPy und qdaR sind zwei solche Programme. Ihres
+kann das dritte sein.
+
+## Wie das geprüft wurde
+
+Aussagen über andere Programme stammen aus deren Hersteller-Dokumentation. Die
+Seiten mit dem größten Gewicht wurden am **6. August 2026** erneut gelesen,
+die übrigen am **30. Juli 2026** gesichtet; alle sind am Ende verlinkt.
+
+Drei Grenzen, vor den Tabellen:
+
+**Funktionslisten veralten.** Das sind kommerzielle Produkte in aktiver
+Entwicklung; eine hier genannte Lücke kann inzwischen geschlossen sein.
+
+**Eine fehlende Erwähnung im Handbuch ist ein schwaches Indiz.** Dass ein
+Handbuch etwas nicht nennt, beweist nicht, dass die Software es nicht kann.
+
+**Allaussagen sind nicht beweisbar.** Wo hier steht, etwas werde nirgends
+angeboten, heißt das: in der Dokumentation der fünf gesichteten Programme
+nicht gefunden.
+
+## Wo die etablierten Programme voraus sind
+
+Die längere Liste, und sie steht zuerst, weil sie die meisten Fälle
+entscheidet.
+
+### Kodieren an der Aufnahme selbst
+
+MAXQDA, ATLAS.ti, NVivo und Dedoose kodieren Ton und Video direkt, im selben
+Fenster wie alles andere. Diese Integration ist der Vorteil des Monolithen in
+Reinform, und für ein Projekt, das an der Aufnahme lebt, ist sie
+ausschlaggebend.
+
+Das Ökosystem teilt die Aufgabe. **ELAN** übernimmt Transkription und
+Zeitausrichtung; zotQDA liest das Ergebnis und macht es kodierbar.
+
+::: {.callout-note title="Was ELAN ist"}
+
+Ein Annotationswerkzeug für Ton und Video vom **Language Archive am
+Max-Planck-Institut für Psycholinguistik** in Nijmegen, quelloffen unter
+**GPL-3**, seit zwei Jahrzehnten in kontinuierlicher Entwicklung und
+De-facto-Standard in Sprachdokumentation, Gebärdensprach- und
+Gestenforschung. Die Referenzbeschreibung ist Wittenburg, Brugman,
+Russel, Klassmann und Sloetjes, *ELAN: a Professional Framework for
+Multimodality Research*, [LREC 2006](https://aclanthology.org/L06-1082/),
+S. 1556–1559.
+:::
+
+**In mehrerer Hinsicht kann es mehr als die in QDA-Pakete eingebauten
+Editoren**, weil es genau dafür da ist:
+
+- **Beliebig viele Tiers, und Tier-Hierarchien.** Eine Annotation ist entweder
+  zeitaligniert am Medium oder bezieht sich auf eine andere Annotation.
+  Sprache, Übersetzung, Gestenphase, Blick und eine Kodierebene können auf
+  einer Zeitachse liegen, ihre Abhängigkeiten formal ausgedrückt statt per
+  Konvention. Ein QDA-Paket bietet normalerweise Codes auf einer einzigen
+  Spur.
+- **Bis zu vier Videodateien zu einem Annotationsdokument.**
+  Mehrkamera-Aufbauten sind in der Interaktionsforschung normal und im
+  Allgemeinen nicht das, wofür QDA-Software gebaut ist.
+- **Kontrollierte Vokabulare**, mit denen sich ein Tier auf eine definierte
+  Kategorienmenge einschränken lässt — ein Codebuch, durchgesetzt dort, wo
+  annotiert wird.
+- **Zeitgenauigkeit als Entwurfsziel.** Die LREC-Arbeit handelt ausdrücklich
+  von den Genauigkeitsanforderungen der Gesten-, Gebärdensprach- und
+  multimodalen Interaktionsforschung.
+
+Über die Funktionsliste hinaus gibt es drei Argumente, und sie sind der Grund,
+warum das ein lohnender Umweg ist und keine Notlösung:
+
+**Reproduzierbarkeit.** `.eaf` ist dokumentiertes offenes XML mit versioniertem
+Schema, ein CLARIN-Standard. Die Annotation überlebt die Software, die sie
+erzeugt hat: Sie ist von allem lesbar, archivierbar, hinterlegbar und
+zitierbar. Ein Transkript in einer proprietären Projektdatei kann das nicht
+für sich beanspruchen.
+
+**Wissenschaftlichkeit.** ELAN ist ein zitiertes, beschriebenes,
+begutachtetes Forschungsinstrument mit eigener Methodenliteratur. Auf sein
+Verhalten kann man sich in einem Aufsatz berufen. Auf einen eingebauten
+Transkriptionsmodus in der Regel nicht.
+
+**Kosten.** Kostenlos, und frei in dem Sinn, auf den es ankommt: Niemand kann
+es entziehen, verteuern oder einstellen. Zusammen mit Zotero, R und Python
+kostet die ganze Kette nichts.
+
+**Was der Umweg dennoch kostet.** ELAN ist ein zweites Programm mit einer
+dichten, forschungsnahen Oberfläche und einer echten Lernkurve. Die Übergabe
+ist manuell — Sie importieren eine `.eaf` — und es gibt keinen Rückweg: zotQDA
+schreibt keine ELAN-Dateien, in Zotero entstandene Kodierungen kehren also
+nicht auf die Zeitachse zurück. Innerhalb von zotQDA ist es Stufe eins von
+drei: Sie kodieren ein Transkript mit Zeitstempeln, ohne Player, ohne
+Wellenform, ohne Zeitleiste und ohne Ziehen auf einer Zeitachse. Abhängige
+Tiers werden auf das Intervall ihres Elternsegments abgeflacht, ein Transkript
+gilt nach Kodierbeginn als eingefroren, und Einzelbilder sind gar nicht
+abgedeckt. Ein Media-Viewer und die Audio- und Video-Elemente von REFI-QDA
+sind geplant, nicht geschrieben.
+
+Also: Wenn Ihre Auswertung von Transkripten ausgeht, ist das eine starke
+Kombination und wohl die bessere gegenüber einem eingebauten Editor. **Wenn
+Sie kodieren müssen, während Sie die Aufnahme sehen, sind die etablierten
+Werkzeuge voraus und bleiben es auf absehbare Zeit.**
+
+**Auch die Transkription wird nicht neu erfunden.** Hier transkribiert nichts:
+Das übernimmt Whisper (Radford und Kolleg:innen,
+[ICML 2023](https://proceedings.mlr.press/v202/radford23a.html), 680.000
+Stunden Trainingsaudio, Gewichte veröffentlicht) oder ein vergleichbares
+Modell, lokal ausgeführt, sodass Interviewmaterial auf Ihrem Rechner bleibt.
+WhisperX
+([10.21437/Interspeech.2023-78](https://doi.org/10.21437/interspeech.2023-78))
+ergänzt wortgenaue Zeitstempel und Sprechertrennung — genau das, was ELANs
+Tiers brauchen. Ein als Nebenfunktion geschriebener Transkriptionsmodus
+erreicht diese Qualität kaum, und das ist dasselbe Argument wie überall sonst
+auf dieser Seite.
+
+Das Ergebnis ist ein **Entwurf**, kein Transkript. Koenecke und Kolleg:innen
+(FAccT 2024,
+[10.1145/3630106.3658996](https://doi.org/10.1145/3630106.3658996)) fanden rund
+1 % Whisper-Transkriptionen mit vollständig erfundenen Passagen, davon 38 % mit
+ausdrücklich schädlichem Inhalt, und höhere Raten bei Sprechenden mit längeren
+Pausen. Die Genauigkeit unterscheidet sich zudem systematisch nach Akzent
+(Graham und Roll, [10.1121/10.0024876](https://doi.org/10.1121/10.0024876)) und
+Dialekt (Koenecke und Kolleg:innen,
+[10.1073/pnas.1915768117](https://doi.org/10.1073/pnas.1915768117)), und keine
+Erkennung liefert GAT2- oder Jefferson-Konventionen. Jedes automatische
+Transkript muss gegen das Audio geprüft werden — und dafür ist der
+Korrekturgang in ELAN da.
+
+### Konzeptkarten und Netzwerke
+
+MAXMaps und ATLAS.tis Netzwerkansichten sind ausgereift und für viele zentral.
+Dazu gibt es hier nichts — aus Entscheidung.
+
+### Statistik ohne Programmieren
+
+MAXQDA Stats — Teil von Analytics Pro, nicht einzeln erhältlich — bietet
+deskriptive Statistik, Kreuztabellen mit Chi-Quadrat, Phi und Cramérs V,
+t-Tests, Mann-Whitney-U, einfaktorielle ANOVA mit Post-hoc-Tests, Pearson- und
+Spearman-Korrelation sowie Cronbachs Alpha, alles in der Oberfläche. QDA Miner
+mit WordStat ergänzt multidimensionale Skalierung, Korrespondenzanalyse und
+Sequenzanalyse.
+
+qdaZ rechnet bewusst keine Inferenzstatistik. Alles auf der
+[Funktionsseite](funktionen.qmd) dieser Website ist echt, aber um dorthin zu
+gelangen, müssen Sie R oder Python schreiben. **Für Nicht-Programmierende
+bietet dieses Ökosystem weniger Statistik als MAXQDA Analytics Pro, nicht
+mehr.**
+
+### KI-Unterstützung
+
+MAXQDA und ATLAS.ti liefern Cloud-KI zum Zusammenfassen und für
+Kodiervorschläge. zotQDAs Funktionen sind rein lokal und dagegen bescheiden —
+ein bewusster Tausch von Leistungsfähigkeit gegen die Zusicherung, dass kein
+Material den Rechner verlässt, aber eben ein Tausch.
+
+### Reife
+
+Ein Support, den man anrufen kann, Schulungen, Lehrbücher, ein Jahrzehnt
+Methodenliteratur und die Campuslizenz, die Ihre Bibliothek vielleicht schon
+zahlt. zotQDA steht bei Version 0.x, ohne Nutzerbasis, ohne Zitationsrekord,
+mit einem Issue-Tracker als Support. Für eine Abschlussarbeit mit Abgabefrist
+ist das ein ernstes Gegenargument.
+
+### Zusammenarbeit
+
+Dedoose läuft im Browser und ist für mehrere gleichzeitig gebaut. Teamarbeit
+läuft hier über Zotero-Gruppenbibliotheken: gangbar, synchronisationsbasiert,
+ohne Echtzeit-Bearbeitung.
+
+### Der Ausgang ist dokumentiert, nicht vorgeführt
+
+zotQDAs REFI-QDA-Exporte validieren gegen die offiziellen Schemata, und
+MAXQDA-24-Dateien einer realen Studie importieren korrekt. Aber **ein
+zotQDA-Export wurde noch nie in MAXQDA geöffnet**, insbesondere die
+PDF-Koordinaten nicht. Bis dieser Test gemacht ist, gilt der Weg hinaus als
+dokumentiert, nicht als bewiesen.
+
+## Wo das Ökosystem voraus ist
+
+### Die Literaturverwaltung darunter
+
+Das Material ist Ihre Zotero-Bibliothek, keine importierte Kopie. Jedes
+kodierte Fragment trägt deshalb seinen Citekey, Autor und Jahr, und
+Kreuztabellen nach Sammlung, Jahr, Autor:in oder Eintrags-Tag brauchen keine
+Dokumentvariablen-Tabelle, weil Zotero diese Merkmale schon hält. In den
+gesichteten Programmen werden Fallmerkmale ein zweites Mal erfasst und
+gepflegt.
+
+### Nichts ist eingeschlossen
+
+Codes sind Tags, Codebuch und Protokoll sind Notizen. Alles ist ohne das
+Plugin lesbar, durchsuchbar und exportierbar und synchronisiert mit dem Rest
+Ihrer Bibliothek. Es gibt keine Projektdatei, und verschwände das Plugin
+morgen, wäre Ihre Kodierung noch da.
+
+### Das Kodier-Protokoll als Datenquelle
+
+Jede Vergabe trägt Zeitstempel und Person, und das Protokoll ist eine
+gewöhnliche Notiz, die jedes Programm lesen kann. Das macht in qdaZ den
+Verlauf über die Zeit, die Sättigungskurve und die Kodierer-Drift möglich.
+Kein gesichtetes Programm stellt sein Gegenstück als auswertbare Quelle
+bereit.
+
+### Übereinstimmungsstatistik
+
+Vier der fünf gesichteten nennen ihre Koeffizienten, und **keines dieser vier
+dokumentiert ein Konfidenzintervall**. QDA Miner beschreibt ein
+Intercoder-Modul, ohne die Koeffizienten zu benennen — dazu lässt sich in
+keine Richtung etwas sagen.
+
+| | dokumentierte Koeffizienten |
+|---|---|
+| MAXQDA | %-Übereinstimmung und „Kappa (Rädiker & Kuckartz)" — die Hilfe ergänzt, die Zufallskorrektur lohne sich nur „if you include a maximum of 3 codes in the intercoder check" |
+| ATLAS.ti | %-Übereinstimmung, Holsti-Index und die Krippendorff-Familie: Alpha binär, cu-Alpha, Cu-Alpha |
+| NVivo | %-Übereinstimmung und Cohens Kappa |
+| Dedoose | Cohens Kappa, gepoolt und je Code |
+| QDA Miner | „a unique inter-rater agreement assessment module", öffentlich nicht näher benannt |
+| dieses Ökosystem | sechs Koeffizienten, jeder mit Bootstrap-Konfidenzintervall, dazu Prävalenz- und Bias-Index, PABAK und die Unitizing-Maße |
+
+**ATLAS.tis Intercoder-Analyse ist die methodisch anspruchsvollste der
+kommerziellen Werkzeuge**, und ihr Alpha binär stellt dieselbe vorgelagerte
+Frage — haben die Kodierenden dieselben Stellen markiert — wie hier
+Krippendorffs Unitizing-Alpha, WindowDiff, Pk und Mathets Gamma. Auf diesem
+Punkt ist es mit Abstand der nächste Mitbewerber.
+
+### Ob die Kodierenden dieselben Stellen markiert haben
+
+Krippendorffs Unitizing-Alpha, WindowDiff, Pk und Mathets Gamma. ATLAS.tis
+Alpha binary ist die einzige vergleichbare Funktion, die sich gefunden hat; die
+übrigen behandeln die Segmentierung als gegeben und messen nur die Kategorien.
+
+### Planen, bevor es Daten gibt
+
+Stichprobenumfang für ein Kappa-Intervall (Donner und Rotondi) und für ein
+Thema gegebener Prävalenz (Fugard und Potts). In keinem der gesichteten
+Programme gefunden.
+
+### Reproduzierbarkeit
+
+Jede qdaZ-Grafik exportiert ihre Daten samt Zeichenvorschrift, die qdaPy und
+qdaR identisch neu zeichnen. Jeder Koeffizient existiert in drei
+unabhängigen Umsetzungen, geprüft gegen eine eingefrorene Referenz. Wer fragt,
+wie eine Zahl entstanden ist, bekommt die Datei und den Code.
+
+### Kosten und Lizenz
+
+Kostenlos, AGPL-3.0-or-later, mit einer ausdrücklichen Zusatzerlaubnis, die an
+das, was Sie damit erarbeiten, keine Bedingung knüpft.
+
+## Sollten Sie umsteigen?
+
+**Wahrscheinlich ja, wenn** Ihr Material Text ist, den Sie ohnehin in Zotero
+halten; wenn Sie Intercoder-Übereinstimmung berichten und sie ordentlich
+gerechnet haben wollen; wenn Sie ohnehin in R oder Python arbeiten; wenn
+Reproduzierbarkeit in Ihrem Feld zählt; oder wenn eine Lizenz nicht bezahlbar
+ist.
+
+**Wahrscheinlich nein, wenn** Sie Ton oder Video an der Aufnahme kodieren;
+wenn Sie Konzeptkarten brauchen; wenn Sie Statistik ohne Programmieren wollen;
+wenn Sie unter Zeitdruck stehen und Support brauchen, den man anrufen kann;
+wenn mehrere gleichzeitig kodieren müssen; oder wenn Ihre Einrichtung schon
+eine Lizenz stellt, die Ihre Kolleginnen und Kollegen nutzen.
+
+**Parallel bedenkenswert:** Das Austauschformat funktioniert in beide
+Richtungen. In Zotero kodieren und in MAXQDA auswerten ist möglich, umgekehrt
+auch — unter dem oben genannten Vorbehalt zum ungetesteten Rückweg.
+
+## Quellen
+
+Erneut gelesen am 6. August 2026:
+
+- [MAXQDA, Intercoder-Übereinstimmung](https://www.maxqda.com/help/coding/problem-intercoder-agreement-qualitative-research)
+- [MAXQDA Stats, Leistungsumfang](https://www.maxqda.com/help/stats/what-does-maxqda-stats-offer)
+- [ATLAS.ti, ICA-Methoden](https://doc.atlasti.com/ManualWin/ICA/ICAMethodsForTesting.html)
+- [NVivo Coding Comparison Query](https://help-nv.qsrinternational.com/20/win/Content/queries/coding-comparison-query.htm)
+- [QDA Miner, Funktionen](https://provalisresearch.com/products/qualitative-data-analysis-software/qda-miner-features/)
+
+Gesichtet am 30. Juli 2026:
+
+- [MAXQDA Visual Tools](https://www.maxqda.com/products/maxqda/visualtools) ·
+  [Mixed Methods](https://www.maxqda.com/mixed-methods) ·
+  [MAXDictio](https://www.maxqda.com/quantitative-text-analysis)
+- [ATLAS.ti Code-Kookkurrenz](https://manuals.atlasti.com/Win/en/manual/CodeCooccurrence/CodeCoOccurrenceTableVisualization.html)
+- [NVivo Abfragen und Visualisierungen](https://guides.library.sc.edu/nvivo/queries)
+- [Dedoose Training Center, Cohens Kappa](https://helpdesk.dedoose.com/hc/en-us/articles/12905437600269-Testing-Center-IRR-using-Cohen-s-Kappa)
+
+Das Entwurfsargument, oben zitiert:
+
+- McIlroy, M. D.; Pinson, E. N.; Tague, B. A. (1978). *UNIX Time-Sharing
+  System: Foreword*. Bell System Technical Journal 57(6), 1899–1904.
+  [10.1002/j.1538-7305.1978.tb02135.x](https://doi.org/10.1002/j.1538-7305.1978.tb02135.x)
+- Ritchie, D. M.; Thompson, K. (1974). *The UNIX Time-Sharing System*.
+  Communications of the ACM 17(7), 365–375.
+  [10.1145/361011.361061](https://doi.org/10.1145/361011.361061)
+- Ritchie, D. M. (1984). *The Evolution of the UNIX Time-sharing System*.
+  AT&T Bell Laboratories Technical Journal 63(6), 1577–1593.
+  [10.1002/j.1538-7305.1984.tb00054.x](https://doi.org/10.1002/j.1538-7305.1984.tb00054.x)
+
+Spracherkennung, oben zitiert:
+
+- Radford, A.; Kim, J. W.; Xu, T.; Brockman, G.; McLeavey, C.; Sutskever, I.
+  (2023). *Robust Speech Recognition via Large-Scale Weak Supervision*. ICML,
+  PMLR 202:28492–28518. [Proceedings](https://proceedings.mlr.press/v202/radford23a.html)
+  (kein DOI)
+- Bain, M.; Huh, J.; Han, T.; Zisserman, A. (2023). *WhisperX: Time-Accurate
+  Speech Transcription of Long-Form Audio*. Interspeech.
+  [10.21437/Interspeech.2023-78](https://doi.org/10.21437/interspeech.2023-78)
+- Koenecke, A.; Choi, A. S. G.; Mei, K. X.; Schellmann, H.; Sloane, M. (2024).
+  *Careless Whisper: Speech-to-Text Hallucination Harms*. FAccT.
+  [10.1145/3630106.3658996](https://doi.org/10.1145/3630106.3658996)
+- Graham, C.; Roll, N. (2024). *Evaluating OpenAI's Whisper ASR: Performance
+  analysis across diverse accents and speaker traits*. JASA Express Letters
+  4(2). [10.1121/10.0024876](https://doi.org/10.1121/10.0024876)
+- Koenecke, A.; Nam, A.; Lake, E.; Nudell, J.; Quartey, M.; Mengesha, Z.;
+  et al. (2020). *Racial disparities in automated speech recognition*. PNAS
+  117(14). [10.1073/pnas.1915768117](https://doi.org/10.1073/pnas.1915768117)
+- Wittenburg, P.; Brugman, H.; Russel, A.; Klassmann, A.; Sloetjes, H. (2006).
+  *ELAN: a Professional Framework for Multimodality Research*. LREC,
+  pp. 1556–1559. [ACL Anthology](https://aclanthology.org/L06-1082/) (kein DOI)
+
+Der REFI-QDA-Standard steht auf [qdasoftware.org](https://www.qdasoftware.org/),
+ELAN beim [Language Archive](https://archive.mpi.nl/tla/elan).
+
+Wenn eine Aussage hier falsch oder veraltet ist, melden Sie es bitte. Ein
+Vergleich, den niemand korrigiert, ist einer, dem niemand trauen sollte.

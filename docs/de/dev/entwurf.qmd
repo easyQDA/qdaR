@@ -1,0 +1,112 @@
+---
+title: "Entwurfsentscheidungen"
+---
+
+Jede dieser Entscheidungen hätte vernünftigerweise auch anders ausfallen
+können. Sie stehen hier, weil die Begründung der Teil ist, der verloren
+geht — und weil jeder, der den Code ändert, wissen sollte, welche
+Entscheidungen tragend sind.
+
+## Bei unbekannter Version scheitern
+
+**Entschieden:** eine neuere Austauschversion verweigern; ältere lesen.
+
+Die Alternative wäre, zu lesen, was geht, und den Rest zu übergehen. Das
+funktioniert genau bis zu dem Release, in dem eine Spalte ihre Bedeutung
+statt ihres Namens ändert — und dann erzeugt es Zahlen, die gut aussehen.
+Da diese Zahlen in Veröffentlichungen landen, muss der Fehlerfall laut
+sein.
+
+## Unkodierte Segmente sind Opt-in, nicht automatisch
+
+**Entschieden:** `qda_units()` nimmt Segmente, die niemand kodiert hat,
+nur auf, wenn der Aufrufer den `uncoded`-Export übergibt.
+
+Sie stillschweigend einzubeziehen wäre vertretbar; meist ist es die
+methodisch richtige Wahl. Aber es hieße auch, dass derselbe Aufruf je
+nachdem, welche Dateien gerade zur Hand sind, verschiedene Koeffizienten
+liefert. Die zweite Datei zu verlangen macht die Entscheidung im Code
+sichtbar — dort, wo ein Gutachter sie sehen kann.
+
+## Mehrfachkodierung wird beiseitegelegt und gezählt
+
+**Entschieden:** Mehrere Codes einer Person auf einem Segment machen die
+Zelle `NA`; die Anzahl wird als `multi_set_aside` berichtet.
+
+Drei Alternativen wurden erwogen: den ersten Code nehmen (willkürlich),
+die Menge als eine zusammengesetzte Kategorie behandeln (erfindet
+Kategorien, die niemand definiert hat), oder die Berechnung verweigern
+(hilft niemandem). Beiseitelegen und zählen ist die einzige Option, die
+weder Daten erfindet noch verbirgt, wie viel wegfiel. Für Projekte, in
+denen Mehrfachkodierung die Regel ist, gibt es die binäre Sicht je Code.
+
+## Monte Carlo statt exakt bei großen Tafeln
+
+**Entschieden:** exakter Fisher-Test nur bei 2×2; darüber
+`simulate.p.value = TRUE`, mit Seed, und ohne den globalen Generator zu
+stören.
+
+`fisher.test()` auf einer r×c-Tafel ist nur bei kleinen Häufigkeiten
+machbar. Sechs Codes über fünf Dokumente mit ein paar hundert Kodierungen
+reichen schon für einen Workspace-Abbruch — und genau das tat dieses Paket
+früher: Die alte Schwelle war `prod(dim(tab)) > 100`, das falsche
+Kriterium, denn die Kosten hängen an den Häufigkeiten, nicht an den
+Dimensionen. Alles jenseits von 2×2 geht jetzt in die Simulation.
+
+Der Seed wird danach wiederhergestellt. Eine Funktion, die still den
+globalen Generator neu sät, bricht jede Simulation, die zufällig nach ihr
+läuft — und dafür gibt es einen Test.
+
+## Trägheitsanteil relativ zur ganzen Tafel
+
+**Entschieden:** `qda_ca()$inertia_share` teilt durch die Gesamtträgheit,
+nicht durch die behaltenen Dimensionen.
+
+Auf die behaltenen Dimensionen zu normieren ist verbreitet und summiert
+sich immer auf 100 % — was sich liest wie *diese Karte zeigt alles*.
+Dieses Paket hatte genau diesen Fehler, und der Vergleich mit dem
+Python-Zwilling hat ihn gefunden. Festgenagelt wird er durch die Prüfung,
+dass die Gesamtträgheit dem Chi-Quadrat-Wert durch *n* entsprechen muss.
+
+## Die Teststatistik wird auch bei Fisher berichtet
+
+**Entschieden:** `qda_chisq()` gibt `statistic` und `expected` zurück,
+egal welcher Test lief.
+
+Cramérs V wird aus der Chi-Quadrat-Statistik berechnet. Trüge das
+zurückgegebene Objekt nur das Fisher-Ergebnis, könnte die Leserin die
+Effektstärke nicht nachrechnen — und was nicht nachrechenbar ist, ist
+nicht prüfbar. Ein Test stellt sicher, dass V gleich
+`sqrt(statistic / (n * (min(dim) - 1)))` ist.
+
+## Die Zusatzerlaubnis wohnt in LICENSE
+
+**Entschieden:** keine separate `LICENSE-EXCEPTION.md`, anders als in den
+übrigen Projekten.
+
+`License: AGPL-3 + file LICENSE` in der `DESCRIPTION` bedeutet *die AGPL
+plus das, was in dieser Datei steht* — dorthin gehört also die Erlaubnis
+nach Abschnitt 7. Ein zweites Dokument würde sie verdoppeln, und
+verdoppelter Lizenztext driftet. `PROVENANCE.md`, `docs/`, `docs-root/`,
+`site/`, `scripts/` und `versions.json` stehen in `.Rbuildignore`, weil
+`R CMD check` unbekannte Top-Level-Dateien meldet. Sie gehören zum
+Repositorium, nicht zum Tarball.
+
+## Eine Funktion je Gleichung
+
+`qda_unitizing_alpha` war einmal eine lange Funktion. Es sind jetzt vier,
+und der Schnitt folgt der Arbeit, nicht einer Zeilenzahl: `pair_disorder`
+ist Gleichung (16) für ein Paar Kodierender, `observed_disorder` ist (17)
+als Summe über die Paare, `expected_disorder` ist (18), und
+`qda_unitizing_alpha` setzt sie zu (19) zusammen.
+
+**Derselbe Schnitt existiert in qdaPy und in qdaZ' `stats.js`**, mit
+denselben Grenzen und passenden Namen. Genau darum geht es: Die drei
+lassen sich weiterhin nebeneinander gegen Krippendorff lesen — der einzige
+praktikable Weg zu prüfen, dass drei Sprachen eine Formel implementieren.
+Nur eine von ihnen zu zerlegen hätte eine Kennzahl gekauft und das
+gekostet, was die Kennzahl schützen sollte.
+
+Vorher und nachher liefen beide Fassungen über dieselben achtzig
+Zufallskonfigurationen in allen drei Sprachen und wurden verglichen:
+identisch bis zum letzten Bit.

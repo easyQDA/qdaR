@@ -1,0 +1,72 @@
+---
+title: "Berichts-Checklisten"
+---
+
+
+Viele Zeitschriften verlangen inzwischen eine Berichts-Checkliste zu einer
+qualitativen Einreichung. Sie am Ende aus dem Gedächtnis auszufüllen ist der
+Weg, auf dem die Zahlen im Methodenteil sich von dem entfernen, was die
+Auswertung tatsächlich getan hat. Diese beiden Funktionen erzeugen die
+Checkliste mit den ableitbaren Teilen bereits aus Ihren Daten beantwortet.
+
+## COREQ
+
+Zweiunddreißig Punkte über Forschungsteam, Studiendesign sowie Auswertung und
+Ergebnisse, gedacht für Interviews und Fokusgruppen.
+
+```r
+cq <- qda_coreq(fragments = frag, history = history, codebook = codebook)
+cq[cq$filled, c("item", "name", "answer")]
+writeLines(qda_coreq_markdown(cq))
+```
+
+Sechs Punkte ergeben sich aus den Daten: wie viele Dokumente, wie viele
+Kodierende, wie groß das Codesystem, ob Sättigung erreicht wurde, welche
+Software verwendet wurde und wie viele zitierbare Fragmente es gibt. Die
+übrigen sechsundzwanzig sind als *To be completed* gekennzeichnet — und das ist
+die andere Hälfte des Zwecks: Die Lücken sind sichtbar statt vergessen.
+
+::: {.callout-warning title="COREQ fragt nie nach Übereinstimmung"}
+
+Es gibt keinen Punkt zur Intercoder-Reliabilität. Wenn Sie sie gerechnet
+haben, gehört sie in Ihre Antwort zu Punkt 24 oder 25 — die Checkliste
+wird Sie nicht daran erinnern.
+:::
+
+## SRQR
+
+Einundzwanzig Standards, die den ganzen Bericht abdecken statt speziell
+Interviews. Greifen Sie dazu, wenn Ihr Material keine Interviewtranskripte
+sind oder wenn die Zeitschrift es nennt.
+
+```r
+sq <- qda_srqr(fragments = frag, history = history)
+writeLines(qda_srqr_markdown(sq))
+```
+
+Anders als COREQ **hat** SRQR einen Platz für die Übereinstimmungskennzahl:
+Standard S15, Techniken zur Erhöhung der Vertrauenswürdigkeit, nennt den
+Audit-Trail ausdrücklich, und ein Kodier-Protokoll ist einer. Wenn Ihre
+Zeitschrift beide Checklisten akzeptiert und Sie Reliabilitätszahlen zu
+berichten haben, spricht das für SRQR.
+
+## Was ausgefüllt wird und was nicht
+
+Nur, was die Exporte wirklich hergeben. Nichts hier schreibt Ihre methodische
+Begründung, und nichts rät. Wo ein Punkt eine Datei braucht, die Sie nicht
+übergeben haben, bleibt er leer, statt aus einer Voreinstellung beantwortet zu
+werden: Die Sättigung braucht den Verlaufs-Export, der Codebaum das Codebuch.
+
+Die Punkte sind wortgetreu aus den veröffentlichten Tabellen übernommen. Eine
+umformulierte Checkliste kann eine Gutachterin nicht mit dem Original
+abgleichen — womit der Zweck eines Standards verfehlt wäre.
+
+## Beide auf einmal
+
+Nichts hindert Sie daran, beide zu erzeugen und die zu behalten, nach der die
+Zeitschrift fragt:
+
+```r
+qda_coreq_markdown(qda_coreq(frag, history), file = "coreq.md")
+qda_srqr_markdown(qda_srqr(frag, history), file = "srqr.md")
+```

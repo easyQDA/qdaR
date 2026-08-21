@@ -1,0 +1,153 @@
+---
+title: "Tests"
+---
+
+Rund 200 Zusicherungen, die alle ohne Zotero-Installation und ohne
+Netzzugang laufen.
+
+```r
+# im Paketverzeichnis
+devtools::test()
+# oder das volle Programm
+R CMD build . && R CMD check --as-cran qdaR_0.1.0.tar.gz
+```
+
+Der CRAN-Check meldet derzeit 0 Errors, 0 Warnings und 2 Notes: die
+Neueinreichungs-Note und eine über ein zu altes lokales HTML Tidy. Keine
+von beiden ist eine Eigenschaft des Pakets.
+
+## Wofür die Sammlung eigentlich da ist
+
+Das meiste ist gewöhnlich: Leser weisen kaputte Dateien ab, Koeffizienten
+stimmen mit Handrechnungen überein, Abbildungen bauen. Zwei Teile sind
+ungewöhnlich — und der Grund, warum den Zahlen hier zu trauen ist.
+
+### Kongruenz mit dem Plugin
+
+`tests/testthat/qdaz-reference.json` hält 109 zufällig erzeugte
+Kodierermatrizen — zwei bis vier Kodierende, absichtlich schiefe
+Randverteilungen, fehlende Bewertungen — zusammen mit den Werten, die das
+JavaScript des Plugins dafür berechnet. `test-congruence.R` rechnet alle
+sechs Koeffizienten nach und vergleicht auf zwölf Nachkommastellen.
+
+Die Datei ist byte-identisch mit der im Python-Paket, und ein Test dort
+sichert genau das zu. So messen sich drei Implementierungen in drei Sprachen an einer
+einzigen Referenz statt aneinander.
+
+Auf einem handverlesenen Beispiel übereinzustimmen beweist sehr wenig.
+Die Fixtures wurden gerade deshalb zufällig erzeugt, damit niemand sie so
+wählen konnte, dass die Implementierungen übereinstimmen.
+
+### Kongruenz mit dem Python-Zwilling bei der Statistik
+
+`tests/testthat/stats-reference.json` und `stats-fixture.csv` halten 256
+Kodierungen über sechs Codes, fünf Dokumente und zwei Kodierende, mit
+erwarteten Häufigkeiten, die klein genug sind, um den Exakt-Test-Zweig zu
+erzwingen. `test-crosslang.R` nagelt die Chi-Quadrat-Statistik, Cramérs V,
+die Jaccard-Matrix, die kophenetische Korrelation, die
+Skalierungsdistanzen und die Trägheiten der Korrespondenzanalyse fest.
+
+Die beiden Pakete rechnen all das durch völlig verschiedene Bibliotheken —
+`chisq.test`, `cmdscale`, `hclust` und `MASS::corresp` hier gegen scipy
+und handgeschriebene lineare Algebra dort. Übereinstimmung auf zwölf
+Stellen ist deshalb ein Beleg über die Statistik, nicht über geteilten
+Code.
+
+Zwei davon werden invariant statt wörtlich verglichen.
+Skalierungskoordinaten sind nur bis auf Spiegelung bestimmt, verglichen
+werden deshalb die paarweisen Abstände der Punkte statt der Koordinaten.
+Und der Monte-Carlo-p-Wert ist in beiden Paketen konstruktionsbedingt
+zufällig — er muss nur nahe liegen.
+
+**Zwei echte Fehler in diesem Paket wurden so gefunden** und sind jetzt
+durch Tests fixiert: `qda_chisq()` brach auf einer bloß unbequemen Tafel
+ab, und `qda_ca()` berichtete Trägheitsanteile, die sich immer auf 100 %
+summierten.
+
+### Kongruenz bei den neueren Maßen
+
+Zwei weitere eingefrorene Referenzen arbeiten genauso.
+`qdaz-e35-reference.json` deckt das Unitizing-Alpha, WindowDiff, Pk, die
+Sättigungsquote und das Wilson-Intervall ab; `qdaz-gamma-reference.json`
+deckt Gamma ab. Beide wurden vom JavaScript des Plugins auf zufällig
+erzeugten Daten berechnet und sind byte-identisch mit den Kopien im
+Schwesterpaket, was ein Test zusichert.
+
+Einige dieser Zahlen wurden zusätzlich gegen die Arbeiten selbst geprüft,
+nicht nur gegeneinander. Das Unitizing-Alpha reproduziert die beobachtete
+Uneinigkeit von 7,8 aus Krippendorffs eigenem Rechenbeispiel; die
+Fallzahlfunktionen reproduzieren Donner und Rotondis Tabelle 2 in allen
+achtundvierzig Zellen und Fugard und Potts' Tabelle 1 Zelle für Zelle;
+Gamma reproduziert die drei Konfigurationen aus Abbildung 11 von Mathet
+und Kollegen, einschließlich des negativen Werts für Kodierende, die
+schlechter als der Zufall abschneiden.
+
+Auf diese Kombination kommt es an: Dass drei Implementierungen
+übereinstimmen, beweist ihre Konsistenz. Dass sie mit einer
+veröffentlichten Tabelle übereinstimmen, beweist erst, dass sie richtig
+rechnen.
+
+## Eine Referenz neu erzeugen
+
+Tun Sie das nur, wenn sich ein Koeffizient auf einer Seite legitim
+geändert hat — nie, um einen fehlschlagenden Test grün zu bekommen.
+
+Erzeugen Sie die Fixtures einmal, in welcher Sprache es bequem ist. Geben
+Sie sie dem `src/stats.js` des Plugins unter Node — das ein
+`global.QdaZ = {}` und ein `eval` der Datei nimmt — und diesem Paket.
+Dann vergleichen, und jede einzelne Abweichung auflösen, bevor es
+weitergeht; eine Referenz, die eingefroren wird, während zwei
+Implementierungen uneins sind, ist schlimmer als keine. Erst dann das neue
+JSON schreiben, in **beide** Pakete, im selben Commit.
+
+Achten Sie bei der Auswahl der einzufrierenden Fixtures darauf, dass sie
+jede Kodiererzahl **und** Matrizen mit fehlenden Bewertungen abdeckt. Ein
+regelmäßiger Schritt — `seq(1, n, by = 4)` — hat einmal zufällig jede
+einzelne Lücke verfehlt, und der Abdeckungstest in `test-congruence.R`
+existiert, um genau das zu fangen.
+
+## Nachweisen, dass ein Test scheitern kann
+
+Ein Test, der nie gescheitert ist, ist eine Behauptung, keine Prüfung.
+Beide Kongruenztests wurden per Mutation verifiziert: Den gepoolten
+Zufallsterm in `qda_fleiss()` um ein Millionstel zu stören lässt den
+Kongruenztest an zehn Stellen scheitern. Wer diese Berechnungen anfasst,
+sollte dasselbe tun, bevor er einem grünen Lauf traut.
+
+## Nicht-ASCII
+
+`R/` darf keine Nicht-ASCII-Zeichen enthalten — CRAN verlangt es, und über
+einen kopierten Gedankenstrich oder eine verirrte Byte-Order-Mark ist es
+schnell passiert. `R CMD check` fängt es unter *checking code files for
+non-ASCII characters*. Verwenden Sie `--` und schreiben Sie Namen wie
+Cramer im Code ohne Akzent; Dokumentation und Vignette dürfen richtige
+Typografie verwenden.
+
+## Continuous Integration
+
+`.github/workflows/ci.yml` lässt `R CMD check --as-cran` auf Linux, macOS
+und Windows laufen, gegen das aktuelle R-Release und das davor — der
+Boden in der DESCRIPTION ist R 4.1. Der Job scheitert an einer WARNING,
+nicht an einer NOTE, denn die zwei Notes in `cran-comments.md` sind
+erwartet und keine Mängel.
+
+Ein zweiter Job baut die Dokumentations-Site, damit eine kaputte Seite
+scheitert, solange die Änderung noch ein Pull Request ist — und nicht erst
+nach dem Merge.
+
+::: {.callout-warning title="Zwei Tests werden in einem gewöhnlichen Checkout übersprungen"}
+
+Die Vergleiche, die zusichern, dass eine eingefrorene Referenz
+byte-identisch mit der Kopie in qdaPy ist, brauchen das Python-Paket
+**neben** diesem auf der Platte. Sie überspringen in einem nackten
+Clone, und sie überspringen auch unter `R CMD check`, das die Tests in
+ein temporäres Verzeichnis kopiert, wo der relative Pfad nicht mehr
+auflöst.
+
+Der `congruence`-Job checkt deshalb beide Repositorien nebeneinander aus
+und lässt testthat **an Ort und Stelle** laufen; dann scheitert er, wenn
+`sum(df$skipped)` etwas anderes als null ist — ein übersprungener Test
+beweist nichts und sieht dabei aus wie bestanden. Eingeschaltet wird er
+über die Repository-Variable `QDAPY_PUBLISHED`, sobald das Python-Paket
+ein öffentliches Repositorium zum Auschecken hat.
+:::

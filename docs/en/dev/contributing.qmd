@@ -1,0 +1,59 @@
+---
+title: "Contributing"
+---
+
+
+Patches are welcome. A few things are worth knowing before you write code.
+
+## The licence question comes first
+
+The package is AGPL-3.0-or-later, and that is the whole story. There is no
+contributor licence agreement to sign and no rights to assign: you contribute
+under the AGPL, you keep your copyright, and the maintainer gets no rights over
+your work that any other user does not also have.
+
+If that is a problem for you, say so early, an unmergeable patch is a waste of
+your time, not just ours.
+
+**A new dependency is still a licensing decision.** ggplot2 and jsonlite are
+MIT, *MASS* is GPL — all of them compatible with the AGPL, so nothing is
+constrained today. What a dependency does bind is everyone downstream, so a
+copyleft addition is a conversation before it is a pull request.
+
+## What a good change looks like
+
+* **A test that fails first.** Especially for a numerical fix: show the wrong
+  number before you show the right one.
+* **A note on the reasoning, not the change.** Comments that say what the code
+  does are noise; comments that say what constraint made it necessary survive.
+* **A table for every figure.** A new plot needs a companion that returns the
+  numbers, and both belong in the Python twin as well.
+* **`R CMD check --as-cran` clean.** No new notes, and no non-ASCII in `R/`.
+* **roxygen2 with `@return` and `@examples`.** CRAN wants both, and the check
+  in this repository confirms every exported function has them.
+
+## What will be turned down
+
+* Anything that writes to a Zotero library. Coding belongs in the plugin.
+* A default that makes a coefficient look better, an automatic `uncoded`
+  merge, a kappa that silently ignores multiply coded segments, an inertia
+  share normalised to the dimensions kept.
+* Statistics with no caveat attached. Where a number invites over-reading, the
+  returned list has to carry whatever warns against it.
+* A tidyverse dependency for something base R already handles.
+* Reformatting mixed into a change of behaviour, which makes both unreviewable.
+
+## If you change a coefficient
+
+Start with [Testing](testing.qmd). Two frozen references have to be regenerated
+together, in both packages, and the mutation check repeated afterwards. The
+thing this project is built to prevent is precisely a coefficient that moves in
+one language and stays put in the other two.
+
+## Reporting a disagreement with the plugin
+
+A number that differs from the plugin's means one of the two is wrong, and that
+is worth an issue either way. Attach the export it happened on, or a coder
+matrix small enough to reproduce it;
+`qda_agreement()` output from both sides is usually enough to tell which side
+is wrong.

@@ -1,0 +1,89 @@
+---
+title: "qdaR"
+---
+
+
+You have coded material in Zotero with [zotQDA](https://zotqda.org) and now
+want to do something with it that the qdaZ plugin does not offer: combine
+several exports, put a figure into a manuscript, run a statistical test
+that qdaZ deliberately leaves out, or simply keep the whole analysis in a
+reproducible script that still runs next year. That is what qdaR is for.
+
+qdaR is first of all the R-based analysis half of the
+**zotQDA ecosystem**: it reads the CSV tables zotQDA exports, and with
+those its full range is available.
+
+qdaR also reads **REFI-QDA** projects. A study kept in MAXQDA, ATLAS.ti,
+NVivo, QDA Miner or Dedoose can be extended with the metrics and figures
+those programs do not (yet) offer: confidence intervals on agreement, the
+segmentation measures, saturation as a reportable number, sample-size
+planning. Compared to the CSV tables zotQDA exports, a `.qdpx` carries
+only a subset. [Reading a .qdpx](guide/qdpx.qmd) lays out both — the
+subset and what each program gains through qdaR.
+
+::: {.callout-warning title="Early public beta"}
+
+qdaR is in an **early public beta**. It is published, installable and
+documented — and it is not finished:
+
+- **There will be errors.**
+- **Interfaces will very likely change** between releases, because the
+  code is still being reworked.
+- **Correctness of the results cannot be guaranteed.**
+
+Check what you rely on, and pin a version in work that has to be
+reproducible. Reports of errors, or of things that get in your way, are
+welcome.
+
+The Python twin [qdaPy](https://qdapy.zotqda.org) is at the same stage;
+the two Zotero plugins are a step behind it, in a private alpha.
+:::
+
+```r
+# install.packages("remotes")
+remotes::install_github("fre-ms/qdaR")
+```
+
+```r
+library(qdaR)
+
+frag <- qda_read_fragments("zotqda-fragments.csv")
+qda_code_counts(frag)
+qda_plot_frequencies(frag)
+```
+
+## Where to go from here
+
+| If you want to | Read |
+|---|---|
+| load an export and know it arrived intact | [Reading exports](guide/reading.qmd) |
+| use it **without zotQDA**, from a MAXQDA or ATLAS.ti export | [Reading a .qdpx](guide/qdpx.qmd) |
+| draw the plugin's figures — or your own | [Figures](guide/figures.qmd) |
+| report how well your coders agreed | [Agreement](guide/agreement.qmd) |
+| work out why a kappa came out low | [Reliability](guide/reliability.qmd) |
+| check whether the coders marked the same stretches | [Unitizing](guide/unitizing.qmd) |
+| run a test the plugin does not offer | [Statistics](guide/statistics.qmd) |
+| estimate, before collecting, how much material you need | [Planning a study](guide/planning.qmd) |
+| fill in COREQ or SRQR for a submission | [Reporting checklists](guide/reporting.qmd) |
+| survive a rename in the code system | [Code identity](guide/identity.qmd) |
+| change the package or port it | [For developers](dev/architecture.qmd) |
+| see the full list of what is in it | [Features](features.qmd) |
+| weigh the whole thing up against MAXQDA or ATLAS.ti | [Compared with other software](comparison.qmd) |
+
+The package documentation — every function with its arguments and
+examples — comes with the installation: `help(package = "qdaR")`, and
+`vignette("qdaR")` for a worked run through the whole thing.
+
+## What qdaR does not do
+
+qdaR codes nothing and never writes back to Zotero. Coding happens in
+zotQDA; qdaR only reads what zotQDA exported, analyses it statistically
+and illustrates the data.
+
+If a result in qdaR differs from the one in the qdaZ plugin, that is a
+bug worth reporting, not a matter of opinion. The two libraries are
+tested against each other on shared reference data.
+
+It also will not decide your method for you. Several functions ask you to
+make a decision the code cannot make on your behalf, and say so in their
+documentation rather than picking a default that flatters the result.

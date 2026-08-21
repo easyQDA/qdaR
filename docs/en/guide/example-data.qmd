@@ -1,0 +1,91 @@
+---
+title: "The example study"
+---
+
+
+The package ships a small synthetic study as a regular zotQDA exchange
+pair, so every function that reads real exports has something realistic to
+read in examples, tests and this documentation:
+
+```r
+frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
+hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+```
+
+The same two files ship byte-identically in the Python twin
+[qdaPy](https://qdapy.zotqda.org)
+(`qdapy.example("zotqda-fragments-demo.csv")`), and a test in each package
+fails if the copies ever drift apart. Results computed on them are
+therefore comparable across the two packages down to the last digit. The
+shipped fragments give α = 0.7266 and AC1 = 0.7299 in both, and both test
+suites freeze those values.
+
+::: {.callout-note title="Synthetic, and saying so"}
+
+Nothing here was ever said by anybody. The interviews, coders and
+codings are generated from a fixed random seed, purely so that the
+documentation can show real figures and the tests have stable
+numbers. Any resemblance to actual studies is the point, not an
+accident. But do not cite these numbers as findings.
+:::
+
+## What the study is
+
+A fictitious interview study on workload in nursing: eight interviews,
+four from a ward (`Station-1` … `Station-4`) and four from the
+administration (`Verwaltung-1` … `Verwaltung-4`). Two coders, `ann` and
+`bob`, coded consensus segments (the same annotations, each with their
+own code), following the three-phase method described in the
+[zotQDA documentation](https://zotqda.org).
+
+The code system has nine codes in three themes:
+
+| Theme | Codes |
+|---|---|
+| Belastung | `Zeitdruck`, `emotional`, `körperlich` |
+| Ressourcen | `Team`, `Autonomie`, `Anerkennung` |
+| Bewältigung | `Humor`, `Distanz`, `Sport` |
+
+## The structure built into it
+
+Each property below exists so that one of the package's analyses has
+something true to find:
+
+* **The two settings have different theme profiles.** Burden codes and
+  `Ressourcen/Team` dominate the ward, `Autonomie`, `Anerkennung` and
+  `Distanz` the administration. This group difference is what
+  `qda_ca()` and `qda_code_matrix()` show.
+* **Burden and coping travel in pairs.** `emotional`↔`Humor`,
+  `Zeitdruck`↔`Distanz`, `körperlich`↔`Sport` and `Team`↔`emotional`
+  tend to be coded on the same passage. These co-occurrences are what
+  `qda_cluster()` and the scaling map recover.
+* **The coders agree often, and disagree systematically.** `bob` picks
+  `ann`'s code about 78 % of the time; when he differs, it is a
+  within-theme neighbour or the partner code, never uniform noise — so
+  the confusion table returns a short, interpretable list.
+* **Some cells are honest gaps.** `bob` left about 7 % of the segments
+  unrated (`qda_alpha()` handles the gaps), and `ann` occasionally coded
+  a segment twice, so the set-aside count has something to count.
+* **The history contains second thoughts.** Six codings were later
+  removed; the timeline ignoring them is the documented behaviour.
+
+Positions are present (`positionKind == "text"`) — but because the
+segments are consensus segments, both coders carry the same boundaries,
+and unitizing measures on this file are trivially high. Measuring
+unitizing for real needs each coder's *own* marks, which is a different
+export.
+
+## How it was generated
+
+`scripts/make_demo_export.py` in the qdaPy repository writes both files
+into both packages in one run. Everything is derived from one fixed seed
+and fixed timestamps, with no clock and no environment involved. The
+script is therefore reproducible to the byte, which is what the
+cross-package identity test relies on. The column set comes from the exchange contract at run
+time, so a contract change shows up here as a regenerated file rather
+than a stale one.
+
+To change the study, edit the constants at the top of that script, run
+it once, and update the frozen coefficients in
+`tests/testthat/test-demo-export.R` (and qdaPy's
+`tests/test_demo_export.py`) to whatever honestly comes out.

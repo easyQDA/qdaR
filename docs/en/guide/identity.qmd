@@ -1,0 +1,42 @@
+---
+title: "Code identity"
+---
+
+
+## Two names for every code
+
+Codes get renamed, moved under a different parent and merged into one another
+while a project matures. Every export therefore names each code twice:
+
+| Column | What it is | Survives renaming? |
+|---|---|---|
+| `code` | the path a person reads, e.g. `Belastung/beruflich` | no |
+| `codeId` | a stable identifier the plugin assigns once | yes |
+
+## Why it matters for you
+
+Consider an analysis you run in March and again in June. In between, a
+colleague renames `Belastung` to `Stress` and moves two subcodes. Grouped by
+`code`, the June run quietly reports a different set of codes, nothing
+errors, the numbers simply refer to something else. Grouped by `codeId`, the
+same codes are still the same codes.
+
+```r
+qda_code_counts(frag)                      # by path: readable, fragile
+qda_units(frag, value = "codeId")          # by identity: stable
+```
+
+Both have their place. Paths belong in figures, because `cX1y2z3a4` means
+nothing to a reader. Identities belong in anything that has to line up across
+two exports: reliability, before-and-after comparisons, longitudinal work.
+
+A practical compromise is to group by `codeId` and label with the path from the
+codebook export, which gives you stability in the computation and readability
+in the figure.
+
+## Merged and deleted codes
+
+When two codes are merged, the surviving code keeps its own identity and the
+absorbed one is recorded as having moved into it. When a code is deleted, its
+identity is not reused. This means the identity of a code you saw in an older
+export never silently comes back attached to something else.

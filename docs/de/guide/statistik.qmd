@@ -1,0 +1,90 @@
+---
+title: "Statistik"
+---
+
+
+Das Plugin hört bei der Beschreibung auf. Es zählt und kreuztabelliert, aber es
+reicht Ihnen nie einen p-Wert. Das ist Absicht. Ein Signifikanztest vor
+qualitativem Material lädt meist zu einer Behauptung ein, die das Design nicht
+tragen kann — in der Regel deshalb, weil das Material nie so gezogen wurde,
+dass sie zulässig wäre.
+
+Manche Designs lassen sie aber zu, und für die gibt es diese Seite. Beachten
+Sie die Asymmetrie: Das Plugin entscheidet sich gegen den Test, und Sie
+entscheiden sich dafür. Hier läuft nichts, was Sie nicht aufrufen.
+
+## Sind Codes unabhängig von etwas verteilt?
+
+```r
+res <- qda_chisq(frag, group = "citekey")
+res$statistic
+res$cramers_v
+res$expected_ok
+res$test$method
+```
+
+Lesen Sie `cramers_v` zuerst. Es sagt, wie stark der Zusammenhang ist, und das
+war die Frage, die Sie eigentlich hatten; der p-Wert sagt nur, ob er unter
+Unabhängigkeit überraschend wäre.
+
+`expected_ok` ist das Zweite, worauf Sie sehen sollten. Chi-Quadrat stützt sich
+auf eine Näherung, die zusammenbricht, sobald erwartete Häufigkeiten unter etwa
+fünf fallen — und Code-mal-Dokument-Tabellen werden schnell dünn besetzt. Dann
+schaltet die Funktion von selbst um: Fishers exakter Test bei einer
+Vierfeldertafel, sonst ein Monte-Carlo-p-Wert bei festgehaltenen
+Randverteilungen. `res.test` sagt, welchen Sie bekommen haben, und die
+Monte-Carlo-Variante ist gesät — eine Zahl, die Sie veröffentlichen, lässt sich
+also reproduzieren.
+
+::: {.callout-warning title="Was die Einheit dieses Tests ist"}
+
+Ein kodiertes Fragment. Fragmente aus demselben Dokument sind keine
+unabhängigen Beobachtungen; ein über Dokumente hinweg signifikantes
+Ergebnis ist deshalb schwächerer Beleg, als der p-Wert nahelegt. Nichts im
+Code kann Ihnen das abnehmen.
+:::
+
+## Welche Codes treten gemeinsam auf?
+
+```r
+d <- qda_code_distance(frag, min_n = 3)   # Jaccard distances
+qda_mds(frag)$points                       # a two-dimensional map
+qda_plot_mds(frag)
+```
+
+Zwei Codes liegen nah beieinander, wenn sie auf denselben Segmenten sitzen.
+`min_n` lässt Codes weg, die seltener verwendet wurden; bei zwei oder drei
+Verwendungen ist jeder Koeffizient Rauschen. `mds()` gibt außerdem `goodness`
+zurück, den Anteil der Eigenwertmasse, den die zwei Dimensionen tragen — eine
+Karte mit 30 % sieht genauso aus wie eine mit 95 %.
+
+```r
+cl <- qda_cluster(frag, min_n = 3)
+cl$cophenetic
+plot(cl$hclust)
+```
+
+`cophenetic` ist die Korrelation zwischen den Distanzen und dem Baum. Unterhalb
+von etwa 0,7 zeichnet das Dendrogramm eine Struktur, die die Distanzen nicht
+hergeben — das ist wissenswert, denn ein Dendrogramm sieht immer überzeugend
+aus. Bei weniger als drei Codes ist es undefiniert und wird als `nan`
+berichtet, nicht als Zahl, die nichts bedeutet.
+
+## Welche Codes und Dokumente ziehen einander an?
+
+```r
+ca <- qda_ca(frag)
+ca$inertia_share
+ca$total_inertia
+```
+
+`inertia_share` bezieht sich auf die ganze Tabelle, nicht auf die behaltenen
+Dimensionen — zwei von vier Dimensionen zu behalten ergibt also einen Wert
+deutlich unter 1, und das ist die ehrliche Antwort darauf, wie viel vom Bild
+Sie sehen. Auf die behaltenen Dimensionen normierte Anteile summieren sich
+immer zu 100 % und beantworten eine Frage, die niemand gestellt hat. Als
+Plausibilitätsprüfung: `total_inertia` ist die Chi-Quadrat-Statistik geteilt
+durch *n*, und die Testsuite prüft das nach.
+
+Die Quellen zu allem Obigen stehen auf der
+[Literaturseite](../dev/literatur.qmd).

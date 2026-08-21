@@ -1,0 +1,163 @@
+---
+title: "Agreement"
+---
+
+## Building the matrix
+
+Reliability coefficients need one row per unit of analysis and one column per
+coder. The fragments export is longer than that, one row per annotation *and*
+code, so it has to be reshaped first:
+
+```r
+u <- qda_units(frag)
+qda_agreement(u)
+```
+
+Reshaping forces two decisions. Both are easy to get silently wrong in a
+hand-written script, and both change the result in the flattering direction,
+so `units()` makes you take them consciously.
+
+### Segments nobody coded
+
+When two coders both leave a segment alone, they agree it is irrelevant. That
+is agreement, and leaving it out answers a different, friendlier question:
+how well did the coders agree *about the material one of them marked*.
+
+Those segments only enter the matrix if you pass the `uncoded` export:
+
+```r
+u <- qda_units(frag, uncoded = qda_read(qda_example("zotqda-uncoded.csv")))
+```
+
+Without it they are simply absent. The package will not warn you, because it
+cannot tell whether you meant to leave them out, but now you know.
+
+### Segments coded twice by one coder
+
+If a coder put three codes on one segment, there is no single value to compare
+against the other coder's one value. Such cells become missing and are counted:
+
+```r
+qda_agreement(u)$multi_set_aside
+```
+
+Quote that count next to the coefficient. A kappa computed after quietly
+dropping a tenth of the material is not the kappa of your study. If multiple
+coding is normal in your project, ask about each code separately instead:
+
+```r
+b <- qda_units_binary(frag, "Belastung")   # yes/no per segment
+qda_kappa(b)
+```
+
+A segment carrying three codes then contributes to all three questions rather
+than to none.
+
+## Which coefficient
+
+| Function | Coders | Chance is estimated from |
+|---|---|---|
+| `qda_percent_agreement()` | any | nothing — raw share of agreeing pairs |
+| `qda_kappa()` | exactly 2 | the coders' own marginals [@CoefficientAgreement] |
+| `qda_brennan()` | exactly 2 | a uniform `1/q` [@Brennan1981CoefficientKappa] — this is what MAXQDA reports |
+| `qda_fleiss()` | any | the pooled category distribution |
+| `qda_alpha()` | any, gaps allowed | the coincidence matrix [@Krippendorff2004ReliabilityContent] |
+| `qda_ac1()` | any | Gwet's correction, stable under skewed marginals |
+
+### The formulas behind them
+
+Every chance-corrected coefficient in the table is the same fraction — how
+much of the agreement that chance leaves open was actually achieved:
+
+$$
+\kappa \;=\; \frac{P_o - P_e}{1 - P_e}
+$$
+
+with
+
+- $P_o$ — the observed share of agreeing pairs,
+- $P_e$ — the agreement expected by chance.
+
+The coefficients differ *only* in what they put into $P_e$. Cohen
+estimates it from the two coders' own marginal distributions
+[@CoefficientAgreement]:
+
+$$
+P_e^{\text{Cohen}} \;=\; \sum_{q} p_{1q}\, p_{2q},
+$$
+
+with
+
+- $q$ — one category of the code system; the sum runs over all of them,
+- $p_{1q}$, $p_{2q}$ — the share of category $q$ in the first and the
+  second coder's codings.
+
+Brennan and Prediger replace that with a uniform $1/q$ over the $q$
+categories [@Brennan1981CoefficientKappa]. Krippendorff's alpha states the
+same idea as a ratio of disagreements, observed over expected, computed from
+the coincidence matrix — which is what lets it absorb missing cells and any
+number of coders [@Krippendorff2004ReliabilityContent; @Hayes2007AnsweringCall]:
+
+$$
+\alpha \;=\; 1 - \frac{D_o}{D_e}.
+$$
+
+with
+
+- $D_o$ — the disagreement observed between the coders,
+- $D_e$ — the disagreement expected by chance, both computed from the
+  coincidence matrix.
+
+`agreement()` reports all of them at once, which is the recommended way to
+look at them. They disagree exactly where the marginals are skewed, and that
+disagreement is itself the finding:
+
+```r
+u <- cbind(ann = c("A", "A", "A", "B"), bob = c("A", "A", "A", "A"))
+qda_percent_agreement(u)   # 0.75
+qda_kappa(u)               # 0
+qda_ac1(u)                 # 0.68
+```
+
+The coders disagreed once in four segments and Cohen's kappa reports zero.
+Nothing is broken: almost everything is category `A`, so chance alone would
+produce that much agreement — $P_e$ swallows $P_o$. This is the kappa
+paradox, described and resolved in a classic pair of papers
+[@Feinstein1990HighAgreement; @Cicchetti1990HighAgreement], and it is a
+property of the measure, not of your coding. Report AC1 beside it, and if
+the two diverge, say so rather than picking the friendlier one.
+
+Coefficients that are mathematically undefined come back as `nan`, never as a
+convenient number. Cohen's kappa on three coders raises instead of silently
+using the first two columns.
+
+## Where in the code system agreement breaks down
+
+A hierarchical code system can be read at several depths. Coders who split
+over `Belastung/beruflich` versus `Belastung/privat` still agree the segment
+is about `Belastung`. Flattening paths level by level shows where the
+agreement is actually lost:
+
+```r
+qda_level_agreement(u)
+qda_plot_level_agreement(u)
+```
+
+A curve that is high at level 1 and collapses at level 3 says the top of your
+code system is solid and its leaves are not yet defined sharply enough. That
+is a statement about the codebook, not about the coders.
+
+## Which pairs cost you the agreement
+
+```r
+qda_confusion(u, only_disagreements = TRUE)
+```
+
+Usually a handful of category pairs account for most of the disagreement, and
+those are the definitions to work on. This turns a disappointing coefficient
+into a list of things to fix.
+
+## References {.unnumbered}
+
+::: {#refs}
+:::

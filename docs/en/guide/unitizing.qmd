@@ -1,0 +1,161 @@
+---
+title: "Unitizing"
+---
+
+Every coefficient in the [agreement chapter](agreement.qmd) assumes the
+segments already line up, and only asks whether the categories match. That
+assumption does a lot of work. This chapter is about the prior question: did
+the coders mark the same stretches of text at all?
+
+Established QDA software settles it with a single overlap threshold, yes or
+no. What that discards is precisely the information about *how* the
+boundaries differ.
+
+## Getting the segments
+
+```r
+segments <- qda_segments(frag)
+```
+
+One list per coder, each a `{"start", "end", "value"}`. The positions come
+from the export's position columns, which arrived with a later plugin
+version: an older export raises rather than returning an empty result that
+would read as total disagreement.
+
+Only text sources give a continuum to measure boundaries on. PDF rectangles
+do not, and they are dropped with a warning rather than quietly approximated
+into character offsets.
+
+## Krippendorff's unitizing alpha
+
+```r
+r <- qda_unitizing_alpha(segments)
+r$alpha; r$Do; r$De
+```
+
+Like every alpha in the family, it is one minus a ratio of disorders,
+observed against what chance would produce
+[@Krippendorff2004ReliabilityContent]:
+
+$$
+{}_{u}\alpha \;=\; 1 - \frac{{}_{u}D_o}{{}_{u}D_e},
+$$
+
+with
+
+- ${}_{u}D_o$ — the disorder observed on the continuum,
+- ${}_{u}D_e$ — the disorder expected for randomly placed units.
+
+Here the disorder is measured on the *continuum*: for every pair of
+coders, overlapping units are compared by the squared distance between their
+boundaries, and what one coder marked while the other left a gap enters with
+its full squared length. ${}_{u}D_e$ is the same quantity for units placed at
+random on a continuum of the same length. (The defining paper, Krippendorff
+1995, *On the Reliability of Unitizing Continuous Data*, is on the
+[literature page](../dev/literature.qmd) and will be citable here once it is
+in the library.)
+
+Chance-corrected, and it treats a continuum of coded units and gaps. Two
+coders agreeing that a stretch is irrelevant is *not* counted as evidence of
+reliable unitizing, which is what separates this from the category-level
+alpha.
+
+Passing `metric=lambda a, b: 0` measures identification alone, ignoring the
+codes. Do not expect that to raise alpha as a rule: it lowers the observed
+disagreement, but it lowers the expected one too, because randomly paired
+units no longer differ by category either. Where the coders disagreed about
+categories, alpha rises; where they agreed throughout, it falls. Compare the
+two `Do` values rather than the two alphas.
+
+## WindowDiff and Pk
+
+```r
+qda_window_diff(ref, hyp, length_)
+qda_pk(ref, hyp, length_)
+```
+
+Two error rates from text segmentation, reported together because they
+disagree informatively. Both slide a window of width $k$ along the continuum
+and count the positions where reference and hypothesis disagree about the
+window's interior; WindowDiff compares the *number* of boundaries inside it:
+
+$$
+\text{WD} \;=\; \frac{1}{N-k}\sum_{i=1}^{N-k}
+\mathbf{1}\!\left[\, b_{\text{ref}}(i, i{+}k) \neq b_{\text{hyp}}(i, i{+}k) \,\right],
+$$
+
+with
+
+- $N$ — the length of the continuum,
+- $k$ — the width of the sliding window,
+- $b_{\text{ref}}$, $b_{\text{hyp}}$ — the number of boundaries the
+  reference and the hypothesis place inside the window,
+- $\mathbf{1}[\cdot]$ — one where the two disagree, zero otherwise.
+
+Pk only asks whether the window's two ends fall in the same segment or
+not. A spurious extra boundary therefore costs something in the first and
+nothing in the second.
+
+Neither is chance-corrected. What they offer instead is comparability with
+the segmentation literature and sensible behaviour on near misses: a boundary
+two characters off is nearly right, and both say so. (Their defining papers,
+Pevzner & Hearst 2002 and Beeferman et al. 1999, are on the
+[literature page](../dev/literature.qmd).)
+
+## Gamma
+
+```r
+g <- qda_gamma(segments)
+g$gamma; g$alignment
+```
+
+Gamma refuses to separate the two questions [@Mathet2015UnifiedHolistic].
+Rather than measuring agreement on a fixed alignment, it searches for the
+pairing of units across coders that minimises a combined positional and
+categorical disorder $\delta$, and reports agreement with respect to that
+best alignment:
+
+$$
+\gamma \;=\; 1 - \frac{\delta_{\text{observed}}}{\delta_{\text{expected}}},
+$$
+
+with
+
+- $\delta_{\text{observed}}$ — the combined positional and categorical
+  disorder of the best alignment,
+- $\delta_{\text{expected}}$ — the same quantity from re-running the
+  search on random continua.
+
+Unitizing and categorisation are judged together.
+
+The practical difference from the unitizing alpha: gamma can pair two units
+that do not overlap at all, when the surrounding configuration says they
+refer to the same phenomenon. Alpha cannot express that.
+
+::: {.callout-warning title="Gamma is exact or it is nothing"}
+
+Finding the best alignment is a set-partitioning problem, NP-hard for
+three or more coders. This implementation searches exhaustively with the
+paper's pruning rule and an admissible bound. When the search would
+exceed `max_nodes` it returns `nan` with a reason rather than the best
+thing it happened to find, because a gamma produced by a heuristic is not
+gamma. If that happens, raise the budget or analyse a smaller stretch.
+:::
+
+Chance correction is by sampling, so `samples` and `seed` matter and the
+result carries `recommended_samples`: how many random continua the observed
+variability suggests for two per cent precision. If that exceeds what you
+ran, run it again with more.
+
+## Which one to report
+
+Report the unitizing alpha when your question is whether the coders agreed on
+*where* the relevant material is, and gamma when you want one number for the
+whole job of unitizing and coding [@Mathet2015UnifiedHolistic]. WindowDiff
+and Pk are worth adding when your audience knows the segmentation
+literature. Sources are on the [literature page](../dev/literature.qmd).
+
+## References {.unnumbered}
+
+::: {#refs}
+:::

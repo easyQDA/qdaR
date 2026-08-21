@@ -1,0 +1,94 @@
+---
+title: "Statistics"
+---
+
+
+The plugin stops at description. It will count and cross-tabulate, but it will
+never hand you a p-value. That is on purpose. Put a significance test in front
+of most qualitative material and it invites a claim the design cannot carry,
+usually because the material was never sampled in a way that would license one.
+
+Some designs do license it, though, and for those this page exists. Note the
+asymmetry: the plugin decides not to test, and you decide to. Nothing here runs
+unless you call it.
+
+## Are codes distributed independently of something?
+
+```r
+res <- qda_chisq(frag, group = "citekey")
+res$statistic
+res$cramers_v
+res$expected_ok
+res$test$method
+```
+
+Read `cramers_v` first. It says how strong the association is, which is the
+question you actually had; the p-value only says whether it would be surprising
+under independence.
+
+`expected_ok` is the other thing to look at. Chi-squared leans on an
+approximation that falls apart once expected counts drop below about five, and
+code-by-document tables get sparse quickly. When that happens the function
+switches by itself. Fisher's exact test on a two-by-two table, otherwise a
+seeded Monte Carlo p-value with the margins held fixed. Check
+`res$test$method` to see which one you were given.
+
+The chi-squared statistic is reported even when an exact test was used, because
+Cramér's V is derived from it, an effect size nobody can recompute is not
+worth reporting.
+
+::: {.callout-warning title="What the unit of this test is"}
+
+One coded fragment. Fragments from the same document are not independent
+observations, so a significant result across documents is weaker evidence
+than the p-value suggests. Nothing in the code can fix that for you.
+:::
+
+## Which codes travel together?
+
+```r
+d <- qda_code_distance(frag, min_n = 3)   # Jaccard distances
+qda_mds(frag)$points                       # a two-dimensional map
+qda_plot_mds(frag)
+```
+
+Two codes are close when they sit on the same segments. `min_n` drops codes
+used fewer than that many times, with two or three uses, every coefficient is
+noise. `qda_mds()` also returns `goodness`, from `stats::cmdscale()`; a map
+showing 30 % of the eigenvalue mass looks exactly like one showing 95 %.
+
+```r
+cl <- qda_cluster(frag, min_n = 3)
+cl$cophenetic
+plot(cl$hclust)
+```
+
+`cophenetic` is the correlation between the distances and the tree. Below
+roughly 0.7 the dendrogram is drawing structure the distances do not support,
+which is worth knowing, because a dendrogram always looks convincing. With
+fewer than three codes it is undefined and reported as `NA` rather than as a
+number that means nothing.
+
+## Which codes and documents attract each other?
+
+```r
+ca <- qda_ca(frag)
+ca$inertia_share
+ca$total_inertia
+```
+
+`inertia_share` is relative to the whole table, not to the dimensions you kept
+— so keeping two of four dimensions gives you something well below 1, which is
+the honest answer to how much of the picture you are seeing. Shares normalised
+to the retained dimensions always sum to 100 % and answer a question nobody
+asked. As a sanity check, `total_inertia` equals the chi-squared statistic
+divided by *n*, and the test suite verifies it.
+
+::: {.callout-note title="This one function uses MASS"}
+
+`qda_ca()` is the only place this package depends on *MASS*, which is
+GPL-licensed and therefore compatible with the AGPL. It makes no
+difference to using the package.
+:::
+
+Sources for all of the above are on the [literature page](../dev/literature.qmd).

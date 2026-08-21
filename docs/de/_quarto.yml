@@ -1,0 +1,105 @@
+# One website project per language; the sidebars of en and de must stay
+# parallel — gen_langmap.py derives the switcher's page map from them.
+project:
+  type: website
+  output-dir: ../../site/de
+  resources:
+    - fonts/
+
+lang: de
+
+bibliography: references.bib
+link-citations: true
+
+website:
+  title: qdaR
+  site-url: https://qdar.zotqda.org/latest/de/
+  repo-url: https://github.com/fre-ms/qdaR
+  navbar:
+    search: true
+    pinned: true
+    right:
+      # Language menu behind the translate icon; langmap.js retargets
+      # the entries to the translation of the current page.
+      # The whole documentation as one linked PDF, built by
+      # the theme's print/make_pdf.py during the site build.
+      - icon: file-pdf
+        aria-label: PDF
+        href: qdaR-Dokumentation.pdf
+      - icon: translate
+        aria-label: Sprache
+        menu:
+          - text: English
+            href: ../en/index.html
+          - text: Deutsch
+            href: ../de/index.html
+      # The theme moves this item over the right sidebar.
+      - icon: github
+        text: GitHub
+        href: https://github.com/fre-ms/qdaR
+  sidebar:
+    style: docked
+    collapse-level: 3
+    contents:
+      - text: Start
+        href: index.qmd
+      - text: Funktionen
+        href: funktionen.qmd
+      - text: Vergleich mit anderer Software
+        href: vergleich.qmd
+      - section: qdaR anwenden
+        contents:
+          - text: Exporte lesen
+            href: guide/lesen.qmd
+          - text: Eine .qdpx lesen
+            href: guide/qdpx.qmd
+          - text: Die Beispielstudie
+            href: guide/beispieldaten.qmd
+          - text: Abbildungen
+            href: guide/abbildungen.qmd
+          - text: Übereinstimmung
+            href: guide/uebereinstimmung.qmd
+          - text: Reliabilität
+            href: guide/reliabilitaet.qmd
+          - text: Unitizing
+            href: guide/unitizing.qmd
+          - text: Statistik
+            href: guide/statistik.qmd
+          - text: Studien planen
+            href: guide/planung.qmd
+          - text: Berichts-Checklisten
+            href: guide/berichte.qmd
+          - text: Code-Identität
+            href: guide/code-identitaet.qmd
+      - section: Für Entwickler
+        contents:
+          - text: Architektur
+            href: dev/architektur.qmd
+          - text: Entwurfsentscheidungen
+            href: dev/entwurf.qmd
+          - text: Der Austauschvertrag
+            href: dev/vertrag.qmd
+          - text: Tests
+            href: dev/tests.qmd
+          - text: Mitwirken
+            href: dev/mitwirken.qmd
+          - text: Literatur
+            href: dev/literatur.qmd
+      - text: Entstehung
+        href: entstehung.qmd
+      - text: Lizenz
+        href: lizenz.qmd
+      - text: Impressum
+        href: impressum.qmd
+      - text: Datenschutz
+        href: datenschutz.qmd
+  page-footer:
+    center: >-
+      © fre.ms — AGPL-3.0-or-later; was Sie damit erarbeiten, gehört Ihnen —
+      [Impressum](https://qdar.zotqda.org/latest/de/impressum.html) ·
+      [Datenschutz](https://qdar.zotqda.org/latest/de/datenschutz.html)
+
+format:
+  zotqda-theme-html:
+    css: fonts/noto.css
+    include-after-body: theme/scripts.html

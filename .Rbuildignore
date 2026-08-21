@@ -1,0 +1,16 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.github$
+^cran-comments\.md$
+^qdaR\.Rcheck$
+^qdaR_.*\.tar\.gz$
+^PROVENANCE\.md$
+^CRAN-CHECKLIST\.md$
+^CLAUDE\.md$
+^docs$
+^site$
+^\.cache$
+^\.gitignore$
+^docs-root$
+^scripts$
+^versions\.json$

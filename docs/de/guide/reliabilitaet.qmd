@@ -1,0 +1,114 @@
+---
+title: "Reliabilität"
+---
+
+
+Das [Kapitel zur Übereinstimmung](uebereinstimmung.qmd) liefert die
+Koeffizienten. Dieses hier handelt davon, was zu tun ist, wenn ein Koeffizient
+enttäuscht — und von den Zahlen, die mit ihm reisen müssen, bevor jemand etwas
+damit anfangen kann.
+
+## Immer ein Intervall
+
+Ein Koeffizient für sich allein lädt zur Überinterpretation ein. Qualitative
+Studien arbeiten mit wenigen Einheiten, das Intervall ist deshalb meist breit —
+und genau das ist der nützliche Teil:
+
+```r
+u = qda_units(frag)
+ci = qda_bootstrap_ci(u, qda_fleiss)
+ci$estimate; ci$lo; ci$hi
+```
+
+Gezogen werden **Einheiten**, nicht Urteile. Die Analyseeinheit ist das
+Segment; Urteile zu ziehen behandelte zwei Beurteilungen desselben Segments als
+unabhängige Beobachtungen.
+
+Liefern weniger als zwanzig Ziehungen einen endlichen Wert, bekommen Sie `None`
+statt eines Intervalls. Ein breites Intervall ist aussagekräftig; eines aus
+fast nichts gerechnetes ist es nicht.
+
+Der Zufallsgenerator ist gesät und derselbe, den das Plugin und der
+R-Zwilling verwenden — das Intervall, das Sie veröffentlichen, ist also
+reproduzierbar, und alle drei Werkzeuge stimmen darin überein.
+
+## Warum das Kappa so aussieht
+
+Cohens Kappa kann einbrechen, während die beobachtete Übereinstimmung hoch ist.
+Feinstein und Cicchetti haben die beiden Gründe 1990 benannt, und `paradox()`
+misst beide:
+
+```r
+d = qda_paradox(qda_units_binary(frag, "Belastung"))
+d$prevalence_index; d$bias_index; d$pabak
+```
+
+Ein hoher **Prävalenzindex** heißt, dass die übereinstimmenden Fälle schief
+liegen: Fast alles fällt in eine Kategorie, der Zufall allein erklärt also den
+größten Teil der Übereinstimmung. Das ist das Kappa-Paradox, eine Eigenschaft
+des Maßes und kein Fehler Ihrer Kodierung.
+
+Ein hoher **Bias-Index** ist etwas anderes und beunruhigender: Die beiden
+Kodierenden unterscheiden sich systematisch, eine vergibt den Code
+großzügiger als die andere. Darüber lohnt ein Gespräch vor der nächsten Runde.
+
+**PABAK** ist Kappa, neu gerechnet mit auf ein Halb festgesetztem Zufall, was
+den Prävalenzeffekt herausnimmt. Berichten Sie es *neben* Kappa, nicht
+stattdessen. Wo die beiden auseinandergehen, sind die Randverteilungen die
+Geschichte.
+
+Die Funktion gibt für alles außer zwei Kodierenden und zwei Kategorien `None`
+zurück, denn auf einer Vierfeldertafel sind diese Indizes definiert.
+
+## Über welche Codes gestritten wurde
+
+Ein gepoolter Koeffizient verbirgt, wo die Uneinigkeit sitzt:
+
+```r
+qda_agreement_by_code(frag, min_n = 3)
+```
+
+Eine Zeile je Code, häufigste zuerst, jeweils mit eigener Übereinstimmung und
+der Prävalenz samt Wilson-Intervall. `min_n` lässt Codes weg, die seltener
+verwendet wurden; bei zwei oder drei Verwendungen ist jeder Koeffizient
+Rauschen.
+
+Das ist zugleich die ehrliche Behandlung von Material, in dem ein Segment
+berechtigterweise mehrere Codes trägt. Jeder Code wird zu einer eigenen
+Ja/Nein-Frage, ein Segment mit drei Codes trägt also zu dreien bei, statt
+beiseitegelegt zu werden.
+
+## Prävalenz an den Rändern
+
+```r
+qda_wilson(2, 40)
+```
+
+Wilson statt der Normalapproximation aus dem Lehrbuch, die Brown, Cai und
+DasGupta für kleine Stichproben als unzuverlässig und bei null oder eins als
+entartet zeigen. Code-Prävalenzen leben genau dort: Ein Code, der in zwei von
+vierzig Segmenten vorkommt, darf kein Intervall bekommen, das unter null
+reicht.
+
+## Hat sich eine Person im Lauf des Projekts verändert?
+
+Das Kodier-Protokoll hält fest, wer wann was kodiert hat — nur deshalb lässt
+sich diese Frage überhaupt stellen. Die meisten Werkzeuge führen keine solche
+Spur.
+
+```r
+qda_code_drift(history, windows = 4)
+```
+
+Jede Zeile ist eine Person in einem Fenster, mit der totalen
+Variationsdistanz zwischen ihrer Codeverteilung dort und in ihrem ersten
+Fenster. Null heißt, sie kodiert wie am Anfang; eins, dass die beiden Fenster
+keinen Code teilen.
+
+Die Fenster enthalten gleich viele Ereignisse und nicht gleich lange
+Zeitspannen — wer schubweise gearbeitet hat, bekäme sonst leere.
+
+Lesen Sie es als Beschreibung, nicht als Test. Eine große Distanz kann heißen,
+dass die Person abgedriftet ist, oder schlicht, dass das spätere Material von
+etwas anderem handelte. Sehen Sie sich an, was kodiert wurde, bevor Sie etwas
+schließen.

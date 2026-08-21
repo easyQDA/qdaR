@@ -1,0 +1,69 @@
+---
+title: "Mitwirken"
+---
+
+Patches sind willkommen. Ein paar Dinge lohnen sich zu wissen, bevor Sie
+Code schreiben.
+
+## Die Lizenzfrage kommt zuerst
+
+Das Paket ist AGPL-3.0-or-later, und das ist die ganze Geschichte. Es gibt
+keine Contributor-Vereinbarung zu unterschreiben und keine Rechte zu
+übertragen: Sie tragen unter der AGPL bei, behalten Ihr Urheberrecht, und
+der Maintainer bekommt keine Rechte an Ihrer Arbeit, die nicht jeder andere
+Nutzer auch hätte.
+
+Wenn das für Sie ein Problem ist, sagen Sie es früh — ein nicht mergebarer
+Patch verschwendet zuerst Ihre Zeit, nicht nur unsere.
+
+**Eine neue Abhängigkeit ist immer auch eine Lizenzentscheidung.** ggplot2
+und jsonlite sind MIT, *MASS* ist GPL — alle verträglich mit der AGPL,
+heute ist also nichts eingeschränkt. Was eine Abhängigkeit aber bindet,
+sind alle stromabwärts; eine Copyleft-Ergänzung ist deshalb erst ein
+Gespräch und dann ein Pull Request.
+
+## Wie eine gute Änderung aussieht
+
+* **Ein Test, der zuerst fehlschlägt.** Besonders bei einem numerischen
+  Fix: Zeigen Sie die falsche Zahl, bevor Sie die richtige zeigen.
+* **Eine Notiz zur Begründung, nicht zur Änderung.** Kommentare, die sagen,
+  was der Code tut, sind Rauschen; Kommentare, die sagen, welche
+  Randbedingung ihn nötig machte, überleben.
+* **Zu jeder Abbildung eine Tabelle.** Ein neuer Plot braucht ein
+  Gegenstück, das die Zahlen zurückgibt — und beide gehören auch in den
+  Python-Zwilling.
+* **`R CMD check --as-cran` sauber.** Keine neuen Notes, kein Nicht-ASCII
+  in `R/`.
+* **roxygen2 mit `@return` und `@examples`.** CRAN will beides, und die
+  Prüfung in diesem Repositorium bestätigt sie für jede exportierte
+  Funktion.
+
+## Was abgelehnt wird
+
+* Alles, was in eine Zotero-Bibliothek schreibt. Kodieren gehört ins
+  Plugin.
+* Eine Voreinstellung, die einen Koeffizienten besser aussehen lässt: ein
+  automatischer `uncoded`-Merge, ein Kappa, das mehrfach kodierte Segmente
+  still übergeht, ein Trägheitsanteil, der auf die behaltenen Dimensionen
+  normiert ist.
+* Statistik ohne beigefügten Vorbehalt. Wo eine Zahl zum Überinterpretieren
+  einlädt, muss die zurückgegebene Liste tragen, was davor warnt.
+* Eine tidyverse-Abhängigkeit für etwas, das Base R schon kann.
+* Umformatierung, vermischt mit einer Verhaltensänderung — das macht beides
+  unbegutachtbar.
+
+## Wenn Sie einen Koeffizienten ändern
+
+Beginnen Sie bei [Tests](tests.qmd). Zwei eingefrorene Referenzen müssen
+gemeinsam neu erzeugt werden, in beiden Paketen, und die Mutationsprüfung
+danach wiederholt. Genau das soll dieses Projekt verhindern: einen
+Koeffizienten, der sich in einer Sprache bewegt und in den anderen beiden
+stehen bleibt.
+
+## Eine Abweichung vom Plugin melden
+
+Eine Zahl, die von der des Plugins abweicht, heißt: Eine der beiden ist
+falsch — und das ist so oder so ein Issue wert. Legen Sie den Export bei,
+auf dem es passiert ist, oder eine Kodierermatrix, die klein genug zum
+Reproduzieren ist; die `qda_agreement()`-Ausgabe beider Seiten reicht
+meist, um zu sagen, welche Seite falsch liegt.

@@ -1,0 +1,46 @@
+---
+title: "Code-Identität"
+---
+
+
+## Zwei Namen für jeden Code
+
+Codes werden umbenannt, unter ein anderes Elternteil verschoben und
+zusammengeführt, während ein Projekt reift. Jeder Export nennt deshalb jeden
+Code zweimal:
+
+| Spalte | Was sie ist | Übersteht Umbenennen? |
+|---|---|---|
+| `code` | der Pfad, den ein Mensch liest, z. B. `Belastung/beruflich` | nein |
+| `codeId` | ein stabiler Bezeichner, den das Plugin einmal vergibt | ja |
+
+## Warum das für Sie zählt
+
+Denken Sie an eine Auswertung, die Sie im März rechnen und im Juni erneut.
+Dazwischen benennt eine Kollegin `Belastung` in `Stress` um und verschiebt zwei
+Untercodes. Nach `code` gruppiert berichtet der Juni-Lauf klammheimlich über
+eine andere Codemenge: Nichts bricht ab, die Zahlen beziehen sich schlicht auf
+etwas anderes. Nach `codeId` gruppiert sind dieselben Codes noch dieselben
+Codes.
+
+```r
+qda_code_counts(frag)                      # by path: readable, fragile
+qda_units(frag, value = "codeId")          # by identity: stable
+```
+
+Beides hat seinen Platz. Pfade gehören in Abbildungen, denn `cX1y2z3a4` sagt
+einer Leserin nichts. Identitäten gehören in alles, was über zwei Exporte
+hinweg zusammenpassen muss: Reliabilität, Vorher-Nachher-Vergleiche,
+Längsschnittarbeit.
+
+Ein brauchbarer Kompromiss ist, nach `codeId` zu gruppieren und mit dem Pfad
+aus dem Codebuch-Export zu beschriften — das gibt Ihnen Stabilität in der
+Rechnung und Lesbarkeit in der Abbildung.
+
+## Zusammengeführte und gelöschte Codes
+
+Werden zwei Codes zusammengeführt, behält der überlebende seine eigene
+Identität, und der aufgenommene wird als in ihn übergegangen vermerkt. Wird ein
+Code gelöscht, wird seine Identität nicht wiederverwendet. Die Identität eines
+Codes, den Sie in einem älteren Export gesehen haben, taucht also nie
+klammheimlich an etwas anderem wieder auf.

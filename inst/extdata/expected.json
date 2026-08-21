@@ -1,0 +1,438 @@
+{
+  "contract": "zotqda-exchange",
+  "version": 1,
+  "files": {
+    "zotqda-fragments.csv": {
+      "format": "fragments/1",
+      "columns": [
+        "zotqdaFormat",
+        "code",
+        "codeId",
+        "citekey",
+        "creator",
+        "year",
+        "title",
+        "itemKey",
+        "attachmentKey",
+        "attachmentTitle",
+        "pageLabel",
+        "annotationKey",
+        "annotationType",
+        "color",
+        "text",
+        "comment",
+        "weight",
+        "allTags",
+        "codedBy",
+        "codedAt",
+        "dateAdded",
+        "dateModified",
+        "positionKind",
+        "positionStart",
+        "positionEnd",
+        "positionPage",
+        "positionRects"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "fragments/1",
+          "code": "Belastung",
+          "codeId": "cX1y2z3a4",
+          "citekey": "Beispiel",
+          "creator": "Beispiel",
+          "year": "Beispiel",
+          "title": "Beispiel",
+          "itemKey": "cX1y2z3a4",
+          "attachmentKey": "cX1y2z3a4",
+          "attachmentTitle": "Beispiel",
+          "pageLabel": "Beispiel",
+          "annotationKey": "cX1y2z3a4",
+          "annotationType": "highlight",
+          "color": "Beispiel",
+          "text": "Beispiel",
+          "comment": "Beispiel",
+          "weight": 3,
+          "allTags": "#Code A|wichtig",
+          "codedBy": "Beispiel",
+          "codedAt": "2026-08-05T09:30:00.000Z",
+          "dateAdded": "2026-08-05T09:30:00.000Z",
+          "dateModified": "2026-08-05T09:30:00.000Z",
+          "positionKind": "text",
+          "positionStart": 120,
+          "positionEnd": 180,
+          "positionPage": "",
+          "positionRects": ""
+        },
+        {
+          "zotqdaFormat": "fragments/1",
+          "code": "Belastung/beruflich, akut",
+          "codeId": "cQ9w8e7r6",
+          "citekey": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "creator": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "year": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "title": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "itemKey": "cQ9w8e7r6",
+          "attachmentKey": "cQ9w8e7r6",
+          "attachmentTitle": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "pageLabel": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "annotationKey": "cQ9w8e7r6",
+          "annotationType": "highlight",
+          "color": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "text": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "comment": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "weight": 0,
+          "allTags": "#Code A|#Code B",
+          "codedBy": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "codedAt": "2026-08-05T09:30:00.000Z",
+          "dateAdded": "2026-08-05T09:30:00.000Z",
+          "dateModified": "2026-08-05T09:30:00.000Z",
+          "positionKind": "pdf",
+          "positionStart": "",
+          "positionEnd": "",
+          "positionPage": 3,
+          "positionRects": "10.5 20 110 32|10.5 33 90 45"
+        }
+      ]
+    },
+    "zotqda-uncoded.csv": {
+      "format": "uncoded/1",
+      "columns": [
+        "zotqdaFormat",
+        "code",
+        "codeId",
+        "citekey",
+        "creator",
+        "year",
+        "title",
+        "itemKey",
+        "attachmentKey",
+        "attachmentTitle",
+        "pageLabel",
+        "annotationKey",
+        "annotationType",
+        "color",
+        "text",
+        "comment",
+        "weight",
+        "allTags",
+        "codedBy",
+        "codedAt",
+        "dateAdded",
+        "dateModified",
+        "positionKind",
+        "positionStart",
+        "positionEnd",
+        "positionPage",
+        "positionRects"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "uncoded/1",
+          "code": "Belastung",
+          "codeId": "cX1y2z3a4",
+          "citekey": "Beispiel",
+          "creator": "Beispiel",
+          "year": "Beispiel",
+          "title": "Beispiel",
+          "itemKey": "cX1y2z3a4",
+          "attachmentKey": "cX1y2z3a4",
+          "attachmentTitle": "Beispiel",
+          "pageLabel": "Beispiel",
+          "annotationKey": "cX1y2z3a4",
+          "annotationType": "highlight",
+          "color": "Beispiel",
+          "text": "Beispiel",
+          "comment": "Beispiel",
+          "weight": 3,
+          "allTags": "#Code A|wichtig",
+          "codedBy": "Beispiel",
+          "codedAt": "2026-08-05T09:30:00.000Z",
+          "dateAdded": "2026-08-05T09:30:00.000Z",
+          "dateModified": "2026-08-05T09:30:00.000Z",
+          "positionKind": "text",
+          "positionStart": 120,
+          "positionEnd": 180,
+          "positionPage": "",
+          "positionRects": ""
+        },
+        {
+          "zotqdaFormat": "uncoded/1",
+          "code": "Belastung/beruflich, akut",
+          "codeId": "cQ9w8e7r6",
+          "citekey": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "creator": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "year": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "title": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "itemKey": "cQ9w8e7r6",
+          "attachmentKey": "cQ9w8e7r6",
+          "attachmentTitle": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "pageLabel": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "annotationKey": "cQ9w8e7r6",
+          "annotationType": "highlight",
+          "color": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "text": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "comment": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "weight": 0,
+          "allTags": "#Code A|#Code B",
+          "codedBy": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "codedAt": "2026-08-05T09:30:00.000Z",
+          "dateAdded": "2026-08-05T09:30:00.000Z",
+          "dateModified": "2026-08-05T09:30:00.000Z",
+          "positionKind": "pdf",
+          "positionStart": "",
+          "positionEnd": "",
+          "positionPage": 3,
+          "positionRects": "10.5 20 110 32|10.5 33 90 45"
+        }
+      ]
+    },
+    "zotqda-codebook.csv": {
+      "format": "codebook/1",
+      "columns": [
+        "zotqdaFormat",
+        "code",
+        "codeId",
+        "parent",
+        "name",
+        "level",
+        "kind",
+        "abbrev",
+        "color",
+        "memo",
+        "nAnnotations",
+        "nAnnotationsRecursive",
+        "nDocumentsRecursive",
+        "defined"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "codebook/1",
+          "code": "Belastung",
+          "codeId": "cX1y2z3a4",
+          "parent": "Belastung",
+          "name": "Beispiel",
+          "level": 3,
+          "kind": "highlight",
+          "abbrev": "Beispiel",
+          "color": "Beispiel",
+          "memo": "Beispiel",
+          "nAnnotations": 3,
+          "nAnnotationsRecursive": 3,
+          "nDocumentsRecursive": 3,
+          "defined": 3
+        },
+        {
+          "zotqdaFormat": "codebook/1",
+          "code": "Belastung/beruflich, akut",
+          "codeId": "cQ9w8e7r6",
+          "parent": "Belastung/beruflich, akut",
+          "name": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "level": 0,
+          "kind": "highlight",
+          "abbrev": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "color": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "memo": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "nAnnotations": 0,
+          "nAnnotationsRecursive": 0,
+          "nDocumentsRecursive": 0,
+          "defined": 0
+        }
+      ]
+    },
+    "zotqda-history.csv": {
+      "format": "history/1",
+      "columns": [
+        "zotqdaFormat",
+        "ts",
+        "user",
+        "action",
+        "code",
+        "annotationKey",
+        "citekey",
+        "creator",
+        "year",
+        "title",
+        "pageLabel",
+        "text"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "history/1",
+          "ts": "2026-08-05T09:30:00.000Z",
+          "user": "Beispiel",
+          "action": "highlight",
+          "code": "Belastung",
+          "annotationKey": "cX1y2z3a4",
+          "citekey": "Beispiel",
+          "creator": "Beispiel",
+          "year": "Beispiel",
+          "title": "Beispiel",
+          "pageLabel": "Beispiel",
+          "text": "Beispiel"
+        },
+        {
+          "zotqdaFormat": "history/1",
+          "ts": "2026-08-05T09:30:00.000Z",
+          "user": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "action": "highlight",
+          "code": "Belastung/beruflich, akut",
+          "annotationKey": "cQ9w8e7r6",
+          "citekey": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "creator": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "year": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "title": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "pageLabel": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "text": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    },
+    "zotqda-abbrevs.csv": {
+      "format": "abbrevs/1",
+      "columns": [
+        "zotqdaFormat",
+        "abbrev",
+        "code"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "abbrevs/1",
+          "abbrev": "Beispiel",
+          "code": "Belastung"
+        },
+        {
+          "zotqdaFormat": "abbrevs/1",
+          "abbrev": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "code": "Belastung/beruflich, akut"
+        }
+      ]
+    },
+    "zotqda-konsens-abbildung.csv": {
+      "format": "consensus-mapping/1",
+      "columns": [
+        "zotqdaFormat",
+        "coder",
+        "coderCode",
+        "consensusCode",
+        "segments",
+        "coders"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "consensus-mapping/1",
+          "coder": "Beispiel",
+          "coderCode": "Belastung",
+          "consensusCode": "Belastung",
+          "segments": 3,
+          "coders": "#Code A|wichtig"
+        },
+        {
+          "zotqdaFormat": "consensus-mapping/1",
+          "coder": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "coderCode": "Belastung/beruflich, akut",
+          "consensusCode": "Belastung/beruflich, akut",
+          "segments": 0,
+          "coders": "#Code A|#Code B"
+        }
+      ]
+    },
+    "zotqda-konsens-codesystem.csv": {
+      "format": "consensus-protocol/1",
+      "columns": [
+        "zotqdaFormat",
+        "type",
+        "subject",
+        "decision",
+        "votes",
+        "coders",
+        "reason"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "consensus-protocol/1",
+          "type": "highlight",
+          "subject": "Beispiel",
+          "decision": "Beispiel",
+          "votes": "Beispiel",
+          "coders": "#Code A|wichtig",
+          "reason": "Beispiel"
+        },
+        {
+          "zotqdaFormat": "consensus-protocol/1",
+          "type": "highlight",
+          "subject": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "decision": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "votes": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "coders": "#Code A|#Code B",
+          "reason": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    },
+    "zotqda-konsens-kennzahlen.csv": {
+      "format": "consensus-metrics/1",
+      "columns": [
+        "zotqdaFormat",
+        "kind",
+        "a",
+        "b",
+        "setAgreement",
+        "sharedCodes",
+        "structureAgreement",
+        "rf",
+        "rfMax"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "consensus-metrics/1",
+          "kind": "highlight",
+          "a": "Beispiel",
+          "b": "Beispiel",
+          "setAgreement": 3,
+          "sharedCodes": 3,
+          "structureAgreement": 3,
+          "rf": 3,
+          "rfMax": 3
+        },
+        {
+          "zotqdaFormat": "consensus-metrics/1",
+          "kind": "highlight",
+          "a": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "b": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "setAgreement": 0,
+          "sharedCodes": 0,
+          "structureAgreement": 0,
+          "rf": 0,
+          "rfMax": 0
+        }
+      ]
+    },
+    "zotqda-mehrfachkodierungen.csv": {
+      "format": "multi-coded/1",
+      "columns": [
+        "zotqdaFormat",
+        "document",
+        "text",
+        "codes",
+        "n",
+        "coder"
+      ],
+      "rows": [
+        {
+          "zotqdaFormat": "multi-coded/1",
+          "document": "Beispiel",
+          "text": "Beispiel",
+          "codes": "#Code A|wichtig",
+          "n": 3,
+          "coder": "Beispiel"
+        },
+        {
+          "zotqdaFormat": "multi-coded/1",
+          "document": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "text": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "codes": "#Code A|#Code B",
+          "n": 0,
+          "coder": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    }
+  }
+}

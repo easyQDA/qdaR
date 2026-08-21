@@ -1,0 +1,31 @@
+Package: qdaR
+Title: Read and Analyse Qualitative Coding Exported from Zotero
+Version: 0.1.0
+Authors@R:
+    person("fre.ms", email = "fre.ms@fre.ms", role = c("aut", "cre"))
+Description: Reads the versioned exchange files written by the Zotero
+    plugins 'zotQDA' and 'qdaZ' -- coded fragments, code systems, coding
+    histories and team-consensus results -- validates them against the
+    shipped contract, and reproduces the plugin's graphics with 'ggplot2'.
+    Adds what those plugins deliberately leave out: six agreement
+    coefficients with bootstrap confidence intervals, the reliability of
+    the segmentation itself, chi-squared tests of code by group tables
+    with effect sizes, correspondence analysis, multidimensional scaling
+    and hierarchical clustering of codes.  Projects from other programs
+    can be read through the 'REFI-QDA' interchange standard
+    <https://www.qdasoftware.org/>, which makes those analyses available
+    to users of established software that does not offer them; the subset
+    a '.qdpx' supports is reported on import.  Reference files are
+    included, so every function can be tried without a Zotero
+    installation.
+License: AGPL-3 + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.1)
+Imports: ggplot2, jsonlite, stats, utils, MASS
+Suggests: testthat (>= 3.0.0), knitr, rmarkdown, vegawidget, withr,
+    xml2
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+URL: https://zotqda.org, https://qdar.zotqda.org/, https://github.com/fre-ms/qdaR
+BugReports: https://github.com/fre-ms/qdaR/issues
+Config/roxygen2/version: 8.0.0

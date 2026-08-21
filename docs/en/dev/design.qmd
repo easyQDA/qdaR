@@ -1,0 +1,102 @@
+---
+title: "Design decisions"
+---
+
+
+Each of these could reasonably have gone the other way. They are written down
+because the reasoning is the part that gets lost, and because anyone changing
+the code deserves to know which choices are load-bearing.
+
+## Failing on an unknown version
+
+**Decided:** refuse a newer exchange version; read older ones.
+
+The alternative is to read what you can and ignore the rest. That works right
+up to the release where a column changes meaning rather than name, and then it
+produces numbers that look fine. Since these numbers end up in publications,
+the failure mode has to be loud.
+
+## Uncoded segments are opt-in, not automatic
+
+**Decided:** `qda_units()` only includes segments no coder coded when the
+caller passes the `uncoded` export.
+
+Including them silently would be defensible; it is usually the
+methodologically right choice, but it would also mean the same call produces
+different coefficients depending on which files happen to be at hand.
+Requiring the second file makes the decision visible in the code, which is
+where a reviewer can see it.
+
+## Multiple coding is set aside and counted
+
+**Decided:** a coder's several codes on one segment make that cell `NA`; the
+count is reported as `multi_set_aside`.
+
+Three alternatives were considered: pick the first code (arbitrary), treat the
+set as one compound category (invents categories nobody defined), or refuse to
+compute anything (unhelpful). Setting aside and counting is the only option
+that neither invents data nor hides how much was dropped. The per-code binary
+view exists for projects where multiple coding is the norm.
+
+## Monte Carlo instead of exact for large tables
+
+**Decided:** exact Fisher only for two-by-two; `simulate.p.value = TRUE`
+beyond that, with a seed, and without disturbing the global generator.
+
+`fisher.test()` on an r-by-c table is only feasible for small counts. Six
+codes over five documents with a few hundred codings is already enough to
+abort with a workspace error, and this package used to do exactly that: the
+old threshold was `prod(dim(tab)) > 100`, which is the wrong criterion,
+because the cost depends on the counts rather than the dimensions. Anything
+past two-by-two now goes to simulation.
+
+The seed is restored afterwards. A function that quietly reseeds the global
+generator breaks every simulation that happens to run after it, and there is a
+test for that.
+
+## Inertia share relative to the whole table
+
+**Decided:** `qda_ca()$inertia_share` divides by total inertia, not by the
+retained dimensions.
+
+Normalising to the retained dimensions is common and always sums to 100 %,
+which reads as *this map shows everything*. This package had that bug, and the
+comparison against the Python twin found it. The check that pins it down is
+that total inertia must equal the chi-squared statistic over *n*.
+
+## The statistic is reported even when Fisher is used
+
+**Decided:** `qda_chisq()` returns `statistic` and `expected` regardless of
+which test was run.
+
+Cramér's V is computed from the chi-squared statistic. If the returned object
+only carried the Fisher result, the effect size would be unrecomputable by the
+reader, which makes it un-checkable. There is a test asserting that V equals
+`sqrt(statistic / (n * (min(dim) - 1)))`.
+
+## The additional permission lives in LICENSE
+
+**Decided:** no separate `LICENSE-EXCEPTION.md`, unlike the other projects.
+
+`License: AGPL-3 + file LICENSE` in `DESCRIPTION` means *the AGPL plus what is
+in that file*, so that is where the section 7 permission belongs. A second
+document would duplicate it, and duplicated licence text drifts.
+`PROVENANCE.md`, `docs/`, `docs-root/`, `site/`, `scripts/` and
+`versions.json` are in `.Rbuildignore`, because `R CMD check` reports
+unknown top-level files. They belong to the repository, not the tarball.
+
+## One function per equation
+
+`qda_unitizing_alpha` used to be one long function. It is now four, and the split
+follows the paper rather than a line count: `pair_disorder` is equation (16)
+for one pair of coders, `observed_disorder` is (17) summing over pairs,
+`expected_disorder` is (18), and `qda_unitizing_alpha` combines them into (19).
+
+**The same split exists in qdaPy and in qdaZ's `stats.js`**, with the same
+boundaries and matching names. That is the point: the three can still be read
+side by side against Krippendorff, which is the only practical way to check
+that three languages implement one formula. Splitting one of them alone would
+have bought a metric and cost the thing the metric was meant to protect.
+
+Before and after, the two implementations were run over the same eighty random
+configurations in all three languages and compared: identical to the last bit.
