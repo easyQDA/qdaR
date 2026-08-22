@@ -9,7 +9,7 @@ cd "$(dirname "$0")"
 # Quarto is pinned; upgrades are deliberate (build with
 # ALLOW_UNPINNED_QUARTO=1, run the smoketest, eyeball a page, move the
 # pin). Keep equal to qdaPy's pin so the sites stay in step.
-PINNED="1.9.38"
+PINNED="1.10.18"
 ACTUAL="$(quarto --version)"
 if [ "$ACTUAL" != "$PINNED" ] && [ -z "$ALLOW_UNPINNED_QUARTO" ]; then
   echo "docs/build.sh: quarto is $ACTUAL, pinned is $PINNED" >&2
