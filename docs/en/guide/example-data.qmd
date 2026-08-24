@@ -16,9 +16,26 @@ The same two files ship byte-identically in the Python twin
 [qdaPy](https://qdapy.zotqda.org)
 (`qdapy.example("zotqda-fragments-demo.csv")`), and a test in each package
 fails if the copies ever drift apart. Results computed on them are
-therefore comparable across the two packages down to the last digit. The
-shipped fragments give α = 0.7266 and AC1 = 0.7299 in both, and both test
-suites freeze those values.
+therefore comparable across the two packages down to the last digit.
+
+Intercoder reliability comes from the **history**, not the fragments. The
+fragments file is *last state* — one row per annotation and code, with a
+single `codedBy` — so where two coders coded the same segment the last
+write wins and the other coder is gone. The per-coder record survives only
+in the history, one row per coding event; `qda_codings()` replays its
+`add`/`remove` events and `qda_units(coder = "user")` reshapes the result:
+
+```r
+u <- qda_units(qda_codings(hist), coder = "user")
+qda_agreement(u)
+```
+
+Read at the leaf code that gives α = 0.672 and AC1 = 0.674. Flatten the
+paths to their top-level theme and the same coders reach α = 0.897 — coders
+who split a theme differently still agree on the theme. That gap between
+leaf and theme is the **level effect**, and both test suites freeze these
+values. Fragments stays for the last-state, corpus-level analyses: code
+counts, the code matrix, co-occurrence.
 
 ::: {.callout-note title="Synthetic, and saying so"}
 
@@ -77,13 +94,20 @@ export.
 
 ## How it was generated
 
-`scripts/make_demo_export.py` in the qdaPy repository writes both files
-into both packages in one run. Everything is derived from one fixed seed
-and fixed timestamps, with no clock and no environment involved. The
-script is therefore reproducible to the byte, which is what the
-cross-package identity test relies on. The column set comes from the exchange contract at run
-time, so a contract change shows up here as a regenerated file rather
-than a stale one.
+`tools/gen-demo-study.js` in the [zotQDA](https://zotqda.org) repository
+writes both files in one run. It builds a native zotQDA model of the study
+and drives the plugin's own exporters over it, so the CSVs are a genuine
+zotQDA export — produced by the very code that writes a real one, not by a
+separate synthesizer. Everything is derived from one fixed seed and fixed
+timestamps, with no clock and no environment involved, so the run is
+reproducible to the byte, which is what the cross-package identity test
+relies on. The column set comes from the exchange contract at run time, so
+a contract change shows up here as a regenerated file rather than a stale
+one.
+
+The same study also ships inside the plugin as a native, loadable example:
+a REFI-QDA project under `examples/pflege-workload`, importable through
+zotQDA's project import.
 
 To change the study, edit the constants at the top of that script, run
 it once, and update the frozen coefficients in

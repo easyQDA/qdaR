@@ -16,9 +16,28 @@ Dieselben zwei Dateien liegen byte-identisch im Python-Zwilling
 [qdaPy](https://qdapy.zotqda.org)
 (`qdapy.example("zotqda-fragments-demo.csv")`), und ein Test in jedem Paket
 schlägt fehl, sobald die Kopien auseinanderlaufen. Ergebnisse darauf sind
-deshalb zwischen den Paketen bis auf die letzte Stelle vergleichbar. Die
-mitgelieferten Fragmente ergeben in beiden α = 0,7266 und AC1 = 0,7299, und
-beide Testsammlungen frieren diese Werte ein.
+deshalb zwischen den Paketen bis auf die letzte Stelle vergleichbar.
+
+Die Intercoder-Reliabilität kommt aus der **Historie**, nicht aus den
+Fragmenten. Die Fragmentdatei ist *Endzustand* — eine Zeile je Annotation
+und Code, mit einem einzigen `codedBy` —, sodass dort, wo zwei Kodierende
+dasselbe Segment kodierten, die letzte Schreibung gewinnt und die andere
+Person verschwindet. Der Nachweis pro Person überlebt nur in der Historie,
+eine Zeile je Kodierereignis; `qda_codings()` spielt deren `add`/`remove`-
+Ereignisse nach und `qda_units(coder = "user")` formt das Ergebnis um:
+
+```r
+u <- qda_units(qda_codings(hist), coder = "user")
+qda_agreement(u)
+```
+
+Auf dem Blatt-Code gelesen ergibt das α = 0,672 und AC1 = 0,674. Flacht man
+die Pfade auf ihr oberstes Thema ab, erreichen dieselben Kodierenden
+α = 0,897 — wer ein Thema anders unterteilt, ist sich über das Thema
+trotzdem einig. Dieser Abstand zwischen Blatt und Thema ist der
+**Ebeneneffekt**, und beide Testsammlungen frieren diese Werte ein. Die
+Fragmente bleiben für die Endzustands-Analysen auf Korpusebene: Code-Zählungen,
+die Code-Matrix, Ko-Okkurrenz.
 
 ::: {.callout-note title="Synthetisch, und es sagt es auch"}
 
@@ -80,13 +99,20 @@ einen anderen Export.
 
 ## Wie sie erzeugt wurde
 
-`scripts/make_demo_export.py` im qdaPy-Repositorium schreibt beide Dateien
-in einem Lauf in beide Pakete. Alles leitet sich aus einem festen Samen
-und festen Zeitstempeln ab, ohne Uhr und ohne Umgebung. Das Skript ist
-darum bis aufs Byte reproduzierbar, worauf sich der paketübergreifende
-Identitätstest verlässt. Die Spaltenliste kommt zur Laufzeit
-aus dem Austauschvertrag; eine Vertragsänderung zeigt sich hier als neu
-erzeugte Datei statt als veraltete.
+`tools/gen-demo-study.js` im [zotQDA](https://zotqda.org)-Repositorium
+schreibt beide Dateien in einem Lauf. Es baut ein natives zotQDA-Modell der
+Studie und lässt die eigenen Exporter des Plugins darüberlaufen — die CSVs
+sind also ein echter zotQDA-Export, erzeugt von genau dem Code, der auch
+einen echten schreibt, nicht von einem separaten Synthesizer. Alles leitet
+sich aus einem festen Samen und festen Zeitstempeln ab, ohne Uhr und ohne
+Umgebung, sodass der Lauf bis aufs Byte reproduzierbar ist, worauf sich der
+paketübergreifende Identitätstest verlässt. Die Spaltenliste kommt zur
+Laufzeit aus dem Austauschvertrag; eine Vertragsänderung zeigt sich hier als
+neu erzeugte Datei statt als veraltete.
+
+Dieselbe Studie liegt dem Plugin auch als natives, ladbares Beispiel bei:
+ein REFI-QDA-Projekt unter `examples/pflege-workload`, importierbar über den
+Projektimport von zotQDA.
 
 Wer die Studie ändern will, ändert die Konstanten am Kopf des Skripts,
 lässt es einmal laufen und trägt die eingefrorenen Koeffizienten in

@@ -1,25 +1,62 @@
 # The demo export ships in qdaR and qdaPy and must be the same study.
-# Written by qdaPy's scripts/make_demo_export.py into both packages at
-# once; the shape and the headline coefficients are frozen here exactly
-# as they are on the Python side (tests/test_demo_export.py).
+# It is a genuine zotQDA export: the plugin's own exporters, driven over a
+# native model by tools/gen-demo-study.js in the zotQDA repository, write the
+# two shipped copies at once. The shape and the headline coefficients are
+# frozen here, and the two copies are held to byte identity -- the same
+# discipline the frozen qdaZ references follow.
+#
+# The fragments file is "last state": one row per (annotation, code) with a
+# single codedBy, so a segment two coders coded collapses to one and cannot
+# carry intercoder agreement. Reliability is therefore computed from the
+# HISTORY (one row per coding event, per coder), which is what the plugin
+# itself does.
 
 test_that("demo fragments have the documented shape", {
   frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
-  expect_equal(nrow(frag), 502L)
+  # last-state export: fewer rows than the per-coder shape it replaced
+  expect_equal(nrow(frag), 352L)
   expect_equal(length(unique(frag$code)), 9L)
   expect_equal(length(unique(frag$citekey)), 8L)
   expect_setequal(unique(frag$codedBy), c("ann", "bob"))
-})
-
-test_that("demo agreement matches the frozen values", {
-  frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
-  a <- qda_agreement(qda_units(frag))
-  expect_equal(a$alpha, 0.7266, tolerance = 1e-3)
-  expect_equal(a$ac1, 0.7299, tolerance = 1e-3)
+  expect_true(all(frag$positionKind == "text"))
 })
 
 test_that("demo history reads and carries its remove events", {
   hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
   expect_setequal(unique(hist$action), c("add", "remove"))
   expect_equal(sum(hist$action == "remove"), 6L)
+})
+
+test_that("demo agreement from the history matches the frozen values", {
+  hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+  u <- qda_units(qda_codings(hist), coder = "user")
+  a <- qda_agreement(u)
+  # leaf level: the full code path
+  expect_equal(a$alpha, 0.6716, tolerance = 1e-3)
+  expect_equal(a$ac1, 0.6740, tolerance = 1e-3)
+})
+
+test_that("agreement rises when the code system is read at theme level", {
+  hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+  codings <- qda_codings(hist)
+  leaf <- qda_agreement(qda_units(codings, coder = "user"))
+
+  themed <- codings
+  themed$code <- sub("/.*", "", themed$code)   # flatten to the top-level group
+  theme <- qda_agreement(qda_units(themed, coder = "user"))
+
+  expect_equal(theme$alpha, 0.8965, tolerance = 1e-3)
+  expect_equal(theme$ac1, 0.8984, tolerance = 1e-3)
+  # the level effect: coders who split a theme differently still agree on it
+  expect_gt(theme$alpha, leaf$alpha)
+})
+
+test_that("the shipped demo is byte-identical to the qdaPy copy", {
+  for (name in c("zotqda-fragments-demo.csv", "zotqda-history-demo.csv")) {
+    ours <- qda_example(name)
+    theirs <- file.path("..", "..", "..", "qdaPy", "src", "qdapy", "data", name)
+    skip_if_not(file.exists(theirs), "qdaPy sources not present")
+    expect_identical(readBin(ours, "raw", file.info(ours)$size),
+                     readBin(theirs, "raw", file.info(theirs)$size))
+  }
 })
