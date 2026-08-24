@@ -162,13 +162,13 @@ Gutachterin nicht mit dem Original abgleichen.
 
 ## Arbeiten ohne DOI
 
-* Cramér, H. (1946). *Mathematical Methods of Statistics*. Princeton
-  University Press. Daher stammt das *V*, das `qda_chisq()` berichtet.
-* Sokal, R. R., & Sneath, P. H. A. (1963). *Principles of Numerical
-  Taxonomy*. Freeman. Average Linkage, die hier voreingestellte Verknüpfung.
-* Wilkinson, L. (2005). *The Grammar of Graphics* (2. Aufl.). Springer. Das
+* [Cramér, H. (1946). *Mathematical Methods of Statistics*. Princeton
+  University Press.]{#litref-Cramer1946Mathematical} Daher stammt das *V*, das `qda_chisq()` berichtet.
+* [Sokal, R. R., & Sneath, P. H. A. (1963). *Principles of Numerical
+  Taxonomy*. Freeman.]{#litref-SokalSneath1963Principles} Average Linkage, die hier voreingestellte Verknüpfung.
+* [Wilkinson, L. (2005). *The Grammar of Graphics* (2. Aufl.). Springer.]{#litref-Wilkinson2005Grammar} Das
   Buch, von dem die Zeichen-Backends abstammen.
-* REFI-QDA-Standard, <https://www.qdasoftware.org/>. Das Austauschformat, das
+* [REFI-QDA-Standard]{#litref-RefiQda}, <https://www.qdasoftware.org/>. Das Austauschformat, das
   zotQDA liest und schreibt. Nicht Sache dieses Pakets, erklärt aber, woher ein
   paar Spaltennamen kommen.
 
