@@ -1,12 +1,14 @@
-YEAR: 2026
-COPYRIGHT HOLDER: fre.ms
+# qdaR — additional permission under AGPL-3 section 7
+
+Copyright (c) 2026 fre.ms
 
 qdaR is licensed under the GNU Affero General Public License, version 3 or
 later.  The text of that licence ships with R itself, in
 share/licenses/AGPL-3, and is available from https://www.gnu.org/licenses/.
 
 This file adds one permission to it.  It takes nothing away: every right the
-AGPL grants you is untouched.
+AGPL grants you is untouched.  (It is not part of the CRAN package metadata,
+which records the plain `AGPL-3`; it is published here with the source.)
 
 
 ADDITIONAL PERMISSION: YOUR WORK STAYS YOURS

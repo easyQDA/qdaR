@@ -18,7 +18,7 @@ Description: Reads the versioned exchange files written by the Zotero
     a '.qdpx' supports is reported on import.  Reference files are
     included, so every function can be tried without a Zotero
     installation.
-License: AGPL-3 + file LICENSE
+License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.1)
 Imports: ggplot2, jsonlite, stats, utils, MASS

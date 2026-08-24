@@ -81,17 +81,18 @@ turned up exactly that way.
 
 ## Licence
 
-**AGPL-3.0-or-later** ([`LICENSE`](LICENSE)), the same terms as zotQDA, qdaZ
-and the Python twin qdaPy.
+**AGPL-3.0-or-later**, the same terms as zotQDA, qdaZ and the Python twin
+qdaPy. (The CRAN package records the plain `AGPL-3`; the AGPL text ships with
+R itself.)
 
 **What you produce with qdaR is yours.** Figures, data frames, coefficients,
 reports: the licence places no condition on any of it, by an additional
-permission under section 7 of the AGPL. It is part of [`LICENSE`](LICENSE),
-because that is where an R package states terms additional to a standard
-licence; in the other projects the same wording lives in
-`LICENSE-EXCEPTION.md`. Strictly speaking it changes nothing, a copyleft
-licence has never reached into a program's output, but a figure in a submitted
-manuscript is not the place for a licensing question, so it is written down.
+permission under section 7 of the AGPL, written down in
+[`LICENSE-EXCEPTION.md`](https://github.com/fre-ms/qdaR/blob/main/LICENSE-EXCEPTION.md)
+— the same wording as in the sibling projects. Strictly speaking it changes
+nothing, a copyleft licence has never reached into a program's output, but a
+figure in a submitted manuscript is not the place for a licensing question, so
+it is written down.
 
 **Commercial use does not need a commercial licence.** The AGPL does not forbid
 it. What it asks is that a *modified version* you distribute, or let others use
