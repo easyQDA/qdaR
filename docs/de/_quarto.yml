@@ -5,6 +5,11 @@ project:
   output-dir: ../../site/de
   resources:
     - fonts/
+  # Enrich the rendered literature page with COinS (Zotero-readable) and
+  # per-entry BibTeX/RIS download buttons, from dev/references.bib (theme
+  # feature). The bibliography: key below stays the guide's references.bib.
+  post-render:
+    - ../offline/literature.py
 
 lang: de
 
