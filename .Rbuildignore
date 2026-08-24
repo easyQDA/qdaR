@@ -14,3 +14,4 @@
 ^docs-root$
 ^scripts$
 ^versions\.json$
+^dist$
