@@ -3,7 +3,7 @@ title: "The exchange contract"
 ---
 
 
-zotQDA, qdaZ, qdaR and qdaPy are four code bases that have to agree on the
+[zotQDA](https://zotqda.org), [qdaZ](https://qdaz.zotqda.org), qdaR and [qdaPy](https://qdapy.zotqda.org) are four code bases that have to agree on the
 same files. The agreement is written down in a form a machine can check:
 `contract/exchange-v1.json`, generated from a single declaration in the
 plugin and shipped by every consumer.

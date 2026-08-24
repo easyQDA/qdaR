@@ -168,7 +168,7 @@ Gutachterin nicht mit dem Original abgleichen.
 * [Sokal, R. R., & Sneath, P. H. A. (1963). *Principles of Numerical
   Taxonomy*. Freeman. ISBN 978-0-7167-0697-7.]{#litref-SokalSneath1963Principles} Average Linkage, die hier voreingestellte Verknüpfung.
 * [REFI-QDA-Standard]{#litref-RefiQda}, <https://www.qdasoftware.org/>. Das Austauschformat, das
-  zotQDA liest und schreibt. Nicht Sache dieses Pakets, erklärt aber, woher ein
+  [zotQDA](https://zotqda.org) liest und schreibt. Nicht Sache dieses Pakets, erklärt aber, woher ein
   paar Spaltennamen kommen.
 
 ::: {.callout-note title="Eine Quelle, die absichtlich fehlt"}

@@ -138,7 +138,7 @@ nach dem Merge.
 ::: {.callout-warning title="Zwei Tests werden in einem gewöhnlichen Checkout übersprungen"}
 
 Die Vergleiche, die zusichern, dass eine eingefrorene Referenz
-byte-identisch mit der Kopie in qdaPy ist, brauchen das Python-Paket
+byte-identisch mit der Kopie in [qdaPy](https://qdapy.zotqda.org) ist, brauchen das Python-Paket
 **neben** diesem auf der Platte. Sie überspringen in einem nackten
 Clone, und sie überspringen auch unter `R CMD check`, das die Tests in
 ein temporäres Verzeichnis kopiert, wo der relative Pfad nicht mehr

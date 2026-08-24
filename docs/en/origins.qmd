@@ -2,7 +2,7 @@
 title: "Origins"
 ---
 
-The zotQDA ecosystem came into being at the end of July 2026, during the
+The [zotQDA](https://zotqda.org) ecosystem came into being at the end of July 2026, during the
 JCrete unconference (27 to 31 July 2026) on Crete and the JCrete
 "afterglow" that followed it.
 
@@ -19,7 +19,7 @@ morning. On 28 July 2026 I ran a session there on the future of teaching:
 documented in the conference repository:
 [JCrete 2026](https://github.com/JCrete/jcrete2026).
 
-The zotQDA ecosystem (zotQDA, qdaZ, qdaPy and qdaR) grew out of that
+The zotQDA ecosystem (zotQDA, [qdaZ](https://qdaz.zotqda.org), [qdaPy](https://qdapy.zotqda.org) and qdaR) grew out of that
 session — out of the realisation that I lacked the tool to widen and
 deepen the session's brainstorming after the conference: through
 interviews with experienced people from software development, followed by

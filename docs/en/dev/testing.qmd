@@ -126,7 +126,7 @@ change is still a pull request rather than after the merge.
 ::: {.callout-warning title="Two tests skip in an ordinary checkout"}
 
 The comparisons that assert a frozen reference is byte-identical to the
-copy in qdaPy need the Python package **beside** this one on disk. They
+copy in [qdaPy](https://qdapy.zotqda.org) need the Python package **beside** this one on disk. They
 skip in a bare clone, and they skip under `R CMD check` as well, which
 copies the tests into a temporary directory where the relative path no
 longer resolves.

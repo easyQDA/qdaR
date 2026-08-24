@@ -3,7 +3,7 @@ title: "Was qdaR kann"
 ---
 
 
-qdaR liest die Dateien, die die Zotero-Plugins zotQDA und qdaZ exportieren,
+qdaR liest die Dateien, die die Zotero-Plugins [zotQDA](https://zotqda.org) und [qdaZ](https://qdaz.zotqda.org) exportieren,
 und rechnet die Auswertungen, die eine qualitative Studie berichtet. Es ist
 eine Bibliothek: Es gibt keine Oberfläche, und kodiert wird hier nichts.
 
@@ -34,7 +34,7 @@ Konsensverfahren nicht. `qda_read_qdpx()` benennt, was Ihre Datei ausschließt, 
 ## Übereinstimmung zwischen Kodierenden
 
 Sechs Koeffizienten, jeder mit einem **95-%-Perzentil-Bootstrap-Intervall** aus
-einem gesäten Zufallsgenerator. Dieselben Daten ergeben hier, in qdaPy und
+einem gesäten Zufallsgenerator. Dieselben Daten ergeben hier, in [qdaPy](https://qdapy.zotqda.org) und
 im Plugin dasselbe Intervall:
 
 - prozentuale Übereinstimmung

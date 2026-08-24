@@ -4,7 +4,7 @@ title: "qdaR"
 
 
 Sie haben Material in Zotero mit [zotQDA](https://zotqda.org) kodiert und
-möchten nun etwas damit tun, was das qdaZ-Plugin nicht anbietet: mehrere Exporte
+möchten nun etwas damit tun, was das [qdaZ](https://qdaz.zotqda.org)-Plugin nicht anbietet: mehrere Exporte
 zusammenführen, eine Abbildung in ein Manuskript setzen, einen statistischen Test rechnen,
 den qdaZ bewusst auslässt, oder die ganze Auswertung schlicht in einem reproduzierbaren
 Skript behalten, das nächstes Jahr noch läuft. Dafür ist qdaR da.

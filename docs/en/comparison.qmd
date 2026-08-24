@@ -11,8 +11,8 @@ against this ecosystem as well as for it.
 
 qdaR on its own is a library. Nobody switches to a library. The realistic
 comparison is between an established programme — MAXQDA, ATLAS.ti, NVivo, QDA
-Miner, Dedoose — and the **combination** of Zotero, the zotQDA plugin for
-coding, qdaZ for analysis in a window, and qdaPy or qdaR for analysis in a
+Miner, Dedoose — and the **combination** of Zotero, the [zotQDA](https://zotqda.org) plugin for
+coding, [qdaZ](https://qdaz.zotqda.org) for analysis in a window, and [qdaPy](https://qdapy.zotqda.org) or qdaR for analysis in a
 script. That combination is what the rest of this page calls *the ecosystem*.
 
 ## Monolith or ecosystem

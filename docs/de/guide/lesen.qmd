@@ -5,7 +5,7 @@ title: "Exporte lesen"
 
 ## Der Stempel in der ersten Spalte
 
-Jede Datei, die zotQDA schreibt, beginnt mit einer Spalte `zotqdaFormat`, und
+Jede Datei, die [zotQDA](https://zotqda.org) schreibt, beginnt mit einer Spalte `zotqdaFormat`, und
 jede Zeile wiederholt denselben Wert — `fragments/1`, `codebook/1` und so
 weiter. Der Teil vor dem Schrägstrich sagt, welche Art von Export Sie in der
 Hand haben; die Zahl dahinter, welche Version des Austauschformats verwendet

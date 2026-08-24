@@ -2,7 +2,7 @@
 title: "Entstehung"
 ---
 
-Das zotQDA-Ökosystem ist Ende Juli 2026 während der JCrete-Unkonferenz
+Das [zotQDA](https://zotqda.org)-Ökosystem ist Ende Juli 2026 während der JCrete-Unkonferenz
 (27. bis 31. Juli 2026) auf Kreta und während des anschließenden
 JCrete-„Nachglühens" entstanden.
 
@@ -20,7 +20,7 @@ Am 28. Juli 2026 habe ich dort eine Session zur Zukunft der Lehre gehalten:
 Repositorium der Konferenz dokumentiert:
 [JCrete 2026](https://github.com/JCrete/jcrete2026).
 
-Aus dieser Session ist das zotQDA-Ökosystem (zotQDA, qdaZ, qdaPy und qdaR)
+Aus dieser Session ist das zotQDA-Ökosystem (zotQDA, [qdaZ](https://qdaz.zotqda.org), [qdaPy](https://qdapy.zotqda.org) und qdaR)
 hervorgegangen — als Konsequenz der Feststellung, dass mir das Werkzeug
 fehlte, um das Brainstorming der Session im Nachgang der Konferenz
 auszuweiten und zu vertiefen: über Interviews mit erfahrenen Leuten
