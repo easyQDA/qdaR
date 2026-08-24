@@ -220,13 +220,18 @@ def to_ris(e):
         lines.append(f"PB  - {clean(pub)}")
     if e.get("address"):
         lines.append(f"CY  - {clean(e['address'])}")
+    if e.get("isbn"):
+        lines.append(f"SN  - {e['isbn']}")
     if e.get("doi"):
         lines.append(f"DO  - {norm_doi(e['doi'])}")
         lines.append(f"UR  - https://doi.org/{norm_doi(e['doi'])}")
     elif e.get("url"):
         lines.append(f"UR  - {e['url']}")
-    if e.get("note"):
-        lines.append(f"N1  - {clean(e['note'])}")
+    note = e.get("note", "")
+    if e.get("oclc"):
+        note = (note + "; " if note else "") + "OCLC: " + e["oclc"]
+    if note:
+        lines.append(f"N1  - {clean(note)}")
     lines.append("ER  - ")
     return "\n".join(lines) + "\n"
 
@@ -268,6 +273,8 @@ def to_coins(e, sid):
             kev.append(("rft.pub", clean(pub)))
         if e.get("address"):
             kev.append(("rft.place", clean(e["address"])))
+        if e.get("isbn"):
+            kev.append(("rft.isbn", e["isbn"].replace("-", "")))
     if e.get("year"):
         kev.append(("rft.date", e["year"]))
     for name, corp in authors(e.get("author", "")):

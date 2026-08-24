@@ -88,10 +88,10 @@ website:
             href: dev/tests.qmd
           - text: Mitwirken
             href: dev/mitwirken.qmd
-          - text: Literatur
-            href: dev/literatur.qmd
       - text: Entstehung
         href: entstehung.qmd
+      - text: Literatur
+        href: dev/literatur.qmd
       - text: Lizenz
         href: lizenz.qmd
       - text: Impressum
