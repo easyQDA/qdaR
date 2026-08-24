@@ -162,3 +162,62 @@ qda_apply_mapping <- function(fragments, mapping, coder_col = "codedBy") {
   fragments$consensusCode <- mapping$consensusCode[match(key_f, key_m)]
   fragments
 }
+
+#' Reconstruct the current per-coder coding state from the history
+#'
+#' The fragments export is "last state": one row per annotation and code, with
+#' a single `codedBy` -- when two coders coded the same segment, the last write
+#' wins and the other coder is gone.  That makes fragments the wrong table for
+#' intercoder reliability, because the very disagreement reliability measures
+#' is what it collapses.
+#'
+#' The history keeps every coding *event* instead: one row per `add` or
+#' `remove`, per coder.  Replaying it recovers who coded what -- both coders on
+#' the same segment survive, which is exactly what an agreement figure needs.
+#' This is how the plugin itself computes reliability.
+#'
+#' For each `(unit, coder, value)` the events are applied oldest first and the
+#' pair is kept when its last event is an `add`; an `add` later withdrawn by a
+#' `remove` drops out.  The result is one row per surviving coder--code pairing,
+#' ready for [qda_units()] with `coder = "user"`.
+#'
+#' @param history A history data frame from [qda_read_history()].
+#' @param unit Column identifying the unit of analysis.
+#' @param coder Column identifying the coder.
+#' @param value Column holding the category (the code path).
+#' @param time Column holding the event timestamp, sorted oldest first.
+#' @param action Column holding `"add"` or `"remove"`.
+#'
+#' @return A data frame with one row per surviving pairing, columns `unit`,
+#'   `coder` and `value` (by their given names), and `citekey` and `title`
+#'   carried through when present.
+#' @examples
+#' hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+#' codings <- qda_codings(hist)
+#' u <- qda_units(codings, coder = "user")
+#' qda_agreement(u)$alpha
+#' @export
+qda_codings <- function(history, unit = "annotationKey", coder = "user",
+                        value = "code", time = "ts", action = "action") {
+  stopifnot(is.data.frame(history))
+  need <- c(unit, coder, value, time, action)
+  miss <- setdiff(need, names(history))
+  if (length(miss)) {
+    stop("history is missing: ", paste(miss, collapse = ", "), call. = FALSE)
+  }
+
+  # oldest first; a stable order keeps events with the same timestamp in the
+  # order they were logged, so "last write wins" is well defined
+  d <- history[order(as.character(history[[time]]), method = "radix"), ,
+               drop = FALSE]
+  key <- paste(d[[unit]], d[[coder]], d[[value]], sep = "\r")
+  idx <- split(seq_len(nrow(d)), key)
+  keep <- vapply(idx, function(i) identical(d[[action]][i[length(i)]], "add"),
+                 logical(1))
+  first <- sort(vapply(idx[keep], function(i) i[[1L]], integer(1)))
+
+  carry <- intersect(c("citekey", "title"), names(d))
+  out <- d[first, c(unit, coder, value, carry), drop = FALSE]
+  rownames(out) <- NULL
+  out
+}
