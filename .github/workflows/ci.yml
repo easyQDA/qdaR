@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Weekly, so the cross-language drift check catches an upstream qdaZ/qdaPy
+  # change even in a week without a push here — "always congruent".
+  schedule:
+    - cron: "23 5 * * 1"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -141,3 +145,32 @@ jobs:
               quit(status = 1)
             }
           '
+
+  plugin-congruence:
+    # Drift guard: qdaR's frozen reference files (qdaz-*.json) must still match
+    # the CURRENT published qdaZ engine — otherwise the published R package and
+    # the published plugin could silently disagree. This checks out fre-ms/qdaZ
+    # and recomputes every frozen coefficient with its live engine
+    # (tools/gen-reference.js --check), failing on any drift beyond 1e-12.
+    #
+    # Set the repository variable QDAZ_PUBLISHED to "true" once
+    # github.com/fre-ms/qdaZ exists.
+    name: plugin congruence (drift)
+    if: vars.QDAZ_PUBLISHED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: qdaR
+
+      - uses: actions/checkout@v5
+        with:
+          repository: fre-ms/qdaZ
+          path: qdaZ
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: The frozen qdaZ reference must match the current qdaZ engine
+        run: node qdaZ/tools/gen-reference.js --check --refs qdaR/tests/testthat
