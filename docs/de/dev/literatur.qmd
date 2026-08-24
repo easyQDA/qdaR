@@ -84,6 +84,7 @@ Plugins geschrieben sind.
 | Arbeit | DOI |
 |---|---|
 | Wickham, H. (2010). *A Layered Grammar of Graphics*. Journal of Computational and Graphical Statistics 19(1), 3-28. | [10.1198/jcgs.2009.07098](https://doi.org/10.1198/jcgs.2009.07098) |
+| Wilkinson, L. (2005). *The Grammar of Graphics* (2. Aufl.). Springer. | [10.1007/0-387-28695-0](https://doi.org/10.1007/0-387-28695-0) |
 | Satyanarayan, A.; Moritz, D.; Wongsuphasawat, K.; Heer, J. (2017). *Vega-Lite: A Grammar of Interactive Graphics*. IEEE Transactions on Visualization and Computer Graphics 23(1), 341-350. | [10.1109/tvcg.2016.2599030](https://doi.org/10.1109/tvcg.2016.2599030) |
 | Waskom, M. (2021). *seaborn: statistical data visualization*. Journal of Open Source Software 6(60), 3021. | [10.21105/joss.03021](https://doi.org/10.21105/joss.03021) |
 | Coombes, K. R.; Brock, G.; Abrams, Z. B.; Abruzzo, L. V. (2019). ***Polychrome** : Creating and Assessing Qualitative Palettes with Many Colors*. Journal of Statistical Software 90(Code Snippet 1). | [10.18637/jss.v090.c01](https://doi.org/10.18637/jss.v090.c01) |
@@ -163,11 +164,9 @@ Gutachterin nicht mit dem Original abgleichen.
 ## Arbeiten ohne DOI
 
 * [Cramér, H. (1946). *Mathematical Methods of Statistics*. Princeton
-  University Press.]{#litref-Cramer1946Mathematical} Daher stammt das *V*, das `qda_chisq()` berichtet.
+  University Press. ISBN 978-1-4008-8386-8.]{#litref-Cramer1946Mathematical} Daher stammt das *V*, das `qda_chisq()` berichtet.
 * [Sokal, R. R., & Sneath, P. H. A. (1963). *Principles of Numerical
-  Taxonomy*. Freeman.]{#litref-SokalSneath1963Principles} Average Linkage, die hier voreingestellte Verknüpfung.
-* [Wilkinson, L. (2005). *The Grammar of Graphics* (2. Aufl.). Springer.]{#litref-Wilkinson2005Grammar} Das
-  Buch, von dem die Zeichen-Backends abstammen.
+  Taxonomy*. Freeman. ISBN 978-0-7167-0697-7.]{#litref-SokalSneath1963Principles} Average Linkage, die hier voreingestellte Verknüpfung.
 * [REFI-QDA-Standard]{#litref-RefiQda}, <https://www.qdasoftware.org/>. Das Austauschformat, das
   zotQDA liest und schreibt. Nicht Sache dieses Pakets, erklärt aber, woher ein
   paar Spaltennamen kommen.
