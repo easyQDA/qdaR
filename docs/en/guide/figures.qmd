@@ -111,7 +111,7 @@ alike, and so do a trustworthy dendrogram and a misleading one.
 
 ## The plugin's own charts, unchanged
 
-Every chart in qdaZ can be saved as a data-plus-specification pair. Rendering
+Every chart in [qdaZ](https://qdaz.zotqda.org) can be saved as a data-plus-specification pair. Rendering
 the specification reproduces the figure exactly as it looked in Zotero:
 
 ```r

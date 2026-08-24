@@ -99,8 +99,8 @@ Felix Müller-Sarnowski, Anschrift wie oben.
 ### Urheberschaft an der Software
 
 Der Verein betreibt diese Website. **Die hier vorgestellte Software ist kein
-Werk des Vereins.** Urheber und alleiniger Inhaber der Rechte an zotQDA, qdaZ,
-qdaR und qdaPy ist Felix Müller-Sarnowski, der sie unter dem Namen *fre.ms*
+Werk des Vereins.** Urheber und alleiniger Inhaber der Rechte an [zotQDA](https://zotqda.org), [qdaZ](https://qdaz.zotqda.org),
+qdaR und [qdaPy](https://qdapy.zotqda.org) ist Felix Müller-Sarnowski, der sie unter dem Namen *fre.ms*
 veröffentlicht.
 
 Der Verein erwirbt keine Rechte an der Software, vertreibt sie nicht und

@@ -100,7 +100,7 @@ ist Gleichung (16) für ein Paar Kodierender, `observed_disorder` ist (17)
 als Summe über die Paare, `expected_disorder` ist (18), und
 `qda_unitizing_alpha` setzt sie zu (19) zusammen.
 
-**Derselbe Schnitt existiert in qdaPy und in qdaZ' `stats.js`**, mit
+**Derselbe Schnitt existiert in [qdaPy](https://qdapy.zotqda.org) und in [qdaZ](https://qdaz.zotqda.org)' `stats.js`**, mit
 denselben Grenzen und passenden Namen. Genau darum geht es: Die drei
 lassen sich weiterhin nebeneinander gegen Krippendorff lesen — der einzige
 praktikable Weg zu prüfen, dass drei Sprachen eine Formel implementieren.

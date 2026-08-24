@@ -92,7 +92,7 @@ follows the paper rather than a line count: `pair_disorder` is equation (16)
 for one pair of coders, `observed_disorder` is (17) summing over pairs,
 `expected_disorder` is (18), and `qda_unitizing_alpha` combines them into (19).
 
-**The same split exists in qdaPy and in qdaZ's `stats.js`**, with the same
+**The same split exists in [qdaPy](https://qdapy.zotqda.org) and in [qdaZ](https://qdaz.zotqda.org)'s `stats.js`**, with the same
 boundaries and matching names. That is the point: the three can still be read
 side by side against Krippendorff, which is the only practical way to check
 that three languages implement one formula. Splitting one of them alone would

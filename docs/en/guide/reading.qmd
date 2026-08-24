@@ -5,7 +5,7 @@ title: "Reading exports"
 
 ## The stamp in the first column
 
-Every file zotQDA writes starts with a `zotqdaFormat` column, and every row
+Every file [zotQDA](https://zotqda.org) writes starts with a `zotqdaFormat` column, and every row
 repeats the same value — `fragments/1`, `codebook/1`, and so on. The part
 before the slash says what kind of export you are holding; the number after it
 says which version of the exchange format was used.

@@ -4,7 +4,7 @@ title: "qdaR"
 
 
 You have coded material in Zotero with [zotQDA](https://zotqda.org) and now
-want to do something with it that the qdaZ plugin does not offer: combine
+want to do something with it that the [qdaZ](https://qdaz.zotqda.org) plugin does not offer: combine
 several exports, put a figure into a manuscript, run a statistical test
 that qdaZ deliberately leaves out, or simply keep the whole analysis in a
 reproducible script that still runs next year. That is what qdaR is for.

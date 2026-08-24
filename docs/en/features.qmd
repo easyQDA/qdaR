@@ -3,7 +3,7 @@ title: "What qdaR does"
 ---
 
 
-qdaR reads the files the zotQDA and qdaZ Zotero plugins export and computes
+qdaR reads the files the [zotQDA](https://zotqda.org) and [qdaZ](https://qdaz.zotqda.org) Zotero plugins export and computes
 the analyses a qualitative study reports. It is a library: there is no
 interface, and it does no coding of its own.
 
@@ -144,7 +144,7 @@ a figure are what goes into a paper.
 Every coefficient is computed twice: once by the plugin in JavaScript, once
 here. Frozen reference files hold randomly generated coder matrices together
 with the plugin's results, and the test suite compares to twelve decimal
-places. The same files are byte-identical in qdaPy, and a test asserts that, so
+places. The same files are byte-identical in [qdaPy](https://qdapy.zotqda.org), and a test asserts that, so
 three implementations in three languages are held against one reference rather
 than against each other.
 

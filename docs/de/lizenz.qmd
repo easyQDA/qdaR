@@ -2,8 +2,8 @@
 title: "Lizenz"
 ---
 
-**AGPL-3.0-or-later**, dieselben Bedingungen wie bei zotQDA, qdaZ und dem
-Python-Zwilling qdaPy. Der Volltext kommt mit R, in
+**AGPL-3.0-or-later**, dieselben Bedingungen wie bei [zotQDA](https://zotqda.org), [qdaZ](https://qdaz.zotqda.org) und dem
+Python-Zwilling [qdaPy](https://qdapy.zotqda.org). Der Volltext kommt mit R, in
 `share/licenses/AGPL-3`.
 
 ## Was Sie mit qdaR erarbeiten, gehört Ihnen

@@ -3,7 +3,7 @@ title: "Der Austausch-Vertrag"
 ---
 
 
-zotQDA, qdaZ, qdaPy und qdaR sind vier Codebasen, die sich über dieselben
+[zotQDA](https://zotqda.org), [qdaZ](https://qdaz.zotqda.org), [qdaPy](https://qdapy.zotqda.org) und qdaR sind vier Codebasen, die sich über dieselben
 Dateien einig sein müssen. Diese Einigkeit ist in einer Form aufgeschrieben,
 die eine Maschine prüfen kann: `contract/exchange-v1.json`, erzeugt aus einer
 einzigen Deklaration im Plugin und von jedem Abnehmer mitgeliefert.
