@@ -1,5 +1,10 @@
 # qdaR
 
+[![CI](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml/badge.svg)](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml)
+[![R ≥ 4.1](https://img.shields.io/badge/R-%E2%89%A5%204.1-276DC3?logo=r&logoColor=white)](https://www.r-project.org)
+[![Project status: WIP](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![License: AGPL-3](https://img.shields.io/badge/license-AGPL--3.0-blue)](https://www.gnu.org/licenses/agpl-3.0)
+
 Read and analyse the qualitative coding that the Zotero plugins
 [zotQDA](https://zotqda.org) and qdaZ export.
 
