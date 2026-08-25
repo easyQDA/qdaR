@@ -31,7 +31,7 @@ for lang in en de; do
   cp shared/references.bib "$lang/references.bib"
 done
 
-"$GEN_PY" gen_langmap.py
+"$GEN_PY" gen_langmap.py --extra-js shared/versions.js en de
 quarto render en
 quarto render de
 python3 offline/postprocess.py ../site/en ../site/de

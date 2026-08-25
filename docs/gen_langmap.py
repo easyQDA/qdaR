@@ -2,27 +2,40 @@
 """Write the language switcher's page-to-page map.
 
 The switcher in the header is a static menu, so out of the box it sends
-every reader to the front page of the other language. This walks the two
-sidebars in parallel — en/_quarto.yml and de/_quarto.yml list the same
-pages in the same order, in two languages — and writes the pairing, the
-retargeting logic and the version banner as theme/scripts.html, which
-both projects inline into every page (include-after-body is depth-blind,
-so a relative <script src> would only work from the site root).
+every reader to the front page of the other language. This walks the
+sidebars of all language projects in parallel — the language directories
+named on the command line list the same pages in the same order, each in
+its language — and writes the pairing plus the retargeting logic as
+theme/scripts.html, which every project inlines into every page
+(include-after-body is depth-blind, so a relative <script src> would
+only work from the site root).
 
 Walking the sidebars rather than keeping a hand-written table means the
 map cannot fall behind a page that was added; it means instead that the
-two sidebars have to stay parallel, which is checked here and fails the
+sidebars have to stay parallel, which is checked here and fails the
 build if it stops being true.
 
-Needs PyYAML; build.sh runs it with the docs venv, which has it.
+Usage, from the directory that contains the language projects:
+
+    gen_langmap.py [--extra-js FILE]... LANG LANG [LANG...]
+
+The map carries all translations per page, so a third language is one
+more argument, one more project directory with a parallel sidebar, and
+one more menu entry in every language's _quarto.yml. Each --extra-js
+file is inlined into theme/scripts.html after the map — the theme's own
+documentation passes shared/versions.js, the version banner, here.
+
+Needs PyYAML; run it with a python that has it (the build scripts pick
+one via GEN_PY).
 """
 
+import argparse
 import json
 from pathlib import Path
 
 import yaml
 
-HERE = Path(__file__).resolve().parent
+ROOT = Path.cwd()
 
 
 def hrefs(node):
@@ -36,47 +49,64 @@ def hrefs(node):
 
 
 def sidebar(lang):
-    cfg = yaml.safe_load((HERE / lang / "_quarto.yml").read_text("utf-8"))
+    cfg = yaml.safe_load((ROOT / lang / "_quarto.yml").read_text("utf-8"))
     pages = list(hrefs(cfg["website"]["sidebar"]["contents"]))
     return [p.rsplit(".", 1)[0] + ".html" for p in pages]
 
 
 def main():
-    en, de = sidebar("en"), sidebar("de")
-    if len(en) != len(de):
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("langs", nargs="+", metavar="LANG",
+                    help="language project directories, e.g. en de")
+    ap.add_argument("--extra-js", action="append", default=[],
+                    metavar="FILE", type=Path,
+                    help="additional script to inline after the map")
+    args = ap.parse_args()
+    langs = args.langs
+    if len(langs) < 2:
+        ap.error("need at least two language projects")
+
+    pages = {lang: sidebar(lang) for lang in langs}
+    lengths = {lang: len(p) for lang, p in pages.items()}
+    if len(set(lengths.values())) != 1:
         raise SystemExit(
             f"gen_langmap: the sidebars are no longer parallel "
-            f"({len(en)} en pages, {len(de)} de pages) — a page was added "
-            "to one language only")
-    mapping = {}
-    for e, d in zip(en, de):
-        mapping[f"en/{e}"] = f"de/{d}"
-        mapping[f"de/{d}"] = f"en/{e}"
+            f"({lengths}) — a page was added to one language only")
 
-    langmap = LANGMAP_JS.replace(
-        "__MAP__", json.dumps(mapping, indent=2, sort_keys=True,
-                              ensure_ascii=False))
-    versions = (HERE / "shared" / "versions.js").read_text("utf-8")
-    scripts = (f"<script>\n{langmap}</script>\n"
-               f"<script>\n{versions}</script>\n")
-    for lang in ("en", "de"):
-        (HERE / lang / "theme").mkdir(exist_ok=True)
-        (HERE / lang / "theme" / "scripts.html").write_text(scripts, "utf-8")
-    print(f"wrote en/theme/scripts.html and de/theme/scripts.html "
-          f"({len(en)} page pairs)")
+    # One entry per page and language, each carrying every translation:
+    # MAP["de/x.html"] == {"de": "de/x.html", "en": "en/y.html", ...}
+    mapping = {}
+    for i in range(lengths[langs[0]]):
+        translations = {lang: f"{lang}/{pages[lang][i]}" for lang in langs}
+        for lang in langs:
+            mapping[translations[lang]] = translations
+
+    langmap = (LANGMAP_JS
+               .replace("__MAP__", json.dumps(mapping, indent=2,
+                                              sort_keys=True,
+                                              ensure_ascii=False))
+               .replace("__LANGS__", "|".join(langs)))
+    scripts = f"<script>\n{langmap}</script>\n"
+    for extra in args.extra_js:
+        scripts += f"<script>\n{extra.read_text('utf-8')}</script>\n"
+    for lang in langs:
+        (ROOT / lang / "theme").mkdir(exist_ok=True)
+        (ROOT / lang / "theme" / "scripts.html").write_text(scripts, "utf-8")
+    print(f"wrote theme/scripts.html for {', '.join(langs)} "
+          f"({lengths[langs[0]]} page tuples)")
 
 
 LANGMAP_JS = """/* Language switcher: go to the translation of this page, not to the
    front page of the other language. Generated by gen_langmap.py from
-   the two sidebars; editing it here would be overwritten on the next
-   build. Keys and values are site-root-relative, so the same file works
-   over http and from a plain file tree opened with file://. */
+   the parallel sidebars; editing it here would be overwritten on the
+   next build. Keys and values are site-root-relative, so the same file
+   works over http and from a plain file tree opened with file://. */
 (function () {
   var MAP = __MAP__;
 
   function current() {
     var path = window.location.pathname;
-    var m = /\\/(en|de)\\/(.*)$/.exec(path);
+    var m = /\\/(__LANGS__)\\/(.*)$/.exec(path);
     if (!m) return null;
     var rest = m[2] || "index.html";
     if (rest === "" || rest.charAt(rest.length - 1) === "/") {
@@ -88,19 +118,21 @@ LANGMAP_JS = """/* Language switcher: go to the translation of this page, not to
   function retarget() {
     var here = current();
     if (!here) return;
-    var target = MAP[here.key];
-    if (!target) return;             /* no counterpart: leave the default */
+    var targets = MAP[here.key];
+    if (!targets) return;            /* no counterpart: leave the default */
     var up = new Array(here.rest.split("/").length).join("../") + "../";
     var links = document.querySelectorAll(
-      'a[href$="/en/index.html"], a[href$="/de/index.html"]');
+      'a[href$="/index.html"]');
     for (var i = 0; i < links.length; i++) {
       var href = links[i].getAttribute("href");
-      var lang = /\\/(en|de)\\/index\\.html$/.exec(href)[1];
+      var m = /\\/(__LANGS__)\\/index\\.html$/.exec(href);
+      if (!m) continue;
+      var lang = m[1];
       if (lang === here.lang) {
         /* the entry for the language being read: the page itself */
         links[i].setAttribute("href", up + here.key);
-      } else if (target.indexOf(lang + "/") === 0) {
-        links[i].setAttribute("href", up + target);
+      } else if (targets[lang]) {
+        links[i].setAttribute("href", up + targets[lang]);
       }
     }
   }
