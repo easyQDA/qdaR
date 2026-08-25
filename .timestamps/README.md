@@ -26,16 +26,30 @@ Until the next Bitcoin block confirms a fresh proof, `ots verify` reports
 "Pending confirmation in Bitcoin blockchain" — that is expected; run
 `ots upgrade` later (see below) and verify again.
 
-## Refresh / finalise
+## Refresh / finalise — automatic
 
 A fresh proof is *pending* until the next Bitcoin block confirms it (minutes to
-a few hours). Afterwards, complete it and commit the updated `.ots`:
+a few hours). You do **not** need to finalise it by hand. The local
+`post-commit` hook runs `.timestamps/ots-stamp.sh` after every commit, which
+
+1. stamps each new commit,
+2. **upgrades** any pending proofs that Bitcoin has since confirmed, and
+3. commits the new and upgraded proofs as a `timestamps:` commit.
+
+So the finalised, Bitcoin-anchored proofs accrue on their own as you keep
+committing — just `git push` as usual. (One `timestamps:` commit always trails
+without its own proof; it is stamped by the next commit.)
+
+Run it once by hand any time — e.g. now, or from a fresh clone:
 
 ```sh
-sh .timestamps/ots-stamp.sh   # stamps new commits + upgrades pending proofs
-git add .timestamps && git commit -m "timestamps: stamp new commits"
+sh .timestamps/ots-stamp.sh
 ```
 
-New commits are stamped automatically by the local `post-commit` hook (in
-`.git/hooks/`, not shared); its proof is committed with the following commit.
-Set `OTS_BIN` if the `ots` client is not at `~/.venvs/ots/bin/ots`.
+Set `OTS_BIN` if the `ots` client is not at `~/.venvs/ots/bin/ots`. The hook
+lives in `.git/hooks/` and is not shared; re-add it in a fresh clone with:
+
+```sh
+printf '#!/bin/sh\nexec sh "$(git rev-parse --show-toplevel)/.timestamps/ots-stamp.sh"\n' \
+  > .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+```
