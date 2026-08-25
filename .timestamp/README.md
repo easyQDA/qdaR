@@ -18,7 +18,7 @@ time**, not authorship and not that nothing existed earlier.
 ## Verify a proof
 
 ```sh
-ots verify .timestamps/<sha>.txt.ots      # checks the Bitcoin-anchored time
+ots verify .timestamp/<sha>.txt.ots      # checks the Bitcoin-anchored time
 git cat-file commit <sha> | git hash-object -t commit --stdin   # prints <sha>: ties it to this repo
 ```
 
@@ -30,7 +30,7 @@ Until the next Bitcoin block confirms a fresh proof, `ots verify` reports
 
 A fresh proof is *pending* until the next Bitcoin block confirms it (minutes to
 a few hours). You do **not** need to finalise it by hand. The local
-`post-commit` hook runs `.timestamps/ots-stamp.sh` after every commit, which
+`post-commit` hook runs `.timestamp/ots-stamp.sh` after every commit, which
 
 1. stamps each new commit,
 2. **upgrades** any pending proofs that Bitcoin has since confirmed, and
@@ -43,13 +43,13 @@ without its own proof; it is stamped by the next commit.)
 Run it once by hand any time — e.g. now, or from a fresh clone:
 
 ```sh
-sh .timestamps/ots-stamp.sh
+sh .timestamp/ots-stamp.sh
 ```
 
 Set `OTS_BIN` if the `ots` client is not at `~/.venvs/ots/bin/ots`. The hook
 lives in `.git/hooks/` and is not shared; re-add it in a fresh clone with:
 
 ```sh
-printf '#!/bin/sh\nexec sh "$(git rev-parse --show-toplevel)/.timestamps/ots-stamp.sh"\n' \
+printf '#!/bin/sh\nexec sh "$(git rev-parse --show-toplevel)/.timestamp/ots-stamp.sh"\n' \
   > .git/hooks/post-commit && chmod +x .git/hooks/post-commit
 ```
