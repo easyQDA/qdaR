@@ -99,7 +99,7 @@ einen anderen Export.
 
 ## Wie sie erzeugt wurde
 
-`tools/gen-demo-study.js` im [zotQDA](https://zotqda.org)-Repositorium
+`tool/gen-demo-study.js` im [zotQDA](https://zotqda.org)-Repositorium
 schreibt beide Dateien in einem Lauf. Es baut ein natives zotQDA-Modell der
 Studie und lässt die eigenen Exporter des Plugins darüberlaufen — die CSVs
 sind also ein echter zotQDA-Export, erzeugt von genau dem Code, der auch

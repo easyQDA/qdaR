@@ -1,6 +1,6 @@
 /* Version banner and switcher.
 
-   Quarto port of docs/<lang>/assets/versions.js. The only change is the
+   Quarto port of doc/<lang>/assets/versions.js. The only change is the
    insertion point: Material's .md-content__inner becomes Quarto's
    main.content. Everything else — the address parsing, the legal-page
    retargeting, versions.json — is byte-for-byte the original.
@@ -16,7 +16,7 @@
    it does nothing at all - which is correct: that copy belongs to the release
    it shipped with.
 
-   versions.json is written by scripts/gen_versions.py and lives at the site
+   versions.json is written by script/gen_versions.py and lives at the site
    root, one directory above the version directories. */
 (function () {
   var LEGAL = /(impressum|privacy|datenschutz)\.html$/;

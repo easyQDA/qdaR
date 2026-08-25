@@ -7,12 +7,12 @@
 ^PROVENANCE\.md$
 ^CRAN-CHECKLIST\.md$
 ^CLAUDE\.md$
-^docs$
+^doc$
 ^site$
 ^\.cache$
 ^\.gitignore$
-^docs-root$
-^scripts$
+^doc-root$
+^script$
 ^versions\.json$
 ^dist$
 ^LICENSE-EXCEPTION\.md$

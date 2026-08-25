@@ -27,7 +27,7 @@ sidebars.
                       linked Typst PDF per language from the sidebar
     shared/           versions.js (version banner master) and
                       references.bib. The bibliography is maintained in
-                      qdaPy (docs/bibliography.py against the running
+                      qdaPy (doc/bibliography.py against the running
                       Zotero) — regenerate it there and copy it over
                       when the cited literature changes
 
@@ -40,8 +40,8 @@ package itself installed:
 
 Verify a build with
 
-    python3 docs/offline/smoketest.py site/en site/de
+    python3 doc/offline/smoketest.py site/en site/de
 
 Deployment is unchanged: `site/` is uploaded under a version directory,
-`scripts/gen_versions.py` maintains `versions.json`, and the inlined
+`script/gen_versions.py` maintains `versions.json`, and the inlined
 version banner does the rest.

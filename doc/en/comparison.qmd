@@ -329,8 +329,8 @@ Re-read 6 August 2026:
 Surveyed 30 July 2026:
 
 - [MAXQDA Visual Tools](https://www.maxqda.com/products/maxqda/visualtools) ·
-  [Code Matrix Browser](https://www.maxqda.com/help/visual-tools/code-matrix-browser-visualizing-codes-per-document) ·
-  [Code Relations Browser](https://www.maxqda.com/help/visual-tools/code-relations-browser-visualizing-overlapping-codes) ·
+  [Code Matrix Browser](https://www.maxqda.com/help/visual-tool/code-matrix-browser-visualizing-codes-per-document) ·
+  [Code Relations Browser](https://www.maxqda.com/help/visual-tool/code-relations-browser-visualizing-overlapping-codes) ·
   [Mixed Methods](https://www.maxqda.com/mixed-methods) ·
   [MAXDictio](https://www.maxqda.com/quantitative-text-analysis)
 - [ATLAS.ti code co-occurrence](https://manuals.atlasti.com/Win/en/manual/CodeCooccurrence/CodeCoOccurrenceTableVisualization.html) ·

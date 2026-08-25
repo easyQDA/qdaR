@@ -2,21 +2,21 @@
 *.Rproj
 qdaR.Rcheck/
 qdaR_*.tar.gz
-# the rendered documentation; rebuilt by docs/build.sh and published by
+# the rendered documentation; rebuilt by doc/build.sh and published by
 # docs.yml under a version directory on qdar.zotqda.org
 site/
 .Rhistory
 .RData
 .cache/
 
-# per-language copies of docs/_theme and shared/references.bib,
-# recreated by docs/build.sh on every run
-docs/en/_extensions/
-docs/de/_extensions/
-docs/en/fonts/
-docs/de/fonts/
-docs/en/theme/
-docs/de/theme/
-docs/en/references.bib
-docs/de/references.bib
+# per-language copies of doc/_theme and shared/references.bib,
+# recreated by doc/build.sh on every run
+doc/en/_extensions/
+doc/de/_extensions/
+doc/en/fonts/
+doc/de/fonts/
+doc/en/theme/
+doc/de/theme/
+doc/en/references.bib
+doc/de/references.bib
 dist/

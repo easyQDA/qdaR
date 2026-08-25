@@ -81,7 +81,7 @@ reader, which makes it un-checkable. There is a test asserting that V equals
 `License: AGPL-3 + file LICENSE` in `DESCRIPTION` means *the AGPL plus what is
 in that file*, so that is where the section 7 permission belongs. A second
 document would duplicate it, and duplicated licence text drifts.
-`PROVENANCE.md`, `docs/`, `docs-root/`, `site/`, `scripts/` and
+`PROVENANCE.md`, `doc/`, `doc-root/`, `site/`, `script/` and
 `versions.json` are in `.Rbuildignore`, because `R CMD check` reports
 unknown top-level files. They belong to the repository, not the tarball.
 
