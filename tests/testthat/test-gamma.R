@@ -107,7 +107,7 @@ test_that("gamma matches the plugin on every frozen fixture", {
 
 test_that("the reference is the file the Python package uses", {
   ours <- testthat::test_path("qdaz-gamma-reference.json")
-  theirs <- file.path("..", "..", "..", "qdaPy", "tests",
+  theirs <- file.path("..", "..", "..", "qdaPy", "test",
                       "qdaz-gamma-reference.json")
   skip_if_not(file.exists(theirs), "qdaPy sources not present")
   expect_equal(readBin(ours, "raw", file.size(ours)),

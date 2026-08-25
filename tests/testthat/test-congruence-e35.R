@@ -91,7 +91,7 @@ test_that("the Wilson interval matches the plugin on every fixture", {
 
 test_that("the reference is the file the Python package uses", {
   ours <- testthat::test_path("qdaz-e35-reference.json")
-  theirs <- file.path("..", "..", "..", "qdaPy", "tests", "qdaz-e35-reference.json")
+  theirs <- file.path("..", "..", "..", "qdaPy", "test", "qdaz-e35-reference.json")
   skip_if_not(file.exists(theirs), "qdaPy sources not present")
   expect_equal(readBin(ours, "raw", file.size(ours)),
                readBin(theirs, "raw", file.size(theirs)))
