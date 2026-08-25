@@ -11,14 +11,14 @@
 # (https://opentimestamps.org).
 #
 # The local post-commit hook runs this after each commit, so upgrades happen
-# regularly on their own. Run by hand as `sh .timestamps/ots-stamp.sh`.
+# regularly on their own. Run by hand as `sh .timestamp/ots-stamp.sh`.
 # Set OTS_BIN if the ots client is not at ~/.venvs/ots/bin/ots.
 set -eu
 
 OTS="${OTS_BIN:-$HOME/.venvs/ots/bin/ots}"
 command -v "$OTS" >/dev/null 2>&1 || { echo "ots-stamp: ots not found at $OTS (set OTS_BIN)" >&2; exit 0; }
 ROOT="$(git rev-parse --show-toplevel)"
-DIR="$ROOT/.timestamps"
+DIR="$ROOT/.timestamp"
 mkdir -p "$DIR"
 
 # Re-entrant run: when our own maintenance commit fires the post-commit hook,
@@ -51,12 +51,12 @@ if [ -z "$maint" ]; then
   for m in rebase-merge rebase-apply MERGE_HEAD CHERRY_PICK_HEAD REVERT_HEAD; do
     [ -e "$gd/$m" ] && busy=1
   done
-  if [ -z "$busy" ] && [ -n "$(git -C "$ROOT" status --porcelain -- .timestamps)" ]; then
-    git -C "$ROOT" add .timestamps
+  if [ -z "$busy" ] && [ -n "$(git -C "$ROOT" status --porcelain -- .timestamp)" ]; then
+    git -C "$ROOT" add .timestamp
     OTS_STAMP_NO_COMMIT=1 git -C "$ROOT" \
       -c user.name="fre.ms" -c user.email="fre.ms@fre.ms" \
       commit -q -m "timestamps: stamp new commits and upgrade proofs" || true
   fi
 fi
 
-echo "ots-stamp: $(ls "$DIR"/*.txt.ots 2>/dev/null | wc -l | tr -d ' ') proof(s) in .timestamps/"
+echo "ots-stamp: $(ls "$DIR"/*.txt.ots 2>/dev/null | wc -l | tr -d ' ') proof(s) in .timestamp/"
