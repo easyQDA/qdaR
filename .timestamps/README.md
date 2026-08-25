@@ -18,9 +18,13 @@ time**, not authorship and not that nothing existed earlier.
 ## Verify a proof
 
 ```sh
-ots verify .timestamps/<sha>.txt          # checks the Bitcoin-anchored time
-git hash-object -t commit <(git cat-file commit <sha>)   # == <sha>: ties it to this repo
+ots verify .timestamps/<sha>.txt.ots      # checks the Bitcoin-anchored time
+git cat-file commit <sha> | git hash-object -t commit --stdin   # prints <sha>: ties it to this repo
 ```
+
+Until the next Bitcoin block confirms a fresh proof, `ots verify` reports
+"Pending confirmation in Bitcoin blockchain" — that is expected; run
+`ots upgrade` later (see below) and verify again.
 
 ## Refresh / finalise
 
