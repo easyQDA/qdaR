@@ -1,6 +1,6 @@
 # The demo export ships in qdaR and qdaPy and must be the same study.
 # It is a genuine zotQDA export: the plugin's own exporters, driven over a
-# native model by tools/gen-demo-study.js in the zotQDA repository, write the
+# native model by tool/gen-demo-study.js in the zotQDA repository, write the
 # two shipped copies at once. The shape and the headline coefficients are
 # frozen here, and the two copies are held to byte identity -- the same
 # discipline the frozen qdaZ references follow.

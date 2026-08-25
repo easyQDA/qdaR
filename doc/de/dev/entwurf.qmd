@@ -87,8 +87,8 @@ nicht prüfbar. Ein Test stellt sicher, dass V gleich
 `License: AGPL-3 + file LICENSE` in der `DESCRIPTION` bedeutet *die AGPL
 plus das, was in dieser Datei steht* — dorthin gehört also die Erlaubnis
 nach Abschnitt 7. Ein zweites Dokument würde sie verdoppeln, und
-verdoppelter Lizenztext driftet. `PROVENANCE.md`, `docs/`, `docs-root/`,
-`site/`, `scripts/` und `versions.json` stehen in `.Rbuildignore`, weil
+verdoppelter Lizenztext driftet. `PROVENANCE.md`, `doc/`, `doc-root/`,
+`site/`, `script/` und `versions.json` stehen in `.Rbuildignore`, weil
 `R CMD check` unbekannte Top-Level-Dateien meldet. Sie gehören zum
 Repositorium, nicht zum Tarball.
 

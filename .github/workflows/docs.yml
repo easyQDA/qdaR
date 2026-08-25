@@ -3,7 +3,7 @@ name: Documentation
 on:
   push:
     branches: [master, main]
-    paths: ["docs/**", "docs-root/**", ".github/workflows/docs.yml"]
+    paths: ["doc/**", "doc-root/**", ".github/workflows/docs.yml"]
   workflow_dispatch:
 
 permissions:
@@ -30,7 +30,7 @@ jobs:
 
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.10.18"   # keep equal to docs/build.sh's pin
+          version: "1.10.18"   # keep equal to doc/build.sh's pin
 
       # The figures pages execute their R chunks against the installed
       # package, so the docs build needs R and qdaR itself, not just Quarto.
@@ -45,10 +45,10 @@ jobs:
       - name: Build both languages
         run: |
           pip install pyyaml
-          python scripts/gen_versions.py
-          GEN_PY=python ./docs/build.sh
-          python3 docs/offline/smoketest.py site/en site/de
-          cp docs-root/index.html site/index.html
+          python script/gen_versions.py
+          GEN_PY=python ./doc/build.sh
+          python3 doc/offline/smoketest.py site/en site/de
+          cp doc-root/index.html site/index.html
           test -f site/en/index.html
           test -f site/de/index.html
         env:
@@ -71,7 +71,7 @@ jobs:
           # a published link keeps pointing at what it pointed at. `latest` is
           # a second copy of the newest one, and the two root files are the
           # bare-address shortcut and the list the version switcher reads.
-          VERSION="$(python scripts/gen_versions.py --current)"
+          VERSION="$(python script/gen_versions.py --current)"
           LATEST="$(python -c "import json;print(json.load(open('versions.json'))['latest'])")"
           test -n "$VERSION" && test -n "$LATEST"
           test -f site/index.html || { echo "no site was built" >&2; exit 1; }
@@ -153,7 +153,7 @@ jobs:
             printf 'put -O "%s" versions.json;\n' "$(lftp_quote "$BASE")"
             # put's syntax is `put [-O base] lfile [-o rfile]` -- the remote
             # name comes after the local file, not before it.
-            printf 'put -O "%s" docs-root/site-root.html -o index.html;\n' "$(lftp_quote "$BASE")"
+            printf 'put -O "%s" doc-root/site-root.html -o index.html;\n' "$(lftp_quote "$BASE")"
           } > "$SCRIPT"
 
           lftp -f "$SCRIPT"

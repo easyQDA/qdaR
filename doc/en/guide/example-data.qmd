@@ -94,7 +94,7 @@ export.
 
 ## How it was generated
 
-`tools/gen-demo-study.js` in the [zotQDA](https://zotqda.org) repository
+`tool/gen-demo-study.js` in the [zotQDA](https://zotqda.org) repository
 writes both files in one run. It builds a native zotQDA model of the study
 and drives the plugin's own exporters over it, so the CSVs are a genuine
 zotQDA export — produced by the very code that writes a real one, not by a

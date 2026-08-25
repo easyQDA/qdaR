@@ -66,7 +66,7 @@ jobs:
 
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.10.18"   # keep equal to docs/build.sh's pin
+          version: "1.10.18"   # keep equal to doc/build.sh's pin
 
       # The figures pages execute their R chunks against the installed
       # package, so the docs build needs R and qdaR itself, not just Quarto.
@@ -83,8 +83,8 @@ jobs:
         # merge; here it fails while the change is still a pull request.
         run: |
           pip install pyyaml
-          GEN_PY=python ./docs/build.sh
-          python3 docs/offline/smoketest.py site/en site/de
+          GEN_PY=python ./doc/build.sh
+          python3 doc/offline/smoketest.py site/en site/de
         env:
           QDA_SMOKE_BROWSER: google-chrome
 

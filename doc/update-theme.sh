@@ -1,7 +1,7 @@
 #!/bin/sh
 # Pull the current zotqda-quarto-theme into this repository. The theme
 # is vendored — the single copy of _extensions/ and fonts/ lives in
-# docs/_theme/, offline/ and print/ beside it — so the documentation
+# doc/_theme/, offline/ and print/ beside it — so the documentation
 # builds without a sibling checkout (CI). build.sh mirrors _theme/ into
 # the language projects. Run this after changing the theme, then
 # rebuild and commit.
