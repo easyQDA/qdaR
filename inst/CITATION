@@ -6,5 +6,6 @@ bibentry(
   author  = person(given = "fre.ms", email = "fre.ms@fre.ms"),
   year    = "2026",
   note    = "R package version 0.1.0",
-  url     = "https://qdar.zotqda.org"
+  url     = "https://qdar.zotqda.org",
+  doi     = "10.5281/zenodo.22111278"
 )

@@ -14,6 +14,7 @@ version: 0.1.0
 license: AGPL-3.0-or-later
 repository-code: "https://github.com/fre-ms/qdaR"
 url: "https://qdar.zotqda.org"
+doi: 10.5281/zenodo.22111278
 keywords:
   - qualitative data analysis
   - qda
