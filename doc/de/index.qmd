@@ -89,3 +89,29 @@ Es nimmt Ihnen auch die Methode nicht ab. Mehrere Funktionen verlangen eine
 Entscheidung, die der Code nicht für Sie treffen kann, und sagen das in
 ihrer Dokumentation, statt eine Voreinstellung zu wählen, die dem Ergebnis
 schmeichelt.
+
+```{=html}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "qdaR",
+  "description": "Die von den Zotero-Plugins zotQDA und qdaZ oder aus REFI-QDA-Projekten exportierten Kodierungen in R einlesen und auswerten: Intercoder-Reliabilitaet und die Statistik, die die Plugins bewusst weglassen.",
+  "applicationCategory": "ResearchApplication",
+  "operatingSystem": "Cross-platform",
+  "programmingLanguage": "R",
+  "softwareVersion": "0.1.0",
+  "license": "https://www.gnu.org/licenses/agpl-3.0",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "fre.ms",
+      "url": "https://fre.ms"
+    }
+  ],
+  "url": "https://qdar.zotqda.org",
+  "codeRepository": "https://github.com/fre-ms/qdaR",
+  "inLanguage": "de"
+}
+</script>
+```
