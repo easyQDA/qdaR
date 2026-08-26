@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use qdaR, please cite it using the metadata below."
+title: qdaR
+abstract: >-
+  Read and analyse the qualitative coding exported by the zotQDA and qdaZ
+  Zotero plugins, or from REFI-QDA projects: intercoder reliability and the
+  inferential statistics the plugins leave out, in R.
+type: software
+authors:
+  - name: "fre.ms"
+    email: fre.ms@fre.ms
+    website: "https://fre.ms"
+version: 0.1.0
+license: AGPL-3.0-or-later
+repository-code: "https://github.com/fre-ms/qdaR"
+url: "https://qdar.zotqda.org"
+keywords:
+  - qualitative data analysis
+  - qda
+  - content analysis
+  - intercoder reliability
+  - Krippendorff's alpha
+  - Zotero
+  - REFI-QDA
+  - R

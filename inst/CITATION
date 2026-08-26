@@ -1,0 +1,10 @@
+citHeader("To cite qdaR in publications, use:")
+
+bibentry(
+  bibtype = "Manual",
+  title   = "qdaR: Read and Analyse Qualitative Coding from zotQDA, qdaZ and REFI-QDA",
+  author  = person(given = "fre.ms", email = "fre.ms@fre.ms"),
+  year    = "2026",
+  note    = "R package version 0.1.0",
+  url     = "https://qdar.zotqda.org"
+)
