@@ -73,9 +73,10 @@ a licensing question hanging over it.  This clause removes the doubt in
 writing.
 
 The same permission applies to zotQDA, to qdaZ and to the Python twin qdaPy,
-in the same words.  In those projects it lives in a file named
-LICENSE-EXCEPTION.md; here it is part of LICENSE, because that is where an R
-package states terms additional to a standard licence.
+in the same words, each in its own AGPL-ADDITIONAL-PERMISSION.md.  In this R
+package this file, and the AGPL text in LICENSE.md, are kept out of the CRAN
+tarball (.Rbuildignore) and live in the repository; DESCRIPTION records the
+standard AGPL-3.
 
 
 COMMERCIAL USE AND CONTRIBUTIONS

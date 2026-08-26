@@ -3,7 +3,7 @@
 [![CI](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml/badge.svg)](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml)
 [![R ≥ 4.1](https://img.shields.io/badge/R-%E2%89%A5%204.1-276DC3?logo=r&logoColor=white)](https://www.r-project.org)
 [![Project status: WIP](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![License: AGPL-3](https://img.shields.io/badge/license-AGPL--3.0-blue)](https://www.gnu.org/licenses/agpl-3.0)
+[![License: AGPL-3](https://img.shields.io/github/license/fre-ms/qdaR)](LICENSE.md)
 
 Read and analyse the qualitative coding that the Zotero plugins
 [zotQDA](https://zotqda.org) and qdaZ export.
@@ -93,7 +93,7 @@ R itself.)
 **What you produce with qdaR is yours.** Figures, data frames, coefficients,
 reports: the licence places no condition on any of it, by an additional
 permission under section 7 of the AGPL, written down in
-[`LICENSE-EXCEPTION.md`](https://github.com/fre-ms/qdaR/blob/main/LICENSE-EXCEPTION.md)
+[`AGPL-ADDITIONAL-PERMISSION.md`](https://github.com/fre-ms/qdaR/blob/main/AGPL-ADDITIONAL-PERMISSION.md)
 — the same wording as in the sibling projects. Strictly speaking it changes
 nothing, a copyleft licence has never reached into a program's output, but a
 figure in a submitted manuscript is not the place for a licensing question, so

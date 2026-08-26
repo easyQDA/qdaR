@@ -15,4 +15,5 @@
 ^script$
 ^versions\.json$
 ^dist$
-^LICENSE-EXCEPTION\.md$
+^AGPL-ADDITIONAL-PERMISSION\.md$
+^LICENSE\.md$
