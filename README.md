@@ -3,7 +3,7 @@
 [![CI](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml/badge.svg)](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml)
 [![r-universe](https://fre-ms.r-universe.dev/badges/qdaR)](https://fre-ms.r-universe.dev/qdaR)
 [![R ≥ 4.1](https://img.shields.io/badge/R-%E2%89%A5%204.1-276DC3?logo=r&logoColor=white)](https://www.r-project.org)
-[![Project status: WIP](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License: AGPL-3](https://img.shields.io/github/license/fre-ms/qdaR)](LICENSE.md)
 
 Read and analyse the qualitative coding that the Zotero plugins
