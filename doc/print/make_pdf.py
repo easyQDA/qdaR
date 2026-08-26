@@ -19,7 +19,7 @@ front matter of the language's index.qmd (falling back to
 apart. The author — mandatory, the orange-book cover Quarto uses for
 Typst books fails without one — is resolved centrally: the AUTHOR
 argument wins, then the same front matter's ``author:``, then the theme
-extension's ``author:`` (``_extensions/zotqda-theme/_extension.yml``,
+extension's ``author:`` (``_extensions/easyqda-theme/_extension.yml``,
 mirrored into every language project), so a site needs no per-page
 author to build.
 
@@ -68,7 +68,7 @@ def theme_author(lang_dir):
     # build mirrors that extension into every language project. Reading
     # it here means a site inherits the author centrally and no PDF
     # breaks for want of a per-page ``author:``.
-    ext = lang_dir / "_extensions" / "zotqda-theme" / "_extension.yml"
+    ext = lang_dir / "_extensions" / "easyqda-theme" / "_extension.yml"
     if ext.exists():
         return (yaml.safe_load(ext.read_text("utf-8")) or {}).get("author")
     return None

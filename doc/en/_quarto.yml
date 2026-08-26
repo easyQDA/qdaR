@@ -105,6 +105,6 @@ website:
       [Privacy](https://qdar.zotqda.org/latest/en/privacy.html)
 
 format:
-  zotqda-theme-html:
+  easyqda-theme-html:
     css: fonts/noto.css
     include-after-body: theme/scripts.html

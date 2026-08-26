@@ -105,6 +105,6 @@ website:
       [Datenschutz](https://qdar.zotqda.org/latest/de/datenschutz.html)
 
 format:
-  zotqda-theme-html:
+  easyqda-theme-html:
     css: fonts/noto.css
     include-after-body: theme/scripts.html

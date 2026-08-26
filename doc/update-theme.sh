@@ -7,7 +7,7 @@
 # theme, then rebuild and commit.
 #
 # The theme source is, in order of preference:
-#   1. $ZOTQDA_THEME, if set;
+#   1. $EASYQDA_THEME (oder legacy $ZOTQDA_THEME), if set;
 #   2. a sibling checkout ../../easyQDA-quarto-theme (the dev layout);
 #   3. otherwise it is cloned from GitHub into ../../easyQDA-quarto-theme.
 # When the source is a clean git checkout, it is fast-forwarded to the
@@ -17,11 +17,11 @@ set -e
 cd "$(dirname "$0")"
 
 REPO="https://github.com/easyqda/easyQDA-quarto-theme.git"
-THEME="${ZOTQDA_THEME:-../../easyQDA-quarto-theme}"
+THEME="${EASYQDA_THEME:-${ZOTQDA_THEME:-../../easyQDA-quarto-theme}}"
 
 if [ ! -d "$THEME/_extensions" ]; then
-  if [ -n "$ZOTQDA_THEME" ]; then
-    echo "update-theme.sh: \$ZOTQDA_THEME=$ZOTQDA_THEME has no _extensions/" >&2
+  if [ -n "${EASYQDA_THEME:-$ZOTQDA_THEME}" ]; then
+    echo "update-theme.sh: \$EASYQDA_THEME=$THEME has no _extensions/" >&2
     exit 1
   fi
   echo "update-theme.sh: no theme beside this checkout — cloning $REPO"
