@@ -1,6 +1,7 @@
 # qdaR
 
 [![CI](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml/badge.svg)](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml)
+[![r-universe](https://fre-ms.r-universe.dev/badges/qdaR)](https://fre-ms.r-universe.dev/qdaR)
 [![R ≥ 4.1](https://img.shields.io/badge/R-%E2%89%A5%204.1-276DC3?logo=r&logoColor=white)](https://www.r-project.org)
 [![Project status: WIP](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![License: AGPL-3](https://img.shields.io/github/license/fre-ms/qdaR)](LICENSE.md)
@@ -69,6 +70,16 @@ somebody renames or moves that code in Zotero. Grouping by `codeId` survives
 such housekeeping.
 
 ## Installation
+
+From [R-universe](https://fre-ms.r-universe.dev/qdaR) — prebuilt binaries for
+Windows, macOS and Linux, no compiler needed:
+
+```r
+install.packages("qdaR", repos = c("https://fre-ms.r-universe.dev",
+                                   "https://cloud.r-project.org"))
+```
+
+Or the development version straight from GitHub:
 
 ```r
 # install.packages("remotes")
