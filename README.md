@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml/badge.svg)](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml)
 [![r-universe](https://fre-ms.r-universe.dev/badges/qdaR)](https://fre-ms.r-universe.dev/qdaR)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22111278.svg)](https://doi.org/10.5281/zenodo.22111278)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22111278-blue)](https://doi.org/10.5281/zenodo.22111278)
 [![R ≥ 4.1](https://img.shields.io/badge/R-%E2%89%A5%204.1-276DC3?logo=r&logoColor=white)](https://www.r-project.org)
 [![Project status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License: AGPL-3](https://img.shields.io/github/license/fre-ms/qdaR)](LICENSE.md)
