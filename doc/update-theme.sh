@@ -1,5 +1,5 @@
 #!/bin/sh
-# Pull the current zotqda-quarto-theme into this repository. The theme is
+# Pull the current easyQDA-quarto-theme into this repository. The theme is
 # vendored — the single copy of _extensions/ and fonts/ lives in
 # doc/_theme/, offline/ and print/ beside it, and gen_langmap.py in doc/ —
 # so the documentation builds without a sibling checkout (CI). build.sh
@@ -8,16 +8,16 @@
 #
 # The theme source is, in order of preference:
 #   1. $ZOTQDA_THEME, if set;
-#   2. a sibling checkout ../../zotqda-quarto-theme (the dev layout);
-#   3. otherwise it is cloned from GitHub into ../../zotqda-quarto-theme.
+#   2. a sibling checkout ../../easyQDA-quarto-theme (the dev layout);
+#   3. otherwise it is cloned from GitHub into ../../easyQDA-quarto-theme.
 # When the source is a clean git checkout, it is fast-forwarded to the
 # published tip first, so a re-run vendors the current release; a checkout
 # with local changes is used as-is (uncommitted theme work is preserved).
 set -e
 cd "$(dirname "$0")"
 
-REPO="https://github.com/easyqda/zotqda-quarto-theme.git"
-THEME="${ZOTQDA_THEME:-../../zotqda-quarto-theme}"
+REPO="https://github.com/easyqda/easyQDA-quarto-theme.git"
+THEME="${ZOTQDA_THEME:-../../easyQDA-quarto-theme}"
 
 if [ ! -d "$THEME/_extensions" ]; then
   if [ -n "$ZOTQDA_THEME" ]; then

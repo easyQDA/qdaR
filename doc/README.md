@@ -18,7 +18,7 @@ sidebars.
                       sync symlinks) — the per-language copies are
                       untracked build artifacts
     update-theme.sh   re-vendors _theme/, offline/ and print/ from a
-                      sibling zotqda-quarto-theme checkout
+                      sibling easyQDA-quarto-theme checkout
     offline/          vendored from the theme: postprocess.py (makes the
                       rendered site work from a plain file tree, fails
                       loudly when Quarto's output drifts), smoketest.py
