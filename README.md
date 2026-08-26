@@ -1,11 +1,11 @@
 # qdaR
 
-[![CI](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml/badge.svg)](https://github.com/fre-ms/qdaR/actions/workflows/ci.yml)
-[![r-universe](https://fre-ms.r-universe.dev/badges/qdaR)](https://fre-ms.r-universe.dev/qdaR)
+[![CI](https://github.com/easyqda/qdaR/actions/workflows/ci.yml/badge.svg)](https://github.com/easyqda/qdaR/actions/workflows/ci.yml)
+[![r-universe](https://easyqda.r-universe.dev/badges/qdaR)](https://easyqda.r-universe.dev/qdaR)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22111278-blue)](https://doi.org/10.5281/zenodo.22111278)
 [![R ≥ 4.1](https://img.shields.io/badge/R-%E2%89%A5%204.1-276DC3?logo=r&logoColor=white)](https://www.r-project.org)
 [![Project status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![License: AGPL-3](https://img.shields.io/github/license/fre-ms/qdaR)](LICENSE.md)
+[![License: AGPL-3](https://img.shields.io/github/license/easyqda/qdaR)](LICENSE.md)
 
 Read and analyse the qualitative coding that the Zotero plugins
 [zotQDA](https://zotqda.org) and qdaZ export.
@@ -72,11 +72,11 @@ such housekeeping.
 
 ## Installation
 
-From [R-universe](https://fre-ms.r-universe.dev/qdaR) — prebuilt binaries for
+From [R-universe](https://easyqda.r-universe.dev/qdaR) — prebuilt binaries for
 Windows, macOS and Linux, no compiler needed:
 
 ```r
-install.packages("qdaR", repos = c("https://fre-ms.r-universe.dev",
+install.packages("qdaR", repos = c("https://easyqda.r-universe.dev",
                                    "https://cloud.r-project.org"))
 ```
 
@@ -84,7 +84,7 @@ Or the development version straight from GitHub:
 
 ```r
 # install.packages("remotes")
-remotes::install_github("fre-ms/qdaR")
+remotes::install_github("easyqda/qdaR")
 ```
 
 ## The Python twin
@@ -105,7 +105,7 @@ R itself.)
 **What you produce with qdaR is yours.** Figures, data frames, coefficients,
 reports: the licence places no condition on any of it, by an additional
 permission under section 7 of the AGPL, written down in
-[`AGPL-ADDITIONAL-PERMISSION.md`](https://github.com/fre-ms/qdaR/blob/main/AGPL-ADDITIONAL-PERMISSION.md)
+[`AGPL-ADDITIONAL-PERMISSION.md`](https://github.com/easyqda/qdaR/blob/main/AGPL-ADDITIONAL-PERMISSION.md)
 — the same wording as in the sibling projects. Strictly speaking it changes
 nothing, a copyleft licence has never reached into a program's output, but a
 figure in a submitted manuscript is not the place for a licensing question, so

@@ -43,7 +43,7 @@ privaten Alpha.
 
 ```r
 # install.packages("remotes")
-remotes::install_github("fre-ms/qdaR")
+remotes::install_github("easyqda/qdaR")
 ```
 
 ```r
@@ -110,7 +110,7 @@ schmeichelt.
     }
   ],
   "url": "https://qdar.zotqda.org",
-  "codeRepository": "https://github.com/fre-ms/qdaR",
+  "codeRepository": "https://github.com/easyqda/qdaR",
   "inLanguage": "de"
 }
 </script>

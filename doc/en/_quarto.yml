@@ -19,7 +19,7 @@ link-citations: true
 website:
   title: qdaR
   site-url: https://qdar.zotqda.org/latest/en/
-  repo-url: https://github.com/fre-ms/qdaR
+  repo-url: https://github.com/easyqda/qdaR
   navbar:
     search: true
     pinned: true
@@ -41,7 +41,7 @@ website:
       # The theme moves this item over the right sidebar.
       - icon: github
         text: GitHub
-        href: https://github.com/fre-ms/qdaR
+        href: https://github.com/easyqda/qdaR
   sidebar:
     style: docked
     collapse-level: 3

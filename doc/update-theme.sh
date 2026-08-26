@@ -16,7 +16,7 @@
 set -e
 cd "$(dirname "$0")"
 
-REPO="https://github.com/fre-ms/zotqda-quarto-theme.git"
+REPO="https://github.com/easyqda/zotqda-quarto-theme.git"
 THEME="${ZOTQDA_THEME:-../../zotqda-quarto-theme}"
 
 if [ ! -d "$THEME/_extensions" ]; then

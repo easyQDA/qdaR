@@ -23,8 +23,8 @@ Useful links:
 \itemize{
   \item \url{https://zotqda.org}
   \item \url{https://qdar.zotqda.org/}
-  \item \url{https://github.com/fre-ms/qdaR}
-  \item Report bugs at \url{https://github.com/fre-ms/qdaR/issues}
+  \item \url{https://github.com/easyqda/qdaR}
+  \item Report bugs at \url{https://github.com/easyqda/qdaR/issues}
 }
 
 }

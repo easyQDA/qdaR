@@ -41,7 +41,7 @@ the two Zotero plugins are a step behind it, in a private alpha.
 
 ```r
 # install.packages("remotes")
-remotes::install_github("fre-ms/qdaR")
+remotes::install_github("easyqda/qdaR")
 ```
 
 ```r
@@ -108,7 +108,7 @@ documentation rather than picking a default that flatters the result.
     }
   ],
   "url": "https://qdar.zotqda.org",
-  "codeRepository": "https://github.com/fre-ms/qdaR",
+  "codeRepository": "https://github.com/easyqda/qdaR",
   "inLanguage": "en"
 }
 </script>

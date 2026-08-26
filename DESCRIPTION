@@ -26,6 +26,6 @@ Suggests: testthat (>= 3.0.0), knitr, rmarkdown, vegawidget, withr,
     xml2
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-URL: https://zotqda.org, https://qdar.zotqda.org/, https://github.com/fre-ms/qdaR
-BugReports: https://github.com/fre-ms/qdaR/issues
+URL: https://zotqda.org, https://qdar.zotqda.org/, https://github.com/easyqda/qdaR
+BugReports: https://github.com/easyqda/qdaR/issues
 Config/roxygen2/version: 8.0.0
