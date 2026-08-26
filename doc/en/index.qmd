@@ -87,3 +87,29 @@ tested against each other on shared reference data.
 It also will not decide your method for you. Several functions ask you to
 make a decision the code cannot make on your behalf, and say so in their
 documentation rather than picking a default that flatters the result.
+
+```{=html}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "qdaR",
+  "description": "Read and analyse the qualitative coding exported by the zotQDA and qdaZ Zotero plugins, or from REFI-QDA projects, in R: intercoder reliability and the statistics the plugins leave out.",
+  "applicationCategory": "ResearchApplication",
+  "operatingSystem": "Cross-platform",
+  "programmingLanguage": "R",
+  "softwareVersion": "0.1.0",
+  "license": "https://www.gnu.org/licenses/agpl-3.0",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "fre.ms",
+      "url": "https://fre.ms"
+    }
+  ],
+  "url": "https://qdar.zotqda.org",
+  "codeRepository": "https://github.com/fre-ms/qdaR",
+  "inLanguage": "en"
+}
+</script>
+```
