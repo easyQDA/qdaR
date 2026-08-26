@@ -17,3 +17,4 @@
 ^dist$
 ^AGPL-ADDITIONAL-PERMISSION\.md$
 ^LICENSE\.md$
+^CITATION\.cff$
