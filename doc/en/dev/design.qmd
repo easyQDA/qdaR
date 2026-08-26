@@ -74,16 +74,17 @@ only carried the Fisher result, the effect size would be unrecomputable by the
 reader, which makes it un-checkable. There is a test asserting that V equals
 `sqrt(statistic / (n * (min(dim) - 1)))`.
 
-## The additional permission lives in LICENSE
+## The licence files stay in the repository, not the tarball
 
-**Decided:** no separate `LICENSE-EXCEPTION.md`, unlike the other projects.
-
-`License: AGPL-3 + file LICENSE` in `DESCRIPTION` means *the AGPL plus what is
-in that file*, so that is where the section 7 permission belongs. A second
-document would duplicate it, and duplicated licence text drifts.
-`PROVENANCE.md`, `doc/`, `doc-root/`, `site/`, `script/` and
-`versions.json` are in `.Rbuildignore`, because `R CMD check` reports
-unknown top-level files. They belong to the repository, not the tarball.
+**Decided:** mirror the sibling projects — the section 7 permission in its own
+`AGPL-ADDITIONAL-PERMISSION.md`, and the full AGPL-3.0 text in `LICENSE.md` so
+GitHub's licence detection recognises the package as AGPL-3.0. Both are in
+`.Rbuildignore` — like `PROVENANCE.md`, `doc/`, `doc-root/`, `site/`,
+`script/` and `versions.json` — because `R CMD check` reports unknown
+top-level files: they belong to the repository, not the tarball. `DESCRIPTION`
+keeps the standard `License: AGPL-3` (the AGPL text ships with R itself), and
+the additional permission is granted through the repository, exactly as in
+zotQDA, qdaZ and qdaPy.
 
 ## One function per equation
 

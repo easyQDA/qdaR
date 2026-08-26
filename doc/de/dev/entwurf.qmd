@@ -79,18 +79,18 @@ Effektstärke nicht nachrechnen — und was nicht nachrechenbar ist, ist
 nicht prüfbar. Ein Test stellt sicher, dass V gleich
 `sqrt(statistic / (n * (min(dim) - 1)))` ist.
 
-## Die Zusatzerlaubnis wohnt in LICENSE
+## Die Lizenzdateien bleiben im Repositorium, nicht im Tarball
 
-**Entschieden:** keine separate `LICENSE-EXCEPTION.md`, anders als in den
-übrigen Projekten.
-
-`License: AGPL-3 + file LICENSE` in der `DESCRIPTION` bedeutet *die AGPL
-plus das, was in dieser Datei steht* — dorthin gehört also die Erlaubnis
-nach Abschnitt 7. Ein zweites Dokument würde sie verdoppeln, und
-verdoppelter Lizenztext driftet. `PROVENANCE.md`, `doc/`, `doc-root/`,
-`site/`, `script/` und `versions.json` stehen in `.Rbuildignore`, weil
-`R CMD check` unbekannte Top-Level-Dateien meldet. Sie gehören zum
-Repositorium, nicht zum Tarball.
+**Entschieden:** wie in den Schwesterprojekten — die Erlaubnis nach
+Abschnitt 7 in einer eigenen `AGPL-ADDITIONAL-PERMISSION.md`, dazu der
+vollständige AGPL-3.0-Text in `LICENSE.md`, damit GitHubs Lizenzerkennung
+das Paket als AGPL-3.0 erkennt. Beide stehen in `.Rbuildignore` — wie
+`PROVENANCE.md`, `doc/`, `doc-root/`, `site/`, `script/` und
+`versions.json` — weil `R CMD check` unbekannte Top-Level-Dateien meldet:
+Sie gehören zum Repositorium, nicht zum Tarball. Die `DESCRIPTION` behält
+das standardmäßige `License: AGPL-3` (der AGPL-Text liegt R selbst bei),
+und die Zusatzerlaubnis wird über das Repositorium gewährt, genau wie bei
+zotQDA, qdaZ und qdaPy.
 
 ## Eine Funktion je Gleichung
 

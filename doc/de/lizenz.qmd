@@ -17,7 +17,7 @@ In diesem Paket ist die Erlaubnis Teil der `LICENSE`, denn
 `License: AGPL-3 + file LICENSE` in der `DESCRIPTION` bedeutet *die AGPL
 plus das, was in dieser Datei steht* — dort erklärt ein R-Paket seine
 Zusatzbedingungen. Die anderen Projekte führen denselben Wortlaut in einer
-Datei namens `LICENSE-EXCEPTION.md`.
+Datei namens `AGPL-ADDITIONAL-PERMISSION.md`.
 
 Streng genommen ändert die Klausel nichts: Eine Copyleft-Lizenz hat noch
 nie auf die Ausgaben eines Programms durchgegriffen, und die Free Software

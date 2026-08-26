@@ -15,7 +15,7 @@ additional permission under section 7 of the AGPL.
 In this package the permission is part of `LICENSE`, because
 `License: AGPL-3 + file LICENSE` in `DESCRIPTION` means *the AGPL plus what is
 in that file*: that is where an R package states additional terms. The other
-projects keep the same wording in a file called `LICENSE-EXCEPTION.md`.
+projects keep the same wording in a file called `AGPL-ADDITIONAL-PERMISSION.md`.
 
 Strictly speaking the clause changes nothing, a copyleft licence has never
 reached into a program's output, and the Free Software Foundation says so in
