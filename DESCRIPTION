@@ -1,6 +1,6 @@
 Package: qdaR
 Title: Read and Analyse Qualitative Coding Exported from Zotero
-Version: 0.1.0
+Version: 0.2.0
 Authors@R:
     person("fre.ms", email = "fre.ms@fre.ms", role = c("aut", "cre"))
 Description: Reads the versioned exchange files written by the Zotero
