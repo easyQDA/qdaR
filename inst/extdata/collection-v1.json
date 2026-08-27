@@ -1,0 +1,547 @@
+{
+  "contract": "easyqda-collection",
+  "version": 1,
+  "tables": {
+    "project": {
+      "id": "collection-project/1",
+      "file": "tables/project.csv",
+      "grain": "one row: project-level metadata",
+      "optional": false,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "projectId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        },
+        {
+          "key": "basePath",
+          "type": "text"
+        },
+        {
+          "key": "user",
+          "type": "text"
+        },
+        {
+          "key": "createdAt",
+          "type": "datetime"
+        },
+        {
+          "key": "modifiedAt",
+          "type": "datetime"
+        },
+        {
+          "key": "origin",
+          "type": "text"
+        },
+        {
+          "key": "easyqdaVersion",
+          "type": "text"
+        }
+      ]
+    },
+    "users": {
+      "id": "collection-users/1",
+      "file": "tables/users.csv",
+      "grain": "one row per coder",
+      "optional": false,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "userId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        },
+        {
+          "key": "isConsensus",
+          "type": "number"
+        }
+      ]
+    },
+    "sources": {
+      "id": "collection-sources/1",
+      "file": "tables/sources.csv",
+      "grain": "one row per source document",
+      "optional": false,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "sourceId",
+          "type": "id"
+        },
+        {
+          "key": "type",
+          "type": "enum"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        },
+        {
+          "key": "mediaFile",
+          "type": "text"
+        },
+        {
+          "key": "plainTextFile",
+          "type": "text"
+        },
+        {
+          "key": "citekey",
+          "type": "text"
+        },
+        {
+          "key": "creator",
+          "type": "text"
+        },
+        {
+          "key": "year",
+          "type": "text"
+        },
+        {
+          "key": "title",
+          "type": "text"
+        },
+        {
+          "key": "itemKey",
+          "type": "id"
+        },
+        {
+          "key": "attachmentKey",
+          "type": "id"
+        },
+        {
+          "key": "pageLabel",
+          "type": "text"
+        },
+        {
+          "key": "createdAt",
+          "type": "datetime"
+        },
+        {
+          "key": "modifiedAt",
+          "type": "datetime"
+        }
+      ]
+    },
+    "codes": {
+      "id": "collection-codes/1",
+      "file": "tables/codes.csv",
+      "grain": "one row per code (codebook tree via parentId)",
+      "optional": false,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "codeId",
+          "type": "id"
+        },
+        {
+          "key": "parentId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        },
+        {
+          "key": "path",
+          "type": "text"
+        },
+        {
+          "key": "color",
+          "type": "text"
+        },
+        {
+          "key": "isCodable",
+          "type": "number"
+        },
+        {
+          "key": "abbrev",
+          "type": "text"
+        },
+        {
+          "key": "memo",
+          "type": "text"
+        }
+      ]
+    },
+    "selections": {
+      "id": "collection-selections/1",
+      "file": "tables/selections.csv",
+      "grain": "one row per marked segment (coded or uncoded)",
+      "optional": false,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "selectionId",
+          "type": "id"
+        },
+        {
+          "key": "sourceId",
+          "type": "id"
+        },
+        {
+          "key": "annotationKey",
+          "type": "id"
+        },
+        {
+          "key": "type",
+          "type": "enum"
+        },
+        {
+          "key": "annotationType",
+          "type": "enum"
+        },
+        {
+          "key": "startPosition",
+          "type": "number"
+        },
+        {
+          "key": "endPosition",
+          "type": "number"
+        },
+        {
+          "key": "page",
+          "type": "number"
+        },
+        {
+          "key": "rects",
+          "type": "list"
+        },
+        {
+          "key": "positionRaw",
+          "type": "text"
+        },
+        {
+          "key": "color",
+          "type": "text"
+        },
+        {
+          "key": "text",
+          "type": "text"
+        },
+        {
+          "key": "comment",
+          "type": "text"
+        },
+        {
+          "key": "weight",
+          "type": "number"
+        },
+        {
+          "key": "tags",
+          "type": "list"
+        },
+        {
+          "key": "sortIndex",
+          "type": "text"
+        },
+        {
+          "key": "coder",
+          "type": "text"
+        },
+        {
+          "key": "createdAt",
+          "type": "datetime"
+        },
+        {
+          "key": "modifiedAt",
+          "type": "datetime"
+        }
+      ]
+    },
+    "codings": {
+      "id": "collection-codings/1",
+      "file": "tables/codings.csv",
+      "grain": "one row per (selection x code): the coding act",
+      "optional": false,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "codingId",
+          "type": "id"
+        },
+        {
+          "key": "selectionId",
+          "type": "id"
+        },
+        {
+          "key": "codeId",
+          "type": "id"
+        },
+        {
+          "key": "coder",
+          "type": "text"
+        },
+        {
+          "key": "createdAt",
+          "type": "datetime"
+        }
+      ]
+    },
+    "memos": {
+      "id": "collection-memos/1",
+      "file": "tables/memos.csv",
+      "grain": "one row per memo attached to an entity",
+      "optional": false,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "memoId",
+          "type": "id"
+        },
+        {
+          "key": "targetType",
+          "type": "enum"
+        },
+        {
+          "key": "targetId",
+          "type": "id"
+        },
+        {
+          "key": "author",
+          "type": "text"
+        },
+        {
+          "key": "content",
+          "type": "text"
+        },
+        {
+          "key": "createdAt",
+          "type": "datetime"
+        }
+      ]
+    },
+    "history": {
+      "id": "collection-history/1",
+      "file": "tables/history.csv",
+      "grain": "one row per coding-log event (add and remove), oldest first",
+      "optional": false,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "ts",
+          "type": "datetime"
+        },
+        {
+          "key": "user",
+          "type": "text"
+        },
+        {
+          "key": "action",
+          "type": "enum"
+        },
+        {
+          "key": "codeId",
+          "type": "id"
+        },
+        {
+          "key": "code",
+          "type": "path"
+        },
+        {
+          "key": "selectionId",
+          "type": "id"
+        },
+        {
+          "key": "annotationKey",
+          "type": "id"
+        },
+        {
+          "key": "citekey",
+          "type": "text"
+        },
+        {
+          "key": "creator",
+          "type": "text"
+        },
+        {
+          "key": "year",
+          "type": "text"
+        },
+        {
+          "key": "title",
+          "type": "text"
+        },
+        {
+          "key": "pageLabel",
+          "type": "text"
+        },
+        {
+          "key": "text",
+          "type": "text"
+        }
+      ]
+    },
+    "variables": {
+      "id": "collection-variables/1",
+      "file": "tables/variables.csv",
+      "grain": "one row per variable",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "variableId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        },
+        {
+          "key": "type",
+          "type": "enum"
+        }
+      ]
+    },
+    "variable_values": {
+      "id": "collection-variable_values/1",
+      "file": "tables/variable_values.csv",
+      "grain": "one row per (source x variable)",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "sourceId",
+          "type": "id"
+        },
+        {
+          "key": "variableId",
+          "type": "id"
+        },
+        {
+          "key": "value",
+          "type": "text"
+        }
+      ]
+    },
+    "sets": {
+      "id": "collection-sets/1",
+      "file": "tables/sets.csv",
+      "grain": "one row per set",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "setId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        }
+      ]
+    },
+    "set_members": {
+      "id": "collection-set_members/1",
+      "file": "tables/set_members.csv",
+      "grain": "one row per set membership",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "setId",
+          "type": "id"
+        },
+        {
+          "key": "memberId",
+          "type": "id"
+        }
+      ]
+    },
+    "links": {
+      "id": "collection-links/1",
+      "file": "tables/links.csv",
+      "grain": "one row per link",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "linkId",
+          "type": "id"
+        },
+        {
+          "key": "fromType",
+          "type": "text"
+        },
+        {
+          "key": "fromId",
+          "type": "id"
+        },
+        {
+          "key": "toType",
+          "type": "text"
+        },
+        {
+          "key": "toId",
+          "type": "id"
+        },
+        {
+          "key": "direction",
+          "type": "text"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        }
+      ]
+    }
+  }
+}

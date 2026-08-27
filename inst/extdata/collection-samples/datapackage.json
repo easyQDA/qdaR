@@ -1,0 +1,497 @@
+{
+  "profile": "tabular-data-package",
+  "name": "easyqda-collection",
+  "contract": "easyqda-collection",
+  "version": 1,
+  "resources": [
+    {
+      "name": "project",
+      "path": "tables/project.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "projectId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "basePath",
+            "type": "text"
+          },
+          {
+            "name": "user",
+            "type": "text"
+          },
+          {
+            "name": "createdAt",
+            "type": "datetime"
+          },
+          {
+            "name": "modifiedAt",
+            "type": "datetime"
+          },
+          {
+            "name": "origin",
+            "type": "text"
+          },
+          {
+            "name": "easyqdaVersion",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "users",
+      "path": "tables/users.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "userId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "isConsensus",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sources",
+      "path": "tables/sources.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "sourceId",
+            "type": "id"
+          },
+          {
+            "name": "type",
+            "type": "enum"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "mediaFile",
+            "type": "text"
+          },
+          {
+            "name": "plainTextFile",
+            "type": "text"
+          },
+          {
+            "name": "citekey",
+            "type": "text"
+          },
+          {
+            "name": "creator",
+            "type": "text"
+          },
+          {
+            "name": "year",
+            "type": "text"
+          },
+          {
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "name": "itemKey",
+            "type": "id"
+          },
+          {
+            "name": "attachmentKey",
+            "type": "id"
+          },
+          {
+            "name": "pageLabel",
+            "type": "text"
+          },
+          {
+            "name": "createdAt",
+            "type": "datetime"
+          },
+          {
+            "name": "modifiedAt",
+            "type": "datetime"
+          }
+        ]
+      }
+    },
+    {
+      "name": "codes",
+      "path": "tables/codes.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "codeId",
+            "type": "id"
+          },
+          {
+            "name": "parentId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "path",
+            "type": "text"
+          },
+          {
+            "name": "color",
+            "type": "text"
+          },
+          {
+            "name": "isCodable",
+            "type": "number"
+          },
+          {
+            "name": "abbrev",
+            "type": "text"
+          },
+          {
+            "name": "memo",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selections",
+      "path": "tables/selections.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "selectionId",
+            "type": "id"
+          },
+          {
+            "name": "sourceId",
+            "type": "id"
+          },
+          {
+            "name": "annotationKey",
+            "type": "id"
+          },
+          {
+            "name": "type",
+            "type": "enum"
+          },
+          {
+            "name": "annotationType",
+            "type": "enum"
+          },
+          {
+            "name": "startPosition",
+            "type": "number"
+          },
+          {
+            "name": "endPosition",
+            "type": "number"
+          },
+          {
+            "name": "page",
+            "type": "number"
+          },
+          {
+            "name": "rects",
+            "type": "list"
+          },
+          {
+            "name": "positionRaw",
+            "type": "text"
+          },
+          {
+            "name": "color",
+            "type": "text"
+          },
+          {
+            "name": "text",
+            "type": "text"
+          },
+          {
+            "name": "comment",
+            "type": "text"
+          },
+          {
+            "name": "weight",
+            "type": "number"
+          },
+          {
+            "name": "tags",
+            "type": "list"
+          },
+          {
+            "name": "sortIndex",
+            "type": "text"
+          },
+          {
+            "name": "coder",
+            "type": "text"
+          },
+          {
+            "name": "createdAt",
+            "type": "datetime"
+          },
+          {
+            "name": "modifiedAt",
+            "type": "datetime"
+          }
+        ]
+      }
+    },
+    {
+      "name": "codings",
+      "path": "tables/codings.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "codingId",
+            "type": "id"
+          },
+          {
+            "name": "selectionId",
+            "type": "id"
+          },
+          {
+            "name": "codeId",
+            "type": "id"
+          },
+          {
+            "name": "coder",
+            "type": "text"
+          },
+          {
+            "name": "createdAt",
+            "type": "datetime"
+          }
+        ]
+      }
+    },
+    {
+      "name": "memos",
+      "path": "tables/memos.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "memoId",
+            "type": "id"
+          },
+          {
+            "name": "targetType",
+            "type": "enum"
+          },
+          {
+            "name": "targetId",
+            "type": "id"
+          },
+          {
+            "name": "author",
+            "type": "text"
+          },
+          {
+            "name": "content",
+            "type": "text"
+          },
+          {
+            "name": "createdAt",
+            "type": "datetime"
+          }
+        ]
+      }
+    },
+    {
+      "name": "history",
+      "path": "tables/history.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "ts",
+            "type": "datetime"
+          },
+          {
+            "name": "user",
+            "type": "text"
+          },
+          {
+            "name": "action",
+            "type": "enum"
+          },
+          {
+            "name": "codeId",
+            "type": "id"
+          },
+          {
+            "name": "code",
+            "type": "path"
+          },
+          {
+            "name": "selectionId",
+            "type": "id"
+          },
+          {
+            "name": "annotationKey",
+            "type": "id"
+          },
+          {
+            "name": "citekey",
+            "type": "text"
+          },
+          {
+            "name": "creator",
+            "type": "text"
+          },
+          {
+            "name": "year",
+            "type": "text"
+          },
+          {
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "name": "pageLabel",
+            "type": "text"
+          },
+          {
+            "name": "text",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "variables",
+      "path": "tables/variables.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "variableId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "type",
+            "type": "enum"
+          }
+        ]
+      }
+    },
+    {
+      "name": "variable_values",
+      "path": "tables/variable_values.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "sourceId",
+            "type": "id"
+          },
+          {
+            "name": "variableId",
+            "type": "id"
+          },
+          {
+            "name": "value",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sets",
+      "path": "tables/sets.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "setId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "set_members",
+      "path": "tables/set_members.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "setId",
+            "type": "id"
+          },
+          {
+            "name": "memberId",
+            "type": "id"
+          }
+        ]
+      }
+    },
+    {
+      "name": "links",
+      "path": "tables/links.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "linkId",
+            "type": "id"
+          },
+          {
+            "name": "fromType",
+            "type": "text"
+          },
+          {
+            "name": "fromId",
+            "type": "id"
+          },
+          {
+            "name": "toType",
+            "type": "text"
+          },
+          {
+            "name": "toId",
+            "type": "id"
+          },
+          {
+            "name": "direction",
+            "type": "text"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          }
+        ]
+      }
+    }
+  ]
+}

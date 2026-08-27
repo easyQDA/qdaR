@@ -1,0 +1,480 @@
+{
+  "contract": "easyqda-collection",
+  "version": 1,
+  "files": {
+    "project.csv": {
+      "table": "project",
+      "format": "collection-project/1",
+      "columns": [
+        "easyqdaFormat",
+        "projectId",
+        "name",
+        "basePath",
+        "user",
+        "createdAt",
+        "modifiedAt",
+        "origin",
+        "easyqdaVersion"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-project/1",
+          "projectId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "name": "Beispiel",
+          "basePath": "Beispiel",
+          "user": "Beispiel",
+          "createdAt": "2026-08-05T09:30:00.000Z",
+          "modifiedAt": "2026-08-05T09:30:00.000Z",
+          "origin": "Beispiel",
+          "easyqdaVersion": "Beispiel"
+        },
+        {
+          "easyqdaFormat": "collection-project/1",
+          "projectId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "name": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "basePath": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "user": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "createdAt": "2026-08-05T09:30:00.000Z",
+          "modifiedAt": "2026-08-05T09:30:00.000Z",
+          "origin": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "easyqdaVersion": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    },
+    "users.csv": {
+      "table": "users",
+      "format": "collection-users/1",
+      "columns": [
+        "easyqdaFormat",
+        "userId",
+        "name",
+        "isConsensus"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-users/1",
+          "userId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "name": "Beispiel",
+          "isConsensus": 3
+        },
+        {
+          "easyqdaFormat": "collection-users/1",
+          "userId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "name": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "isConsensus": 0
+        }
+      ]
+    },
+    "sources.csv": {
+      "table": "sources",
+      "format": "collection-sources/1",
+      "columns": [
+        "easyqdaFormat",
+        "sourceId",
+        "type",
+        "name",
+        "mediaFile",
+        "plainTextFile",
+        "citekey",
+        "creator",
+        "year",
+        "title",
+        "itemKey",
+        "attachmentKey",
+        "pageLabel",
+        "createdAt",
+        "modifiedAt"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-sources/1",
+          "sourceId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "type": "text",
+          "name": "Beispiel",
+          "mediaFile": "Beispiel",
+          "plainTextFile": "Beispiel",
+          "citekey": "Beispiel",
+          "creator": "Beispiel",
+          "year": "Beispiel",
+          "title": "Beispiel",
+          "itemKey": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "attachmentKey": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "pageLabel": "Beispiel",
+          "createdAt": "2026-08-05T09:30:00.000Z",
+          "modifiedAt": "2026-08-05T09:30:00.000Z"
+        },
+        {
+          "easyqdaFormat": "collection-sources/1",
+          "sourceId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "type": "pdf",
+          "name": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "mediaFile": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "plainTextFile": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "citekey": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "creator": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "year": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "title": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "itemKey": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "attachmentKey": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "pageLabel": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "createdAt": "2026-08-05T09:30:00.000Z",
+          "modifiedAt": "2026-08-05T09:30:00.000Z"
+        }
+      ]
+    },
+    "codes.csv": {
+      "table": "codes",
+      "format": "collection-codes/1",
+      "columns": [
+        "easyqdaFormat",
+        "codeId",
+        "parentId",
+        "name",
+        "path",
+        "color",
+        "isCodable",
+        "abbrev",
+        "memo"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-codes/1",
+          "codeId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "parentId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "name": "Beispiel",
+          "path": "Beispiel",
+          "color": "Beispiel",
+          "isCodable": 3,
+          "abbrev": "Beispiel",
+          "memo": "Beispiel"
+        },
+        {
+          "easyqdaFormat": "collection-codes/1",
+          "codeId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "parentId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "name": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "path": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "color": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "isCodable": 0,
+          "abbrev": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "memo": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    },
+    "selections.csv": {
+      "table": "selections",
+      "format": "collection-selections/1",
+      "columns": [
+        "easyqdaFormat",
+        "selectionId",
+        "sourceId",
+        "annotationKey",
+        "type",
+        "annotationType",
+        "startPosition",
+        "endPosition",
+        "page",
+        "rects",
+        "positionRaw",
+        "color",
+        "text",
+        "comment",
+        "weight",
+        "tags",
+        "sortIndex",
+        "coder",
+        "createdAt",
+        "modifiedAt"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-selections/1",
+          "selectionId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "sourceId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "annotationKey": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "type": "text",
+          "annotationType": "text",
+          "startPosition": 3,
+          "endPosition": 3,
+          "page": 3,
+          "rects": "#Code A|wichtig",
+          "positionRaw": "Beispiel",
+          "color": "Beispiel",
+          "text": "Beispiel",
+          "comment": "Beispiel",
+          "weight": 3,
+          "tags": "#Code A|wichtig",
+          "sortIndex": "Beispiel",
+          "coder": "Beispiel",
+          "createdAt": "2026-08-05T09:30:00.000Z",
+          "modifiedAt": "2026-08-05T09:30:00.000Z"
+        },
+        {
+          "easyqdaFormat": "collection-selections/1",
+          "selectionId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "sourceId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "annotationKey": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "type": "pdf",
+          "annotationType": "pdf",
+          "startPosition": 0,
+          "endPosition": 0,
+          "page": 0,
+          "rects": "#Code A|#Code B",
+          "positionRaw": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "color": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "text": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "comment": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "weight": 0,
+          "tags": "#Code A|#Code B",
+          "sortIndex": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "coder": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "createdAt": "2026-08-05T09:30:00.000Z",
+          "modifiedAt": "2026-08-05T09:30:00.000Z"
+        }
+      ]
+    },
+    "codings.csv": {
+      "table": "codings",
+      "format": "collection-codings/1",
+      "columns": [
+        "easyqdaFormat",
+        "codingId",
+        "selectionId",
+        "codeId",
+        "coder",
+        "createdAt"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-codings/1",
+          "codingId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "selectionId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "codeId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "coder": "Beispiel",
+          "createdAt": "2026-08-05T09:30:00.000Z"
+        },
+        {
+          "easyqdaFormat": "collection-codings/1",
+          "codingId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "selectionId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "codeId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "coder": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "createdAt": "2026-08-05T09:30:00.000Z"
+        }
+      ]
+    },
+    "memos.csv": {
+      "table": "memos",
+      "format": "collection-memos/1",
+      "columns": [
+        "easyqdaFormat",
+        "memoId",
+        "targetType",
+        "targetId",
+        "author",
+        "content",
+        "createdAt"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-memos/1",
+          "memoId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "targetType": "text",
+          "targetId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "author": "Beispiel",
+          "content": "Beispiel",
+          "createdAt": "2026-08-05T09:30:00.000Z"
+        },
+        {
+          "easyqdaFormat": "collection-memos/1",
+          "memoId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "targetType": "pdf",
+          "targetId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "author": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "content": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "createdAt": "2026-08-05T09:30:00.000Z"
+        }
+      ]
+    },
+    "history.csv": {
+      "table": "history",
+      "format": "collection-history/1",
+      "columns": [
+        "easyqdaFormat",
+        "ts",
+        "user",
+        "action",
+        "codeId",
+        "code",
+        "selectionId",
+        "annotationKey",
+        "citekey",
+        "creator",
+        "year",
+        "title",
+        "pageLabel",
+        "text"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-history/1",
+          "ts": "2026-08-05T09:30:00.000Z",
+          "user": "Beispiel",
+          "action": "text",
+          "codeId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "code": "Beispiel",
+          "selectionId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "annotationKey": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "citekey": "Beispiel",
+          "creator": "Beispiel",
+          "year": "Beispiel",
+          "title": "Beispiel",
+          "pageLabel": "Beispiel",
+          "text": "Beispiel"
+        },
+        {
+          "easyqdaFormat": "collection-history/1",
+          "ts": "2026-08-05T09:30:00.000Z",
+          "user": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "action": "pdf",
+          "codeId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "code": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "selectionId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "annotationKey": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "citekey": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "creator": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "year": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "title": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "pageLabel": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "text": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    },
+    "variables.csv": {
+      "table": "variables",
+      "format": "collection-variables/1",
+      "columns": [
+        "easyqdaFormat",
+        "variableId",
+        "name",
+        "type"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-variables/1",
+          "variableId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "name": "Beispiel",
+          "type": "text"
+        },
+        {
+          "easyqdaFormat": "collection-variables/1",
+          "variableId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "name": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "type": "pdf"
+        }
+      ]
+    },
+    "variable_values.csv": {
+      "table": "variable_values",
+      "format": "collection-variable_values/1",
+      "columns": [
+        "easyqdaFormat",
+        "sourceId",
+        "variableId",
+        "value"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-variable_values/1",
+          "sourceId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "variableId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "value": "Beispiel"
+        },
+        {
+          "easyqdaFormat": "collection-variable_values/1",
+          "sourceId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "variableId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "value": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    },
+    "sets.csv": {
+      "table": "sets",
+      "format": "collection-sets/1",
+      "columns": [
+        "easyqdaFormat",
+        "setId",
+        "name"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-sets/1",
+          "setId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "name": "Beispiel"
+        },
+        {
+          "easyqdaFormat": "collection-sets/1",
+          "setId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "name": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    },
+    "set_members.csv": {
+      "table": "set_members",
+      "format": "collection-set_members/1",
+      "columns": [
+        "easyqdaFormat",
+        "setId",
+        "memberId"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-set_members/1",
+          "setId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "memberId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D"
+        },
+        {
+          "easyqdaFormat": "collection-set_members/1",
+          "setId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "memberId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A"
+        }
+      ]
+    },
+    "links.csv": {
+      "table": "links",
+      "format": "collection-links/1",
+      "columns": [
+        "easyqdaFormat",
+        "linkId",
+        "fromType",
+        "fromId",
+        "toType",
+        "toId",
+        "direction",
+        "name"
+      ],
+      "rows": [
+        {
+          "easyqdaFormat": "collection-links/1",
+          "linkId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "fromType": "Beispiel",
+          "fromId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "toType": "Beispiel",
+          "toId": "1A2B3C4D-5E6F-5A7B-8C9D-0E1F2A3B4C5D",
+          "direction": "Beispiel",
+          "name": "Beispiel"
+        },
+        {
+          "easyqdaFormat": "collection-links/1",
+          "linkId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "fromType": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "fromId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "toType": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "toId": "9F8E7D6C-5B4A-5390-8271-6F5E4D3C2B1A",
+          "direction": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
+          "name": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts."
+        }
+      ]
+    }
+  }
+}
