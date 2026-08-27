@@ -24,6 +24,6 @@ end up close together.  A map of this kind says nothing about
 significance; it is a way of looking at a distance matrix.
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 qda_mds(frag, min_n = 1)$points
 }

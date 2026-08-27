@@ -29,7 +29,7 @@
 #'   even when the exact test is used, because Cramer's V is derived from it
 #'   and an effect size nobody can recompute is not worth reporting.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' res <- qda_chisq(frag, group = "citekey")
 #' res$cramers_v
 #' @export
@@ -100,7 +100,7 @@ qda_chisq <- function(fragments, group = "citekey", codes = NULL,
 #'   codes make every coefficient unstable.
 #' @return An object of class `dist`.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' qda_code_distance(frag, min_n = 1)
 #' @export
 qda_code_distance <- function(fragments, unit = "annotationKey", min_n = 3) {
@@ -136,7 +136,7 @@ qda_code_distance <- function(fragments, unit = "annotationKey", min_n = 3) {
 #' @return A list with the `points` data frame and the `goodness` of fit
 #'   reported by [stats::cmdscale()].
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' qda_mds(frag, min_n = 1)$points
 #' @export
 qda_mds <- function(fragments, unit = "annotationKey", min_n = 3) {
@@ -155,7 +155,7 @@ qda_mds <- function(fragments, unit = "annotationKey", min_n = 3) {
 #' @inheritParams qda_mds
 #' @return A 'ggplot2' object.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' qda_plot_mds(frag, min_n = 1)
 #' @export
 qda_plot_mds <- function(fragments, unit = "annotationKey", min_n = 3) {
@@ -182,7 +182,7 @@ qda_plot_mds <- function(fragments, unit = "annotationKey", min_n = 3) {
 #'   is undefined and reported as `NA` rather than as a number that means
 #'   nothing.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' qda_cluster(frag, min_n = 1)$cophenetic
 #' @export
 qda_cluster <- function(fragments, unit = "annotationKey", min_n = 3,
@@ -214,7 +214,7 @@ qda_cluster <- function(fragments, unit = "annotationKey", min_n = 3,
 #'   happened to keep always add up to 100 percent and so answer a question
 #'   nobody asked.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' if (nrow(unique(frag["code"])) > 1) {
 #'   ca <- try(qda_ca(frag), silent = TRUE)
 #' }

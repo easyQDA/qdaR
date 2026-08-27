@@ -12,7 +12,7 @@
 # itself does.
 
 test_that("demo fragments have the documented shape", {
-  frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
+  frag <- qda_read_fragments(qda_example("easyqda-fragments-demo.csv"))
   # last-state export: fewer rows than the per-coder shape it replaced
   expect_equal(nrow(frag), 352L)
   expect_equal(length(unique(frag$code)), 9L)
@@ -22,13 +22,13 @@ test_that("demo fragments have the documented shape", {
 })
 
 test_that("demo history reads and carries its remove events", {
-  hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+  hist <- qda_read_history(qda_example("easyqda-history-demo.csv"))
   expect_setequal(unique(hist$action), c("add", "remove"))
   expect_equal(sum(hist$action == "remove"), 6L)
 })
 
 test_that("demo agreement from the history matches the frozen values", {
-  hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+  hist <- qda_read_history(qda_example("easyqda-history-demo.csv"))
   u <- qda_units(qda_codings(hist), coder = "user")
   a <- qda_agreement(u)
   # leaf level: the full code path
@@ -37,7 +37,7 @@ test_that("demo agreement from the history matches the frozen values", {
 })
 
 test_that("agreement rises when the code system is read at theme level", {
-  hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+  hist <- qda_read_history(qda_example("easyqda-history-demo.csv"))
   codings <- qda_codings(hist)
   leaf <- qda_agreement(qda_units(codings, coder = "user"))
 
@@ -52,7 +52,7 @@ test_that("agreement rises when the code system is read at theme level", {
 })
 
 test_that("the shipped demo is byte-identical to the qdaPy copy", {
-  for (name in c("zotqda-fragments-demo.csv", "zotqda-history-demo.csv")) {
+  for (name in c("easyqda-fragments-demo.csv", "easyqda-history-demo.csv")) {
     ours <- qda_example(name)
     theirs <- file.path("..", "..", "..", "qdaPy", "src", "qdapy", "data", name)
     skip_if_not(file.exists(theirs), "qdaPy sources not present")

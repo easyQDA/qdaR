@@ -8,13 +8,13 @@ pair, so every function that reads real exports has something realistic to
 read in examples, tests and this documentation:
 
 ```r
-frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
-hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments-demo.csv"))
+hist <- qda_read_history(qda_example("easyqda-history-demo.csv"))
 ```
 
 The same two files ship byte-identically in the Python twin
 [qdaPy](https://qdapy.zotqda.org)
-(`qdapy.example("zotqda-fragments-demo.csv")`), and a test in each package
+(`qdapy.example("easyqda-fragments-demo.csv")`), and a test in each package
 fails if the copies ever drift apart. Results computed on them are
 therefore comparable across the two packages down to the last digit.
 

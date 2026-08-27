@@ -5,7 +5,7 @@ title: "Reading exports"
 
 ## The stamp in the first column
 
-Every file [zotQDA](https://zotqda.org) writes starts with a `zotqdaFormat` column, and every row
+Every file [zotQDA](https://zotqda.org) writes starts with a `easyqdaFormat` column, and every row
 repeats the same value — `fragments/1`, `codebook/1`, and so on. The part
 before the slash says what kind of export you are holding; the number after it
 says which version of the exchange format was used.
@@ -14,7 +14,7 @@ says which version of the exchange format was used.
 inside the package:
 
 ```r
-frag <- qda_read("zotqda-fragments.csv")
+frag <- qda_read("easyqda-fragments.csv")
 attr(frag, "qda_format")    # "fragments"
 attr(frag, "qda_version")   # 1
 attr(frag, "qda_grain")     # "one row per annotation x code"
@@ -22,7 +22,7 @@ attr(frag, "qda_grain")     # "one row per annotation x code"
 
 Four things make it stop rather than continue:
 
-* the file has no `zotqdaFormat` column, so it is not a zotQDA export at all;
+* the file has no `easyqdaFormat` column, so it is not a zotQDA export at all;
 * it names a kind this package has never heard of;
 * it claims a version newer than the one implemented here;
 * a column the contract promises is missing.
@@ -58,7 +58,7 @@ Those reference files are installed with the package:
 
 ```r
 qda_example()                                  # lists all nine
-qda_read_fragments(qda_example("zotqda-fragments.csv"))
+qda_read_fragments(qda_example("easyqda-fragments.csv"))
 ```
 
 Every example in this documentation and in the vignette runs on them, so you
@@ -71,8 +71,8 @@ corresponds to which consensus code. Applying it adds a column and changes
 nothing else:
 
 ```r
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
-map  <- qda_read_mapping(qda_example("zotqda-konsens-abbildung.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
+map  <- qda_read_mapping(qda_example("easyqda-konsens-abbildung.csv"))
 out  <- qda_apply_mapping(frag, map)
 out[, c("code", "consensusCode")]
 ```

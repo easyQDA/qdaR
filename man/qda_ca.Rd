@@ -29,7 +29,7 @@ much of its inertia the first dimensions explain -- the honest answer to
 "how much of the picture am I actually seeing".
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 if (nrow(unique(frag["code"])) > 1) {
   ca <- try(qda_ca(frag), silent = TRUE)
 }

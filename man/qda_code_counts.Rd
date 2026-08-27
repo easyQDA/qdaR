@@ -18,5 +18,5 @@ A data frame with `code` and `n`, most frequent first.
 Counts per code
 }
 \examples{
-qda_code_counts(qda_read_fragments(qda_example("zotqda-fragments.csv")))
+qda_code_counts(qda_read_fragments(qda_example("easyqda-fragments.csv")))
 }

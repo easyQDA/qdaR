@@ -21,6 +21,6 @@ A 'ggplot2' object.
 Plot the code map
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 qda_plot_mds(frag, min_n = 1)
 }

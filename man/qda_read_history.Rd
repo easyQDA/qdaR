@@ -16,6 +16,6 @@ A data frame; see [qda_read()].
 Every logged coding event, `add` and `remove`, oldest first.
 }
 \examples{
-h <- qda_read_history(qda_example("zotqda-history.csv"))
+h <- qda_read_history(qda_example("easyqda-history.csv"))
 table(h$action)
 }

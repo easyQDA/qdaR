@@ -16,5 +16,5 @@ A data frame with `time`, `user` and `cumulative`.
 Cumulative codings per coder
 }
 \examples{
-qda_timeline(qda_read_history(qda_example("zotqda-history.csv")))
+qda_timeline(qda_read_history(qda_example("easyqda-history.csv")))
 }

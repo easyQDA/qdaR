@@ -1,5 +1,5 @@
-frag <- function() qda_read_fragments(qda_example("zotqda-fragments.csv"))
-hist_ <- function() qda_read_history(qda_example("zotqda-history.csv"))
+frag <- function() qda_read_fragments(qda_example("easyqda-fragments.csv"))
+hist_ <- function() qda_read_history(qda_example("easyqda-history.csv"))
 
 test_that("the ggplot2 replications build without drawing", {
   expect_s3_class(qda_plot_frequencies(frag()), "ggplot")
@@ -27,7 +27,7 @@ test_that("rendering an original chart says what is missing", {
 test_that("a specification is read with its provenance", {
   f <- withr::local_tempfile(fileext = ".json")
   writeLines(paste0('{"$schema":"https://vega.github.io/schema/vega-lite/v5.json",',
-                    '"mark":"bar","usermeta":{"contract":"zotqda-exchange",',
+                    '"mark":"bar","usermeta":{"contract":"easyqda-exchange",',
                     '"version":1,"producer":"qdaZ","analysis":"frequencies"}}'), f)
   spec <- qda_spec_read(f)
   expect_equal(spec$mark, "bar")

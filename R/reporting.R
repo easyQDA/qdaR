@@ -92,7 +92,7 @@ COREQ_ITEMS <- list(
 #'   `name`, `question`, `answer` and `filled` (`TRUE` where the data supplied
 #'   it).
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' cq <- qda_coreq(frag)
 #' cq[cq$filled, c("item", "name", "answer")]
 #' @export
@@ -149,7 +149,7 @@ qda_coreq <- function(fragments = NULL, history = NULL, codebook = NULL,
 #' @param file Optional path to write to.
 #' @return A character vector of Markdown lines.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' head(qda_coreq_markdown(qda_coreq(frag)), 8)
 #' @export
 qda_coreq_markdown <- function(coreq, title = "COREQ checklist", file = NULL) {
@@ -243,7 +243,7 @@ SRQR_ITEMS <- list(
 #' @return A data frame with one row per standard: `item`, `section`, `name`,
 #'   `description`, `answer` and `filled`.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' sq <- qda_srqr(frag)
 #' sq[sq$filled, c("item", "name")]
 #' @export
@@ -301,7 +301,7 @@ qda_srqr <- function(fragments = NULL, history = NULL, codebook = NULL,
 #' @param file Optional path to write to.
 #' @return A character vector of Markdown lines.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' head(qda_srqr_markdown(qda_srqr(frag)), 6)
 #' @export
 qda_srqr_markdown <- function(srqr, title = "SRQR checklist", file = NULL) {

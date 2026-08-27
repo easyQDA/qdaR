@@ -20,6 +20,6 @@ A data frame or a matrix of counts.
 Code by document counts
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 qda_code_matrix(frag, long = FALSE)
 }

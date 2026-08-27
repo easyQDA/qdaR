@@ -40,7 +40,7 @@ in your answer to item 24 or 25; the checklist will not prompt you.
 }
 
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 cq <- qda_coreq(frag)
 cq[cq$filled, c("item", "name", "answer")]
 }

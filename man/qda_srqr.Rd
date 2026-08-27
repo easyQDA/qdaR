@@ -35,7 +35,7 @@ one.  If you computed intercoder agreement, that is the item it answers.
 }
 
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 sq <- qda_srqr(frag)
 sq[sq$filled, c("item", "name")]
 }

@@ -26,7 +26,7 @@ how well did the coders agree *about the material one of them marked*.
 Those segments only enter the matrix if you pass the `uncoded` export:
 
 ```r
-u <- qda_units(frag, uncoded = qda_read(qda_example("zotqda-uncoded.csv")))
+u <- qda_units(frag, uncoded = qda_read(qda_example("easyqda-uncoded.csv")))
 ```
 
 Without it they are simply absent. The package will not warn you, because it

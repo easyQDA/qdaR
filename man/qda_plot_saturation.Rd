@@ -17,5 +17,5 @@ How many *new* codes each successive coding introduced -- the curve
 flattens when a code system stops growing.
 }
 \examples{
-qda_plot_saturation(qda_read_history(qda_example("zotqda-history.csv")))
+qda_plot_saturation(qda_read_history(qda_example("easyqda-history.csv")))
 }

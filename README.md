@@ -21,7 +21,7 @@ planning. A `.qdpx` supports a subset, reported on import.
 ```r
 library(qdaR)
 
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 qda_plot_frequencies(frag)
 ```
 

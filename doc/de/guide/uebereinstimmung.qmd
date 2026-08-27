@@ -29,7 +29,7 @@ Diese Segmente kommen nur in die Matrix, wenn Sie den `uncoded`-Export
 übergeben:
 
 ```r
-u <- qda_units(frag, uncoded = qda_read(qda_example("zotqda-uncoded.csv")))
+u <- qda_units(frag, uncoded = qda_read(qda_example("easyqda-uncoded.csv")))
 ```
 
 Ohne ihn fehlen sie schlicht. Das Paket warnt Sie nicht, weil es nicht wissen

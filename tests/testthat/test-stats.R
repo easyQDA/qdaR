@@ -1,4 +1,4 @@
-frag <- function() qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- function() qda_read_fragments(qda_example("easyqda-fragments.csv"))
 
 test_that("code counts are ordered and drop empty codes", {
   d <- qda_code_counts(frag())
@@ -16,7 +16,7 @@ test_that("the code distance is a proper distance", {
 # three codes over four segments, with a deliberate overlap
 toy <- function() {
   data.frame(
-    zotqdaFormat = "fragments/1",
+    easyqdaFormat = "fragments/1",
     code = c("A", "A", "B", "B", "C", "A"),
     codeId = c("c1", "c1", "c2", "c2", "c3", "c1"),
     annotationKey = c("s1", "s2", "s1", "s3", "s4", "s3"),

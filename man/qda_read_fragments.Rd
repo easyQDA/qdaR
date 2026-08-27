@@ -17,6 +17,6 @@ One row per annotation and code.  This is the table most analyses start
 from.
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 nrow(frag)
 }

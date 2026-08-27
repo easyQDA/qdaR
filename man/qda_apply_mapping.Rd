@@ -22,8 +22,8 @@ Adds a `consensusCode` column without touching `code`: the original
 coding stays visible next to its consensus interpretation.
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
-map <- qda_read_mapping(qda_example("zotqda-konsens-abbildung.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
+map <- qda_read_mapping(qda_example("easyqda-konsens-abbildung.csv"))
 out <- qda_apply_mapping(frag, map)
 names(out)[ncol(out)]
 }

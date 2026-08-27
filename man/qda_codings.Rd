@@ -50,7 +50,7 @@ pair is kept when its last event is an `add`; an `add` later withdrawn by a
 ready for [qda_units()] with `coder = "user"`.
 }
 \examples{
-hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+hist <- qda_read_history(qda_example("easyqda-history-demo.csv"))
 codings <- qda_codings(hist)
 u <- qda_units(codings, coder = "user")
 qda_agreement(u)$alpha

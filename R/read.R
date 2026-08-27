@@ -21,7 +21,7 @@
 #' @return A data frame with the attributes `qda_format` (e.g. `"fragments"`),
 #'   `qda_version` and `qda_grain`.
 #' @examples
-#' frag <- qda_read(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read(qda_example("easyqda-fragments.csv"))
 #' attr(frag, "qda_format")
 #' names(frag)[1:4]
 #' @export
@@ -97,7 +97,7 @@ qda_read <- function(path, format = NULL, strict = TRUE) {
 #' @inheritParams qda_read
 #' @return A data frame; see [qda_read()].
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' nrow(frag)
 #' @export
 qda_read_fragments <- function(path) qda_read(path, format = "fragments")
@@ -107,7 +107,7 @@ qda_read_fragments <- function(path) qda_read(path, format = "fragments")
 #' @inheritParams qda_read
 #' @return A data frame; see [qda_read()].
 #' @examples
-#' cb <- qda_read_codebook(qda_example("zotqda-codebook.csv"))
+#' cb <- qda_read_codebook(qda_example("easyqda-codebook.csv"))
 #' cb$code
 #' @export
 qda_read_codebook <- function(path) qda_read(path, format = "codebook")
@@ -119,7 +119,7 @@ qda_read_codebook <- function(path) qda_read(path, format = "codebook")
 #' @inheritParams qda_read
 #' @return A data frame; see [qda_read()].
 #' @examples
-#' h <- qda_read_history(qda_example("zotqda-history.csv"))
+#' h <- qda_read_history(qda_example("easyqda-history.csv"))
 #' table(h$action)
 #' @export
 qda_read_history <- function(path) qda_read(path, format = "history")
@@ -134,7 +134,7 @@ qda_read_history <- function(path) qda_read(path, format = "history")
 #' @inheritParams qda_read
 #' @return A data frame; see [qda_read()].
 #' @examples
-#' m <- qda_read_mapping(qda_example("zotqda-konsens-abbildung.csv"))
+#' m <- qda_read_mapping(qda_example("easyqda-konsens-abbildung.csv"))
 #' m$consensusCode
 #' @export
 qda_read_mapping <- function(path) qda_read(path, format = "consensus-mapping")
@@ -150,8 +150,8 @@ qda_read_mapping <- function(path) qda_read(path, format = "consensus-mapping")
 #'   `"codedBy"`.
 #' @return `fragments` with an added `consensusCode` column.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
-#' map <- qda_read_mapping(qda_example("zotqda-konsens-abbildung.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
+#' map <- qda_read_mapping(qda_example("easyqda-konsens-abbildung.csv"))
 #' out <- qda_apply_mapping(frag, map)
 #' names(out)[ncol(out)]
 #' @export
@@ -192,7 +192,7 @@ qda_apply_mapping <- function(fragments, mapping, coder_col = "codedBy") {
 #'   `coder` and `value` (by their given names), and `citekey` and `title`
 #'   carried through when present.
 #' @examples
-#' hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+#' hist <- qda_read_history(qda_example("easyqda-history-demo.csv"))
 #' codings <- qda_codings(hist)
 #' u <- qda_units(codings, coder = "user")
 #' qda_agreement(u)$alpha

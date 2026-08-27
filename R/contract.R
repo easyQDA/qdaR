@@ -17,7 +17,7 @@
 #' @export
 qda_contract <- function(path = NULL) {
   if (is.null(path)) {
-    path <- system.file("extdata", "exchange-v1.json", package = "qdaR")
+    path <- system.file("extdata", "exchange-v2.json", package = "qdaR")
   }
   if (!nzchar(path) || !file.exists(path)) {
     stop("exchange contract not found: ", path, call. = FALSE)
@@ -52,12 +52,12 @@ qda_formats <- function(path = NULL) {
 #' the awkward cases on purpose: quotes, the delimiter and a line break
 #' inside a field.
 #'
-#' @param file File name, e.g. `"zotqda-fragments.csv"`.  Call without
+#' @param file File name, e.g. `"easyqda-fragments.csv"`.  Call without
 #'   arguments to list what is available.
 #' @return A file path, or the available names when called with no argument.
 #' @examples
 #' qda_example()
-#' qda_example("zotqda-fragments.csv")
+#' qda_example("easyqda-fragments.csv")
 #' @export
 qda_example <- function(file = NULL) {
   dir <- system.file("extdata", package = "qdaR")

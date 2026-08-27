@@ -16,6 +16,6 @@ A data frame; see [qda_read()].
 Read the code system
 }
 \examples{
-cb <- qda_read_codebook(qda_example("zotqda-codebook.csv"))
+cb <- qda_read_codebook(qda_example("easyqda-codebook.csv"))
 cb$code
 }

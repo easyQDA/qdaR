@@ -1,7 +1,7 @@
 {
-  "contract": "zotqda-exchange",
-  "version": 1,
-  "note": "Column order is part of the contract; readers should nevertheless address columns by name. Every file carries its kind and version in the zotqdaFormat column.",
+  "contract": "easyqda-exchange",
+  "version": 2,
+  "note": "Column order is part of the contract; readers should nevertheless address columns by name. Every file carries its kind and version in the easyqdaFormat column.",
   "csv": {
     "encoding": "UTF-8",
     "bom": true,
@@ -11,15 +11,15 @@
   },
   "formats": {
     "fragments": {
-      "id": "fragments/1",
-      "file": "zotqda-fragments.csv",
+      "id": "fragments/2",
+      "file": "easyqda-fragments.csv",
       "grain": "one row per annotation x code",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant fragments/1 — identifies file kind and version"
+          "note": "constant fragments/2 — identifies file kind and version"
         },
         {
           "key": "code",
@@ -154,15 +154,15 @@
       ]
     },
     "uncoded": {
-      "id": "uncoded/1",
-      "file": "zotqda-uncoded.csv",
+      "id": "uncoded/2",
+      "file": "easyqda-uncoded.csv",
       "grain": "one row per annotation without any code (column code is empty)",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant uncoded/1 — identifies file kind and version"
+          "note": "constant uncoded/2 — identifies file kind and version"
         },
         {
           "key": "code",
@@ -297,15 +297,15 @@
       ]
     },
     "codebook": {
-      "id": "codebook/1",
-      "file": "zotqda-codebook.csv",
+      "id": "codebook/2",
+      "file": "easyqda-codebook.csv",
       "grain": "one row per code",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant codebook/1 — identifies file kind and version"
+          "note": "constant codebook/2 — identifies file kind and version"
         },
         {
           "key": "code",
@@ -375,15 +375,15 @@
       ]
     },
     "history": {
-      "id": "history/1",
-      "file": "zotqda-history.csv",
+      "id": "history/2",
+      "file": "easyqda-history.csv",
       "grain": "one row per coding-log event (add and remove), oldest first",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant history/1 — identifies file kind and version"
+          "note": "constant history/2 — identifies file kind and version"
         },
         {
           "key": "ts",
@@ -443,15 +443,15 @@
       ]
     },
     "abbrevs": {
-      "id": "abbrevs/1",
-      "file": "zotqda-abbrevs.csv",
+      "id": "abbrevs/2",
+      "file": "easyqda-abbrevs.csv",
       "grain": "one row per code abbreviation",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant abbrevs/1 — identifies file kind and version"
+          "note": "constant abbrevs/2 — identifies file kind and version"
         },
         {
           "key": "abbrev",
@@ -466,15 +466,15 @@
       ]
     },
     "consensus-mapping": {
-      "id": "consensus-mapping/1",
-      "file": "zotqda-konsens-abbildung.csv",
+      "id": "consensus-mapping/2",
+      "file": "easyqda-konsens-abbildung.csv",
       "grain": "one row per coder code; the bridge from phase-2 codings to the consensus system",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant consensus-mapping/1 — identifies file kind and version"
+          "note": "constant consensus-mapping/2 — identifies file kind and version"
         },
         {
           "key": "coder",
@@ -504,15 +504,15 @@
       ]
     },
     "consensus-protocol": {
-      "id": "consensus-protocol/1",
-      "file": "zotqda-konsens-codesystem.csv",
+      "id": "consensus-protocol/2",
+      "file": "easyqda-konsens-codesystem.csv",
       "grain": "one row per consensus decision; the first row is a settings header",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant consensus-protocol/1 — identifies file kind and version"
+          "note": "constant consensus-protocol/2 — identifies file kind and version"
         },
         {
           "key": "type",
@@ -547,15 +547,15 @@
       ]
     },
     "consensus-metrics": {
-      "id": "consensus-metrics/1",
-      "file": "zotqda-konsens-kennzahlen.csv",
+      "id": "consensus-metrics/2",
+      "file": "easyqda-konsens-kennzahlen.csv",
       "grain": "one row per coder pair, plus mean and round comparison",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant consensus-metrics/1 — identifies file kind and version"
+          "note": "constant consensus-metrics/2 — identifies file kind and version"
         },
         {
           "key": "kind",
@@ -600,15 +600,15 @@
       ]
     },
     "multi-coded": {
-      "id": "multi-coded/1",
-      "file": "zotqda-mehrfachkodierungen.csv",
+      "id": "multi-coded/2",
+      "file": "easyqda-mehrfachkodierungen.csv",
       "grain": "one row per segment carrying more than one genuinely different code",
-      "stampColumn": "zotqdaFormat",
+      "stampColumn": "easyqdaFormat",
       "columns": [
         {
-          "key": "zotqdaFormat",
+          "key": "easyqdaFormat",
           "type": "text",
-          "note": "constant multi-coded/1 — identifies file kind and version"
+          "note": "constant multi-coded/2 — identifies file kind and version"
         },
         {
           "key": "document",

@@ -76,7 +76,7 @@ test_that("a PDF selection keeps its page and rectangle", {
 test_that("a selection without a coding becomes an uncoded row", {
   p <- project()
   expect_equal(nrow(p$uncoded), 1L)
-  expect_equal(p$uncoded$zotqdaFormat, "uncoded/1")
+  expect_equal(p$uncoded$easyqdaFormat, "uncoded/2")
 })
 
 test_that("multiple coding by one coder is found", {
@@ -148,7 +148,7 @@ test_that("saturation runs off the reconstructed log", {
 
 test_that("a frame from .qdpx has the same columns as one from CSV", {
   p <- project()
-  csv <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+  csv <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
   expect_equal(names(csv), names(p$fragments))
 })
 

@@ -29,7 +29,7 @@ interviews from two wards, coded by two people:
 library(qdaR)
 library(ggplot2)
 
-frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments-demo.csv"))
 ```
 
 Correspondence analysis puts codes **and** interviews onto one shared map,

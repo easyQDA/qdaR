@@ -20,6 +20,6 @@ A character vector of Markdown lines.
 The checklist as Markdown, ready to paste into a submission
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 head(qda_coreq_markdown(qda_coreq(frag)), 8)
 }

@@ -50,7 +50,7 @@ document are not independent observations, so a significant result across
 documents is weaker evidence than the p-value suggests.
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 res <- qda_chisq(frag, group = "citekey")
 res$cramers_v
 }

@@ -5,10 +5,10 @@ title: "The exchange contract"
 
 [zotQDA](https://zotqda.org), [qdaZ](https://qdaz.zotqda.org), qdaR and [qdaPy](https://qdapy.zotqda.org) are four code bases that have to agree on the
 same files. The agreement is written down in a form a machine can check:
-`contract/exchange-v1.json`, generated from a single declaration in the
+`contract/exchange-v2.json`, generated from a single declaration in the
 plugin and shipped by every consumer.
 
-This package installs its copy as `inst/extdata/exchange-v1.json`:
+This package installs its copy as `inst/extdata/exchange-v2.json`:
 
 ```r
 ct <- qda_contract()
@@ -21,15 +21,15 @@ qda_formats()
 
 | Format | File | One row per |
 |---|---|---|
-| `fragments/1` | `zotqda-fragments.csv` | annotation x code |
-| `uncoded/1` | `zotqda-uncoded.csv` | annotation with no code |
-| `codebook/1` | `zotqda-codebook.csv` | code |
-| `history/1` | `zotqda-history.csv` | log event (add and remove) |
-| `abbrevs/1` | `zotqda-abbrevs.csv` | code abbreviation |
-| `consensus-mapping/1` | `zotqda-konsens-abbildung.csv` | coder code to consensus code |
-| `consensus-protocol/1` | `zotqda-konsens-codesystem.csv` | consensus decision |
-| `consensus-metrics/1` | `zotqda-konsens-kennzahlen.csv` | coder pair, mean, round |
-| `multi-coded/1` | `zotqda-mehrfachkodierungen.csv` | multiply coded segment |
+| `fragments/2` | `easyqda-fragments.csv` | annotation x code |
+| `uncoded/2` | `easyqda-uncoded.csv` | annotation with no code |
+| `codebook/2` | `easyqda-codebook.csv` | code |
+| `history/2` | `easyqda-history.csv` | log event (add and remove) |
+| `abbrevs/2` | `easyqda-abbrevs.csv` | code abbreviation |
+| `consensus-mapping/2` | `easyqda-konsens-abbildung.csv` | coder code to consensus code |
+| `consensus-protocol/2` | `easyqda-konsens-codesystem.csv` | consensus decision |
+| `consensus-metrics/2` | `easyqda-konsens-kennzahlen.csv` | coder pair, mean, round |
+| `multi-coded/2` | `easyqda-mehrfachkodierungen.csv` | multiply coded segment |
 
 Column lists live in the contract file itself, so this page cannot drift out of
 date about them — `qda_formats()` reads them from the shipped copy.

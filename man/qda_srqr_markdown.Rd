@@ -20,6 +20,6 @@ A character vector of Markdown lines.
 The SRQR checklist as Markdown
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 head(qda_srqr_markdown(qda_srqr(frag)), 6)
 }

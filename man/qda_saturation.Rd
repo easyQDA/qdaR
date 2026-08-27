@@ -16,5 +16,5 @@ A data frame with `step` and `codes`.
 Distinct codes over the course of coding
 }
 \examples{
-qda_saturation(qda_read_history(qda_example("zotqda-history.csv")))
+qda_saturation(qda_read_history(qda_example("easyqda-history.csv")))
 }

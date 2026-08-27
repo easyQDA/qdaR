@@ -18,7 +18,7 @@ test_that("an item is reproduced verbatim", {
 })
 
 test_that("the checklist fills what the data knows and no more", {
-  frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+  frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
   cq <- qda_coreq(frag)
   expect_equal(nrow(cq), 32L)
   expect_setequal(cq$item[cq$filled], c(12L, 24L, 27L, 29L))
@@ -38,7 +38,7 @@ test_that("the saturation item arrives with a history", {
 })
 
 test_that("the coding tree item arrives with a codebook", {
-  cb <- qda_read_codebook(qda_example("zotqda-codebook.csv"))
+  cb <- qda_read_codebook(qda_example("easyqda-codebook.csv"))
   row <- qda_coreq(codebook = cb)
   row <- row[row$item == 25, ]
   expect_true(row$filled)
@@ -55,7 +55,7 @@ test_that("the software item names both tools and can be overridden", {
 })
 
 test_that("the markdown carries every item and the citation", {
-  frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+  frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
   md <- paste(qda_coreq_markdown(qda_coreq(frag)), collapse = "\n")
   expect_match(md, "doi:10.1093/intqhc/mzm042", fixed = TRUE)
   for (it in COREQ_ITEMS) {
@@ -85,7 +85,7 @@ test_that("an SRQR standard is reproduced verbatim", {
 })
 
 test_that("SRQR fills what the data knows", {
-  frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+  frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
   sq <- qda_srqr(frag)
   expect_equal(nrow(sq), 21L)
   expect_setequal(sq$item[sq$filled], c("S12", "S13", "S14", "S17"))
@@ -115,7 +115,7 @@ test_that("the saturation standard warns which saturation it means", {
 })
 
 test_that("the SRQR markdown carries every standard and the citation", {
-  frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+  frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
   md <- paste(qda_srqr_markdown(qda_srqr(frag)), collapse = "\n")
   expect_match(md, "doi:10.1097/ACM.0000000000000388", fixed = TRUE)
   for (it in SRQR_ITEMS) {

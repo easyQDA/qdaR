@@ -14,7 +14,7 @@
    "nDocumentsRecursive": null,
    "name": "Belastung",
    "parent": "",
-   "zotqdaFormat": "codebook/1"
+   "easyqdaFormat": "codebook/2"
   },
   {
    "abbrev": "",
@@ -30,7 +30,7 @@
    "nDocumentsRecursive": null,
    "name": "beruflich",
    "parent": "Belastung",
-   "zotqdaFormat": "codebook/1"
+   "easyqdaFormat": "codebook/2"
   },
   {
    "abbrev": "",
@@ -46,7 +46,7 @@
    "nDocumentsRecursive": null,
    "name": "privat",
    "parent": "Belastung",
-   "zotqdaFormat": "codebook/1"
+   "easyqdaFormat": "codebook/2"
   },
   {
    "abbrev": "",
@@ -62,7 +62,7 @@
    "nDocumentsRecursive": null,
    "name": "Ressourcen",
    "parent": "",
-   "zotqdaFormat": "codebook/1"
+   "easyqdaFormat": "codebook/2"
   }
  ],
  "coders": [
@@ -97,7 +97,7 @@
    "title": "Interview 01",
    "weight": null,
    "year": "",
-   "zotqdaFormat": "fragments/1"
+   "easyqdaFormat": "fragments/2"
   },
   {
    "allTags": "Ressourcen|Ressourcen",
@@ -126,7 +126,7 @@
    "title": "Interview 01",
    "weight": null,
    "year": "",
-   "zotqdaFormat": "fragments/1"
+   "easyqdaFormat": "fragments/2"
   },
   {
    "allTags": "Belastung/beruflich|Belastung/privat",
@@ -155,7 +155,7 @@
    "title": "Interview 01",
    "weight": null,
    "year": "",
-   "zotqdaFormat": "fragments/1"
+   "easyqdaFormat": "fragments/2"
   },
   {
    "allTags": "Belastung/beruflich|Belastung/privat",
@@ -184,7 +184,7 @@
    "title": "Interview 01",
    "weight": null,
    "year": "",
-   "zotqdaFormat": "fragments/1"
+   "easyqdaFormat": "fragments/2"
   },
   {
    "allTags": "Belastung/privat|Belastung/beruflich",
@@ -213,7 +213,7 @@
    "title": "Interview 02",
    "weight": null,
    "year": "",
-   "zotqdaFormat": "fragments/1"
+   "easyqdaFormat": "fragments/2"
   },
   {
    "allTags": "Belastung/privat|Belastung/beruflich",
@@ -242,7 +242,7 @@
    "title": "Interview 02",
    "weight": null,
    "year": "",
-   "zotqdaFormat": "fragments/1"
+   "easyqdaFormat": "fragments/2"
   },
   {
    "allTags": "Belastung",
@@ -271,7 +271,7 @@
    "title": "Leitfaden",
    "weight": null,
    "year": "",
-   "zotqdaFormat": "fragments/1"
+   "easyqdaFormat": "fragments/2"
   }
  ],
  "history": [
@@ -287,7 +287,7 @@
    "ts": "2026-03-02T10:00:00Z",
    "user": "Ann",
    "year": "",
-   "zotqdaFormat": "history/1"
+   "easyqdaFormat": "history/2"
   },
   {
    "action": "add",
@@ -301,7 +301,7 @@
    "ts": "2026-03-02T10:05:00Z",
    "user": "Ann",
    "year": "",
-   "zotqdaFormat": "history/1"
+   "easyqdaFormat": "history/2"
   },
   {
    "action": "add",
@@ -315,7 +315,7 @@
    "ts": "2026-03-02T10:20:00Z",
    "user": "Ann",
    "year": "",
-   "zotqdaFormat": "history/1"
+   "easyqdaFormat": "history/2"
   },
   {
    "action": "add",
@@ -329,7 +329,7 @@
    "ts": "2026-03-02T10:21:00Z",
    "user": "Ann",
    "year": "",
-   "zotqdaFormat": "history/1"
+   "easyqdaFormat": "history/2"
   },
   {
    "action": "add",
@@ -343,7 +343,7 @@
    "ts": "2026-03-02T10:30:00Z",
    "user": "Ann",
    "year": "",
-   "zotqdaFormat": "history/1"
+   "easyqdaFormat": "history/2"
   },
   {
    "action": "add",
@@ -357,7 +357,7 @@
    "ts": "2026-03-03T11:30:00Z",
    "user": "Bob",
    "year": "",
-   "zotqdaFormat": "history/1"
+   "easyqdaFormat": "history/2"
   },
   {
    "action": "add",
@@ -371,7 +371,7 @@
    "ts": "2026-03-03T11:35:00Z",
    "user": "Bob",
    "year": "",
-   "zotqdaFormat": "history/1"
+   "easyqdaFormat": "history/2"
   }
  ],
  "limitations": [
@@ -387,7 +387,7 @@
    "document": "Interview 02",
    "n": 2,
    "text": "Am Anfang habe ich die Doppelbelastung unterschä",
-   "zotqdaFormat": "multi-coded/1"
+   "easyqdaFormat": "multi-coded/2"
   }
  ],
  "skipped": {
@@ -428,7 +428,7 @@
    "title": "Interview 01",
    "weight": null,
    "year": "",
-   "zotqdaFormat": "uncoded/1"
+   "easyqdaFormat": "uncoded/2"
   }
  ]
 }

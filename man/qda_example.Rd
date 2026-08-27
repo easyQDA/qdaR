@@ -7,7 +7,7 @@
 qda_example(file = NULL)
 }
 \arguments{
-\item{file}{File name, e.g. `"zotqda-fragments.csv"`.  Call without
+\item{file}{File name, e.g. `"easyqda-fragments.csv"`.  Call without
 arguments to list what is available.}
 }
 \value{
@@ -21,5 +21,5 @@ inside a field.
 }
 \examples{
 qda_example()
-qda_example("zotqda-fragments.csv")
+qda_example("easyqda-fragments.csv")
 }

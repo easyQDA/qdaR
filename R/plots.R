@@ -9,7 +9,7 @@
 #'   `fill` is `NULL`, the code colours from the code system are used.
 #' @return A 'ggplot2' object.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' qda_plot_frequencies(frag)
 #' @export
 qda_plot_frequencies <- function(fragments, top = 25, fill = "#4c78a8") {
@@ -26,7 +26,7 @@ qda_plot_frequencies <- function(fragments, top = 25, fill = "#4c78a8") {
 #' @inheritParams qda_plot_frequencies
 #' @return A data frame with `code` and `n`, most frequent first.
 #' @examples
-#' qda_code_counts(qda_read_fragments(qda_example("zotqda-fragments.csv")))
+#' qda_code_counts(qda_read_fragments(qda_example("easyqda-fragments.csv")))
 #' @export
 qda_code_counts <- function(fragments, top = NULL) {
   stopifnot(is.data.frame(fragments), "code" %in% names(fragments))
@@ -48,7 +48,7 @@ qda_code_counts <- function(fragments, top = NULL) {
 #' @param doc_col Column identifying the document.
 #' @return A 'ggplot2' object.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' qda_plot_code_matrix(frag)
 #' @export
 qda_plot_code_matrix <- function(fragments, doc_col = "citekey") {
@@ -67,7 +67,7 @@ qda_plot_code_matrix <- function(fragments, doc_col = "citekey") {
 #' @param long Return a long data frame (`TRUE`) or a matrix (`FALSE`).
 #' @return A data frame or a matrix of counts.
 #' @examples
-#' frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+#' frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 #' qda_code_matrix(frag, long = FALSE)
 #' @export
 qda_code_matrix <- function(fragments, doc_col = "citekey", long = TRUE) {
@@ -88,7 +88,7 @@ qda_code_matrix <- function(fragments, doc_col = "citekey", long = TRUE) {
 #' @param history A history data frame from [qda_read_history()].
 #' @return A 'ggplot2' object.
 #' @examples
-#' h <- qda_read_history(qda_example("zotqda-history.csv"))
+#' h <- qda_read_history(qda_example("easyqda-history.csv"))
 #' qda_plot_timeline(h)
 #' @export
 qda_plot_timeline <- function(history) {
@@ -105,7 +105,7 @@ qda_plot_timeline <- function(history) {
 #' @inheritParams qda_plot_timeline
 #' @return A data frame with `time`, `user` and `cumulative`.
 #' @examples
-#' qda_timeline(qda_read_history(qda_example("zotqda-history.csv")))
+#' qda_timeline(qda_read_history(qda_example("easyqda-history.csv")))
 #' @export
 qda_timeline <- function(history) {
   stopifnot(is.data.frame(history), all(c("ts", "user", "action") %in% names(history)))
@@ -132,7 +132,7 @@ qda_timeline <- function(history) {
 #' @inheritParams qda_plot_timeline
 #' @return A 'ggplot2' object.
 #' @examples
-#' qda_plot_saturation(qda_read_history(qda_example("zotqda-history.csv")))
+#' qda_plot_saturation(qda_read_history(qda_example("easyqda-history.csv")))
 #' @export
 qda_plot_saturation <- function(history) {
   d <- qda_saturation(history)
@@ -147,7 +147,7 @@ qda_plot_saturation <- function(history) {
 #' @inheritParams qda_plot_timeline
 #' @return A data frame with `step` and `codes`.
 #' @examples
-#' qda_saturation(qda_read_history(qda_example("zotqda-history.csv")))
+#' qda_saturation(qda_read_history(qda_example("easyqda-history.csv")))
 #' @export
 qda_saturation <- function(history) {
   stopifnot(is.data.frame(history))

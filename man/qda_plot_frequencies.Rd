@@ -22,6 +22,6 @@ The plugin's overview chart, drawn with 'ggplot2': how often each code was
 assigned.
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 qda_plot_frequencies(frag)
 }

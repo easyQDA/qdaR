@@ -20,7 +20,7 @@ provenance in `usermeta`, so a reader can tell which analysis produced it.
 }
 \examples{
 f <- tempfile(fileext = ".json")
-writeLines('{"mark":"bar","usermeta":{"contract":"zotqda-exchange",
+writeLines('{"mark":"bar","usermeta":{"contract":"easyqda-exchange",
   "version":1,"analysis":"demo"}}', f)
 spec <- qda_spec_read(f)
 attr(spec, "qdaz_analysis")

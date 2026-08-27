@@ -47,7 +47,7 @@ remotes::install_github("easyqda/qdaR")
 ```r
 library(qdaR)
 
-frag <- qda_read_fragments("zotqda-fragments.csv")
+frag <- qda_read_fragments("easyqda-fragments.csv")
 qda_code_counts(frag)
 qda_plot_frequencies(frag)
 ```

@@ -108,7 +108,7 @@ CODEBOOK_COLUMNS <- c(
   } else {
     df <- do.call(rbind, acc$rows)
   }
-  df <- cbind(zotqdaFormat = rep("codebook/1", nrow(df)), df,
+  df <- cbind(easyqdaFormat = rep("codebook/2", nrow(df)), df,
               stringsAsFactors = FALSE)
   df
 }
@@ -256,7 +256,7 @@ CODEBOOK_COLUMNS <- c(
 .qdpx_history <- function(frag) {
   coded <- frag[nzchar(frag$code) & nzchar(frag$codedAt), , drop = FALSE]
   out <- data.frame(
-    zotqdaFormat = rep("history/1", nrow(coded)),
+    easyqdaFormat = rep("history/2", nrow(coded)),
     ts = coded$codedAt, user = coded$codedBy,
     action = rep("add", nrow(coded)), code = coded$code,
     annotationKey = coded$annotationKey, citekey = "", creator = "",
@@ -275,7 +275,7 @@ CODEBOOK_COLUMNS <- c(
     distinct <- sort(unique(grp$code))
     if (length(distinct) > 1L) {
       rows[[length(rows) + 1L]] <- data.frame(
-        zotqdaFormat = "multi-coded/1", document = grp$title[[1]],
+        easyqdaFormat = "multi-coded/2", document = grp$title[[1]],
         text = grp$text[[1]], codes = paste(distinct, collapse = "+"),
         n = length(distinct), coder = grp$codedBy[[1]],
         stringsAsFactors = FALSE
@@ -283,7 +283,7 @@ CODEBOOK_COLUMNS <- c(
     }
   }
   if (length(rows) == 0L) {
-    return(data.frame(zotqdaFormat = character(0), document = character(0),
+    return(data.frame(easyqdaFormat = character(0), document = character(0),
                       text = character(0), codes = character(0),
                       n = integer(0), coder = character(0),
                       stringsAsFactors = FALSE))
@@ -382,14 +382,14 @@ qda_read_qdpx <- function(path, warn = TRUE) {
       as.data.frame(r, stringsAsFactors = FALSE)
     }))
   }
-  frag <- cbind(zotqdaFormat = rep("fragments/1", nrow(frag)), frag,
+  frag <- cbind(easyqdaFormat = rep("fragments/2", nrow(frag)), frag,
                 stringsAsFactors = FALSE)
   frag <- .qdpx_coerce(frag, "fragments")
   codebook <- .qdpx_coerce(codebook, "codebook")
   rownames(frag) <- NULL
 
   uncoded <- frag[!nzchar(frag$code), , drop = FALSE]
-  if (nrow(uncoded)) uncoded$zotqdaFormat <- "uncoded/1"
+  if (nrow(uncoded)) uncoded$easyqdaFormat <- "uncoded/2"
   rownames(uncoded) <- NULL
   coded <- frag[nzchar(frag$code), , drop = FALSE]
   rownames(coded) <- NULL

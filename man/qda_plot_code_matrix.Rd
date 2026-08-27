@@ -19,6 +19,6 @@ The plugin's code-by-document heat map.  Documents are identified by
 `citekey` when present, otherwise by title.
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 qda_plot_code_matrix(frag)
 }

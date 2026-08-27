@@ -8,13 +8,13 @@ Beispielen, Tests und dieser Dokumentation etwas Realistisches zu lesen
 hat:
 
 ```r
-frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
-hist <- qda_read_history(qda_example("zotqda-history-demo.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments-demo.csv"))
+hist <- qda_read_history(qda_example("easyqda-history-demo.csv"))
 ```
 
 Dieselben zwei Dateien liegen byte-identisch im Python-Zwilling
 [qdaPy](https://qdapy.zotqda.org)
-(`qdapy.example("zotqda-fragments-demo.csv")`), und ein Test in jedem Paket
+(`qdapy.example("easyqda-fragments-demo.csv")`), und ein Test in jedem Paket
 schlägt fehl, sobald die Kopien auseinanderlaufen. Ergebnisse darauf sind
 deshalb zwischen den Paketen bis auf die letzte Stelle vergleichbar.
 

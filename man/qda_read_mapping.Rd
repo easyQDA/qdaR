@@ -19,6 +19,6 @@ anyone rewriting a coding -- derived codings would inflate every
 agreement figure by construction.
 }
 \examples{
-m <- qda_read_mapping(qda_example("zotqda-konsens-abbildung.csv"))
+m <- qda_read_mapping(qda_example("easyqda-konsens-abbildung.csv"))
 m$consensusCode
 }

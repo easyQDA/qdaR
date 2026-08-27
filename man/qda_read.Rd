@@ -34,7 +34,7 @@ Files are UTF-8 with a byte-order mark and may use `,` or `;` as the
 delimiter, depending on the setting in the plugin; both are detected.
 }
 \examples{
-frag <- qda_read(qda_example("zotqda-fragments.csv"))
+frag <- qda_read(qda_example("easyqda-fragments.csv"))
 attr(frag, "qda_format")
 names(frag)[1:4]
 }

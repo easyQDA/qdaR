@@ -29,7 +29,7 @@ Personen kodiert:
 library(qdaR)
 library(ggplot2)
 
-frag <- qda_read_fragments(qda_example("zotqda-fragments-demo.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments-demo.csv"))
 ```
 
 Die Korrespondenzanalyse legt Codes **und** Interviews in eine gemeinsame

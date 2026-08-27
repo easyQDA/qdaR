@@ -29,6 +29,6 @@ it represents the distances poorly -- values well below about 0.7 mean the
 picture should not be over-read.
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 qda_cluster(frag, min_n = 1)$cophenetic
 }

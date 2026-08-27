@@ -1,11 +1,11 @@
 {
-  "contract": "zotqda-exchange",
-  "version": 1,
+  "contract": "easyqda-exchange",
+  "version": 2,
   "files": {
-    "zotqda-fragments.csv": {
-      "format": "fragments/1",
+    "easyqda-fragments.csv": {
+      "format": "fragments/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "code",
         "codeId",
         "citekey",
@@ -35,7 +35,7 @@
       ],
       "rows": [
         {
-          "zotqdaFormat": "fragments/1",
+          "easyqdaFormat": "fragments/2",
           "code": "Belastung",
           "codeId": "cX1y2z3a4",
           "citekey": "Beispiel",
@@ -64,7 +64,7 @@
           "positionRects": ""
         },
         {
-          "zotqdaFormat": "fragments/1",
+          "easyqdaFormat": "fragments/2",
           "code": "Belastung/beruflich, akut",
           "codeId": "cQ9w8e7r6",
           "citekey": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
@@ -94,10 +94,10 @@
         }
       ]
     },
-    "zotqda-uncoded.csv": {
-      "format": "uncoded/1",
+    "easyqda-uncoded.csv": {
+      "format": "uncoded/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "code",
         "codeId",
         "citekey",
@@ -127,7 +127,7 @@
       ],
       "rows": [
         {
-          "zotqdaFormat": "uncoded/1",
+          "easyqdaFormat": "uncoded/2",
           "code": "Belastung",
           "codeId": "cX1y2z3a4",
           "citekey": "Beispiel",
@@ -156,7 +156,7 @@
           "positionRects": ""
         },
         {
-          "zotqdaFormat": "uncoded/1",
+          "easyqdaFormat": "uncoded/2",
           "code": "Belastung/beruflich, akut",
           "codeId": "cQ9w8e7r6",
           "citekey": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
@@ -186,10 +186,10 @@
         }
       ]
     },
-    "zotqda-codebook.csv": {
-      "format": "codebook/1",
+    "easyqda-codebook.csv": {
+      "format": "codebook/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "code",
         "codeId",
         "parent",
@@ -206,7 +206,7 @@
       ],
       "rows": [
         {
-          "zotqdaFormat": "codebook/1",
+          "easyqdaFormat": "codebook/2",
           "code": "Belastung",
           "codeId": "cX1y2z3a4",
           "parent": "Belastung",
@@ -222,7 +222,7 @@
           "defined": 3
         },
         {
-          "zotqdaFormat": "codebook/1",
+          "easyqdaFormat": "codebook/2",
           "code": "Belastung/beruflich, akut",
           "codeId": "cQ9w8e7r6",
           "parent": "Belastung/beruflich, akut",
@@ -239,10 +239,10 @@
         }
       ]
     },
-    "zotqda-history.csv": {
-      "format": "history/1",
+    "easyqda-history.csv": {
+      "format": "history/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "ts",
         "user",
         "action",
@@ -257,7 +257,7 @@
       ],
       "rows": [
         {
-          "zotqdaFormat": "history/1",
+          "easyqdaFormat": "history/2",
           "ts": "2026-08-05T09:30:00.000Z",
           "user": "Beispiel",
           "action": "highlight",
@@ -271,7 +271,7 @@
           "text": "Beispiel"
         },
         {
-          "zotqdaFormat": "history/1",
+          "easyqdaFormat": "history/2",
           "ts": "2026-08-05T09:30:00.000Z",
           "user": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
           "action": "highlight",
@@ -286,30 +286,30 @@
         }
       ]
     },
-    "zotqda-abbrevs.csv": {
-      "format": "abbrevs/1",
+    "easyqda-abbrevs.csv": {
+      "format": "abbrevs/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "abbrev",
         "code"
       ],
       "rows": [
         {
-          "zotqdaFormat": "abbrevs/1",
+          "easyqdaFormat": "abbrevs/2",
           "abbrev": "Beispiel",
           "code": "Belastung"
         },
         {
-          "zotqdaFormat": "abbrevs/1",
+          "easyqdaFormat": "abbrevs/2",
           "abbrev": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
           "code": "Belastung/beruflich, akut"
         }
       ]
     },
-    "zotqda-konsens-abbildung.csv": {
-      "format": "consensus-mapping/1",
+    "easyqda-konsens-abbildung.csv": {
+      "format": "consensus-mapping/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "coder",
         "coderCode",
         "consensusCode",
@@ -318,7 +318,7 @@
       ],
       "rows": [
         {
-          "zotqdaFormat": "consensus-mapping/1",
+          "easyqdaFormat": "consensus-mapping/2",
           "coder": "Beispiel",
           "coderCode": "Belastung",
           "consensusCode": "Belastung",
@@ -326,7 +326,7 @@
           "coders": "#Code A|wichtig"
         },
         {
-          "zotqdaFormat": "consensus-mapping/1",
+          "easyqdaFormat": "consensus-mapping/2",
           "coder": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
           "coderCode": "Belastung/beruflich, akut",
           "consensusCode": "Belastung/beruflich, akut",
@@ -335,10 +335,10 @@
         }
       ]
     },
-    "zotqda-konsens-codesystem.csv": {
-      "format": "consensus-protocol/1",
+    "easyqda-konsens-codesystem.csv": {
+      "format": "consensus-protocol/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "type",
         "subject",
         "decision",
@@ -348,7 +348,7 @@
       ],
       "rows": [
         {
-          "zotqdaFormat": "consensus-protocol/1",
+          "easyqdaFormat": "consensus-protocol/2",
           "type": "highlight",
           "subject": "Beispiel",
           "decision": "Beispiel",
@@ -357,7 +357,7 @@
           "reason": "Beispiel"
         },
         {
-          "zotqdaFormat": "consensus-protocol/1",
+          "easyqdaFormat": "consensus-protocol/2",
           "type": "highlight",
           "subject": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
           "decision": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
@@ -367,10 +367,10 @@
         }
       ]
     },
-    "zotqda-konsens-kennzahlen.csv": {
-      "format": "consensus-metrics/1",
+    "easyqda-konsens-kennzahlen.csv": {
+      "format": "consensus-metrics/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "kind",
         "a",
         "b",
@@ -382,7 +382,7 @@
       ],
       "rows": [
         {
-          "zotqdaFormat": "consensus-metrics/1",
+          "easyqdaFormat": "consensus-metrics/2",
           "kind": "highlight",
           "a": "Beispiel",
           "b": "Beispiel",
@@ -393,7 +393,7 @@
           "rfMax": 3
         },
         {
-          "zotqdaFormat": "consensus-metrics/1",
+          "easyqdaFormat": "consensus-metrics/2",
           "kind": "highlight",
           "a": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
           "b": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
@@ -405,10 +405,10 @@
         }
       ]
     },
-    "zotqda-mehrfachkodierungen.csv": {
-      "format": "multi-coded/1",
+    "easyqda-mehrfachkodierungen.csv": {
+      "format": "multi-coded/2",
       "columns": [
-        "zotqdaFormat",
+        "easyqdaFormat",
         "document",
         "text",
         "codes",
@@ -417,7 +417,7 @@
       ],
       "rows": [
         {
-          "zotqdaFormat": "multi-coded/1",
+          "easyqdaFormat": "multi-coded/2",
           "document": "Beispiel",
           "text": "Beispiel",
           "codes": "#Code A|wichtig",
@@ -425,7 +425,7 @@
           "coder": "Beispiel"
         },
         {
-          "zotqdaFormat": "multi-coded/1",
+          "easyqdaFormat": "multi-coded/2",
           "document": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
           "text": "Er sagte: \"Ja, wirklich\"\nund ging; danach nichts.",
           "codes": "#Code A|#Code B",

@@ -33,7 +33,7 @@ This vignette runs entirely on reference files installed with the package, so
 you can follow along without a Zotero installation:
 
 ```{r}
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 attr(frag, "qda_format")
 attr(frag, "qda_grain")
 ```
@@ -58,7 +58,7 @@ qda_plot_frequencies(frag)
 ```
 
 ```{r}
-hist <- qda_read_history(qda_example("zotqda-history.csv"))
+hist <- qda_read_history(qda_example("easyqda-history.csv"))
 qda_plot_saturation(hist)
 ```
 
@@ -110,7 +110,7 @@ would come out inflated -- the disagreements would have been edited away
 first.
 
 ```{r}
-map <- qda_read_mapping(qda_example("zotqda-konsens-abbildung.csv"))
+map <- qda_read_mapping(qda_example("easyqda-konsens-abbildung.csv"))
 head(qda_apply_mapping(frag, map)[, c("code", "consensusCode")])
 ```
 

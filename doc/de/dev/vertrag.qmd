@@ -5,10 +5,10 @@ title: "Der Austausch-Vertrag"
 
 [zotQDA](https://zotqda.org), [qdaZ](https://qdaz.zotqda.org), [qdaPy](https://qdapy.zotqda.org) und qdaR sind vier Codebasen, die sich über dieselben
 Dateien einig sein müssen. Diese Einigkeit ist in einer Form aufgeschrieben,
-die eine Maschine prüfen kann: `contract/exchange-v1.json`, erzeugt aus einer
+die eine Maschine prüfen kann: `contract/exchange-v2.json`, erzeugt aus einer
 einzigen Deklaration im Plugin und von jedem Abnehmer mitgeliefert.
 
-Dieses Paket installiert seine Kopie als `inst/extdata/exchange-v1.json`:
+Dieses Paket installiert seine Kopie als `inst/extdata/exchange-v2.json`:
 
 ```r
 ct <- qda_contract()
@@ -21,15 +21,15 @@ qda_formats()
 
 | Format | Datei | Eine Zeile je |
 |---|---|---|
-| `fragments/1` | `zotqda-fragments.csv` | Annotation × Code |
-| `uncoded/1` | `zotqda-uncoded.csv` | Annotation ohne Code |
-| `codebook/1` | `zotqda-codebook.csv` | Code |
-| `history/1` | `zotqda-history.csv` | Protokollereignis (add und remove) |
-| `abbrevs/1` | `zotqda-abbrevs.csv` | Code-Kürzel |
-| `consensus-mapping/1` | `zotqda-konsens-abbildung.csv` | Kodierer-Code zu Konsens-Code |
-| `consensus-protocol/1` | `zotqda-konsens-codesystem.csv` | Konsens-Entscheidung |
-| `consensus-metrics/1` | `zotqda-konsens-kennzahlen.csv` | Kodierendenpaar, Mittelwert, Runde |
-| `multi-coded/1` | `zotqda-mehrfachkodierungen.csv` | mehrfach kodiertes Segment |
+| `fragments/2` | `easyqda-fragments.csv` | Annotation × Code |
+| `uncoded/2` | `easyqda-uncoded.csv` | Annotation ohne Code |
+| `codebook/2` | `easyqda-codebook.csv` | Code |
+| `history/2` | `easyqda-history.csv` | Protokollereignis (add und remove) |
+| `abbrevs/2` | `easyqda-abbrevs.csv` | Code-Kürzel |
+| `consensus-mapping/2` | `easyqda-konsens-abbildung.csv` | Kodierer-Code zu Konsens-Code |
+| `consensus-protocol/2` | `easyqda-konsens-codesystem.csv` | Konsens-Entscheidung |
+| `consensus-metrics/2` | `easyqda-konsens-kennzahlen.csv` | Kodierendenpaar, Mittelwert, Runde |
+| `multi-coded/2` | `easyqda-mehrfachkodierungen.csv` | mehrfach kodiertes Segment |
 
 Die Spaltenlisten stehen in der Vertragsdatei selbst — diese Seite kann darüber
 also nicht veralten.

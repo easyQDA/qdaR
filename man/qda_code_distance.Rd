@@ -23,6 +23,6 @@ the distance the multidimensional scaling and the clustering below work
 on, and the same coefficient the plugin uses to propose code matches.
 }
 \examples{
-frag <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+frag <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
 qda_code_distance(frag, min_n = 1)
 }

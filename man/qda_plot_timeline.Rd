@@ -16,6 +16,6 @@ A 'ggplot2' object.
 The plugin's process view: how the number of codings grew, per coder.
 }
 \examples{
-h <- qda_read_history(qda_example("zotqda-history.csv"))
+h <- qda_read_history(qda_example("easyqda-history.csv"))
 qda_plot_timeline(h)
 }

@@ -8,8 +8,8 @@ test_that("the contract describes every shipped reference file", {
 
 test_that("qdaR implements the version it ships", {
   ct <- qda_contract()
-  expect_identical(ct$contract, "zotqda-exchange")
-  expect_identical(ct$version, 1L)
+  expect_identical(ct$contract, "easyqda-exchange")
+  expect_identical(ct$version, 2L)
 })
 
 test_that("the reference files match the contract column by column", {
@@ -23,7 +23,7 @@ test_that("the reference files match the contract column by column", {
 })
 
 test_that("the position columns arrive in both shapes (E37.1)", {
-  df <- qda_read_fragments(qda_example("zotqda-fragments.csv"))
+  df <- qda_read_fragments(qda_example("easyqda-fragments.csv"))
   for (col in c("positionKind", "positionStart", "positionEnd",
                 "positionPage", "positionRects")) {
     expect_true(col %in% names(df), info = col)
@@ -46,7 +46,7 @@ test_that("an export without the position columns is rejected", {
   cols <- vapply(ct$formats$fragments$columns, function(c) c$key, character(1))
   cols <- cols[!startsWith(cols, "position")]
   f <- withr::local_tempfile(fileext = ".csv")
-  vals <- ifelse(cols == "zotqdaFormat", "fragments/1", "x")
+  vals <- ifelse(cols == "easyqdaFormat", "fragments/1", "x")
   writeLines(c(paste(cols, collapse = ","), paste(vals, collapse = ",")), f)
   expect_error(qda_read_fragments(f), "missing contract columns")
   # and the caller can still look at it if they know what they are doing
