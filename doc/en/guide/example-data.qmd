@@ -53,7 +53,10 @@ semi-structured guide-based interviews, four from a ward (`Station-1` …
 `Station-4`) and four from the administration (`Verwaltung-1` …
 `Verwaltung-4`). The transcripts follow simple, smoothed rules with
 speaker marks (`I:` interviewer, `B:` interviewee); the guide is handled
-flexibly, and only the answers are coded. Two coders, `Anna` and
+flexibly, and only the answers are coded. At the disagreement segments both
+coders justify their assignment in one name-prefixed comment line each
+(`Anna: …` / `Robert: …`) — the same convention the UI uses to attribute
+codings to people. Two coders, `Anna` and
 `Robert`, coded consensus segments (the same annotations, each with their
 own code), following the three-phase method described in the
 [zotQDA documentation](https://zotqda.org).

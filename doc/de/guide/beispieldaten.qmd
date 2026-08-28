@@ -56,7 +56,9 @@ halbstandardisierte Leitfadeninterviews, vier von einer Station
 `Verwaltung-4`). Die Transkripte folgen einfachen, geglätteten Regeln mit
 Sprecherkennzeichnung (`I:` Interviewerin, `B:` befragte Person); der
 Leitfaden wird flexibel gehandhabt, kodiert werden ausschließlich die
-Antworten. Zwei Kodierende,
+Antworten. An den Dissens-Segmenten begründen beide Kodierende ihre Zuordnung
+in je einer namens-präfixierten Kommentarzeile (`Anna: …` / `Robert: …`) —
+dieselbe Konvention, mit der die Oberfläche Kodierungen den Personen zuordnet. Zwei Kodierende,
 `Anna` und `Robert`, kodierten Konsens-Segmente (dieselben Annotationen,
 jede Person mit eigenem Code), dem Drei-Phasen-Verfahren aus der
 [zotQDA-Dokumentation](https://zotqda.org) folgend.
