@@ -48,9 +48,12 @@ accident. But do not cite these numbers as findings.
 
 ## What the study is
 
-A fictitious interview study on workload in nursing: eight interviews,
-four from a ward (`Station-1` … `Station-4`) and four from the
-administration (`Verwaltung-1` … `Verwaltung-4`). Two coders, `Anna` and
+A fictitious interview study on workload in nursing: eight
+semi-structured guide-based interviews, four from a ward (`Station-1` …
+`Station-4`) and four from the administration (`Verwaltung-1` …
+`Verwaltung-4`). The transcripts follow simple, smoothed rules with
+speaker marks (`I:` interviewer, `B:` interviewee); the guide is handled
+flexibly, and only the answers are coded. Two coders, `Anna` and
 `Robert`, coded consensus segments (the same annotations, each with their
 own code), following the three-phase method described in the
 [zotQDA documentation](https://zotqda.org).

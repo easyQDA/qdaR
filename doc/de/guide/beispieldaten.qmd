@@ -51,8 +51,12 @@ Zitieren Sie diese Zahlen nicht als Befunde.
 ## Was die Studie ist
 
 Eine fiktive Interviewstudie zur Arbeitsbelastung in der Pflege: acht
-Interviews, vier von einer Station (`Station-1` … `Station-4`) und vier
-aus der Verwaltung (`Verwaltung-1` … `Verwaltung-4`). Zwei Kodierende,
+halbstandardisierte Leitfadeninterviews, vier von einer Station
+(`Station-1` … `Station-4`) und vier aus der Verwaltung (`Verwaltung-1` …
+`Verwaltung-4`). Die Transkripte folgen einfachen, geglätteten Regeln mit
+Sprecherkennzeichnung (`I:` Interviewerin, `B:` befragte Person); der
+Leitfaden wird flexibel gehandhabt, kodiert werden ausschließlich die
+Antworten. Zwei Kodierende,
 `Anna` und `Robert`, kodierten Konsens-Segmente (dieselben Annotationen,
 jede Person mit eigenem Code), dem Drei-Phasen-Verfahren aus der
 [zotQDA-Dokumentation](https://zotqda.org) folgend.
