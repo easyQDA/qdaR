@@ -53,7 +53,7 @@ Zitieren Sie diese Zahlen nicht als Befunde.
 Eine fiktive Interviewstudie zur Arbeitsbelastung in der Pflege: acht
 Interviews, vier von einer Station (`Station-1` … `Station-4`) und vier
 aus der Verwaltung (`Verwaltung-1` … `Verwaltung-4`). Zwei Kodierende,
-`ann` und `bob`, kodierten Konsens-Segmente (dieselben Annotationen,
+`Anna` und `Robert`, kodierten Konsens-Segmente (dieselben Annotationen,
 jede Person mit eigenem Code), dem Drei-Phasen-Verfahren aus der
 [zotQDA-Dokumentation](https://zotqda.org) folgend.
 
@@ -79,13 +79,13 @@ etwas Wahres zu finden hat:
   liegen bevorzugt auf derselben Passage. Diese Ko-Okkurrenzen finden
   `qda_cluster()` und die Skalierungskarte wieder.
 * **Die Kodierenden sind sich oft einig — und systematisch uneinig.**
-  `bob` übernimmt `ann`s Code in etwa 78 % der Fälle; weicht er ab, dann
+  `Robert` übernimmt `Anna`s Code in etwa 78 % der Fälle; weicht er ab, dann
   zum Themen-Nachbarn oder zum Partnercode, nie als gleichverteiltes
   Rauschen. Die Konfusionstabelle liefert deshalb eine kurze,
   interpretierbare Liste.
-* **Manche Zellen sind ehrliche Lücken.** `bob` hat rund 7 % der
+* **Manche Zellen sind ehrliche Lücken.** `Robert` hat rund 7 % der
   Segmente nicht bewertet (`qda_alpha()` verkraftet die Lücken), und
-  `ann` hat gelegentlich doppelt kodiert, sodass der Beiseite-Zähler
+  `Anna` hat gelegentlich doppelt kodiert, sodass der Beiseite-Zähler
   etwas zu zählen hat.
 * **Die Historie enthält Sinneswandel.** Sechs Kodierungen wurden später
   entfernt; dass die Zeitleiste sie übergeht, ist das dokumentierte

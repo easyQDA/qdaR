@@ -50,8 +50,8 @@ accident. But do not cite these numbers as findings.
 
 A fictitious interview study on workload in nursing: eight interviews,
 four from a ward (`Station-1` … `Station-4`) and four from the
-administration (`Verwaltung-1` … `Verwaltung-4`). Two coders, `ann` and
-`bob`, coded consensus segments (the same annotations, each with their
+administration (`Verwaltung-1` … `Verwaltung-4`). Two coders, `Anna` and
+`Robert`, coded consensus segments (the same annotations, each with their
 own code), following the three-phase method described in the
 [zotQDA documentation](https://zotqda.org).
 
@@ -76,12 +76,12 @@ something true to find:
   `Zeitdruck`↔`Distanz`, `körperlich`↔`Sport` and `Team`↔`emotional`
   tend to be coded on the same passage. These co-occurrences are what
   `qda_cluster()` and the scaling map recover.
-* **The coders agree often, and disagree systematically.** `bob` picks
-  `ann`'s code about 78 % of the time; when he differs, it is a
+* **The coders agree often, and disagree systematically.** `Robert` picks
+  `Anna`'s code about 78 % of the time; when he differs, it is a
   within-theme neighbour or the partner code, never uniform noise — so
   the confusion table returns a short, interpretable list.
-* **Some cells are honest gaps.** `bob` left about 7 % of the segments
-  unrated (`qda_alpha()` handles the gaps), and `ann` occasionally coded
+* **Some cells are honest gaps.** `Robert` left about 7 % of the segments
+  unrated (`qda_alpha()` handles the gaps), and `Anna` occasionally coded
   a segment twice, so the set-aside count has something to count.
 * **The history contains second thoughts.** Six codings were later
   removed; the timeline ignoring them is the documented behaviour.
