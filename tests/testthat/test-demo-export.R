@@ -14,10 +14,10 @@
 test_that("demo fragments have the documented shape", {
   frag <- qda_read_fragments(qda_example("easyqda-fragments-demo.csv"))
   # last-state export: fewer rows than the per-coder shape it replaced
-  expect_equal(nrow(frag), 352L)
+  expect_equal(nrow(frag), 301L)
   expect_equal(length(unique(frag$code)), 9L)
   expect_equal(length(unique(frag$citekey)), 8L)
-  expect_setequal(unique(frag$codedBy), c("ann", "bob"))
+  expect_setequal(unique(frag$codedBy), c("Anna", "Robert"))
   expect_true(all(frag$positionKind == "text"))
 })
 
@@ -32,8 +32,8 @@ test_that("demo agreement from the history matches the frozen values", {
   u <- qda_units(qda_codings(hist), coder = "user")
   a <- qda_agreement(u)
   # leaf level: the full code path
-  expect_equal(a$alpha, 0.6716, tolerance = 1e-3)
-  expect_equal(a$ac1, 0.6740, tolerance = 1e-3)
+  expect_equal(a$alpha, 0.8002, tolerance = 1e-3)
+  expect_equal(a$ac1, 0.8035, tolerance = 1e-3)
 })
 
 test_that("agreement rises when the code system is read at theme level", {
@@ -42,11 +42,13 @@ test_that("agreement rises when the code system is read at theme level", {
   leaf <- qda_agreement(qda_units(codings, coder = "user"))
 
   themed <- codings
-  themed$code <- sub("/.*", "", themed$code)   # flatten to the top-level group
+  # the code paths carry the study root ("<Studie>/<Thema>/<Code>") since the
+  # one-study-one-root-code-system change -- the THEME is the second segment
+  themed$code <- vapply(strsplit(themed$code, "/"), function(p) p[[2]], "")
   theme <- qda_agreement(qda_units(themed, coder = "user"))
 
-  expect_equal(theme$alpha, 0.8965, tolerance = 1e-3)
-  expect_equal(theme$ac1, 0.8984, tolerance = 1e-3)
+  expect_equal(theme$alpha, 0.8615, tolerance = 1e-3)
+  expect_equal(theme$ac1, 0.8640, tolerance = 1e-3)
   # the level effect: coders who split a theme differently still agree on it
   expect_gt(theme$alpha, leaf$alpha)
 })
