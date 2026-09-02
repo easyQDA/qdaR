@@ -1,6 +1,8 @@
 {
   "contract": "easyqda-collection",
   "version": 1,
+  "note": "Revised once before first publication (2026-08-31): full REFI-QDA coverage — media sources and their direct selections, transcripts with sync points, notes, cases, sets, links, graphs, typed variables. Copies of this file live in sibling repos and must stay byte-identical per version.",
+  "license": "Contract file and test vectors: MIT. Specification prose: CC BY 4.0. Implementing this format creates no obligation under the AGPL of the easyQDA application.",
   "tables": {
     "project": {
       "id": "collection-project/1",
@@ -75,7 +77,7 @@
     "sources": {
       "id": "collection-sources/1",
       "file": "tables/sources.csv",
-      "grain": "one row per source document",
+      "grain": "one row per source (text documents and carried media alike)",
       "optional": false,
       "stampColumn": "easyqdaFormat",
       "columns": [
@@ -90,6 +92,10 @@
         {
           "key": "type",
           "type": "enum"
+        },
+        {
+          "key": "parentId",
+          "type": "id"
         },
         {
           "key": "name",
@@ -132,8 +138,16 @@
           "type": "text"
         },
         {
+          "key": "createdBy",
+          "type": "text"
+        },
+        {
           "key": "createdAt",
           "type": "datetime"
+        },
+        {
+          "key": "modifiedBy",
+          "type": "text"
         },
         {
           "key": "modifiedAt",
@@ -218,6 +232,10 @@
           "type": "enum"
         },
         {
+          "key": "name",
+          "type": "text"
+        },
+        {
           "key": "startPosition",
           "type": "number"
         },
@@ -232,6 +250,14 @@
         {
           "key": "rects",
           "type": "list"
+        },
+        {
+          "key": "syncFrom",
+          "type": "id"
+        },
+        {
+          "key": "syncTo",
+          "type": "id"
         },
         {
           "key": "positionRaw",
@@ -270,6 +296,10 @@
           "type": "datetime"
         },
         {
+          "key": "modifiedBy",
+          "type": "text"
+        },
+        {
           "key": "modifiedAt",
           "type": "datetime"
         }
@@ -278,7 +308,7 @@
     "codings": {
       "id": "collection-codings/1",
       "file": "tables/codings.csv",
-      "grain": "one row per (selection x code): the coding act",
+      "grain": "one row per (target x code): the coding act",
       "optional": false,
       "stampColumn": "easyqdaFormat",
       "columns": [
@@ -291,7 +321,11 @@
           "type": "id"
         },
         {
-          "key": "selectionId",
+          "key": "targetType",
+          "type": "enum"
+        },
+        {
+          "key": "targetId",
           "type": "id"
         },
         {
@@ -432,13 +466,17 @@
         {
           "key": "type",
           "type": "enum"
+        },
+        {
+          "key": "description",
+          "type": "text"
         }
       ]
     },
     "variable_values": {
       "id": "collection-variable_values/1",
       "file": "tables/variable_values.csv",
-      "grain": "one row per (source x variable)",
+      "grain": "one row per (target x variable)",
       "optional": true,
       "stampColumn": "easyqdaFormat",
       "columns": [
@@ -447,7 +485,11 @@
           "type": "id"
         },
         {
-          "key": "sourceId",
+          "key": "targetType",
+          "type": "enum"
+        },
+        {
+          "key": "targetId",
           "type": "id"
         },
         {
@@ -457,6 +499,10 @@
         {
           "key": "value",
           "type": "text"
+        },
+        {
+          "key": "valueType",
+          "type": "enum"
         }
       ]
     },
@@ -478,6 +524,10 @@
         {
           "key": "name",
           "type": "text"
+        },
+        {
+          "key": "description",
+          "type": "text"
         }
       ]
     },
@@ -497,6 +547,10 @@
           "type": "id"
         },
         {
+          "key": "memberType",
+          "type": "enum"
+        },
+        {
           "key": "memberId",
           "type": "id"
         }
@@ -505,7 +559,7 @@
     "links": {
       "id": "collection-links/1",
       "file": "tables/links.csv",
-      "grain": "one row per link",
+      "grain": "one row per link; an empty linkId marks a bare NoteRef attachment",
       "optional": true,
       "stampColumn": "easyqdaFormat",
       "columns": [
@@ -538,7 +592,213 @@
           "type": "text"
         },
         {
+          "key": "color",
+          "type": "text"
+        },
+        {
           "key": "name",
+          "type": "text"
+        }
+      ]
+    },
+    "sync_points": {
+      "id": "collection-sync_points/1",
+      "file": "tables/sync_points.csv",
+      "grain": "one row per transcript sync point",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "syncPointId",
+          "type": "id"
+        },
+        {
+          "key": "sourceId",
+          "type": "id"
+        },
+        {
+          "key": "position",
+          "type": "number"
+        },
+        {
+          "key": "timeMs",
+          "type": "number"
+        }
+      ]
+    },
+    "cases": {
+      "id": "collection-cases/1",
+      "file": "tables/cases.csv",
+      "grain": "one row per case",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "caseId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        },
+        {
+          "key": "description",
+          "type": "text"
+        }
+      ]
+    },
+    "case_members": {
+      "id": "collection-case_members/1",
+      "file": "tables/case_members.csv",
+      "grain": "one row per case membership",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "caseId",
+          "type": "id"
+        },
+        {
+          "key": "memberType",
+          "type": "enum"
+        },
+        {
+          "key": "memberId",
+          "type": "id"
+        }
+      ]
+    },
+    "graphs": {
+      "id": "collection-graphs/1",
+      "file": "tables/graphs.csv",
+      "grain": "one row per graph",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "graphId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        }
+      ]
+    },
+    "graph_vertices": {
+      "id": "collection-graph_vertices/1",
+      "file": "tables/graph_vertices.csv",
+      "grain": "one row per graph vertex",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "vertexId",
+          "type": "id"
+        },
+        {
+          "key": "graphId",
+          "type": "id"
+        },
+        {
+          "key": "representedId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        },
+        {
+          "key": "firstX",
+          "type": "number"
+        },
+        {
+          "key": "firstY",
+          "type": "number"
+        },
+        {
+          "key": "secondX",
+          "type": "number"
+        },
+        {
+          "key": "secondY",
+          "type": "number"
+        },
+        {
+          "key": "shape",
+          "type": "text"
+        },
+        {
+          "key": "color",
+          "type": "text"
+        }
+      ]
+    },
+    "graph_edges": {
+      "id": "collection-graph_edges/1",
+      "file": "tables/graph_edges.csv",
+      "grain": "one row per graph edge",
+      "optional": true,
+      "stampColumn": "easyqdaFormat",
+      "columns": [
+        {
+          "key": "easyqdaFormat",
+          "type": "id"
+        },
+        {
+          "key": "edgeId",
+          "type": "id"
+        },
+        {
+          "key": "graphId",
+          "type": "id"
+        },
+        {
+          "key": "representedId",
+          "type": "id"
+        },
+        {
+          "key": "name",
+          "type": "text"
+        },
+        {
+          "key": "fromVertexId",
+          "type": "id"
+        },
+        {
+          "key": "toVertexId",
+          "type": "id"
+        },
+        {
+          "key": "color",
+          "type": "text"
+        },
+        {
+          "key": "direction",
+          "type": "text"
+        },
+        {
+          "key": "lineStyle",
           "type": "text"
         }
       ]

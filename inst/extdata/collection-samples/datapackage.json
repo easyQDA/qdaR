@@ -81,6 +81,10 @@
             "type": "enum"
           },
           {
+            "name": "parentId",
+            "type": "id"
+          },
+          {
             "name": "name",
             "type": "text"
           },
@@ -121,8 +125,16 @@
             "type": "text"
           },
           {
+            "name": "createdBy",
+            "type": "text"
+          },
+          {
             "name": "createdAt",
             "type": "datetime"
+          },
+          {
+            "name": "modifiedBy",
+            "type": "text"
           },
           {
             "name": "modifiedAt",
@@ -199,6 +211,10 @@
             "type": "enum"
           },
           {
+            "name": "name",
+            "type": "text"
+          },
+          {
             "name": "startPosition",
             "type": "number"
           },
@@ -213,6 +229,14 @@
           {
             "name": "rects",
             "type": "list"
+          },
+          {
+            "name": "syncFrom",
+            "type": "id"
+          },
+          {
+            "name": "syncTo",
+            "type": "id"
           },
           {
             "name": "positionRaw",
@@ -251,6 +275,10 @@
             "type": "datetime"
           },
           {
+            "name": "modifiedBy",
+            "type": "text"
+          },
+          {
             "name": "modifiedAt",
             "type": "datetime"
           }
@@ -268,7 +296,11 @@
             "type": "id"
           },
           {
-            "name": "selectionId",
+            "name": "targetType",
+            "type": "enum"
+          },
+          {
+            "name": "targetId",
             "type": "id"
           },
           {
@@ -397,6 +429,10 @@
           {
             "name": "type",
             "type": "enum"
+          },
+          {
+            "name": "description",
+            "type": "text"
           }
         ]
       }
@@ -408,7 +444,11 @@
       "schema": {
         "fields": [
           {
-            "name": "sourceId",
+            "name": "targetType",
+            "type": "enum"
+          },
+          {
+            "name": "targetId",
             "type": "id"
           },
           {
@@ -418,6 +458,10 @@
           {
             "name": "value",
             "type": "text"
+          },
+          {
+            "name": "valueType",
+            "type": "enum"
           }
         ]
       }
@@ -435,6 +479,10 @@
           {
             "name": "name",
             "type": "text"
+          },
+          {
+            "name": "description",
+            "type": "text"
           }
         ]
       }
@@ -448,6 +496,10 @@
           {
             "name": "setId",
             "type": "id"
+          },
+          {
+            "name": "memberType",
+            "type": "enum"
           },
           {
             "name": "memberId",
@@ -487,7 +539,189 @@
             "type": "text"
           },
           {
+            "name": "color",
+            "type": "text"
+          },
+          {
             "name": "name",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sync_points",
+      "path": "tables/sync_points.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "syncPointId",
+            "type": "id"
+          },
+          {
+            "name": "sourceId",
+            "type": "id"
+          },
+          {
+            "name": "position",
+            "type": "number"
+          },
+          {
+            "name": "timeMs",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cases",
+      "path": "tables/cases.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "caseId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "description",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "case_members",
+      "path": "tables/case_members.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "caseId",
+            "type": "id"
+          },
+          {
+            "name": "memberType",
+            "type": "enum"
+          },
+          {
+            "name": "memberId",
+            "type": "id"
+          }
+        ]
+      }
+    },
+    {
+      "name": "graphs",
+      "path": "tables/graphs.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "graphId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "graph_vertices",
+      "path": "tables/graph_vertices.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "vertexId",
+            "type": "id"
+          },
+          {
+            "name": "graphId",
+            "type": "id"
+          },
+          {
+            "name": "representedId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "firstX",
+            "type": "number"
+          },
+          {
+            "name": "firstY",
+            "type": "number"
+          },
+          {
+            "name": "secondX",
+            "type": "number"
+          },
+          {
+            "name": "secondY",
+            "type": "number"
+          },
+          {
+            "name": "shape",
+            "type": "text"
+          },
+          {
+            "name": "color",
+            "type": "text"
+          }
+        ]
+      }
+    },
+    {
+      "name": "graph_edges",
+      "path": "tables/graph_edges.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "edgeId",
+            "type": "id"
+          },
+          {
+            "name": "graphId",
+            "type": "id"
+          },
+          {
+            "name": "representedId",
+            "type": "id"
+          },
+          {
+            "name": "name",
+            "type": "text"
+          },
+          {
+            "name": "fromVertexId",
+            "type": "id"
+          },
+          {
+            "name": "toVertexId",
+            "type": "id"
+          },
+          {
+            "name": "color",
+            "type": "text"
+          },
+          {
+            "name": "direction",
+            "type": "text"
+          },
+          {
+            "name": "lineStyle",
             "type": "text"
           }
         ]
